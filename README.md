@@ -169,6 +169,39 @@ vorbehalten (sie fallen als Kleintext auf Schwarz durch WCAG AA).
 > old code names as deprecated aliases (`--color-dept-combat` → Raumüberlegenheit,
 > etc.) so code written against the live app still resolves.
 
+**Planet-system tints** — the categorical palette of the price matrix (materials overview). A
+terminal column is tinted by its effective UEX planet: the `--krt-planet-<p>` fill sits behind the
+column header, the `--krt-planet-<p>-stripe` hue is the 2px left stripe of its body cells. The named
+planets are hand-picked; `hash-0` … `hash-11` are the twelve buckets the app assigns an unknown
+planet. These carry **planet identity only** — never status, department or action.
+
+| Planet | Header fill | Hex | Cell stripe | Hex |
+| :-- | :-- | :-- | :-- | :-- |
+| `hurston` | `--krt-planet-hurston` | `#3A2519` | `--krt-planet-hurston-stripe` | `#7A4A2E` |
+| `crusader` | `--krt-planet-crusader` | `#3A2C26` | `--krt-planet-crusader-stripe` | `#C97A6A` |
+| `arccorp` | `--krt-planet-arccorp` | `#3A2C1A` | `--krt-planet-arccorp-stripe` | `#B5722B` |
+| `microtech` | `--krt-planet-microtech` | `#1F2C3A` | `--krt-planet-microtech-stripe` | `#5A8FB8` |
+| `pyro-1` | `--krt-planet-pyro-1` | `#3A3019` | `--krt-planet-pyro-1-stripe` | `#B89538` |
+| `pyro-2` | `--krt-planet-pyro-2` | `#2A2018` | `--krt-planet-pyro-2-stripe` | `#8A6F4A` |
+| `pyro-3` | `--krt-planet-pyro-3` | `#3A1F1A` | `--krt-planet-pyro-3-stripe` | `#B8503A` |
+| `pyro-4` | `--krt-planet-pyro-4` | `#1A2A2A` | `--krt-planet-pyro-4-stripe` | `#4A8A8A` |
+| `pyro-5` | `--krt-planet-pyro-5` | `#2A1A2A` | `--krt-planet-pyro-5-stripe` | `#8A4A8A` |
+| `pyro-6` | `--krt-planet-pyro-6` | `#2A2A18` | `--krt-planet-pyro-6-stripe` | `#8A8A3A` |
+| `terra` | `--krt-planet-terra` | `#1A323A` | `--krt-planet-terra-stripe` | `#3A8AA8` |
+| `delamar` | `--krt-planet-delamar` | `#262626` | `--krt-planet-delamar-stripe` | `#7A7A7A` |
+| `hash-0` | `--krt-planet-hash-0` | `#3A2020` | `--krt-planet-hash-0-stripe` | `#A85050` |
+| `hash-1` | `--krt-planet-hash-1` | `#3A2C20` | `--krt-planet-hash-1-stripe` | `#A87850` |
+| `hash-2` | `--krt-planet-hash-2` | `#3A3A20` | `--krt-planet-hash-2-stripe` | `#A8A850` |
+| `hash-3` | `--krt-planet-hash-3` | `#2C3A20` | `--krt-planet-hash-3-stripe` | `#78A850` |
+| `hash-4` | `--krt-planet-hash-4` | `#203A20` | `--krt-planet-hash-4-stripe` | `#50A850` |
+| `hash-5` | `--krt-planet-hash-5` | `#203A2C` | `--krt-planet-hash-5-stripe` | `#50A878` |
+| `hash-6` | `--krt-planet-hash-6` | `#203A3A` | `--krt-planet-hash-6-stripe` | `#50A8A8` |
+| `hash-7` | `--krt-planet-hash-7` | `#202C3A` | `--krt-planet-hash-7-stripe` | `#5078A8` |
+| `hash-8` | `--krt-planet-hash-8` | `#20203A` | `--krt-planet-hash-8-stripe` | `#5050A8` |
+| `hash-9` | `--krt-planet-hash-9` | `#2C203A` | `--krt-planet-hash-9-stripe` | `#7850A8` |
+| `hash-10` | `--krt-planet-hash-10` | `#3A203A` | `--krt-planet-hash-10-stripe` | `#A850A8` |
+| `hash-11` | `--krt-planet-hash-11` | `#3A202C` | `--krt-planet-hash-11-stripe` | `#A85078` |
+
 > **`#1C1C1C`** is a code-only half-step (input/table-head fill) exposed as
 > `--color-surface-input`; it is **not** part of the official grayscale.
 
