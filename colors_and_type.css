@@ -166,6 +166,63 @@
     --color-secondary: #FFD23F;                       /* cross-squadron / foreign-link highlight */
 
     /* ------------------------------------------------------------------ */
+    /* PLANET-SYSTEM TINTS — a categorical palette, not brand colour.      */
+    /* ------------------------------------------------------------------ */
+    /* Planet-system tints (price matrix, materials-overview.css). A terminal column is tinted by
+       its effective UEX planet: --krt-planet-<p> fills the column header, --krt-planet-<p>-stripe
+       is the 2px left stripe of its body cells. Canonical planets are hand-picked; hash-0..11 are
+       the twelve buckets PlanetColorResolver assigns an unknown planet. A categorical palette,
+       not brand colour: use it only for planet identity. */
+    --krt-planet-hurston: #3A2519;
+    --krt-planet-hurston-stripe: #7A4A2E;
+    --krt-planet-crusader: #3A2C26;
+    --krt-planet-crusader-stripe: #C97A6A;
+    --krt-planet-arccorp: #3A2C1A;
+    --krt-planet-arccorp-stripe: #B5722B;
+    --krt-planet-microtech: #1F2C3A;
+    --krt-planet-microtech-stripe: #5A8FB8;
+    --krt-planet-pyro-1: #3A3019;
+    --krt-planet-pyro-1-stripe: #B89538;
+    --krt-planet-pyro-2: #2A2018;
+    --krt-planet-pyro-2-stripe: #8A6F4A;
+    --krt-planet-pyro-3: #3A1F1A;
+    --krt-planet-pyro-3-stripe: #B8503A;
+    --krt-planet-pyro-4: #1A2A2A;
+    --krt-planet-pyro-4-stripe: #4A8A8A;
+    --krt-planet-pyro-5: #2A1A2A;
+    --krt-planet-pyro-5-stripe: #8A4A8A;
+    --krt-planet-pyro-6: #2A2A18;
+    --krt-planet-pyro-6-stripe: #8A8A3A;
+    --krt-planet-terra: #1A323A;
+    --krt-planet-terra-stripe: #3A8AA8;
+    --krt-planet-delamar: #262626;
+    --krt-planet-delamar-stripe: #7A7A7A;
+    --krt-planet-hash-0: #3A2020;
+    --krt-planet-hash-0-stripe: #A85050;
+    --krt-planet-hash-1: #3A2C20;
+    --krt-planet-hash-1-stripe: #A87850;
+    --krt-planet-hash-2: #3A3A20;
+    --krt-planet-hash-2-stripe: #A8A850;
+    --krt-planet-hash-3: #2C3A20;
+    --krt-planet-hash-3-stripe: #78A850;
+    --krt-planet-hash-4: #203A20;
+    --krt-planet-hash-4-stripe: #50A850;
+    --krt-planet-hash-5: #203A2C;
+    --krt-planet-hash-5-stripe: #50A878;
+    --krt-planet-hash-6: #203A3A;
+    --krt-planet-hash-6-stripe: #50A8A8;
+    --krt-planet-hash-7: #202C3A;
+    --krt-planet-hash-7-stripe: #5078A8;
+    --krt-planet-hash-8: #20203A;
+    --krt-planet-hash-8-stripe: #5050A8;
+    --krt-planet-hash-9: #2C203A;
+    --krt-planet-hash-9-stripe: #7850A8;
+    --krt-planet-hash-10: #3A203A;
+    --krt-planet-hash-10-stripe: #A850A8;
+    --krt-planet-hash-11: #3A202C;
+    --krt-planet-hash-11-stripe: #A85078;
+
+    /* ------------------------------------------------------------------ */
     /* ACCESSIBLE TEXT TINTS — for status/semantic colour used as TEXT.    */
     /* The canonical danger/info hues are dark (Sub-Radar #A3000A ≈ 2.3:1, */
     /* Forschung #355DDC ≈ 3.6:1 on black) — fine as fills with white text */
