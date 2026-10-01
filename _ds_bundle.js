@@ -4482,13 +4482,7 @@ function LoginScreen({
     type: "submit"
   }, "Sign in via Keycloak")), /*#__PURE__*/React.createElement("div", {
     className: "login-foot"
-  }, "Access is reserved for members & approved guests.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("a", {
-    href: "#",
-    onClick: e => {
-      e.preventDefault();
-      onLogin();
-    }
-  }, "Create an order as guest \u2192"))));
+  }, "Access is reserved for members.")));
 }
 
 /* ------------------------------------------------------------ DASHBOARD --- */
