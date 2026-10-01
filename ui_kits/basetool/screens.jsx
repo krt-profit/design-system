@@ -25,8 +25,7 @@ function LoginScreen({ onLogin }) {
           <Btn variant={null} type="submit">Sign in via Keycloak</Btn>
         </form>
         <div className="login-foot">
-          Access is reserved for members &amp; approved guests.<br />
-          <a href="#" onClick={(e) => { e.preventDefault(); onLogin(); }}>Create an order as guest →</a>
+          Access is reserved for members.
         </div>
       </HudBox>
     </div>
