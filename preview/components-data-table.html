@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Data table (list pattern)" subtitle="Zeile als Link, Titel + Unterzeile, Zahlen rechts, stapelt unter 768 px (DS-7, DS-8)" viewport="700x330" -->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style>
+  body { padding: 18px 20px; }
+  .dot { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; }
+  .dot::before { content: ''; width: 8px; height: 8px; background: currentColor; }
+</style>
+</head>
+<body>
+  <div class="card card--flush">
+    <table class="data-table data-table--stack">
+      <thead><tr><th>Einsatz</th><th class="cell-status">Status</th><th>Start (UTC)</th><th class="num">Angemeldet</th><th class="cell-actions"></th></tr></thead>
+      <tbody>
+        <tr>
+          <td><a class="row-link" href="#"><span class="cell-title">Salvage-Lauf Yela-Gürtel</span><span class="cell-sub">Treffpunkt: GrimHEX</span></a></td>
+          <td class="cell-status"><span class="dot" style="color: var(--color-success-text);">AKTIV</span></td>
+          <td data-label="Start">Sa 03.10. · 14:00</td>
+          <td class="num" data-label="Angemeldet">6</td>
+          <td class="cell-actions"><svg class="row-chevron" aria-hidden="true"><use href="../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+        </tr>
+        <tr>
+          <td><a class="row-link" href="#"><span class="cell-title">Quantanium-Abbau Aaron Halo</span><span class="cell-sub">Treffpunkt: Port Tressler</span></a></td>
+          <td class="cell-status"><span class="dot" style="color: var(--color-info-text);">GEPLANT</span></td>
+          <td data-label="Start">Do 08.10. · 20:00</td>
+          <td class="num" data-label="Angemeldet">14</td>
+          <td class="cell-actions"><svg class="row-chevron" aria-hidden="true"><use href="../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+        </tr>
+        <tr>
+          <td><a class="row-link" href="#"><span class="cell-title">Raffinerie-Abholung CRU-L1</span><span class="cell-sub">Treffpunkt: CRU-L1</span></a></td>
+          <td class="cell-status"><span class="dot" style="color: var(--color-gray-1);">ABGESCHLOSSEN</span></td>
+          <td data-label="Start">Di 29.09. · 21:00</td>
+          <td class="num" data-label="Angemeldet">3</td>
+          <td class="cell-actions"><svg class="row-chevron" aria-hidden="true"><use href="../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pv-mono" style="margin-top: 12px;">.card.card--flush › table.data-table.data-table--stack · a.row-link (.cell-title, .cell-sub) · .num · .cell-status · .cell-actions · .row-chevron. Unter 768 px zweizeilig über data-label.</p>
+</body>
+</html>

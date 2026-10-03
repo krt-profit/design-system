@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Segmented control & switch" subtitle="2–4 exklusive Optionen statt Radios; Schalter an/aus (DS-6)" viewport="700x260" -->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style> body { padding: 18px 20px; } </style>
+</head>
+<body>
+  <p class="pv-label">.segmented — Filter in der Werkzeugleiste, mit Zählern</p>
+  <div class="pv-row">
+    <div class="segmented" role="radiogroup" aria-label="Zeitraum">
+      <button type="button" role="radio" aria-checked="true">Kommend <span class="seg-count">18</span></button>
+      <button type="button" role="radio" aria-checked="false">Vergangen <span class="seg-count">6</span></button>
+      <button type="button" role="radio" aria-checked="false">Alle</button>
+    </div>
+    <label class="switch"><input type="checkbox" checked><span class="switch__track"></span>Raffinerie einrechnen</label>
+  </div>
+  <p class="pv-label" style="margin-top: 16px;">.segmented--block.segmented--lg — Formularwert mit Radios</p>
+  <div class="segmented segmented--block segmented--lg" role="radiogroup" aria-label="Auftragsart">
+    <label><input type="radio" name="kind" value="MATERIAL" checked><span>Materialauftrag</span></label>
+    <label><input type="radio" name="kind" value="ITEM"><span>Item-Auftrag</span></label>
+  </div>
+  <p class="pv-mono" style="margin-top: 12px;">role="radiogroup" mit button[role=radio][aria-checked] oder label › input[type=radio]. Gleiche Höhe wie Eingabefelder, ab Tablet 44 px.</p>
+</body>
+</html>

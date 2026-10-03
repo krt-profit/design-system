@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Layout primitives & surface rules" subtitle=".stack · .cluster · .split · .grid-auto; Flächen- und Breakpoint-Regeln (DS-10 – DS-12)" viewport="700x420" -->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style> body { padding: 18px 20px; } </style>
+</head>
+<body>
+  <p class="pv-label">DS-12 · Layout-Bausteine</p>
+  <div class="card stack gap-3">
+    <div class="split"><span>.split: links Inhalt</span><span class="cluster gap-2"><span class="chip">.cluster</span><span class="chip">gap-2</span></span></div>
+    <div class="grid-auto gap-3" style="--min: 140px;">
+      <div class="card card--inset">.grid-auto</div><div class="card card--inset">--min: 140px</div><div class="card card--inset">gap-3</div><div class="card card--inset">wrappt selbst</div>
+    </div>
+  </div>
+  <p class="pv-label" style="margin-top: 16px;">DS-10 · DS-11 · Regeln</p>
+  <div class="grid-auto" style="--min: 200px;">
+    <div class="card stack gap-2"><span class="card-title">Flächen</span><span style="font-size: 0.85rem;">Höchstens eine HUD-Box pro Ansicht, nie verschachtelt. Listen auf .card--flush, Hinweise als .alert. Nie weißer Text direkt auf #000.</span></div>
+    <div class="card stack gap-2"><span class="card-title">Smartphone · Tablet</span><span style="font-size: 0.85rem;">width ≤ 768px: Tabellen gestapelt. ≤ 1024px: Formulare 2-spaltig. Touch-Ziele ≥ 44px.</span></div>
+    <div class="card stack gap-2"><span class="card-title">Desktop · Breit</span><span style="font-size: 0.85rem;">Inhalt 1200px, Formular 760px, Datenansichten ab 1440px bis 1600px.</span></div>
+  </div>
+  <p class="pv-mono" style="margin-top: 12px;">Breakpoints nur (width ≤ 768px), (width ≤ 1024px), (width ≥ 1440px) — --bp-phone-max, --bp-tablet-max, --bp-wide-min.</p>
+</body>
+</html>

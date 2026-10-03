@@ -319,6 +319,11 @@
 
     --touch-target: 44px;      /* min hit area for every interactive control */
     --content-max: 1200px;     /* main column cap */
+    --content-max-data: 1600px;
+    --content-max-form: 760px;
+    --bp-phone-max: 768px;
+    --bp-tablet-max: 1024px;
+    --bp-wide-min: 1440px;
     --measure: 80ch;           /* paragraph max line length */
 }
 
@@ -330,21 +335,23 @@ body {
     background-color: var(--color-bg-black);
     color: var(--color-gray-1);
     font-family: var(--font-body);
-    font-weight: var(--fw-thin);
+    font-weight: var(--fw-regular);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
     margin: 0;
 }
+.lead { font-size: 1.1rem; font-weight: var(--fw-thin); color: var(--color-gray-1); }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-headline);
-    color: var(--color-primary);
+    color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: var(--tracking-display);
     font-weight: var(--fw-bold);   /* Lato headlines need weight to read as headings */
     margin: 0 0 0.5em;
 }
-h1 { font-size: var(--fs-h1); }
+h1 { font-size: var(--fs-h1); color: var(--color-primary); }
+h4, h5, h6 { color: var(--color-gray-1); }
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
 
