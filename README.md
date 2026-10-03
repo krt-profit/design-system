@@ -104,6 +104,31 @@ order (DS repo + submodule + product) `proposals/inventory-entry-multi-assign-cl
   `components-filterbar`, `components-app-chrome`; Asset
   `assets/made-by-the-community.png`.
 
+**Sync log — 2026-10.** The website audit of 2026-10-03 (all 90 templates of the
+web frontend) was approved as twelve changes, DS-1 to DS-12. No class was removed or
+renamed; `.greeting`, `.hud-box` and `.table-responsive` keep working. DS-2 and DS-3
+change the look **globally**, including pages not yet migrated.
+
+| No. | Kind | Change | File |
+| :-- | :-- | :-- | :-- |
+| DS-1 | Fix | Every text use of `--color-gray-2` (`#646464`) moved to `--color-gray-2-text` (`#8A8A8A`) — `.kv-list dt`, `.facts-bar .fact-k`, `.empty-state .empty-text`, `.tab-nav .tab`, `.chip--muted`, `.kpi-label`, `.kpi-sub`, `.meta-group-title`, `.stack-legend`, placeholders and more. Contrast on `#000` 3.5:1 → 6.1:1, on `#141414` 3.1:1 → 5.3:1. | `krt-components.css` |
+| DS-2 | Rule | `body` moves from Lato 300 to **400** (`--fw-regular`); 300 is too thin on black at 14–16 px. New `.lead` (1.1rem, 300) for lead text. | `colors_and_type.css` |
+| DS-3 | Rule | Only `h1` carries the house orange. `h2`/`h3` are white, `h4`–`h6` Grau 1. Upper case and tracking stay. Orange is for action and identity. | `colors_and_type.css` |
+| DS-4 | New | Page head `.page-head` (`__main`, `.page-eyebrow` — also as a back link —, `.page-title`, `.page-actions`) and the overflow menu `.overflow-menu` (`__panel`, `__item`, `__item--danger`, `__sep`), opened by an icon-only button with the new `krt-icon-more`. `.greeting` stays for the home page, the landing page and error pages. | `krt-components.css` |
+| DS-5 | New | Toolbar `.toolbar` (`__search`, `__spacer`, `__count`), `.filter-badge`, `.filter-chips` / `.filter-chip` / `.filter-chips__reset`, `.filter-add`. | `krt-components.css` |
+| DS-6 | New | Segmented control `.segmented` (`--block`, `--lg`, `.seg-count`) for 2–4 exclusive options, and the `.switch` on/off control. The visually hidden radio sits inside its label, so the control never scrolls vertically. | `krt-components.css` |
+| DS-7 | New | `.data-table--stack`: below 768 px every row becomes a two-line entry — title and `.cell-status` on the first line, the other cells as one meta line separated by „·“ (a `data-label` prefixes its cell as „Label: “), a lone `.row-chevron` centred on the right, other `.cell-actions` at the end of the meta line. | `krt-components.css` |
+| DS-8 | Rule | `.data-table`: 56 px rows (`--compact` 44 px), `.cell-title` / `.cell-sub`, `a.row-link` (whole row clickable, focus ring on the row), `.num`, `.cell-actions`, `.row-chevron`. | `krt-components.css` |
+| DS-9 | New | Form layout `.form-layout` (≤ `--content-max-form`, 760 px), `.form-section` + `__head`, `.form-grid` (`--3`, `.span-all`), `.field-computed`, `.form-actions--sticky` + `__summary`. | `krt-components.css` |
+| DS-10 | Rule | At most **one** `.hud-box` per view, never nested; an inner legacy `.hud-box` loses its corner brackets. Lists and tables sit in `.card.card--flush`, notices are `.alert`, and content never sits with white text directly on `#000`. | `krt-components.css` |
+| DS-11 | Rule | Breakpoints are only `768px`, `1024px` and `1440px` (the device classes). Tokens `--bp-phone-max`, `--bp-tablet-max`, `--bp-wide-min` document them — custom properties cannot be used inside `@media`; `--content-max-data` 1600 px, `--content-max-form` 760 px. | `colors_and_type.css` |
+| DS-12 | New | Layout primitives `.stack`, `.cluster`, `.split`, `.grid-auto` with `.gap-1/2/3/6/8`, `--min` and `.grow`. They replace the product's generated one-off `krtm-*` classes. | `krt-components.css` |
+
+Specimens: `preview/components-page-head.html`, `components-toolbar.html`,
+`components-segmented.html`, `components-data-table.html`,
+`components-form-layout.html`, `components-layout.html`. Class names match the
+product 1:1.
+
 ---
 
 ## What the product is
@@ -432,6 +457,32 @@ Specimen: `preview/components-filterbar.html`.
 
 Specimen: `preview/components-app-chrome.html`.
 
+### Page patterns (2026-10)
+
+Three patterns cover every work page of the web app; the building blocks are in the
+2026-10 block at the end of `krt-components.css`.
+
+- **Page head** — `.page-head` › `.page-head__main` (`.page-eyebrow` with the navigation
+  area, or as `a.page-eyebrow` the back link „← Aufträge“; `.page-title` with the `h1`
+  and an optional count chip) + `.page-actions`. At most **one** `.btn--cta` in
+  `.page-actions`; rare and destructive actions go into the `.overflow-menu` („⋯“).
+- **List (pattern A)** — `.page-head`, then `.toolbar` (search always visible,
+  `.segmented` for 2–4 exclusive options, further filters behind „Filter“ with a
+  `.filter-badge`), `.filter-chips` while filters are active, and
+  `.card.card--flush` › `table.data-table.data-table--stack`. The first column is
+  `a.row-link` with `.cell-title` / `.cell-sub`; numbers `.num`, status `.cell-status`,
+  actions `.cell-actions`, a `.row-chevron` at the end; no column holding only an
+  „Öffnen“ button. An empty list is an `.empty-state`.
+- **Form (pattern C)** — `.form-layout.card` (≤ 760 px) with numbered
+  `.form-section`s, `.form-grid` (two columns from tablet up), computed values as
+  `.field-computed`, 2–4 exclusive options as `.segmented--lg`, and the actions in
+  `.form-actions--sticky` with a live `.form-actions__summary`.
+- **Layout** — `.stack`, `.cluster`, `.split`, `.grid-auto`; surfaces per DS-10.
+
+Specimens: `preview/components-page-head.html`, `components-toolbar.html`,
+`components-segmented.html`, `components-data-table.html`,
+`components-form-layout.html`, `components-layout.html`.
+
 ---
 
 ## Files
@@ -492,8 +543,9 @@ Everything that makes a screen read as "Profit Basetool".
   department/semantic hues appear only as small tags, row tints and status.
 - **Type.** One typeface: **Lato**. Headlines are **uppercase, bold (700/900)** with
   letter-spacing `0.05em` — distinguished by weight, not a separate display face.
-  Body/UI = Lato, default weight **Light 300**, with **Bold 700** for emphasis/labels.
-  Headings are orange; body is gray-1.
+  Body/UI = Lato, default weight **Regular 400**, with **Bold 700** for emphasis/labels;
+  Light 300 only for lead text ≥ 1.1rem (`.lead`). Only `h1` is orange; `h2`/`h3`
+  are white, `h4`–`h6` gray-1; body is gray-1.
 - **Backgrounds.** Flat black/dark-gray. No photographic hero imagery in-app. A
   subtle technical **pattern/texture** (`images/pattern.svg`) exists in the brand
   kit for marketing surfaces. The `.greeting` banner uses a single left-to-right
@@ -560,10 +612,14 @@ From the project's own engineering guide (`CLAUDE.md` → *Frontend / UI rules*)
 - **Responsive is mandatory across four device classes:**
   | Class | Width | Rules |
   | :-- | :-- | :-- |
-  | Smartphone | ≤ 768px | Touch-first; min 44px targets; single-column; wide tables scroll horizontally; context chip collapses to shorthand. |
-  | Tablet | 768–1024px | Touch-first; 44px targets; collapse multi-column grids. |
-  | Desktop | 1024–1600px | Auto-fit card/dashboard grids; off-canvas drawer nav. |
-  | Ultra-wide | 1600px+ | Exploit space, but cap long-form text at `max-width: 80ch`; content column stays ≤ 1200px. |
+  | Smartphone | ≤ 768px | Touch-first; min 44px targets; single-column; list tables stack (`.data-table--stack`); context chip collapses to shorthand. |
+  | Tablet | 768–1024px | Touch-first; 44px targets; collapse multi-column grids; forms two columns. |
+  | Desktop | 1024–1440px | Auto-fit card/dashboard grids; off-canvas drawer nav. |
+  | Wide | 1440px+ | Exploit space, but cap long-form text at `max-width: 80ch`; content column stays ≤ 1200px, data views (price matrix, Lager, audit log) up to 1600px. |
+
+  Media queries use **only** `(width <= 768px)`, `(width <= 1024px)` and
+  `(width >= 1440px)` (DS-11); a component that has to react to its own width uses a
+  container query instead of a new breakpoint.
 - **i18n — every user-visible string is externalized.** German is the default
   locale, English is fully translated; there is **no hardcoded text** in templates,
   JS or Java (labels, buttons, tooltips, errors, placeholders, titles all come from

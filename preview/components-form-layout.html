@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Form layout" subtitle="Nummerierte Abschnitte, 2-spaltig ab Tablet, fixierte Aktionsleiste (DS-9)" viewport="760x560" -->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style> body { padding: 18px 20px; } </style>
+</head>
+<body>
+  <form class="form-layout card" action="#">
+    <fieldset class="form-section">
+      <legend class="form-section__head" style="width: 100%;">1 · Auftrag</legend>
+      <div class="segmented segmented--block segmented--lg" role="radiogroup" aria-label="Auftragsart">
+        <label><input type="radio" name="kind" value="MATERIAL" checked><span>Materialauftrag</span></label>
+        <label><input type="radio" name="kind" value="ITEM"><span>Item-Auftrag</span></label>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label for="s-a">Bearbeitende Einheit</label><select id="s-a"><option>IRI — IRIDIUM</option></select></div>
+        <div class="form-group"><label for="s-b">Anfragende Einheit</label><select id="s-b"><option>IRI — IRIDIUM</option></select></div>
+        <div class="form-group"><label for="s-c">Ansprechpartner</label><input id="s-c" type="text" value="Kontakt"></div>
+        <div class="form-group"><label>Fertig am <span style="font-weight: 400; color: var(--color-gray-2-text);">· berechnet</span></label><div class="field-computed">03.10. 09:00</div></div>
+      </div>
+    </fieldset>
+    <fieldset class="form-section">
+      <legend class="form-section__head" style="width: 100%;">2 · Kommentar <span class="opt">· optional</span></legend>
+      <textarea rows="3" aria-label="Kommentar"></textarea>
+    </fieldset>
+    <div class="form-actions--sticky" style="margin: 0 -24px -24px;">
+      <span class="form-actions__summary">2 Materialien · <strong>96 SCU</strong> · für IRIDIUM</span>
+      <button type="button" class="btn btn-ghost">Abbrechen</button>
+      <button type="submit" class="btn btn--cta">Auftrag anlegen</button>
+    </div>
+  </form>
+  <p class="pv-mono" style="margin-top: 12px;">.form-layout (≤ 760 px) › .form-section (.form-section__head) · .form-grid (--3, .span-all) · .field-computed · .form-actions--sticky (__summary).</p>
+</body>
+</html>

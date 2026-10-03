@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Toolbar & filter chips" subtitle="Suche immer sichtbar, Filter mit Zähler, aktive Filter als Chips (DS-5)" viewport="700x220" -->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style> body { padding: 18px 20px; } </style>
+</head>
+<body>
+  <p class="pv-label">Werkzeugleiste einer Listenseite</p>
+  <div class="card" style="padding: 20px;">
+    <div class="toolbar">
+      <div class="toolbar__search">
+        <svg class="krt-icon" aria-hidden="true"><use href="../assets/krt-icons.svg#krt-icon-search"></use></svg>
+        <input type="search" placeholder="Name oder Treffpunkt suchen …" aria-label="Suchen">
+      </div>
+      <button type="button" class="btn btn-ghost">Filter <span class="filter-badge">2</span></button>
+      <span class="toolbar__spacer"></span>
+      <span class="toolbar__count"><strong>5</strong> von <strong>7</strong> einsatzbereit</span>
+    </div>
+    <div class="filter-chips" style="margin-bottom: 0;">
+      <button type="button" class="chip chip--primary filter-chip">Einheit: IRI ✕</button>
+      <button type="button" class="chip chip--primary filter-chip">Qualität ≥ 600 ✕</button>
+      <button type="button" class="filter-add">+ Filter</button>
+      <a class="filter-chips__reset" href="#">Alle zurücksetzen</a>
+    </div>
+  </div>
+  <p class="pv-mono" style="margin-top: 12px;">.toolbar (__search, __spacer, __count) · .filter-badge · .filter-chips (.filter-chip, .filter-add, __reset). Live-Filter, kein „Filtern“-Button.</p>
+</body>
+</html>

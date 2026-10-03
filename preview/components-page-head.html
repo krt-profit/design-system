@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Page head & overflow menu" subtitle="Seitenkopf: Eyebrow, H1 + Zähler, eine Hauptaktion, ⋯-Menü (DS-4)" viewport="700x360" -->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="_card.css">
+<style> body { padding: 18px 20px; } .frame { padding: 20px; } </style>
+</head>
+<body>
+  <p class="pv-label">Arbeitsseite — Bereich als Eyebrow, Titel + Zähler, ghost · Hauptaktion · ⋯</p>
+  <div class="card frame" style="padding-bottom: 130px;">
+    <div class="page-head" style="margin: 0;">
+      <div class="page-head__main">
+        <span class="page-eyebrow">Flotte &amp; Logistik</span>
+        <div class="page-title"><h1>Hangar</h1><span class="chip chip--muted">7</span></div>
+      </div>
+      <div class="page-actions">
+        <button type="button" class="btn btn-ghost">Fleetview importieren</button>
+        <button type="button" class="btn btn--cta">Schiff hinzufügen</button>
+        <div class="overflow-menu">
+          <button type="button" class="btn btn-ghost btn-icon" aria-label="Weitere Aktionen" aria-expanded="true" title="Weitere Aktionen"><svg class="krt-icon" aria-hidden="true"><use href="../assets/krt-icons.svg#krt-icon-more"></use></svg></button>
+          <div class="overflow-menu__panel" role="menu">
+            <button type="button" class="overflow-menu__item" role="menuitem">Home-Location für alle setzen</button>
+            <span class="overflow-menu__sep" role="separator"></span>
+            <button type="button" class="overflow-menu__item overflow-menu__item--danger" role="menuitem">Hangar leeren …</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="pv-label" style="margin-top: 14px;">Formular- und Detailseite — Eyebrow als Zurück-Link</p>
+  <div class="card frame">
+    <div class="page-head" style="margin: 0;">
+      <div class="page-head__main">
+        <a class="page-eyebrow" href="#">← Aufträge</a>
+        <div class="page-title"><h1>Neuer Auftrag</h1></div>
+      </div>
+    </div>
+  </div>
+  <p class="pv-mono" style="margin-top: 12px;">.page-head › .page-head__main (.page-eyebrow, .page-title) + .page-actions — höchstens eine .btn--cta. .overflow-menu für seltene und destruktive Aktionen.</p>
+</body>
+</html>
