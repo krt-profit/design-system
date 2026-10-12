@@ -1,330 +1,28 @@
 /* ============================================================================
    DAS KARTELL — Profit Basetool
-   Foundational color + type tokens.
+   Foundational stylesheet: imports the tokens, adds what tokens.json cannot
+   hold, and the semantic element defaults.
 
-   Source of truth: krt-iri/basetool · frontend/.../static/css/styles.css
-   Aesthetic: dark sci-fi "HUD" for a Star Citizen squadron-management tool.
-   Default color-scheme is DARK. There is no light theme.
+   ONE SOURCE (2026-10): every colour, size, weight, spacing, radius, shadow,
+   font family and the Lato @font-face now live in tokens.json and are compiled
+   to tokens.css (written by the Design System page on save). Change a token
+   THERE, not here. The previous full version of this file is kept at
+   archived/colors_and_type.css.
 
-   Load order: this file declares @font-face + :root tokens + a small set of
-   semantic element defaults. Import it first, then layer component CSS on top.
+   Consumers (e.g. the basetool repo / Keycloak mirror) must copy tokens.css
+   together with this file — it is imported first.
    ============================================================================ */
-
-/* ----------------------------------------------------------------------------
-   FONTS
-   One face only:
-   - Lato — used for EVERYTHING (body, UI, and headlines). Default body weight
-     is 300 (Light). Headlines are distinguished by weight (700/900), UPPERCASE
-     and letter-spacing — NOT by a separate display face.
-     (History: Ethnocentric → Audiowide → consolidated to Lato-only, 2026-06.
-      Audiowide/Ethnocentric @font-face + files removed; --font-headline is kept
-      as an alias of Lato so existing var(--font-headline) references still work.)
-   ---------------------------------------------------------------------------- */
-
-/* Lato — body/UI. Full cut set: Thin 100 / Light 300 / Regular 400 / Bold 700 / Black 900, each + italic.
-   (The full set is the BRAND resource. The shipped apps load subsets: the web app
-   is WOFF2-only with 300/400/700; Android registers 300/400/700/900.) */
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-Thin.woff2') format('woff2'),
-         url('fonts/Lato-Thin.ttf') format('truetype');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-ThinItalic.woff2') format('woff2'),
-         url('fonts/Lato-ThinItalic.ttf') format('truetype');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-Light.woff2') format('woff2'),
-         url('fonts/Lato-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-LightItalic.woff2') format('woff2'),
-         url('fonts/Lato-LightItalic.ttf') format('truetype');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-Regular.woff2') format('woff2'),
-         url('fonts/Lato-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-Italic.woff2') format('woff2'),
-         url('fonts/Lato-Italic.ttf') format('truetype');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-Bold.woff2') format('woff2'),
-         url('fonts/Lato-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-BoldItalic.woff2') format('woff2'),
-         url('fonts/Lato-BoldItalic.ttf') format('truetype');
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-Black.woff2') format('woff2'),
-         url('fonts/Lato-Black.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Lato';
-    src: url('fonts/Lato-BlackItalic.woff2') format('woff2'),
-         url('fonts/Lato-BlackItalic.ttf') format('truetype');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-}
+@import url('tokens.css');
 
 :root {
     color-scheme: dark;
 
-    /* ------------------------------------------------------------------ */
-    /* HAUPTFARBEN — house colors (Corporate Design Manual V2, p.12)       */
-    /* ------------------------------------------------------------------ */
-    --color-primary: #E77E23;        /* HAUSFARBE — the only logo color besides white/black */
-    --color-white: #FFFFFF;          /* WEISS */
-    --color-bg-black: #000000;       /* SCHWARZ — page background */
-
-    /* ZIERFARBEN — decorative accents (Manual p.13) */
-    --color-accent-light: #EEB64B;   /* ZIERFARBE HELL — hover state of orange */
-    --color-accent-dark: #C45C00;    /* ZIERFARBE DUNKEL — elevated/admin chrome, deep accents */
-
-    /* GRAUABSTUFUNGEN — the official 4-step grayscale (Manual p.13).      */
-    /* light → dark. Grau 4 (#141414) is the standard dark surface.        */
-    --color-gray-1: #D2D2D2;         /* GRAUABSTUFUNG 1 — primary body text on dark */
-    --color-gray-2: #646464;         /* GRAUABSTUFUNG 2 — muted text, placeholders, disabled */
-    --color-gray-3: #282828;         /* GRAUABSTUFUNG 3 — hairline borders, hover-row fill */
-    --color-gray-4: #141414;         /* GRAUABSTUFUNG 4 — darkest; standard surface */
-    --color-bg-dark-gray: #141414;   /* alias of Grau 4 — header, footer, tables, cards, sidebar */
-
-    /* Implementation extension — NOT in the 2016 manual.                  */
-    /* The live app inserts this half-step between Grau 4 (#141414) and    */
-    /* Grau 3 (#282828) for input + table-head fills so controls read      */
-    /* slightly above the surface. Use only to match the shipped product.  */
-    --color-surface-input: #1C1C1C;
-
-    /* ------------------------------------------------------------------ */
-    /* DEPARTMENT COLORS — org "Abteilungen". Used for tags/badges/rows.   */
-    /* These are functional accents, NOT decorative — reach for the        */
-    /* semantic aliases below in generic UI.                               */
-    /* ------------------------------------------------------------------ */
-    /* Names + hex are authoritative per Manual p.14 (BEREICHSFARBEN).      */
-    /* "Die Farbwerte dürfen weder abgewandelt noch verändert werden."      */
-    --color-dept-raumueberlegenheit: #37BBC0; /* RAUMÜBERLEGENHEIT — Space Superiority (teal) */
-    --color-dept-forschung: #355DDC;          /* FORSCHUNG — Research (blue) */
-    --color-dept-sub-radar: #A3000A;          /* SUB-RADAR — covert (red) */
-    --color-dept-marinekorps: #7A5E96;        /* MARINEKORPS — Marine Corps (purple) */
-    --color-dept-profit: #239E33;             /* PROFIT (green) */
-    --color-dept-search-rescue: #FFD23F;      /* SEARCH AND RESCUE (yellow) */
-
-    /* Legacy aliases — the shipped styles.css used these (mis-)names.      */
-    /* Kept so code written against the live product still resolves, but    */
-    /* prefer the official names above. */
-    --color-dept-combat: var(--color-dept-raumueberlegenheit); /* live code called teal "combat" */
-    --color-dept-research: var(--color-dept-forschung);
-    --color-dept-marine: var(--color-dept-marinekorps);
-
-    /* ------------------------------------------------------------------ */
-    /* SEMANTIC COLORS — alias department hues to status meaning           */
-    /* ------------------------------------------------------------------ */
-    /* Status hues are a UI concern, not part of the brand manual — they    */
-    /* reuse Bereichsfarben values by appearance (red=stop, green=go, …).   */
-    --color-danger:  #A3000A;  /* red  — same value as Sub-Radar */
-    --color-success: #239E33;  /* green — same value as Profit */
-    --color-warning: #FFD23F;  /* yellow — same value as Search and Rescue */
-    --color-info:    #355DDC;  /* blue — same value as Forschung */
-    --color-secondary: #FFD23F;                       /* cross-squadron / foreign-link highlight */
-
-    /* ------------------------------------------------------------------ */
-    /* PLANET-SYSTEM TINTS — a categorical palette, not brand colour.      */
-    /* ------------------------------------------------------------------ */
-    /* Planet-system tints (price matrix, materials-overview.css). A terminal column is tinted by
-       its effective UEX planet: --krt-planet-<p> fills the column header, --krt-planet-<p>-stripe
-       is the 2px left stripe of its body cells. Canonical planets are hand-picked; hash-0..11 are
-       the twelve buckets PlanetColorResolver assigns an unknown planet. A categorical palette,
-       not brand colour: use it only for planet identity. */
-    --krt-planet-hurston: #3A2519;
-    --krt-planet-hurston-stripe: #7A4A2E;
-    --krt-planet-crusader: #3A2C26;
-    --krt-planet-crusader-stripe: #C97A6A;
-    --krt-planet-arccorp: #3A2C1A;
-    --krt-planet-arccorp-stripe: #B5722B;
-    --krt-planet-microtech: #1F2C3A;
-    --krt-planet-microtech-stripe: #5A8FB8;
-    --krt-planet-pyro-1: #3A3019;
-    --krt-planet-pyro-1-stripe: #B89538;
-    --krt-planet-pyro-2: #2A2018;
-    --krt-planet-pyro-2-stripe: #8A6F4A;
-    --krt-planet-pyro-3: #3A1F1A;
-    --krt-planet-pyro-3-stripe: #B8503A;
-    --krt-planet-pyro-4: #1A2A2A;
-    --krt-planet-pyro-4-stripe: #4A8A8A;
-    --krt-planet-pyro-5: #2A1A2A;
-    --krt-planet-pyro-5-stripe: #8A4A8A;
-    --krt-planet-pyro-6: #2A2A18;
-    --krt-planet-pyro-6-stripe: #8A8A3A;
-    --krt-planet-terra: #1A323A;
-    --krt-planet-terra-stripe: #3A8AA8;
-    --krt-planet-delamar: #262626;
-    --krt-planet-delamar-stripe: #7A7A7A;
-    --krt-planet-hash-0: #3A2020;
-    --krt-planet-hash-0-stripe: #A85050;
-    --krt-planet-hash-1: #3A2C20;
-    --krt-planet-hash-1-stripe: #A87850;
-    --krt-planet-hash-2: #3A3A20;
-    --krt-planet-hash-2-stripe: #A8A850;
-    --krt-planet-hash-3: #2C3A20;
-    --krt-planet-hash-3-stripe: #78A850;
-    --krt-planet-hash-4: #203A20;
-    --krt-planet-hash-4-stripe: #50A850;
-    --krt-planet-hash-5: #203A2C;
-    --krt-planet-hash-5-stripe: #50A878;
-    --krt-planet-hash-6: #203A3A;
-    --krt-planet-hash-6-stripe: #50A8A8;
-    --krt-planet-hash-7: #202C3A;
-    --krt-planet-hash-7-stripe: #5078A8;
-    --krt-planet-hash-8: #20203A;
-    --krt-planet-hash-8-stripe: #5050A8;
-    --krt-planet-hash-9: #2C203A;
-    --krt-planet-hash-9-stripe: #7850A8;
-    --krt-planet-hash-10: #3A203A;
-    --krt-planet-hash-10-stripe: #A850A8;
-    --krt-planet-hash-11: #3A202C;
-    --krt-planet-hash-11-stripe: #A85078;
-
-    /* ------------------------------------------------------------------ */
-    /* ACCESSIBLE TEXT TINTS — for status/semantic colour used as TEXT.    */
-    /* The canonical danger/info hues are dark (Sub-Radar #A3000A ≈ 2.3:1, */
-    /* Forschung #355DDC ≈ 3.6:1 on black) — fine as fills with white text */
-    /* or as borders, but they FAIL WCAG as small text on the dark canvas. */
-    /* Use these lightened variants whenever the colour is the text itself  */
-    /* (.text-danger, .status-*, price up/down); keep the canonical hues    */
-    /* for fills, borders and the brand Bereichsfarben tags.               */
-    --color-danger-text:  #F2564B;  /* ≈ 5.3:1 on black */
-    --color-info-text:    #6C93EF;  /* ≈ 6.1:1 on black */
-    --color-success-text: #2EBC3D;  /* ≈ 5.6:1 on black (slightly lifted) */
-
-    /* Accessible muted-text tint — Grau 2 (#646464) reads at only ~3.5:1 on the
-       flat-black page and FAILS WCAG AA as small text (the former honeycomb wash
-       masked this; the flat-black surface of REQ-UI-003 exposed it). Use whenever
-       muted grey IS the text itself (secondary labels, placeholders, hints,
-       field caps, dimmed units); keep --color-gray-2 for hairline borders,
-       scrollbar thumbs, disabled fills and decorative glyphs.
-       ≈ 6.1:1 on black, ≥ 4.9:1 on the #141414 / #1C1C1C surfaces.
-       (Android mirror: KrtPalette.TextMuted.) */
-    --color-gray-2-text: #8A8A8A;
-
-    /* ------------------------------------------------------------------ */
-    /* ACTION HIERARCHY — how the orange accent is allocated.              */
-    /* Rule: the filled orange CTA marks the ONE primary action per        */
-    /* context. Orange is for ACTION + IDENTITY (logo, badges, headings),  */
-    /* never for plain data values. See krt-components.css .btn--cta /     */
-    /* .btn-outline / .btn-ghost / .btn-quiet-danger / .data-value.        */
-    /* ------------------------------------------------------------------ */
-    --action-primary: var(--color-primary);           /* filled CTA */
-    --action-emphasis: var(--color-primary);          /* outline secondary */
-    --action-neutral: var(--color-gray-3);            /* ghost border */
-    --data-fg: var(--color-white);                    /* bright neutral readouts */
-
-    /* Status hover tints (from the .btn variants) */
-    --color-danger-hover:  #D41A25;
-    --color-success-hover: #2EBC3D;
-
-    /* ------------------------------------------------------------------ */
-    /* TYPOGRAPHY tokens                                                   */
-    /* ------------------------------------------------------------------ */
-    /* Headlines use Lato too (no separate display face). Kept as a named
-       alias so existing var(--font-headline) references keep working; pair it
-       with --fw-bold/--fw-black + UPPERCASE + --tracking-display for emphasis. */
-    --font-headline: 'Lato', sans-serif;
-    --font-body: 'Lato', sans-serif;
-    /* The brand ships no monospace face, so "mono" contexts (version strings,
-       IDs, hex codes, code) use the house font Lato with tabular figures for
-       column alignment. No system/substitute font is referenced. */
-    --font-mono: 'Lato', sans-serif;
-
-    /* Type scale (rem). Body base = 1rem/16px. Headings are uppercase. */
-    --fs-h1: 2rem;       /* page title in .greeting */
-    --fs-h2: 1.5rem;     /* section / hud-box heading */
-    --fs-h3: 1.17rem;    /* sub-section, collapsible summary */
-    --fs-body: 1rem;     /* paragraph, table cell */
-    --fs-sm: 0.9rem;     /* table head, nav links, form-label-sm */
-    --fs-xs: 0.8rem;     /* btn label, footer, chips */
-    --fs-2xs: 0.7rem;    /* chip labels, overline */
-
-    --fw-thin: 300;      /* @kind font */
-    --fw-regular: 400;   /* @kind font */
-    --fw-bold: 700;      /* @kind font */
-    --fw-black: 900;     /* @kind font */
-
-    --tracking-display: 0.05em;  /* headline tracking (Lato, uppercase) */
-    --tracking-overline: 0.15em; /* admin chip, overlines */
-    --lh-body: 1.5;   /* @kind font */
-
-    /* ------------------------------------------------------------------ */
-    /* SHAPE / ELEVATION — square-first. Corners are SHARP.                */
-    /* Only pills (chips/badges) and circular controls (radio) round.     */
-    /* ------------------------------------------------------------------ */
-    --radius-none: 0;          /* default for cards, inputs, buttons, modals */
-    --radius-pill: 999px;      /* squadron chips / badges only */
-
+    /* Composite borders (shorthands reference colour tokens — not token values). */
     --border-hairline: 1px solid var(--color-gray-3);
     --border-accent: 1px solid var(--color-primary);
     --border-heading: 2px solid var(--color-primary);
 
-    /* Glows / shadows — orange bloom is the brand's only "shadow" idiom */
-    --glow-primary: 0 0 5px rgba(231, 126, 35, 0.3);   /* input focus */
-    --glow-primary-lg: 0 0 20px rgba(231, 126, 35, 0.2); /* toasts, modals */
-    --glow-danger-lg: 0 0 20px rgba(163, 0, 10, 0.2);
-    --shadow-drawer: 5px 0 15px rgba(0, 0, 0, 0.5);
-    --shadow-dropdown: 0 8px 16px rgba(0, 0, 0, 0.8);
-
-    /* Spacing rhythm (the app works in rem multiples of 0.5) */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-
-    --touch-target: 44px;      /* min hit area for every interactive control */
-    --content-max: 1200px;     /* main column cap */
-    --content-max-data: 1600px;
-    --content-max-form: 760px;
-    --bp-phone-max: 768px;
-    --bp-tablet-max: 1024px;
-    --bp-wide-min: 1440px;
-    --measure: 80ch;           /* paragraph max line length */
+    --measure: 80ch;     /* paragraph max line length (ch is not a token unit) */
 }
 
 /* ============================================================================
@@ -335,23 +33,21 @@ body {
     background-color: var(--color-bg-black);
     color: var(--color-gray-1);
     font-family: var(--font-body);
-    font-weight: var(--fw-regular);
+    font-weight: var(--fw-thin);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
     margin: 0;
 }
-.lead { font-size: 1.1rem; font-weight: var(--fw-thin); color: var(--color-gray-1); }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-headline);
-    color: var(--color-white);
+    color: var(--color-primary);
     text-transform: uppercase;
     letter-spacing: var(--tracking-display);
     font-weight: var(--fw-bold);   /* Lato headlines need weight to read as headings */
     margin: 0 0 0.5em;
 }
-h1 { font-size: var(--fs-h1); color: var(--color-primary); }
-h4, h5, h6 { color: var(--color-gray-1); }
+h1 { font-size: var(--fs-h1); }
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
 

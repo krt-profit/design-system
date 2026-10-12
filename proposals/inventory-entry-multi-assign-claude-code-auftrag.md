@@ -15,7 +15,7 @@ Zwei Repos, in dieser Reihenfolge:
 > **Halte dich strikt an den Entwurf.** Kanonische Optik & Verhalten:
 > `inventory-entry-multi-assign-quantity-varianten.html` → **Variante C** (Abschnitt
 > mit dem grünen „Festgelegt"-Tag) und das Specimen
-> `preview/components-entry-assign.html`. Keine eigenen Farben, Abstände, Idiome
+> `components/EntryAssign/preview.html`. Keine eigenen Farben, Abstände, Idiome
 > erfinden; nur die dort definierten Systemklassen verwenden.
 >
 > **Bei Unklarheiten oder nötigen Entscheidungen: erst den Nutzer fragen, nicht raten.**
@@ -27,8 +27,8 @@ Zwei Repos, in dieser Reihenfolge:
 ## Quelle der Wahrheit
 
 Im Design-System-Submodul (`.claude/skills/das-kartell-design/`):
-- **Optik/Verhalten:** `proposals/inventory-entry-multi-assign-quantity-varianten.html`
-  → **Variante C**. Specimen: `preview/components-entry-assign.html`.
+- **Optik/Verhalten:** `components/EntryQuantitySplitVariants/preview.html`
+  → **Variante C**. Specimen: `components/EntryAssign/preview.html`.
 - **CSS:** `krt-components.css` → Abschnitt **„Entry associations — split with amounts"**:
   `.assoc-split`, `.assoc-chip` (`--order` / `--mission`) + `.assoc-chip__amt`,
   `.assoc-add` (+ `.assoc-add-wrap`), `.assoc-pop` (+ `.assoc-pop__menge`),
@@ -209,6 +209,6 @@ notification.success.assoc.saved=Zuordnung gespeichert.
 5. Flyway-Migration überführt bestehende Einzel-Zuordnungen verlustfrei; Lazy-Load,
    Expand, Filter, Bookout, Notiz, i18n (de/en) weiter funktionsfähig.
 6. `./gradlew check` grün; Optik deckt sich mit Variante C in
-   `inventory-entry-multi-assign-quantity-varianten.html` + `preview/components-entry-assign.html`.
+   `inventory-entry-multi-assign-quantity-varianten.html` + `components/EntryAssign/preview.html`.
 7. Submodul-Zeiger im Produkt zeigt auf den DS-Commit aus Teil A. Offene Rückfragen
    sind vor der jeweiligen Umsetzung geklärt.

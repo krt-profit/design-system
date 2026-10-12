@@ -64,8 +64,8 @@ patterns that had grown up in the app and were missing here:
 - **SCU hint tooltip** — `.scu-hint` + `.scu-hint__bubble`: the house inline-help idiom ("?" disc → HUD tooltip).
 - **Rendered Markdown** — `.markdown-content` for server-rendered user prose (mission descriptions, order/offer remarks).
 
-Specimens: `preview/components-presence.html`, `preview/components-filters.html`,
-`preview/components-markdown.html`. Class names match the product 1:1 so markup
+Specimens: `components/Presence/preview.html`, `components/FilterSearch/preview.html`,
+`components/MarkdownContent/preview.html`. Class names match the product 1:1 so markup
 stays portable in both directions.
 
 **Sync log — 2026-07 (b).** Added the **entry-association split-with-amounts**
@@ -77,8 +77,8 @@ total (Rest > 0 allowed, over-allocation rejected). New classes: `.assoc-split`,
 `.assoc-chip` (`--order` / `--mission`) + `.assoc-chip__amt`, `.assoc-add(-wrap)`,
 `.assoc-pop` (+ `.assoc-pop__menge`), plus `.krt-combobox__label` (wrap a
 `<mark>`-highlighted option so the flex option keeps it as one item). Specimen
-`preview/components-entry-assign.html`; exploration + decision
-`proposals/inventory-entry-multi-assign-quantity-varianten.html`; implementation
+`components/EntryAssign/preview.html`; exploration + decision
+`components/EntryQuantitySplitVariants/preview.html`; implementation
 order (DS repo + submodule + product) `proposals/inventory-entry-multi-assign-claude-code-auftrag.md`.
 
 **Sync log — 2026-08.** Voller Abgleich gegen `basetool`, `basetool-android` und
@@ -103,31 +103,6 @@ order (DS repo + submodule + product) `proposals/inventory-entry-multi-assign-cl
 - Neue Specimens: `components-herkunft`, `components-confirm-dialog`,
   `components-filterbar`, `components-app-chrome`; Asset
   `assets/made-by-the-community.png`.
-
-**Sync log — 2026-10.** The website audit of 2026-10-03 (all 90 templates of the
-web frontend) was approved as twelve changes, DS-1 to DS-12. No class was removed or
-renamed; `.greeting`, `.hud-box` and `.table-responsive` keep working. DS-2 and DS-3
-change the look **globally**, including pages not yet migrated.
-
-| No. | Kind | Change | File |
-| :-- | :-- | :-- | :-- |
-| DS-1 | Fix | Every text use of `--color-gray-2` (`#646464`) moved to `--color-gray-2-text` (`#8A8A8A`) — `.kv-list dt`, `.facts-bar .fact-k`, `.empty-state .empty-text`, `.tab-nav .tab`, `.chip--muted`, `.kpi-label`, `.kpi-sub`, `.meta-group-title`, `.stack-legend`, placeholders and more. Contrast on `#000` 3.5:1 → 6.1:1, on `#141414` 3.1:1 → 5.3:1. | `krt-components.css` |
-| DS-2 | Rule | `body` moves from Lato 300 to **400** (`--fw-regular`); 300 is too thin on black at 14–16 px. New `.lead` (1.1rem, 300) for lead text. | `colors_and_type.css` |
-| DS-3 | Rule | Only `h1` carries the house orange. `h2`/`h3` are white, `h4`–`h6` Grau 1. Upper case and tracking stay. Orange is for action and identity. | `colors_and_type.css` |
-| DS-4 | New | Page head `.page-head` (`__main`, `.page-eyebrow` — also as a back link —, `.page-title`, `.page-actions`) and the overflow menu `.overflow-menu` (`__panel`, `__item`, `__item--danger`, `__sep`), opened by an icon-only button with the new `krt-icon-more`. `.greeting` stays for the home page, the landing page and error pages. | `krt-components.css` |
-| DS-5 | New | Toolbar `.toolbar` (`__search`, `__spacer`, `__count`), `.filter-badge`, `.filter-chips` / `.filter-chip` / `.filter-chips__reset`, `.filter-add`. | `krt-components.css` |
-| DS-6 | New | Segmented control `.segmented` (`--block`, `--lg`, `.seg-count`) for 2–4 exclusive options, and the `.switch` on/off control. The visually hidden radio sits inside its label, so the control never scrolls vertically. | `krt-components.css` |
-| DS-7 | New | `.data-table--stack`: below 768 px every row becomes a two-line entry — title and `.cell-status` on the first line, the other cells as one meta line separated by „·“ (a `data-label` prefixes its cell as „Label: “), a lone `.row-chevron` centred on the right, other `.cell-actions` at the end of the meta line. | `krt-components.css` |
-| DS-8 | Rule | `.data-table`: 56 px rows (`--compact` 44 px), `.cell-title` / `.cell-sub`, `a.row-link` (whole row clickable, focus ring on the row), `.num`, `.cell-actions`, `.row-chevron`. | `krt-components.css` |
-| DS-9 | New | Form layout `.form-layout` (≤ `--content-max-form`, 760 px), `.form-section` + `__head`, `.form-grid` (`--3`, `.span-all`), `.field-computed`, `.form-actions--sticky` + `__summary`. | `krt-components.css` |
-| DS-10 | Rule | At most **one** `.hud-box` per view, never nested; an inner legacy `.hud-box` loses its corner brackets. Lists and tables sit in `.card.card--flush`, notices are `.alert`, and content never sits with white text directly on `#000`. | `krt-components.css` |
-| DS-11 | Rule | Breakpoints are only `768px`, `1024px` and `1440px` (the device classes). Tokens `--bp-phone-max`, `--bp-tablet-max`, `--bp-wide-min` document them — custom properties cannot be used inside `@media`; `--content-max-data` 1600 px, `--content-max-form` 760 px. | `colors_and_type.css` |
-| DS-12 | New | Layout primitives `.stack`, `.cluster`, `.split`, `.grid-auto` with `.gap-1/2/3/6/8`, `--min` and `.grow`. They replace the product's generated one-off `krtm-*` classes. | `krt-components.css` |
-
-Specimens: `preview/components-page-head.html`, `components-toolbar.html`,
-`components-segmented.html`, `components-data-table.html`,
-`components-form-layout.html`, `components-layout.html`. Class names match the
-product 1:1.
 
 ---
 
@@ -250,8 +225,8 @@ The button ladder (`krt-components.css`), strongest → quietest:
 | `.btn.btn--cta` | filled orange + restrained bloom | the single primary action per panel — Anmelden, Speichern |
 | `.btn-success` | filled green | status / state change — Check-In |
 | `.btn-outline` | orange outline, not filled | emphasized secondary — Crew zuweisen |
-| `.btn-ghost` | neutral hairline → orange on hover | routine repeated actions — Edit, Check-Out |
-| `.btn-quiet-danger` | transparent → red on hover | destructive — Delete |
+| `.btn-ghost` | filled `#1C1C1C` + Grau-2 border → orange on hover | routine repeated actions — Edit, Check-Out, Filter |
+| `.btn-quiet-danger` | filled + Grau-2 border, muted text → red on hover | destructive — Delete |
 
 Supporting changes, all system-wide:
 
@@ -267,8 +242,57 @@ Supporting changes, all system-wide:
 
 See the live before/after at
 [`proposals/mission-detail-button-hierarchy.html`](proposals/mission-detail-button-hierarchy.html),
-the specimen card `preview/components-button-hierarchy.html`, and the applied
+the specimen card `components/ActionHierarchy/preview.html`, and the applied
 pattern in `ui_kits/basetool/` (Missions → click a row → mission detail).
+
+## Flächen & Bedienelemente (Lesbarkeit, 2026-10)
+
+Anlass: Segment-Umschalter (Kommend/Vergangen/Alle), Filter-Button, Titel-Zähler
+und Zeilen-Icon-Buttons standen als schwarze Kästen mit `#282828`-Haarlinie auf dem
+schwarzen Canvas — **1,42 : 1** Randkontrast, WCAG 1.4.11 verlangt **3 : 1** für
+Bedienelement-Grenzen. Sie waren kaum als Button erkennbar.
+
+**Regel 1 — Flächenleiter.** Eine Seite ist Canvas → Arbeitsfläche → Einlage:
+
+| Token | Wert | Rolle |
+| :-- | :-- | :-- |
+| `--surface-canvas` | `#000000` | Seitenhintergrund; Seitenkopf (Eyebrow, Titel, CTA) |
+| `--surface-panel` | `#141414` | Arbeitsfläche `.list-panel`: Toolbar + Tabelle + Fußzeile gemeinsam |
+| `--surface-inset` | `#1C1C1C` | Tabellenkopf, Inputs, Füllung von Bedienelementen |
+| `--surface-raised` | `#282828` | Zeilen-Hover, Zähler-Badge, Control-Hover |
+
+**Regel 2 — jedes Bedienelement hat Füllung + sichtbaren Rand.** `--control-bg`
+`#1C1C1C`, `--control-border` = Grau 2 `#646464` (3,55 : 1 auf Schwarz, 3,11 : 1
+auf `#141414`), Text `--control-fg` = Grau 1. Gilt für `.btn-ghost`,
+`.btn-quiet-danger`, Inputs/Selects, Checkbox/Radio, Pagination, `.chip-select`,
+`.krt-segmented`. Haarlinie `#282828` bleibt nur für **dekorative** Trennlinien
+(Tabellenzeilen, Panel-Rahmen).
+
+**Regel 3 — Auswahl ist kein CTA.** Ein ausgewähltes Segment / eine gewählte
+Ansicht wird **nicht** gefüllt orange dargestellt (das ist die CTA). Ausgewählt =
+`--control-selected-bg` (Orange-Tönung) + Orange-Rand + 3px Orange-Unterstrich +
+weißer fetter Text. Der Unterstrich ist der farbunabhängige Hinweis.
+
+**Regel 4 — gedämpfter Text ist `--color-gray-2-text`.** Grau 2 `#646464` ist als
+Text auf `#141414` nur 3,1 : 1. Alle gedämpften Texte im DS (Labels, Hinweise,
+KPI-/kv-Keys, inaktive Tabs) nutzen jetzt `#8A8A8A`. Bekannte Grenze: auf
+Zeilen-Hover `#282828` liegt `#8A8A8A` bei 4,27 : 1 — nur während Hover.
+
+Neue Bausteine (`krt-components.css`, Block „LIST PAGE“):
+
+| Klasse | Zweck |
+| :-- | :-- |
+| `.page-head` (`__eyebrow`, `__title`, `__actions`) | Seitenkopf: Bereich, Titel, eine CTA |
+| `.count-badge` | Gesamtzahl am Titel — gefülltes Quadrat, weiße Ziffern |
+| `.list-panel` (`__toolbar`, `__search`, `__chips`, `__footer`) | Arbeitsfläche, gruppiert Toolbar, Tabelle, Fußzeile |
+| `.krt-segmented` (`__item`, `__count`) | Zeitraum-/Status-/Ansichts-Umschalter; aktiv via `aria-current`/`aria-pressed`/`aria-checked` |
+| `.btn.is-filtered` + `.filter-count` | Filter-Button mit aktiven Filtern; eckiges Zahl-Badge |
+| `.filter-chip` (`__remove`) | entfernbarer aktiver Filter |
+| `.krt-switch` | Ein/Aus-Schalter (Position + Farbe) |
+
+Specimen: [`components/ListPanel/preview.html`](components/ListPanel/preview.html) ·
+Vorher/Nachher + weitere Befunde: [`proposals/list-page-readability.html`](proposals/list-page-readability.html) ·
+Auftrag: [`proposals/list-readability-claude-code-auftrag.md`](proposals/list-readability-claude-code-auftrag.md).
 
 ### Tree table (nested data)
 
@@ -293,7 +317,7 @@ nesting `<table>`s that each repeat their own `<thead>`. Rules:
   room for the full text (~80ch), orange label + surface box.
 
 Live before/after: [`proposals/inventory-table-readability.html`](proposals/inventory-table-readability.html);
-specimen: `preview/components-tree-table.html`; audit: `proposals/inventory-table-audit.md`.
+specimen: `components/TreeTable/preview.html`; audit: `proposals/inventory-table-audit.md`.
 
 ### Entry associations (split quantities)
 
@@ -319,8 +343,8 @@ trailing **`.chip`** rest indicator per group. Rules:
 - **Data:** two separate join tables per entry — `{ jobOrderId, amount }` and
   `{ missionId, amount }`; add/update/remove carry `version` (optimistic lock).
 
-Locked design (Variante C): [`proposals/inventory-entry-multi-assign-quantity-varianten.html`](proposals/inventory-entry-multi-assign-quantity-varianten.html);
-specimen: `preview/components-entry-assign.html`; implementation order:
+Locked design (Variante C): [`components/EntryQuantitySplitVariants/preview.html`](components/EntryQuantitySplitVariants/preview.html);
+specimen: `components/EntryAssign/preview.html`; implementation order:
 `proposals/inventory-entry-multi-assign-claude-code-auftrag.md`.
 
 ### Card & chip
@@ -337,7 +361,7 @@ Two reusable building blocks (`krt-components.css`):
   hue, faint tint fill), plus `--data` for "key: value" chips (e.g. a claim
   `IRI: 1,200 SCU`).
 
-Specimen: `preview/components-card-chip.html`.
+Specimen: `components/CardChip/preview.html`.
 
 ### Mission page patterns (tabs, modal, assign board)
 
@@ -348,17 +372,17 @@ under `proposals/mission-*.html` and the implementation order
 - **`.tab-nav` / `.tab` / `.tab-count`** — page tabs (active = white + 3px orange
   underline; `role="tablist"`, arrow keys, `?tab=`/`#tab=` deeplink) and
   **`.facts-bar`** — quick-fact strip under a sticky page head.
-  Specimen: `preview/components-tabs.html`.
+  Specimen: `components/TabNav/preview.html`.
 - **`.krt-modal*`** — modal frame (orange top edge + HUD corner brackets on a
   blurred scrim; `--danger` variant; ONE filled CTA, ghost cancel, focus trap +
   Esc; destructive modals name the consequence).
-  Specimen: `preview/components-modal.html`.
+  Specimen: `components/Modal/preview.html`.
 - **Assign board** — `.person-row` (+ `.row-grip`/`.row-sub`/`.is-selected`),
   `.status-dot(--on)`, `.drop-zone` (+ `.is-over`, `.drop-hint`) and
   **`.chip-select`** (uppercase chip-style select with orange chevron). Units are
   open-ended (no slots); always ship a click + keyboard fallback beside drag&drop.
   HVU marking = `.chip chip--warning`.
-  Specimen: `preview/components-assign-board.html`.
+  Specimen: `components/AssignBoard/preview.html`.
 - **Master-detail & ingredient quality** — `.master-detail` / `.master-list` /
   `.master-row(.is-active)` / `.detail-pane` (collection browser, list → detail,
   ↑/↓ + deeplink; collapses on mobile) and `.quality-block` / `.quality-row` /
@@ -366,7 +390,7 @@ under `proposals/mission-*.html` and the implementation order
   live ×-factor on the stat chips; ranges are accent-orange). Built for the
   blueprints page (V3) — see `proposals/blueprints-page-varianten.html` and
   `proposals/blueprints-claude-code-auftrag.md`.
-  Specimen: `preview/components-master-detail.html`.
+  Specimen: `components/MasterDetail/preview.html`.
 - **Bank patterns (KPI, custody, grants)** — `.kpi-total` / `.kpi-card` (+ `--closed`,
   `.kpi-value`, `.kpi-delta--pos/--neg`; sparkline = server-rendered inline SVG, no
   chart library), `.holder-row`/`.holder-bar`/`.holder-sum` and `.stack-bar` +
@@ -375,7 +399,7 @@ under `proposals/mission-*.html` and the implementation order
   view right) and `.krt-modal .confirm-input` (type-to-confirm hurdle, reserved
   for wipe-reset-grade actions). Built for the bank epic (#556) — mocks under
   `proposals/bank-*.html`.
-  Specimens: `preview/components-kpi-sparkline.html`, `preview/components-bank-patterns.html`.
+  Specimens: `components/KpiCard/preview.html`, `components/BankPatterns/preview.html`.
 - **Einsatz overview patterns** — the participant-facing overview of an *Einsatz*
   (a single mission; an Operation rolls several up). Built so a member grasps it
   in ~10s: `.status-badge` (+ `status-planned/-active/-briefing/-completed/-cancelled`)
@@ -394,7 +418,7 @@ under `proposals/mission-*.html` and the implementation order
   The "Mission auf einen Blick" briefing is a fixed 6-field key/value table:
   Ziel (free text, max 250), Teamspeak (time), Serverjoin (time), Treffpunkt
   (free text), Dauer (computed = Ende − Teamspeak), Einsatzleiter (username).
-  Specimen: `preview/components-einsatz-overview.html`.
+  Specimen: `components/EinsatzOverview/preview.html`.
 
 ### Button icons
 
@@ -409,8 +433,8 @@ icon inherits the button's text colour). Two usage rules:
   (edit, trash, check-in/login, check-out/logout, bookout, close) — saves ~50–60%
   of the action column in dense tables. **Always** carries `aria-label` + `title`.
 
-Full set + guidance: specimen `preview/components-icon-set.html` and
-`preview/brand-iconography.html`; rules + action→icon dictionary in
+Full set + guidance: specimen `components/IconSet/preview.html` and
+`components/Iconography/preview.html`; rules + action→icon dictionary in
 [`proposals/button-icons-guidelines.md`](proposals/button-icons-guidelines.md);
 before/after `proposals/button-icons-readability.html`; repo handoff
 `proposals/button-icons-claude-code-auftrag.md`.
@@ -423,7 +447,7 @@ Zuordnung der Abzug kommt; der Rest kommt aus dem unverteilten Anteil
 (REQ-INV-027, Variante C). Rest-Chip in den `.chip`-Tönen, Danger-Warnung wenn
 der freie Rest nicht reicht, Erlös-Kopplung (nur SELL) als Info-Box. Klassen:
 `.herkunft-help/-body/-dim(-cap)/-tag(-name/-max)/-input(--auto)/-auto/
--restline/-warn/-proceeds(*)`. Specimen: `preview/components-herkunft.html`.
+-restline/-warn/-proceeds(*)`. Specimen: `components/HerkunftPicker/preview.html`.
 
 ### Confirm-Dialog
 
@@ -431,7 +455,7 @@ der freie Rest nicht reicht, Erlös-Kopplung (nur SELL) als Info-Box. Klassen:
 ephemeres Overlay (`.krt-confirm-overlay/-dialog/-title/-message/-actions`,
 z-index 10000, mobil column-reverse). Für Form-/Detail-Modals bleibt
 `.krt-modal` (+ neue Breiten-Variante `.krt-modal--wide`, 600px).
-Specimen: `preview/components-confirm-dialog.html`.
+Specimen: `components/ConfirmDialog/preview.html`.
 
 ### Filterleiste (search-form)
 
@@ -440,7 +464,7 @@ Die Listenseiten-Filterzeile: `.search-form` richtet alle Spalten via
 bekommen deterministische Höhe, `.datetime-split-inputs` paart Datum + Zeit mit
 festen Breiten, `.search-form-flex-1` lässt die Textsuche dominieren.
 Dazu `select.association-select` (Lager-Zuordnungs-Dropdown, oranger Rahmen).
-Specimen: `preview/components-filterbar.html`.
+Specimen: `components/FilterBar/preview.html`.
 
 ### App-Chrome (Footer · Fan-Kit-Band · Admin-Modus)
 
@@ -455,33 +479,7 @@ Specimen: `preview/components-filterbar.html`.
 - **Admin-Modus**: `body.admin-mode` färbt die Header-Unterkante Zierfarbe
   dunkel; `.admin-mode-chip` benennt den privilegierten Kontext.
 
-Specimen: `preview/components-app-chrome.html`.
-
-### Page patterns (2026-10)
-
-Three patterns cover every work page of the web app; the building blocks are in the
-2026-10 block at the end of `krt-components.css`.
-
-- **Page head** — `.page-head` › `.page-head__main` (`.page-eyebrow` with the navigation
-  area, or as `a.page-eyebrow` the back link „← Aufträge“; `.page-title` with the `h1`
-  and an optional count chip) + `.page-actions`. At most **one** `.btn--cta` in
-  `.page-actions`; rare and destructive actions go into the `.overflow-menu` („⋯“).
-- **List (pattern A)** — `.page-head`, then `.toolbar` (search always visible,
-  `.segmented` for 2–4 exclusive options, further filters behind „Filter“ with a
-  `.filter-badge`), `.filter-chips` while filters are active, and
-  `.card.card--flush` › `table.data-table.data-table--stack`. The first column is
-  `a.row-link` with `.cell-title` / `.cell-sub`; numbers `.num`, status `.cell-status`,
-  actions `.cell-actions`, a `.row-chevron` at the end; no column holding only an
-  „Öffnen“ button. An empty list is an `.empty-state`.
-- **Form (pattern C)** — `.form-layout.card` (≤ 760 px) with numbered
-  `.form-section`s, `.form-grid` (two columns from tablet up), computed values as
-  `.field-computed`, 2–4 exclusive options as `.segmented--lg`, and the actions in
-  `.form-actions--sticky` with a live `.form-actions__summary`.
-- **Layout** — `.stack`, `.cluster`, `.split`, `.grid-auto`; surfaces per DS-10.
-
-Specimens: `preview/components-page-head.html`, `components-toolbar.html`,
-`components-segmented.html`, `components-data-table.html`,
-`components-form-layout.html`, `components-layout.html`.
+Specimen: `components/AppChrome/preview.html`.
 
 ---
 
@@ -489,10 +487,10 @@ Specimens: `preview/components-page-head.html`, `components-toolbar.html`,
 
 See the [**index**](#index) at the bottom for the full manifest.
 
-- [`colors_and_type.css`](colors_and_type.css) — `@font-face` + all design tokens.
+- [`colors_and_type.css`](colors_and_type.css) — imports [`tokens.css`](tokens.css) (all design tokens + Lato `@font-face`, compiled from [`tokens.json`](tokens.json)), then element defaults.
 - [`krt-components.css`](krt-components.css) — component layer (buttons, hud-box,
   tables, forms, alerts, badges, toasts).
-- [`preview/`](preview/) — Design System tab specimen cards.
+- [`components/`](components/) — Design System specimen cards, one folder per card (`components/<Name>/preview.html`).
 - [`ui_kits/basetool/`](ui_kits/basetool/) — interactive recreation of the app.
 - [`assets/`](assets/) — logos & favicon: Kartell-Marke (`krt.webp`, `Kartelllogo.jpg`),
   **Basetool-Logofamilie** (`basetool-logo*.svg`, `basetool-extractor-logo*.svg`,
@@ -543,9 +541,8 @@ Everything that makes a screen read as "Profit Basetool".
   department/semantic hues appear only as small tags, row tints and status.
 - **Type.** One typeface: **Lato**. Headlines are **uppercase, bold (700/900)** with
   letter-spacing `0.05em` — distinguished by weight, not a separate display face.
-  Body/UI = Lato, default weight **Regular 400**, with **Bold 700** for emphasis/labels;
-  Light 300 only for lead text ≥ 1.1rem (`.lead`). Only `h1` is orange; `h2`/`h3`
-  are white, `h4`–`h6` gray-1; body is gray-1.
+  Body/UI = Lato, default weight **Light 300**, with **Bold 700** for emphasis/labels.
+  Headings are orange; body is gray-1.
 - **Backgrounds.** Flat black/dark-gray. No photographic hero imagery in-app. A
   subtle technical **pattern/texture** (`images/pattern.svg`) exists in the brand
   kit for marketing surfaces. The `.greeting` banner uses a single left-to-right
@@ -612,14 +609,10 @@ From the project's own engineering guide (`CLAUDE.md` → *Frontend / UI rules*)
 - **Responsive is mandatory across four device classes:**
   | Class | Width | Rules |
   | :-- | :-- | :-- |
-  | Smartphone | ≤ 768px | Touch-first; min 44px targets; single-column; list tables stack (`.data-table--stack`); context chip collapses to shorthand. |
-  | Tablet | 768–1024px | Touch-first; 44px targets; collapse multi-column grids; forms two columns. |
-  | Desktop | 1024–1440px | Auto-fit card/dashboard grids; off-canvas drawer nav. |
-  | Wide | 1440px+ | Exploit space, but cap long-form text at `max-width: 80ch`; content column stays ≤ 1200px, data views (price matrix, Lager, audit log) up to 1600px. |
-
-  Media queries use **only** `(width <= 768px)`, `(width <= 1024px)` and
-  `(width >= 1440px)` (DS-11); a component that has to react to its own width uses a
-  container query instead of a new breakpoint.
+  | Smartphone | ≤ 768px | Touch-first; min 44px targets; single-column; wide tables scroll horizontally; context chip collapses to shorthand. |
+  | Tablet | 768–1024px | Touch-first; 44px targets; collapse multi-column grids. |
+  | Desktop | 1024–1600px | Auto-fit card/dashboard grids; off-canvas drawer nav. |
+  | Ultra-wide | 1600px+ | Exploit space, but cap long-form text at `max-width: 80ch`; content column stays ≤ 1200px. |
 - **i18n — every user-visible string is externalized.** German is the default
   locale, English is fully translated; there is **no hardcoded text** in templates,
   JS or Java (labels, buttons, tooltips, errors, placeholders, titles all come from
@@ -639,7 +632,7 @@ From the project's own engineering guide (`CLAUDE.md` → *Frontend / UI rules*)
   line look that matches the technical HUD. The curated set: `close`, `chevron-
   down/up/left/right`, `warning`, `success`, `info`, `plus`, `minus`, `search`,
   `filter`, `edit`, `trash`. This set is reproduced in
-  [`preview/brand-iconography.html`](preview/brand-iconography.html) and inside the
+  [`components/Iconography/preview.html`](components/Iconography/preview.html) and inside the
   UI kit.
 - **Unicode as icons.** A few glyphs are used directly: `⚠` (warning), `▼`/`▶`
   (toggles), `×`/`&times;` (close), `✔` (checkbox tick), `▲` (number-spinners).
@@ -678,15 +671,15 @@ Root manifest:
 | Path | What |
 | :-- | :-- |
 | `README.md` | This file. |
-| `SKILL.md` | Agent-Skills entry point (for use in Claude Code). |
-| `colors_and_type.css` | `@font-face` declarations + all color/type/shape tokens. |
+| `assets/notes/SKILL.from-standalone.md` | Agent-Skills entry point (for use in Claude Code), carried from the standalone version. |
+| `colors_and_type.css` | Imports `tokens.css`; composite borders, `--measure`, element defaults. |
 | `krt-components.css` | Component CSS layer built on the tokens. |
 | `fonts/` | Lato (Thin→Black, each + italic) — self-hosted WOFF2 with TTF fallback. The only typeface; headlines are Lato bold + uppercase. |
 | `assets/` | `krt.webp` (mark), `krt-favicon.webp`, `Kartelllogo.jpg` (lockup), `basetool-*.svg/png` (App-Logofamilie: Zeichen, Extractor, Favicon), `made-by-the-community.png` (Fan-Kit). |
-| `preview/` | Design System specimen cards (type, color, spacing, components, brand — incl. the rank ladder, scrollbars and background/texture treatments). |
+| `components/<Name>/preview.html` | Design System specimen cards (type, color, spacing, components, brand — incl. the rank ladder, scrollbars and background/texture treatments). |
 | `proposals/` | Design proposals + handoff: action-hierarchy before/after mocks (`mission-detail-…`, `list-page-…`, `inventory-…`, `refinery-order-…`), `scrollbar-mockups.html`, the bp-extractor audit, the full template audits (`template-audit.md`, `template-audit-full.md`), the UX/usability review, and the MASTER + per-topic `claude-code-auftrag.md` unification orders for the real repo. |
-| `slides/` | HUD slide template (deck-stage) — title, section, content, stats, comparison, quote, closing. |
-| `ui_kits/basetool/` | Interactive recreation of the Profit Basetool app — see its own README. |
+| `slides/` + `components/SlideTemplate/preview.html` | HUD slide template (deck-stage) — title, section, content, stats, comparison, quote, closing. |
+| `ui_kits/basetool/` + `components/BasetoolUiKit/preview.html` | Interactive recreation of the Profit Basetool app — see its own README. |
 
 UI kits & decks:
 
@@ -695,3 +688,29 @@ UI kits & decks:
   and the Keycloak-themed login.
 - [`slides/`](slides/) — a 1280×720 HUD slide deck template built on `deck-stage.js`,
   using the flat black background, logo and HUD components.
+
+---
+
+## Tokens & Dateistruktur (Design-System-Format, 2026-10)
+
+- **Eine Quelle für jeden Wert:** alle Farben, Schriftgrößen/-gewichte, Tracking,
+  Zeilenhöhe, Abstände, Radien, Glows und die Lato-`@font-face` stehen in
+  [`tokens.json`](tokens.json) und werden zu [`tokens.css`](tokens.css) kompiliert
+  (die Design-System-Seite schreibt sie beim Speichern neu). Token-Namen = die
+  bisherigen CSS-Variablen ohne `--` (`color-primary` → `--color-primary`).
+- [`colors_and_type.css`](colors_and_type.css) importiert `tokens.css` als Erstes und
+  hält nur noch, was kein Token sein kann: die zusammengesetzten Rahmen
+  (`--border-hairline`, `--border-accent`, `--border-heading`), `--measure: 80ch`
+  und die Element-Defaults. **Wer das System ins Repo übernimmt, kopiert
+  `tokens.css` + `colors_and_type.css` + `krt-components.css` zusammen** (plus `fonts/`).
+- [`components/bundle.css`](components/bundle.css) (früher `styles.css`) ist ein
+  **eigenständiges** Stylesheet ohne `@import`: `colors_and_type.css` (ohne dessen Import
+  von `tokens.css`) + `krt-components.css` hintereinander. Die Design-System-Seite fügt es
+  als Text in jede Vorschau ein, relative Importe würden dort nicht auflösen. Bearbeitet
+  werden die beiden Quelldateien; danach `bundle.css` neu daraus erzeugen. Laden:
+  `tokens.css` → `components/bundle.css`.
+- Jede Specimen-Karte liegt unter `components/<Name>/preview.html`; die Vorschau-Hilfsstile
+  bleiben in [`preview/_card.css`](preview/_card.css).
+- Abgelöste Dateien liegen unverändert unter `archived/` (u. a. die frühere vollständige
+  `colors_and_type.css`, `styles.css`, die alten `preview/*.html`, `_ds_bundle.js`,
+  `_ds_manifest.json`).

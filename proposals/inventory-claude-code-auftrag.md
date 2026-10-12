@@ -12,7 +12,7 @@ Das `das-kartell-design`-Skill (`.claude/skills/das-kartell-design/`):
 - `colors_and_type.css`, `krt-components.css`, `styles.css` (Einstiegspunkt).
 - README → Abschnitt **„Tree table (nested data)"** + **„Action hierarchy"**.
 - Soll-Optik: `proposals/inventory-table-readability.html` (Vorher/Nachher),
-  Specimen `preview/components-tree-table.html`.
+  Specimen `components/TreeTable/preview.html`.
 - Befundliste: `proposals/inventory-table-audit.md`.
 
 Betroffene Dateien:
@@ -28,7 +28,7 @@ Betroffene Dateien:
 - i18n (de/en), CSP-Nonce, Lazy-Load (ADR-0003) und `localStorage`-Expand-State
   **erhalten**. Keine neuen Farben; nur System-Tokens/-Klassen.
 - Optik nach jedem Schritt gegen `proposals/inventory-table-readability.html`
-  (rechte Spalte) und `preview/components-tree-table.html` abgleichen.
+  (rechte Spalte) und `components/TreeTable/preview.html` abgleichen.
 
 ---
 
@@ -105,4 +105,4 @@ anpassen (Selektoren auf `.tree-row--group/--mid` + `.tree-chevron`).
 4. **Notiz erscheint nur, wenn vorhanden**, als eingerückte Box mit vollem Text.
 5. Lazy-Load, Expand-State, Filter, Bookout, i18n weiterhin funktionsfähig.
 6. `./gradlew check` grün; Optik deckt sich mit
-   `proposals/inventory-table-readability.html` + `preview/components-tree-table.html`.
+   `proposals/inventory-table-readability.html` + `components/TreeTable/preview.html`.

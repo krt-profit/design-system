@@ -13,7 +13,7 @@ Das `das-kartell-design`-Skill (`.claude/skills/das-kartell-design/`):
 - `keycloak/conformity-audit.md` — Befundliste (B1–B9) mit Prioritäten.
 - `keycloak/krt-keycloak-tokens.css` — **Drop-in** `:root` + `@font-face` + `body`
   (ersetzt die entsprechenden Blöcke in beiden Theme-CSS-Dateien 1:1).
-- `keycloak/keycloak-login-target.html` — Ziel-Optik (Soll).
+- `components/KeycloakLogin/preview.html` — Ziel-Optik (Soll).
 - `colors_and_type.css` / `krt-components.css` / README → „Action hierarchy".
 - Fonts: `fonts/Lato-*.woff2`.
 
@@ -98,4 +98,4 @@ durchschlagen.
 4. Seiten-Hintergrund = flaches Schwarz + Top-Bloom (kein Wabenmuster), PF-Grid bleibt entfernt.
 5. Tastatur-Fokus auf allen Controls sichtbar.
 6. Login- und Account-Tokens identisch; Optik deckt sich mit
-   `keycloak/keycloak-login-target.html`. Build/Theme lädt fehlerfrei (de + en).
+   `components/KeycloakLogin/preview.html`. Build/Theme lädt fehlerfrei (de + en).

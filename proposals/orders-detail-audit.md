@@ -25,7 +25,7 @@ Der Metadatenblock nutzt `<strong>Label</strong><br><span>Wert</span>` in einem
 Auto-fit-Grid. Labels sind dadurch orange (`<strong>` erbt nichts Neutrales) und die
 Wertespalte ist nicht ausgerichtet.
 → **Fix:** als `<dl class="kv-list kv-ruled">` (Label neutral, Wert hell `--data-fg`,
-saubere Ausrichtung). Specimen: `preview/components-detail-list.html`.
+saubere Ausrichtung). Specimen: `components/DetailList/preview.html`.
 
 ### 🟠 2 — Abschnitts-Titel → `.section-title`
 Jedes `<h3>` trägt denselben Inline-Style

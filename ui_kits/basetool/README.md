@@ -10,7 +10,7 @@ real layout, styling and click-through flow; fake data and no backend.
 
 ## Run it
 
-Open `index.html`. It loads `../../colors_and_type.css`, `../../krt-components.css`
+Open `../../components/BasetoolUiKit/preview.html`. It loads `../../colors_and_type.css`, `../../krt-components.css`
 and `app.css`, then the JSX modules. Fonts and logos resolve from the project root
 (`fonts/`, `assets/`).
 
@@ -35,7 +35,7 @@ Login → dashboard → navigate via the hamburger **sidebar drawer**:
 
 | File | Role |
 | :-- | :-- |
-| `index.html` | App shell — auth + routing state, mounts everything. |
+| `../../components/BasetoolUiKit/preview.html` | App shell — auth + routing state, mounts everything. |
 | `app.css` | Shell layout: header, sidebar drawer, footer, chip, login, dashboard, table extras. |
 | `icons.jsx` | In-house SVG sprite + `<Icon>`. |
 | `data.jsx` | Fictional, on-theme sample data. |

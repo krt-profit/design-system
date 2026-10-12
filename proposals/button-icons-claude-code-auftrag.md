@@ -10,7 +10,7 @@ Das `das-kartell-design`-Skill (`.claude/skills/das-kartell-design/`):
 - `assets/krt-icons.svg` — kanonisches Sprite (Core + Erweiterung), exakte Pfade.
 - `proposals/button-icons-guidelines.md` — Stil, Regeln, **Icon-Wörterbuch** (Aktion→Icon→Modus).
 - `proposals/button-icons-readability.html` — Vorher/Nachher (Icon-only vs. Icon+Text).
-- `preview/components-icon-set.html` — Specimen des ganzen Sets.
+- `components/IconSet/preview.html` — Specimen des ganzen Sets.
 
 Betroffene Dateien im Repo:
 - `frontend/src/main/resources/templates/fragments/icons.html` (das Sprite).

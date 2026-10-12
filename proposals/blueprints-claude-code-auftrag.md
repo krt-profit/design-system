@@ -13,7 +13,7 @@ Sichtbarkeiten oder Berechtigungen, ohne Regressionen.
   `.detail-pane`, `.quality-block`/`.quality-row`/`.quality-affects` (neu),
   `.tab-nav`, `.krt-modal*`, `.empty-state`, `.chip*`, `.section-title`,
   `.btn--cta/-outline/-ghost/-quiet-danger`, `.btn-danger`.
-  Specimen: `preview/components-master-detail.html`.
+  Specimen: `components/MasterDetail/preview.html`.
 
 ## Ziel-Struktur
 1. **Kopf:** Greeting bleibt; daneben kompakte **Add-Leiste**: Typeahead-Suche

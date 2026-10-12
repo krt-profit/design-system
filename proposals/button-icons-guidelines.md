@@ -6,7 +6,7 @@ schnellere Wiedererkennung, **Platzersparnis in dichten Tabellen** — ohne
 Verständlichkeit zu opfern.
 
 Quelle der Wahrheit: `assets/krt-icons.svg` (kanonisches Sprite), Specimen
-`preview/components-icon-set.html`, Vorher/Nachher `proposals/button-icons-readability.html`.
+`components/IconSet/preview.html`, Vorher/Nachher `proposals/button-icons-readability.html`.
 Im Repo lebt das Sprite als `frontend/.../templates/fragments/icons.html`.
 
 ## Icon-Stil (verbindlich)

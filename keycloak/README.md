@@ -8,7 +8,7 @@ KRT HUD aesthetic, not to restyle from scratch.
 Source of truth: this skill's `colors_and_type.css` / `krt-components.css`. The
 Keycloak themes can't `@import` the app CSS (isolated resource path), so they
 **mirror** the tokens — see `krt-keycloak-tokens.css` (drop-in `:root` + fonts +
-body). Target look: `keycloak-login-target.html` (open it).
+body). Target look: `components/KeycloakLogin/preview.html` (open it).
 
 In-repo theme: `keycloak-theme/krt-theme/` (`login/` + `account/`), parent
 `keycloak`, default locale `de` (also `en`).

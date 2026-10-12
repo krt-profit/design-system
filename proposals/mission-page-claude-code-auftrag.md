@@ -15,8 +15,8 @@ von Funktionen, Sichtbarkeiten oder Berechtigungen und ohne Regressionen.**
   `.tab-count`, `.facts-bar`, `.krt-modal*` (+ `--danger`), `.person-row`,
   `.status-dot(--on)`, `.drop-zone`/`.drop-hint`, `.chip-select`; dazu bestehend:
   `.btn--cta/-ghost/-outline/-quiet-danger`, `.chip*`, `.kv-list`, `.section-title`,
-  `.data-value`. Specimens: `preview/components-tabs.html`, `components-modal.html`,
-  `components-assign-board.html`.
+  `.data-value`. Specimens: `components/TabNav/preview.html`, `components/Modal/preview.html`,
+  `components/AssignBoard/preview.html`.
 - Betroffen: `frontend/.../templates/mission-detail.html` (+ Fragmente/JS),
   Controller nur wo für Board-Zuweisung/Tab-Deeplink nötig.
 
