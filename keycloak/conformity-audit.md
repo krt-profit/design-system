@@ -4,7 +4,7 @@ Geprüft im Repo `krt-iri/basetool`: `keycloak-theme/krt-theme/` — Login- und
 Account-Theme (`login/resources/css/krt-login-v3.css` 28 KB,
 `account/resources/css/krt-account-v3.css` 10 KB, beide `theme.properties`,
 mitgelieferte Fonts + `login/.../img/krt.webp`).
-Referenz: das `das-kartell-design`-Skill. Ziel-Optik: `keycloak-login-target.html`.
+Referenz: das `das-kartell-design`-Skill. Ziel-Optik: `components/KeycloakLogin/preview.html`.
 Drop-in-Tokens: `krt-keycloak-tokens.css`. Vorgaben: `README.md` (dieser Ordner).
 
 ## Gesamturteil

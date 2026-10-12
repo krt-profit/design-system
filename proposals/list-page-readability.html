@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vorschlag — Lesbarkeit Listen-Seiten (Bedienelemente & Arbeitsfläche)</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../krt-components.css">
+<style>
+  body { margin: 0; padding: 40px 32px 80px; background: var(--color-bg-black); }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+  .head { margin-bottom: 30px; }
+  .head .eyebrow { font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px; color: var(--color-gray-2-text); display: flex; align-items: center; gap: 10px; }
+  .head .eyebrow::before { content: ''; width: 30px; height: 2px; background: var(--color-primary); }
+  .head h1 { font-size: 28px; margin: 14px 0 8px; }
+  .head p { color: var(--color-gray-1); max-width: 90ch; margin: 0 0 8px; }
+  h2.sec { font-size: 1rem; color: var(--color-white); margin: 46px 0 14px; padding-bottom: 8px; border-bottom: var(--border-hairline); }
+  .cols { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 1100px) { .cols { grid-template-columns: 1fr 1fr; } }
+  .tag { display: inline-flex; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; padding: 5px 12px; margin-bottom: 14px; }
+  .tag.before { color: var(--color-danger-text); border: 1px solid var(--color-danger); background: rgba(163,0,10,0.12); }
+  .tag.after { color: var(--color-success-text); border: 1px solid var(--color-success); background: rgba(35,158,51,0.12); }
+  .ann { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 8px; }
+  .ann li { position: relative; padding-left: 17px; color: var(--color-gray-1); font-size: 13.5px; }
+  .ann li::before { content: ''; position: absolute; left: 0; top: 7px; width: 7px; height: 7px; }
+  .before-notes li::before { background: var(--color-danger); }
+  .after-notes li::before { background: var(--color-success); }
+  /* compact page scale for side-by-side */
+  .mini .page-head { margin-bottom: 14px; }
+  .mini .page-head__title { font-size: 1.35rem; }
+  .mini th, .mini td { padding: 0.6rem 0.8rem; font-size: 0.82rem; }
+  .mini td .sub { display: block; color: var(--color-gray-2-text); font-size: 0.72rem; }
+  .mini .act { display: flex; gap: 6px; justify-content: flex-end; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* ---- BEFORE: recreates the live look from the 2026-10-12 screenshots ---- */
+  .old .o-title { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; margin: 0; }
+  .old .o-count { font-size: 0.75rem; color: var(--color-white); border: 1px solid #282828; background: #000; padding: 2px 8px; letter-spacing: 0; }
+  .old .o-bar { display: flex; gap: 12px; align-items: center; margin: 16px 0 12px; flex-wrap: wrap; }
+  .old .o-search { flex: 1; min-width: 160px; height: 44px; background: #1C1C1C; border: 1px solid #1C1C1C; color: var(--color-gray-2); display: flex; align-items: center; padding: 0 14px; font-style: italic; font-size: 0.9rem; }
+  .old .o-seg { display: inline-flex; }
+  .old .o-seg span, .old .o-btn { background: #000; color: var(--color-white); border: 1px solid #282828; padding: 0 16px; height: 44px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .04em; }
+  .old .o-seg span.on { border-color: #5a3a1c; background: #141414; }
+  .old table { margin: 0; }
+  .old .o-foot { background: #141414; border: 1px solid #282828; border-top: none; padding: 12px 16px; color: var(--color-gray-1); font-size: 0.85rem; }
+  .old .o-ib { width: 38px; height: 38px; background: #000; border: 1px solid #282828; color: var(--color-gray-1); display: inline-flex; align-items: center; justify-content: center; }
+
+  .findings { width: 100%; margin-top: 8px; }
+  .findings td, .findings th { font-size: 0.85rem; vertical-align: top; padding: 0.7rem 0.9rem; }
+  .findings td:first-child { white-space: nowrap; color: var(--color-white); font-weight: 700; }
+  .sev { font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+  .sev.hi { color: var(--color-danger-text); } .sev.mid { color: var(--color-warning); } .sev.q { color: var(--color-info-text); }
+  .foot { margin-top: 34px; color: var(--color-gray-2-text); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="eyebrow">Vorschlag · Lesbarkeit · 2026-10</div>
+    <h1>Bedienelemente sichtbar machen</h1>
+    <p>Kommend/Vergangen/Alle, Filter, Titel-Zähler und Zeilen-Icons stehen heute als <strong>schwarze Kästen mit #282828-Haarlinie auf schwarzem Grund</strong>. Kontrast der Umrandung: <strong>1,42 : 1</strong> — WCAG 1.4.11 verlangt für Bedienelement-Grenzen mindestens 3 : 1. Deshalb liest man sie nicht als Button.</p>
+    <p>Lösung in drei Teilen: <strong>(1)</strong> jedes Bedienelement bekommt Füllung #1C1C1C + Grau-2-Rand #646464 (3,55 : 1 auf Schwarz, 3,11 : 1 auf #141414), <strong>(2)</strong> Toolbar, Tabelle und Fußzeile liegen gemeinsam auf einer Arbeitsfläche <code>.list-panel</code> (#141414), <strong>(3)</strong> Auswahl = Orange-Tönung + Unterstrich, nie ein gefüllter Orange-Block (der bleibt die CTA).</p>
+  </div>
+
+  <h2 class="sec">1 · Einsatzverwaltung (Muster für Einsätze, Operationen, Aufträge)</h2>
+  <div class="cols">
+    <div>
+      <span class="tag before">Vorher · Ist-Zustand v1.15.0</span>
+      <div class="old mini">
+        <span class="page-head__eyebrow">Einsatzplanung</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+          <h1 class="o-title">Einsatzverwaltung <span class="o-count">3</span></h1>
+          <button class="btn">Neuer Einsatz</button>
+        </div>
+        <div class="o-bar">
+          <div class="o-search">Einsatznamen eingeben…</div>
+          <div class="o-seg"><span class="on">Kommend</span><span>Vergangen</span><span>Alle</span></div>
+          <span class="o-btn">▽ Filter</span>
+        </div>
+        <table>
+          <thead><tr><th>Name</th><th>Status</th><th>Geplanter Start</th><th class="num">Angemeldet</th></tr></thead>
+          <tbody>
+            <tr><td>RiF – Signatur 3200 – Transport &amp; Verkauf<span class="sub" style="color:#646464">Treffpunkt: Levski</span></td><td><span class="status-pill status-planned">GEPLANT</span></td><td>Mo., 19.10., 20:00</td><td class="num">3</td></tr>
+            <tr><td>Profit Bereichsabend 6<span class="sub" style="color:#646464">Treffpunkt: Seraphim Station</span></td><td><span class="status-pill status-planned">GEPLANT</span></td><td>Fr., 09.10., 20:00</td><td class="num">21</td></tr>
+          </tbody>
+        </table>
+        <div class="o-foot">1–2 von 2</div>
+      </div>
+      <ul class="ann before-notes">
+        <li>Segment-Umschalter, Filter und Zähler „3“ sind schwarz auf schwarz — Rand 1,42 : 1, nicht als Bedienelement erkennbar.</li>
+        <li>Aktives Segment „Kommend“ nur durch einen dunkelbraunen Rand markiert.</li>
+        <li>Suchfeld, Umschalter und Tabelle schweben getrennt auf dem Canvas — keine Zusammengehörigkeit.</li>
+      </ul>
+    </div>
+    <div>
+      <span class="tag after">Nachher · Vorschlag</span>
+      <div class="mini">
+        <div class="page-head">
+          <div>
+            <span class="page-head__eyebrow">Einsatzplanung</span>
+            <h1 class="page-head__title">Einsatzverwaltung <span class="count-badge" aria-label="3 Einsätze">3</span></h1>
+          </div>
+          <div class="page-head__actions"><button class="btn btn--cta"><svg class="krt-icon" aria-hidden="true"><use href="#i-plus"/></svg> Neuer Einsatz</button></div>
+        </div>
+        <section class="list-panel" aria-label="Einsätze">
+          <div class="list-panel__toolbar">
+            <div class="list-panel__search"><svg class="krt-icon" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="Einsatznamen eingeben …" aria-label="Einsatz suchen"></div>
+            <nav class="krt-segmented" aria-label="Zeitraum">
+              <a class="krt-segmented__item" aria-current="page" href="#">Kommend</a>
+              <a class="krt-segmented__item" href="#">Vergangen</a>
+              <a class="krt-segmented__item" href="#">Alle</a>
+            </nav>
+            <button class="btn btn-ghost"><svg class="krt-icon" aria-hidden="true"><use href="#i-filter"/></svg> Filter</button>
+          </div>
+          <table>
+            <thead><tr><th>Name</th><th>Status</th><th>Geplanter Start</th><th class="num">Angemeldet</th></tr></thead>
+            <tbody>
+              <tr><td>RiF – Signatur 3200 – Transport &amp; Verkauf<span class="sub">Treffpunkt: Levski</span></td><td><span class="status-pill status-planned">GEPLANT</span></td><td>Mo., 19.10., 20:00<span class="sub">in 7 Tagen</span></td><td class="num">3</td></tr>
+              <tr><td>Profit Bereichsabend 6<span class="sub">Treffpunkt: Seraphim Station</span></td><td><span class="status-pill status-planned">GEPLANT</span></td><td>Fr., 09.10., 20:00<span class="sub">vor 3 Tagen</span></td><td class="num">21</td></tr>
+            </tbody>
+          </table>
+          <div class="list-panel__footer"><span>1–2 von 2</span></div>
+        </section>
+      </div>
+      <ul class="ann after-notes">
+        <li>Umschalter + Filter: Füllung + Grau-2-Rand — sofort als Bedienelement lesbar. Aktiv = Tönung + Rand + 3px-Unterstrich + weiß.</li>
+        <li>Zähler als gefülltes Quadrat mit weißen Ziffern (14,7 : 1).</li>
+        <li>Suche, Umschalter, Tabelle und „1–2 von 2“ auf einer Arbeitsfläche — eine Einheit.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec">2 · Raffinerie & Aufträge — Zähler im Segment, aktive Filter, Schalter</h2>
+  <div class="mini">
+    <div class="page-head">
+      <div><span class="page-head__eyebrow">Flotte &amp; Logistik</span><h1 class="page-head__title">Raffinerie</h1></div>
+      <div class="page-head__actions"><button class="btn btn--cta"><svg class="krt-icon" aria-hidden="true"><use href="#i-plus"/></svg> Neuer Auftrag</button></div>
+    </div>
+    <section class="list-panel" aria-label="Raffinerie-Aufträge">
+      <div class="list-panel__toolbar">
+        <nav class="krt-segmented" aria-label="Status">
+          <a class="krt-segmented__item" aria-current="page" href="#">Läuft <span class="krt-segmented__count">1</span></a>
+          <a class="krt-segmented__item" href="#">Abholbereit <span class="krt-segmented__count krt-segmented__count--success">1</span></a>
+          <a class="krt-segmented__item" href="#">Abgeschlossen <span class="krt-segmented__count">115</span></a>
+          <a class="krt-segmented__item" href="#">Alle <span class="krt-segmented__count">131</span></a>
+        </nav>
+        <div class="list-panel__search"><svg class="krt-icon" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="Material, Ort oder Besitzer …" aria-label="Suchen"></div>
+        <button class="btn btn-ghost is-filtered"><svg class="krt-icon" aria-hidden="true"><use href="#i-filter"/></svg> Filter <span class="filter-count" aria-label="2 aktiv">2</span></button>
+        <label class="krt-switch"><input type="checkbox" role="switch"> Meine Aufträge</label>
+      </div>
+      <div class="list-panel__chips">
+        <span class="filter-chip">Offen <button class="filter-chip__remove" aria-label="Filter Offen entfernen">×</button></span>
+        <span class="filter-chip">In Bearbeitung <button class="filter-chip__remove" aria-label="Filter In Bearbeitung entfernen">×</button></span>
+        <button class="btn btn-ghost btn-xs">Alle zurücksetzen</button>
+      </div>
+      <table>
+        <thead><tr><th>Ausbeute</th><th>Raffinerie</th><th>Fertig</th><th>Besitzer</th><th></th></tr></thead>
+        <tbody><tr><td>Stileron 8,3 · Taranite 1,5 SCU<span class="sub">#10fd · 2 Erze · 2.151 Units</span></td><td>Levski<span class="sub">Dinyx Solventation</span></td><td class="text-success">abholbereit seit 7 h 31 min</td><td>P6</td><td><div class="act"><button class="btn btn-ghost btn-xs">Einlagern</button></div></td></tr></tbody>
+      </table>
+      <div class="list-panel__footer"><span>1–1 von 1</span></div>
+    </section>
+    <ul class="ann after-notes">
+      <li>Zähler pro Segment ruhig grau, im aktiven Segment hell; „Abholbereit“ grün, weil handlungsrelevant.</li>
+      <li>„Meine Aufträge“ als eindeutiger Schalter: Aus = grauer Knopf links, An = Orange-Track, Knopf rechts (Position + Farbe).</li>
+      <li>Filter-Anzahl als eckiges Badge statt runder Pille; aktive Filter-Chips in eigener Zeile innerhalb der Fläche.</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">3 · Lagerverwaltung — Ansichtswechsel ist keine CTA</h2>
+  <div class="cols">
+    <div>
+      <span class="tag before">Vorher</span>
+      <div class="old mini" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <h1 class="o-title">Lagerverwaltung <span class="o-count">23</span></h1>
+        <div style="display:flex;gap:10px;"><span class="o-btn">Globales Lager</span><button class="btn">Mein Lager</button></div>
+      </div>
+      <ul class="ann before-notes"><li>„Mein Lager“ gefüllt orange = <em>ausgewählte Ansicht</em>, sieht aber aus wie die primäre Aktion der Seite. „Globales Lager“ daneben kaum erkennbar.</li></ul>
+    </div>
+    <div>
+      <span class="tag after">Nachher</span>
+      <div class="mini page-head" style="margin:0;">
+        <div><span class="page-head__eyebrow">Flotte &amp; Logistik</span><h1 class="page-head__title">Lagerverwaltung <span class="count-badge">23</span></h1></div>
+        <nav class="krt-segmented" aria-label="Lager-Ansicht"><a class="krt-segmented__item" href="#">Globales Lager</a><a class="krt-segmented__item" aria-current="page" href="#">Mein Lager</a></nav>
+      </div>
+      <ul class="ann after-notes"><li>Ansichtswechsel = <code>.krt-segmented</code>. Die Seite hat dann keine falsche CTA mehr; eine echte („Einlagern“/„Erfassen“) bleibt <code>.btn--cta</code>.</li></ul>
+    </div>
+  </div>
+
+  <h2 class="sec">4 · Hangar — Zeilen-Aktionen & gedämpfte Werte</h2>
+  <div class="mini">
+    <section class="list-panel">
+      <table>
+        <thead><tr><th>Schiff</th><th>Standort</th><th>Versicherung</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>Aegis Dynamics Avenger Titan<span class="sub">ohne Namen</span></td><td>Levski</td><td><span class="chip chip--muted">Keine</span></td><td><span class="status-pill status-completed">NICHT BEREIT</span></td><td><div class="act"><button class="btn btn-ghost btn-xs btn-icon" title="Bearbeiten" aria-label="Bearbeiten"><svg class="krt-icon" aria-hidden="true"><use href="#i-edit"/></svg></button></div></td></tr>
+          <tr><td>Munitio<span class="sub">Aegis Dynamics Hammerhead</span></td><td>Levski</td><td><span class="chip chip--muted">Keine</span></td><td><span class="status-pill status-completed">NICHT BEREIT</span></td><td><div class="act"><button class="btn btn-ghost btn-xs btn-icon" title="Bearbeiten" aria-label="Bearbeiten"><svg class="krt-icon" aria-hidden="true"><use href="#i-edit"/></svg></button></div></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <ul class="ann after-notes">
+      <li>Stift-Button: Füllung + Grau-2-Rand statt schwarz-auf-dunkel. Gedämpfter Text („ohne Namen“, „Keine“) über <code>--color-gray-2-text</code> #8A8A8A (5,3 : 1) statt #646464 (3,1 : 1 auf #141414).</li>
+    </ul>
+  </div>
+
+  <h2 class="sec">5 · Weitere Befunde aus den Screenshots (nicht nur Kontrast)</h2>
+  <table class="findings">
+    <thead><tr><th>Seite</th><th>Befund</th><th>Vorschlag</th><th>Art</th></tr></thead>
+    <tbody>
+      <tr><td>DS gesamt</td><td>Grau 2 #646464 wird an 26 Stellen in <code>krt-components.css</code> als <em>Textfarbe</em> benutzt (Labels, Hinweise, KPI-Labels, kv-Keys, Tab-Nav inaktiv). Auf #141414 nur 3,1 : 1.</td><td>Im DS bereits umgestellt auf <code>--color-gray-2-text</code>. Im Repo dieselbe Ersetzung.</td><td><span class="sev hi">Kontrast</span></td></tr>
+      <tr><td>Einsatzverwaltung</td><td>Unter „Kommend“ stehen Einsätze mit „vor 3 Tagen“ / „vor 7 Tagen“ und Status GEPLANT.</td><td>Entweder werden vergangene Einsätze nicht abgeschlossen, oder der Filter nimmt Status statt Datum. Prüfen — liest sich als Fehler.</td><td><span class="sev q">Logik?</span></td></tr>
+      <tr><td>Aufträge</td><td>Prio „≡ 1“: das ≡-Symbol liest sich als Menü bzw. Ziehgriff, nicht als Priorität.</td><td>Ist es ein Ziehgriff zum Umsortieren → eigene schmale Spalte mit <code>grip</code>-Icon + aria-label. Ist es nur Priorität → Zahl ohne Symbol.</td><td><span class="sev q">Klärung</span></td></tr>
+      <tr><td>Aufträge</td><td>Filter-Anzahl „2“ als runde orange Pille.</td><td>Eckiges <code>.filter-count</code> — rund sind nur Squadron-Pills.</td><td><span class="sev mid">Konsistenz</span></td></tr>
+      <tr><td>Lagerverwaltung</td><td>Mengen wie „29,870 SCU“ / „6,520 SCU“ mit fester dritter Nachkommastelle. Mit Komma als Dezimalzeichen liest man das leicht als 29 870.</td><td>Annahme: gemeint sind 29,87 SCU. Dann Nullen am Ende weglassen („29,87 SCU“) oder Einheit getrennt rechtsbündig mit tabellarischen Ziffern.</td><td><span class="sev mid">Lesbarkeit</span></td></tr>
+      <tr><td>Materialbörse</td><td>Qualitätswerte („Q 937“, Kachel „937“) in Orange — Orange ist laut DS für Aktion + Identität reserviert, nicht für Datenwerte.</td><td>Werte weiß (<code>--data-fg</code>); Orange nur für „Interesse anmelden“.</td><td><span class="sev mid">Hierarchie</span></td></tr>
+      <tr><td>Raffinerie</td><td>Schalter „Meine Aufträge“: grauer Block, Zustand nicht ablesbar.</td><td><code>.krt-switch</code> (Position + Farbe).</td><td><span class="sev hi">Erkennbarkeit</span></td></tr>
+    </tbody>
+  </table>
+
+  <p class="foot">Klassen: .page-head · .count-badge · .list-panel(__toolbar/__chips/__footer) · .krt-segmented · .btn-ghost(.is-filtered) + .filter-count · .filter-chip · .krt-switch — definiert in krt-components.css, Tokens --surface-* / --control-* in colors_and_type.css. Auftrag: proposals/list-readability-claude-code-auftrag.md</p>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/></symbol>
+</svg>
+</body>
+</html>

@@ -18,7 +18,7 @@ Das `das-kartell-design`-Skill (`.claude/skills/das-kartell-design/`):
   UX/Usability-Review `proposals/ux-usability-review.md`).
 - Keycloak-Details: `keycloak/claude-code-auftrag.md`, `keycloak/README.md`,
   `keycloak/conformity-audit.md`, `keycloak/krt-keycloak-tokens.css`,
-  `keycloak/keycloak-login-target.html`.
+  `components/KeycloakLogin/preview.html`.
 - Referenz-Optik gesamt: `ui_kits/basetool/` (interaktiv).
 - Assets: `fonts/Lato-*.woff2`.
 
@@ -69,6 +69,12 @@ Eine Regel für `missions`, `operations-index`, `orders-index`,
 „Neu" → `.btn--cta`; Zeilen-„Details/Open" + „Filtern/Reset" → `.btn-ghost`;
 „Delete" → `.btn-quiet-danger`; Modal-„Save" → `.btn--cta`, „Cancel" → ghost.
 
+**Lesbarkeit (2026-10):** Bedienelemente mit Füllung + Grau-2-Rand, Segment-
+Umschalter, Titel-Zähler, Arbeitsfläche `.list-panel` — verbindlich nach
+`proposals/list-readability-claude-code-auftrag.md` (Mock
+`proposals/list-page-readability.html`). Ersetzt für `.btn-ghost` die frühere
+Haarlinien-Optik aus `list-page-button-hierarchy.html`.
+
 ## PHASE 3 — App: Detail-Seiten
 - `mission-detail` + `operation-detail` (Klon): `.col-header` → `.panel-header`-
   Optik, eine `.btn--cta` pro Panel, „Crew zuweisen" Outline, Edit/Check-Out Ghost,
@@ -93,14 +99,14 @@ Zusätzlich app-weit auf die neuen DS-Bausteine umstellen (Audit:
 `proposals/template-audit-full.md`):
 - **Pagination** (`fragments/pagination.html`) → `.pagination` (Chevron-Icons,
   echtes Disabled via `pointer-events`, `aria-current="page"`). Specimen:
-  `preview/components-pagination.html`.
+  `components/Pagination/preview.html`.
 - **Inline-Fehlertext** (profile, mission-/operation-/orders-/refinery-detail,
   admin/*) → `.field-error` (barrierefreier `--color-danger-text` + Warn-Glyph);
   Fehlerfeld zusätzlich rot umranden.
 - **„Label : Wert"-Detailblöcke** (profile `.profile-row`, Detail-Köpfe,
-  Organisation/Finanzen) → `.kv-list`. Specimen: `preview/components-detail-list.html`.
+  Organisation/Finanzen) → `.kv-list`. Specimen: `components/DetailList/preview.html`.
 - **Wiederholte `<h3>`-Inline-Styles** (orders-detail 8×, refinery-detail, mission-detail)
-  → `.section-title`. Specimen: `preview/components-section-title.html`.
+  → `.section-title`. Specimen: `components/SectionTitle/preview.html`.
   Detail-Audit: `proposals/orders-detail-audit.md` (+ Mock `orders-detail-readability.html`).
 
 ## PHASE 6 — Keycloak-Theme
@@ -129,7 +135,7 @@ Vollständig nach `keycloak/claude-code-auftrag.md`:
 6. Headlines in Lato bold; keine Audiowide-/Ethnocentric-Referenz/-Datei mehr.
 7. Validierungsfehler rot (`--color-danger`), Fehlerfelder mit rotem Rand.
 8. Primär-Hover hellt auf; Primär-Button mit Bloom; eine CTA pro Screen;
-   Login-/Account-Tokens identisch; Optik = `keycloak/keycloak-login-target.html`.
+   Login-/Account-Tokens identisch; Optik = `components/KeycloakLogin/preview.html`.
 
 **Gesamt**
 9. `./gradlew check` grün; App + Keycloak laden fehlerfrei (de + en); Optik deckt

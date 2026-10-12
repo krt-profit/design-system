@@ -41,8 +41,8 @@ Der Pointer-Bump ist ein **eigener, erster Commit** und Teil der Definition of D
   (Komponenten). `README.md` → Abschnitte *Action hierarchy*, *Master-detail*,
   *Card & chip*, *Sync log — 2026-07*.
 - **Specimens** der neu synchronisierten Komponenten:
-  `preview/components-markdown.html`, `preview/components-filters.html`,
-  `preview/components-presence.html`, `preview/components-master-detail.html`.
+  `components/MarkdownContent/preview.html`, `components/FilterSearch/preview.html`,
+  `components/Presence/preview.html`, `components/MasterDetail/preview.html`.
 
 Der Prototyp nutzt Vanilla-JS zur Demo. Die **Struktur, Klassen, Copy und
 Interaktionslogik** sind bindend; der JS-Code ist **nicht** 1:1 zu kopieren,

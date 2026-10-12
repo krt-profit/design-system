@@ -20,8 +20,8 @@ date: 2026-08-18T05:27:54Z
 | colors_and_type.css | basetool: static/css/styles.css (`:root`-Tokens, @font-face) |
 | krt-components.css | basetool: static/css/styles.css (Komponenten-Layer) |
 | keycloak/* | basetool: keycloak-theme/krt-theme/login/resources/css/krt-login-v3.css |
-| preview/components-entry-assign.html · components-herkunft.html | basetool: styles.css `.assoc-*` / `.herkunft-*` |
-| preview/components-confirm-dialog.html | basetool: styles.css `.krt-confirm-*` (fragments/toast.html) |
-| preview/components-filterbar.html | basetool: styles.css `.search-form*` / `.datetime-split-*` / `select.association-select` |
-| preview/components-app-chrome.html | basetool: styles.css `.krt-footer*` / `.krt-fankit-*` / `.admin-mode-chip` |
+| components/EntryAssign/preview.html · components/HerkunftPicker/preview.html | basetool: styles.css `.assoc-*` / `.herkunft-*` |
+| components/ConfirmDialog/preview.html | basetool: styles.css `.krt-confirm-*` (fragments/toast.html) |
+| components/FilterBar/preview.html | basetool: styles.css `.search-form*` / `.datetime-split-*` / `select.association-select` |
+| components/AppChrome/preview.html | basetool: styles.css `.krt-footer*` / `.krt-fankit-*` / `.admin-mode-chip` |
 | README "Plattform-Implementierungen" | basetool-android: core/designsystem/theme/*.kt · basetool-sc-extractor: ui/Theme.kt |

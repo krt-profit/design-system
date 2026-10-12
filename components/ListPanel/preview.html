@@ -1,0 +1,65 @@
+<!-- @dsCard group="Components" height=520 width=760 subtitle="Page-Head + Zähler · Segment-Umschalter · Filter · Schalter · .list-panel" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style>
+  body { padding: 18px 20px; }
+  .page-head { margin-bottom: 14px; }
+  .page-head__title { font-size: 1.5rem; }
+  th, td { padding: 0.65rem 0.9rem; font-size: 0.85rem; }
+  td .sub { display: block; color: var(--color-gray-2-text); font-size: 0.75rem; }
+  .act { display: flex; gap: 6px; justify-content: flex-end; }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <div>
+      <span class="page-head__eyebrow">Einsatzplanung</span>
+      <h1 class="page-head__title">Einsatzverwaltung <span class="count-badge" aria-label="3 Einsätze">3</span></h1>
+    </div>
+    <div class="page-head__actions">
+      <button class="btn btn--cta"><svg class="krt-icon" aria-hidden="true"><use href="#i-plus"/></svg> Neuer Einsatz</button>
+    </div>
+  </div>
+
+  <section class="list-panel" aria-label="Einsätze">
+    <div class="list-panel__toolbar">
+      <div class="list-panel__search">
+        <svg class="krt-icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input type="search" placeholder="Einsatznamen eingeben …" aria-label="Einsatz suchen">
+      </div>
+      <nav class="krt-segmented" aria-label="Zeitraum">
+        <a class="krt-segmented__item" aria-current="page" href="#">Kommend <span class="krt-segmented__count">3</span></a>
+        <a class="krt-segmented__item" href="#">Vergangen <span class="krt-segmented__count">41</span></a>
+        <a class="krt-segmented__item" href="#">Alle <span class="krt-segmented__count">44</span></a>
+      </nav>
+      <button class="btn btn-ghost is-filtered"><svg class="krt-icon" aria-hidden="true"><use href="#i-filter"/></svg> Filter <span class="filter-count" aria-label="2 aktiv">2</span></button>
+      <label class="krt-switch"><input type="checkbox" role="switch" checked> Nur meine</label>
+    </div>
+    <div class="list-panel__chips">
+      <span class="filter-chip">Geplant <button class="filter-chip__remove" aria-label="Filter Geplant entfernen">×</button></span>
+      <span class="filter-chip">Treffpunkt: Levski <button class="filter-chip__remove" aria-label="Filter Treffpunkt entfernen">×</button></span>
+    </div>
+    <table>
+      <thead><tr><th>Name</th><th>Status</th><th>Geplanter Start</th><th style="text-align:right">Aktion</th></tr></thead>
+      <tbody>
+        <tr><td>RiF – Signatur 3200 – Transport &amp; Verkauf<span class="sub">Treffpunkt: Levski</span></td><td><span class="status-pill status-planned">GEPLANT</span></td><td>Mo., 19.10., 20:00<span class="sub">in 7 Tagen</span></td><td><div class="act"><button class="btn btn-ghost btn-xs btn-icon" title="Bearbeiten" aria-label="Bearbeiten"><svg class="krt-icon" aria-hidden="true"><use href="#i-edit"/></svg></button><button class="btn btn-quiet-danger btn-xs btn-icon" title="Löschen" aria-label="Löschen"><svg class="krt-icon" aria-hidden="true"><use href="#i-trash"/></svg></button></div></td></tr>
+        <tr><td>Profit Bereichsabend 6<span class="sub">Treffpunkt: Seraphim Station</span></td><td><span class="status-pill status-active">AKTIV</span></td><td>Fr., 09.10., 20:00<span class="sub">vor 3 Tagen</span></td><td><div class="act"><button class="btn btn-ghost btn-xs btn-icon" title="Bearbeiten" aria-label="Bearbeiten"><svg class="krt-icon" aria-hidden="true"><use href="#i-edit"/></svg></button><button class="btn btn-quiet-danger btn-xs btn-icon" title="Löschen" aria-label="Löschen"><svg class="krt-icon" aria-hidden="true"><use href="#i-trash"/></svg></button></div></td></tr>
+      </tbody>
+    </table>
+    <div class="list-panel__footer"><span>1–2 von 2</span></div>
+  </section>
+  <p class="pv-mono" style="margin-top:12px;">.page-head · .count-badge · .list-panel(__toolbar/__chips/__footer) · .krt-segmented(__item[aria-current]/__count) · .btn-ghost.is-filtered + .filter-count · .filter-chip · .krt-switch</p>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M9 7V4h6v3M7 7l1 14h8l1-14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+</svg>
+</body>
+</html>

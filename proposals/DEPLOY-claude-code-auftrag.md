@@ -6,7 +6,7 @@ Design-System-Änderungen + Audit-Vorschläge im `basetool` umsetzen.
 
 Voraussetzung: Der Nutzer übergibt dir das **ZIP des Design-Systems** (Inhalt des
 `das-kartell-design`-Skills: `colors_and_type.css`, `krt-components.css`,
-`styles.css`, `fonts/`, `assets/`, `preview/`, `keycloak/`, `proposals/`,
+`tokens.json`, `tokens.css`, `components/` (mit `bundle.css`), `fonts/`, `assets/`, `keycloak/`, `proposals/`,
 `ui_kits/`, `slides/`, `README.md`, `SKILL.md`).
 
 Repos:
@@ -23,8 +23,9 @@ Repos:
    sodass vorhandene Dateien überschrieben werden. Wichtig:
    - Gelöschte/ersetzte Dateien berücksichtigen: **keine** `Audiowide-*`- oder
      `Ethnocentric*`-Schriftdateien dürfen übrig bleiben (`git rm` entfernte Fonts).
-   - `_ds_manifest.json`, `_ds_bundle.js`, `_adherence.oxlintrc.json` mit übernehmen,
-     falls im ZIP enthalten (Compiler-Artefakte).
+   - `_ds_manifest.json`, `_ds_bundle.js`, `_adherence.oxlintrc.json` und `styles.css`
+     gibt es seit 2026-10 nicht mehr (ersetzt durch `tokens.json`/`tokens.css` und
+     `components/bundle.css`); die Specimen-Karten liegen in `components/<Name>/preview.html`.
 3. Diff sichten (`git status` / `git diff`), dann committen:
    ```
    git add -A

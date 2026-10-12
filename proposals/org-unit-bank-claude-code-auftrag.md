@@ -16,8 +16,8 @@ Berechtigungsverlust.
   `.kpi-value`, `.kpi-delta--pos/--neg`, `.chip` (+ `--success/--warning/--muted/--danger`),
   `.data-table`, `.empty-state`, `.btn--cta`/`.btn-outline`/`.btn-ghost`/`.btn-xs`,
   `.krt-modal*`, `.squadron-badge`, Sparkline = server-gerendertes Inline-SVG
-  (`BankSparkline`, REQ-BANK-016). Specimens: `preview/components-tabs.html`,
-  `preview/components-kpi-sparkline.html`, `preview/components-bank-patterns.html`.
+  (`BankSparkline`, REQ-BANK-016). Specimens: `components/TabNav/preview.html`,
+  `components/KpiCard/preview.html`, `components/BankPatterns/preview.html`.
 
 ## Übersicht — Ziel-Aufbau (`org-unit-bank.html`)
 1. **Seitenkopf:** Titel `#{bank.orgUnit.title}` + Subtitle. Rechts **eine** gefüllte

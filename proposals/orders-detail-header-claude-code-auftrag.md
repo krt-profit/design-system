@@ -10,7 +10,7 @@ gruppierte Meta-Karte — **ohne** Funktions-, Sichtbarkeits- oder Berechtigungs
   (maßgeblich ist der Block „Vorschlag A"; IST/B sind nur Vergleich).
 - **DS-Bausteine (neu/bestehend):** `.facts-bar`, **`.meta-grid` › `.meta-group` ›
   `.meta-group-title`**, **`.kv-compact`** (`.kv-key`/`.kv-val`), **`.annotation`**
-  (`.annotation-label`). Specimen: `preview/components-detail-header.html`.
+  (`.annotation-label`). Specimen: `components/DetailHeader/preview.html`.
 - Status-Pill = bestehendes `.status-*`-Idiom (Punkt + Headline-Font).
 
 ## Ziel-Aufbau des Kopffragments

@@ -1,0 +1,79 @@
+<!-- @dsCard height=320 -->
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>DAS KARTELL — Profit Basetool · Design System</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--color-bg-black); overflow:hidden; font-family:var(--font-headline); }
+  .cover { position:relative; width:960px; height:320px; overflow:hidden; }
+  .band { position:absolute; top:0; left:0; width:960px; height:112px; display:block; }
+  .brand { fill:var(--color-primary); }
+  .deep-accent { fill:var(--color-accent-dark); }
+  .light-accent { fill:var(--color-accent-light); }
+  .slab { fill:var(--color-gray-3); }
+  .blk { rx:var(--radius-none); }
+  .plus { stroke:var(--color-gray-2); stroke-width:2; fill:none; }
+  .words { position:absolute; left:var(--space-8); right:var(--space-8); bottom:var(--space-6); }
+  .name { margin:0; font-size:60px; line-height:.95; font-weight:700; letter-spacing:.02em; color:var(--color-primary); }
+  .tag { margin:var(--space-2) 0 0 2px; font-family:var(--font-body); font-size:14px; line-height:20px; font-weight:300; color:var(--color-gray-2-text); }
+</style>
+</head>
+<body>
+<div class="cover">
+<svg class="band" viewBox="0 0 960 112" width="960" height="112" aria-hidden="true">
+<!--
+  blocks      color-primary 336×112 bleeding off the left edge (the identity hue, largest) · color-accent-dark 112 wide · color-gray-3 slab 400 wide (a dark surface; gray-4 would vanish on the black ground) · color-accent-light 80 wide off the right edge — the top band ≈ 35% of 960×320
+  arrangement a strip of unequal bands across the top (top-band skeleton: the README name is too wide for the 440px zone), gutters space-2
+  pattern     plus grid, from "precise, technical HUD … square-first, 0.5rem rhythm": 36 plus marks (color-gray-2) at a space-8 pitch on the gray-3 slab
+  scales      gutters space-2 (8px); pitch space-8 (32px); band 112 = 14 × space-2; corners radius-none (square system)
+-->
+<rect class="brand blk" x="-24" y="0" width="360" height="112"/>
+<rect class="deep-accent blk" x="344" y="0" width="112" height="112"/>
+<rect class="slab blk" x="464" y="0" width="400" height="112"/>
+<rect class="light-accent blk" x="872" y="0" width="112" height="112"/>
+<path class="plus" d="M479 24h10M484 19v10"/>
+<path class="plus" d="M511 24h10M516 19v10"/>
+<path class="plus" d="M543 24h10M548 19v10"/>
+<path class="plus" d="M575 24h10M580 19v10"/>
+<path class="plus" d="M607 24h10M612 19v10"/>
+<path class="plus" d="M639 24h10M644 19v10"/>
+<path class="plus" d="M671 24h10M676 19v10"/>
+<path class="plus" d="M703 24h10M708 19v10"/>
+<path class="plus" d="M735 24h10M740 19v10"/>
+<path class="plus" d="M767 24h10M772 19v10"/>
+<path class="plus" d="M799 24h10M804 19v10"/>
+<path class="plus" d="M831 24h10M836 19v10"/>
+<path class="plus" d="M479 56h10M484 51v10"/>
+<path class="plus" d="M511 56h10M516 51v10"/>
+<path class="plus" d="M543 56h10M548 51v10"/>
+<path class="plus" d="M575 56h10M580 51v10"/>
+<path class="plus" d="M607 56h10M612 51v10"/>
+<path class="plus" d="M639 56h10M644 51v10"/>
+<path class="plus" d="M671 56h10M676 51v10"/>
+<path class="plus" d="M703 56h10M708 51v10"/>
+<path class="plus" d="M735 56h10M740 51v10"/>
+<path class="plus" d="M767 56h10M772 51v10"/>
+<path class="plus" d="M799 56h10M804 51v10"/>
+<path class="plus" d="M831 56h10M836 51v10"/>
+<path class="plus" d="M479 88h10M484 83v10"/>
+<path class="plus" d="M511 88h10M516 83v10"/>
+<path class="plus" d="M543 88h10M548 83v10"/>
+<path class="plus" d="M575 88h10M580 83v10"/>
+<path class="plus" d="M607 88h10M612 83v10"/>
+<path class="plus" d="M639 88h10M644 83v10"/>
+<path class="plus" d="M671 88h10M676 83v10"/>
+<path class="plus" d="M703 88h10M708 83v10"/>
+<path class="plus" d="M735 88h10M740 83v10"/>
+<path class="plus" d="M767 88h10M772 83v10"/>
+<path class="plus" d="M799 88h10M804 83v10"/>
+<path class="plus" d="M831 88h10M836 83v10"/>
+</svg>
+<div class="words">
+<p class="name">DAS KARTELL — Profit<br>Basetool · Design System</p>
+<p class="tag">Dark sci-fi HUD for a Star Citizen squadron-management tool.</p>
+</div>
+</div>
+</body>
+</html>

@@ -12,10 +12,14 @@ This is a dark, sci-fi "technical HUD" brand for a Star Citizen org: house orang
 diagonal corner brackets (the `.hud-box`), and a fixed department color system.
 
 Quick start:
-- **Foundations:** `colors_and_type.css` (`@font-face` + all color/type/shape tokens)
-  and `krt-components.css` (buttons, hud-box, tables, forms, alerts, badges, toasts).
-  Import both; build on the tokens — don't invent new colors.
-- **Specimens:** `preview/` has cards for every token group.
+- **Foundations:** `tokens.json` is the single source of every token (colours, type
+  sizes/weights, spacing, radii, glows, Lato `@font-face`), compiled to `tokens.css`.
+  `colors_and_type.css` imports `tokens.css` and adds composite borders + element
+  defaults; `krt-components.css` is the component layer (buttons, hud-box, tables,
+  forms, list-panel, segmented control, switch, alerts, badges, toasts).
+  Load `tokens.css` → `colors_and_type.css` → `krt-components.css` (or
+  `components/bundle.css`); build on the tokens — don't invent new colors.
+- **Specimens:** `components/<Name>/preview.html` — one live card per component/foundation.
 - **Real components & screens:** `ui_kits/basetool/` is an interactive React recreation
   of the app (header, sidebar drawer, dashboard, missions, hangar, price matrix, login).
   Copy patterns from `components.jsx` / `screens.jsx` / `app.css`.
@@ -41,6 +45,9 @@ Key brand rules (see `README.md` for the full content + visual foundations):
   (`.btn--cta`); demote routine actions to `.btn-ghost`/`.btn-outline` and destructive
   ones to `.btn-quiet-danger`. Orange is for action + identity, never for plain data
   values or every form label (labels are neutral gray; data uses `.data-value`).
+- Every non-CTA control (ghost/quiet buttons, inputs, segmented control, pagination)
+  has a fill (`--control-bg`) and a Grau-2 border (`--control-border`) — never a
+  #282828 hairline on black. Selected = orange tint + underline, never a solid orange block.
 - Corners are sharp everywhere; the ONLY rounded things are pill badges and the radio.
 - Depth = hairlines + corner brackets + an orange bloom glow. No soft drop shadows.
 - Headings & UI labels are UPPERCASE; system/error copy leans into the sci-fi fiction
