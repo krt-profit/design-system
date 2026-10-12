@@ -703,8 +703,12 @@ UI kits & decks:
   (`--border-hairline`, `--border-accent`, `--border-heading`), `--measure: 80ch`
   und die Element-Defaults. **Wer das System ins Repo übernimmt, kopiert
   `tokens.css` + `colors_and_type.css` + `krt-components.css` zusammen** (plus `fonts/`).
-- [`components/bundle.css`](components/bundle.css) ist der Einstieg für Konsumenten
-  (früher `styles.css`): importiert `colors_and_type.css` und `krt-components.css`.
+- [`components/bundle.css`](components/bundle.css) (früher `styles.css`) ist ein
+  **eigenständiges** Stylesheet ohne `@import`: `colors_and_type.css` (ohne dessen Import
+  von `tokens.css`) + `krt-components.css` hintereinander. Die Design-System-Seite fügt es
+  als Text in jede Vorschau ein, relative Importe würden dort nicht auflösen. Bearbeitet
+  werden die beiden Quelldateien; danach `bundle.css` neu daraus erzeugen. Laden:
+  `tokens.css` → `components/bundle.css`.
 - Jede Specimen-Karte liegt unter `components/<Name>/preview.html`; die Vorschau-Hilfsstile
   bleiben in [`preview/_card.css`](preview/_card.css).
 - Abgelöste Dateien liegen unverändert unter `archived/` (u. a. die frühere vollständige

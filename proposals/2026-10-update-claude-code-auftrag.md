@@ -101,6 +101,11 @@ Quelle der Wahrheit ist das aktualisierte Submodule. Lies dort zuerst:
   `colors_and_type.css` aus dem Skill übernimmt: Diese Datei importiert jetzt
   `tokens.css` als Erstes. Dann muss `tokens.css` mitkommen, sonst fehlen alle Tokens
   und die Lato-`@font-face`.
+- `components/bundle.css` ist **eigenständig** (kein `@import`): `colors_and_type.css` ohne
+  den `tokens.css`-Import plus `krt-components.css`, hintereinander. Wenn die App ein
+  einzelnes Stylesheet will, lädt sie `tokens.css` und danach `components/bundle.css`.
+  Bearbeitet werden im Design-System immer die beiden Quelldateien; `bundle.css` wird
+  danach neu erzeugt. Lade **nicht** beides (bundle.css + die Quellen), sonst kommt alles doppelt.
 - Die Token-Namen bleiben identisch zu den bisherigen CSS-Variablen. Bestehende
   `var(--…)`-Referenzen brechen also nicht.
 
