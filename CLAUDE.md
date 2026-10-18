@@ -67,6 +67,11 @@ repositories, without exception.**
   brand's own German product words („Einsätze", „Lager", „Kartellbank") are quoted as they ship.
 - **Only OFL-licensed fonts in the repository.** Lato (SIL OFL) is the whole type system; the
   commercial display face used in brand material ships nowhere.
+- **No code comments besides documentation comments** (JSDoc in `.js`). No `/* */` in CSS, no
+  `<!-- -->` in HTML, no commented-out code; tool directives without prose stay (e.g. the
+  `<!-- @dsCard … -->` header a specimen card is registered by). The reasoning goes into the commit
+  message and the PR body. Existing comments are removed when a file is reworked, not as a side
+  effect of an unrelated change.
 - **`README.md` is the source of truth.** When a value appears both there and in a CSS file, the
   README is what a consumer is told to read — keep them in step, and change the README in the same
   commit.
