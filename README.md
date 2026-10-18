@@ -202,6 +202,26 @@ planet. These carry **planet identity only** — never status, department or act
 | `hash-10` | `--krt-planet-hash-10` | `#3A203A` | `--krt-planet-hash-10-stripe` | `#A850A8` |
 | `hash-11` | `--krt-planet-hash-11` | `#3A202C` | `--krt-planet-hash-11-stripe` | `#A85078` |
 
+**Item-class tints** — the categorical palette of a ship component's class, the in-game
+„Military / Civilian / Industrial / Stealth / Competition" label shown beside size and grade. The
+`--krt-item-class-<c>` hue is the chip border and, mixed to 15 %, its fill; the
+`--krt-item-class-<c>-text` tint is the label (≥ 6:1 on the fill, ≥ 8.7:1 on black). The hues are
+muted on purpose, so they never read as a status, a department or an action — and they carry
+**item-class identity only**. A class chip always shows its translated label: the colour is a
+second cue, never the only one.
+
+| Class | Hue (border, fill) | Hex | Text tint | Hex |
+| :-- | :-- | :-- | :-- | :-- |
+| `military` | `--krt-item-class-military` | `#8A9455` | `--krt-item-class-military-text` | `#BCC48A` |
+| `civilian` | `--krt-item-class-civilian` | `#5C84A8` | `--krt-item-class-civilian-text` | `#97B6D3` |
+| `industrial` | `--krt-item-class-industrial` | `#A8643F` | `--krt-item-class-industrial-text` | `#D79A78` |
+| `stealth` | `--krt-item-class-stealth` | `#9C6688` | `--krt-item-class-stealth-text` | `#CB9BB9` |
+| `competition` | `--krt-item-class-competition` | `#449C80` | `--krt-item-class-competition-text` | `#80CBB2` |
+
+Component: `.chip.chip--item-class-<c>` (e.g. `<span class="chip chip--item-class-military">Militär</span>`),
+next to a neutral `.chip.chip--data` carrying size and grade (`S1 · A`). An item without a known
+class gets no class chip. Specimen: `components/ItemClassChip/preview.html`.
+
 > **`#1C1C1C`** is a code-only half-step (input/table-head fill) exposed as
 > `--color-surface-input`; it is **not** part of the official grayscale.
 

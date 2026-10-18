@@ -73,6 +73,16 @@
   --krt-planet-hash-10-stripe: #a850a8;
   --krt-planet-hash-11: #3a202c;
   --krt-planet-hash-11-stripe: #a85078;
+  --krt-item-class-military: #8a9455;
+  --krt-item-class-military-text: #bcc48a;
+  --krt-item-class-civilian: #5c84a8;
+  --krt-item-class-civilian-text: #97b6d3;
+  --krt-item-class-industrial: #a8643f;
+  --krt-item-class-industrial-text: #d79a78;
+  --krt-item-class-stealth: #9c6688;
+  --krt-item-class-stealth-text: #cb9bb9;
+  --krt-item-class-competition: #449c80;
+  --krt-item-class-competition-text: #80cbb2;
   --color-danger-text: #f2564b;
   --color-info-text: #6c93ef;
   --color-success-text: #2ebc3d;

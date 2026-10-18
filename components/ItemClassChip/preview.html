@@ -1,0 +1,37 @@
+<!-- @dsCard group="Components" height=230 width=700 subtitle="Item-class chips beside size and grade" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<style>
+  .specimen-surface { background: var(--color-bg-dark-gray); border: 1px solid var(--color-gray-3); padding: 16px; }
+  .ic-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .ic-name { font-weight: var(--fw-bold); color: var(--color-white); margin-right: 4px; }
+</style>
+</head>
+<body>
+  <p class="pv-label">Item class · size · grade</p>
+  <div class="specimen-surface">
+    <div class="ic-row">
+      <span class="chip chip--item-class-military">Militär</span>
+      <span class="chip chip--item-class-civilian">Zivil</span>
+      <span class="chip chip--item-class-industrial">Industrie</span>
+      <span class="chip chip--item-class-stealth">Stealth</span>
+      <span class="chip chip--item-class-competition">Wettkampf</span>
+    </div>
+    <div class="ic-row">
+      <span class="ic-name">FR-66</span>
+      <span class="chip chip--muted">Schild</span>
+      <span class="chip chip--data"><strong>S1</strong> · A</span>
+      <span class="chip chip--item-class-military">Militär</span>
+    </div>
+    <div class="ic-row">
+      <span class="ic-name">Spicule</span>
+      <span class="chip chip--muted">Quantenantrieb</span>
+      <span class="chip chip--data"><strong>S2</strong> · A</span>
+      <span class="chip chip--item-class-stealth">Stealth</span>
+    </div>
+  </div>
+</body>
+</html>
