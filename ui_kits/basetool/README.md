@@ -1,11 +1,11 @@
 # Profit Basetool — UI Kit
 
-An interactive, high-fidelity recreation of the **DAS KARTELL / IRIDIUM Profit
+An interactive, high-fidelity recreation of the **DAS KARTELL Profit
 Basetool** — the squadron-management web app. Built with React + Babel (in-browser)
 on top of the shared design tokens. It is a *cosmetic* recreation for prototyping:
 real layout, styling and click-through flow; fake data and no backend.
 
-> Source of truth: `krt-iri/basetool` · `frontend/.../templates/` + `static/css/styles.css`.
+> Source of truth: `krt-profit/basetool` · `frontend/.../templates/` + `static/css/styles.css`.
 > The live app is Thymeleaf server-rendered; this kit reproduces the look in React.
 
 ## Run it
@@ -47,6 +47,6 @@ Login → dashboard → navigate via the hamburger **sidebar drawer**:
 
 - Components are simplified cosmetic versions — not the app's real logic.
 - Department **tags use the official manual names** (Raumüberlegenheit, Forschung,
-  Sub-Radar, Marinekorps, Profit, Search & Rescue), not the shipped code's labels.
+  Sub-Radar, Marinekorps, Profit, Search & Rescue) as filled `.dept-tag--<slug>` chips.
 - Admin screens that depend on real data (UEX/Settings) are left as labelled stubs
   rather than invented — per "copy the design, don't reinvent it."

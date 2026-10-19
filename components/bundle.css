@@ -28,7 +28,7 @@
    A minimal reset so raw HTML already looks on-brand. Component CSS extends it.
    ============================================================================ */
 body {
-    background-color: var(--color-bg-black);
+    background-color: var(--surface-canvas);
     color: var(--color-gray-1);
     font-family: var(--font-body);
     font-weight: var(--fw-thin);
@@ -62,8 +62,7 @@ strong, b { font-weight: var(--fw-bold); }
 code, kbd, samp { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
 
 /* Form labels are neutral, not orange. The accent is reserved for ACTIONS and
-   identity — labels that shout in orange add noise and bury the input values.
-   (Changed 2026-06 alongside the action-hierarchy work.) */
+   identity — labels that shout in orange add noise and bury the input values. */
 label {
     display: block;
     color: var(--color-gray-1);
@@ -130,7 +129,7 @@ label {
     text-transform: uppercase;
     letter-spacing: 0.03em;
     border: none;
-    border-radius: var(--radius-none);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     text-decoration: none;
@@ -138,8 +137,7 @@ label {
 .btn:hover { background-color: var(--color-accent-light); color: var(--color-bg-black); }
 
 /* ----------------------------------------------------------------------------
-   ACTION HIERARCHY (added 2026-06 — fixes "everything is orange" on dense
-   pages like /missions/{id}). Reserve the filled orange accent for the ONE
+   ACTION HIERARCHY. Reserve the filled orange accent for the ONE
    primary action per context; demote routine + destructive actions.
 
    Ladder, strongest → quietest:
@@ -166,29 +164,27 @@ label {
     border: 1px solid var(--color-primary);
 }
 .btn-outline:hover {
-    background-color: rgba(231, 126, 35, 0.12);
+    background-color: rgba(251, 138, 40, 0.12);
     color: var(--color-accent-light);
     border-color: var(--color-accent-light);
 }
 
 /* Routine secondary — filled neutral control, lights up orange on hover. Use
    for repeated row actions (Edit, Check-Out), Filter/Reset, toolbar buttons.
-   2026-10: was transparent + #282828 border (1.42:1 on black — invisible as a
-   button). Now --control-bg fill + Grau-2 border (≥3:1 on canvas and panel). */
+   Control fill + Grau-2 border (≥3:1 on canvas and panel). */
 .btn-ghost {
     background-color: var(--control-bg);
     color: var(--control-fg);
     border: 1px solid var(--control-border);
 }
 .btn-ghost:hover {
-    background-color: rgba(231, 126, 35, 0.07);
+    background-color: rgba(251, 138, 40, 0.07);
     color: var(--color-primary);
     border-color: var(--color-primary);
 }
 
-/* Destructive, quiet — only commits to red on hover. 2026-10: same control
-   fill/border as ghost so it is recognisable as a button; text in the
-   accessible muted tint (Grau 2 #646464 as text fails AA). */
+/* Destructive, quiet — only commits to red on hover. Same control fill/border
+   as ghost so it is recognisable as a button; text in the muted text tint. */
 .btn-quiet-danger {
     background-color: var(--control-bg);
     color: var(--color-gray-2-text);
@@ -201,7 +197,7 @@ label {
 }
 
 .btn-secondary { background-color: var(--color-gray-3); color: var(--color-gray-1); border: 1px solid var(--control-border); }
-/* hover: was gray-2 fill with gray-1 text (≈3.7:1, fails AA) → orange border, white text */
+/* hover: orange border, white text */
 .btn-secondary:hover { background-color: var(--color-gray-3); color: var(--color-white); border-color: var(--color-primary); }
 
 .btn-danger { background-color: var(--color-danger); color: #fff; }
@@ -276,7 +272,7 @@ label {
     border: var(--border-hairline);
     position: relative;
     padding: 1rem;
-    background-color: rgba(20, 20, 20, 0.5);
+    background-color: var(--surface-panel);
 }
 .hud-box::before,
 .hud-box::after {
@@ -300,7 +296,7 @@ label {
     margin-bottom: 2rem;
     border-left: 4px solid var(--color-primary);
     padding: 0.5rem 0 0.5rem 1.5rem;
-    background: linear-gradient(90deg, rgba(20,20,20,1) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(90deg, var(--surface-panel) 0%, transparent 100%);
 }
 .greeting h1 { margin: 0; }
 .greeting p { color: var(--color-gray-1); font-size: 1.1rem; margin-top: 0.5rem; }
@@ -352,7 +348,7 @@ label {
 }
 .chip .krt-icon { width: 0.9em; height: 0.9em; }
 /* tone variants — border + text take the hue, fill stays a faint tint */
-.chip--primary { color: var(--color-primary);     border-color: var(--color-primary);     background-color: rgba(231,126,35,0.10); }
+.chip--primary { color: var(--color-primary);     border-color: var(--color-primary);     background-color: rgba(251, 138, 40,0.10); }
 .chip--success { color: var(--color-success);     border-color: var(--color-success);     background-color: rgba(35,158,51,0.12); }
 .chip--danger  { color: var(--color-danger-text); border-color: var(--color-danger);      background-color: rgba(163,0,10,0.15); }
 .chip--warning { color: var(--color-warning);     border-color: var(--color-warning);     background-color: rgba(255,210,63,0.12); }
@@ -389,7 +385,7 @@ td { color: var(--color-gray-1); }
 tbody tr { transition: background-color 0.2s ease; }
 tbody tr:nth-child(even) { background-color: rgba(255, 255, 255, 0.02); }
 /* hover must out-rank the stripe on even rows too (specificity 0,2,2). */
-tbody tr:hover, tbody tr:nth-child(even):hover { background-color: var(--color-gray-3); }
+tbody tr:hover, tbody tr:nth-child(even):hover { background-color: var(--control-bg); }
 
 /* ------------------------------------------------------ TREE TABLE ------- */
 /* Dense, hierarchical "tree table" for nested data (e.g. inventory:
@@ -463,7 +459,7 @@ tbody tr:hover, tbody tr:nth-child(even):hover { background-color: var(--color-g
    chips render non-clickable, no .assoc-add. */
 .assoc-split { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; }
 .assoc-chip { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.15rem 0.5rem; font-family: var(--font-body); font-weight: var(--fw-bold); font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid var(--color-gray-3); background-color: var(--color-surface-input); cursor: pointer; white-space: nowrap; }
-.assoc-chip--order { color: var(--color-primary); border-color: var(--color-primary); background-color: rgba(231,126,35,0.10); }
+.assoc-chip--order { color: var(--color-primary); border-color: var(--color-primary); background-color: rgba(251, 138, 40,0.10); }
 .assoc-chip--mission { color: var(--color-info); border-color: var(--color-info); background-color: rgba(53,93,220,0.15); }
 .assoc-chip__amt { color: var(--color-white); font-variant-numeric: tabular-nums; }
 .assoc-chip:hover, .assoc-chip:focus-visible { box-shadow: var(--glow-primary); outline: none; }
@@ -557,10 +553,10 @@ input[type="text"], input[type="search"], input[type="password"],
 input[type="email"], input[type="number"], input[type="url"],
 input[type="date"], input[type="time"], input[type="datetime-local"],
 select, textarea {
-    background-color: var(--color-surface-input);
+    background-color: var(--control-bg);
     color: var(--color-gray-1);
-    border: 1px solid var(--control-border);   /* 2026-10: was hairline #282828 (1.42:1) */
-    border-radius: var(--radius-none);
+    border: 1px solid var(--control-border);
+    border-radius: var(--radius-sm);
     padding: 0.5rem 0.75rem;
     font-family: var(--font-body);
     font-size: 1rem;
@@ -574,7 +570,7 @@ select {
     -webkit-appearance: none; appearance: none;
     min-height: 2.75rem;
     padding: 0.375rem 2rem 0.375rem 0.75rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23E77E23' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FB8A28' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.65rem center;
     background-size: 12px 8px;
@@ -598,7 +594,7 @@ input::placeholder, textarea::placeholder { color: var(--color-gray-2-text); fon
 
 input[type="checkbox"], input[type="radio"] {
     appearance: none; -webkit-appearance: none;
-    background-color: var(--color-surface-input);
+    background-color: var(--control-bg);
     border: 1px solid var(--control-border);
     width: 1.2rem; height: 1.2rem;
     cursor: pointer; display: inline-block;
@@ -657,6 +653,17 @@ input[type="radio"]:checked::after {
     text-transform: uppercase; letter-spacing: 0.08em;
     border: 1px solid currentColor;
 }
+/* Department tags are FILLED in the (unaltered) department colour: on the
+   gray surfaces several department hues are too dark as text or thin border.
+   Text colour per hue for ≥ 5.2:1. Plain .dept-tag (outline, currentColor)
+   is only for light department hues on the canvas. */
+.dept-tag[class*="dept-tag--"] { border-color: transparent; }
+.dept-tag--raumueberlegenheit, .dept-tag--combat   { background-color: var(--color-dept-raumueberlegenheit); color: #141414; }
+.dept-tag--forschung, .dept-tag--research          { background-color: var(--color-dept-forschung);          color: var(--color-white); }
+.dept-tag--sub-radar                               { background-color: var(--color-dept-sub-radar);          color: var(--color-white); }
+.dept-tag--marinekorps, .dept-tag--marine          { background-color: var(--color-dept-marinekorps);        color: var(--color-white); }
+.dept-tag--profit                                  { background-color: var(--color-dept-profit);             color: #141414; }
+.dept-tag--search-rescue                           { background-color: var(--color-dept-search-rescue);      color: #141414; }
 
 /* ----------------------------------------------------- STATUS PILL (rows) -- */
 .status-pill {
@@ -698,7 +705,7 @@ input[type="radio"]:checked::after {
 .notification-toast {
     position: relative;
     max-width: 400px;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: var(--surface-panel);
     border: 1px solid var(--color-primary);
     padding: 1.5rem;
     box-shadow: var(--glow-primary-lg);
@@ -859,7 +866,7 @@ input[type="radio"]:checked::after {
    white text + 3px orange underline; counts orange. Use role="tablist"/"tab"
    + aria-selected, arrow-key navigation, and sync the active tab with a
    ?tab=/#tab= deeplink. Specimen: components/TabNav/preview.html */
-.tab-nav { display: flex; border-bottom: var(--border-hairline); background-color: var(--color-bg-dark-gray); padding: 0 12px; overflow-x: auto; }
+.tab-nav { display: flex; border-bottom: var(--border-hairline); background-color: var(--surface-bar); padding: 0 12px; overflow-x: auto; }
 .tab-nav .tab {
     font-family: var(--font-body); font-weight: var(--fw-bold); text-transform: uppercase; letter-spacing: .06em;
     font-size: 0.72rem; color: var(--color-gray-2-text); padding: 11px 14px; border: none; background: none; cursor: pointer;
@@ -934,7 +941,7 @@ input[type="radio"]:checked::after {
 .status-dot { width: 8px; height: 8px; flex: none; display: inline-block; background: var(--color-gray-2); }
 .status-dot--on { background: var(--color-success); }
 .drop-zone { min-height: var(--touch-target); padding: 6px; display: flex; flex-direction: column; gap: 5px; }
-.drop-zone.is-over { outline: 2px dashed var(--color-primary); outline-offset: -4px; background: rgba(231,126,35,0.06); }
+.drop-zone.is-over { outline: 2px dashed var(--color-primary); outline-offset: -4px; background: rgba(251, 138, 40,0.06); }
 .drop-hint { border: 1px dashed var(--color-gray-3); color: var(--color-gray-2-text); font-size: 0.66rem; text-align: center; padding: 7px; font-style: italic; }
 .drop-zone.is-over .drop-hint { border-color: var(--color-primary); color: var(--color-primary); }
 
@@ -946,7 +953,7 @@ input[type="radio"]:checked::after {
     border: 1px solid var(--control-border);
     font-family: var(--font-body); font-weight: var(--fw-bold); font-size: 0.64rem; text-transform: uppercase; letter-spacing: .05em;
     padding: 4px 22px 4px 8px; max-width: 165px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath fill='%23E77E23' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath fill='%23FB8A28' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 7px center;
 }
 .chip-select:hover { border-color: var(--color-primary); color: var(--color-white); }
@@ -1013,7 +1020,7 @@ input[type="range"] { accent-color: var(--color-primary); }
    that always sum to the account balance. Two renderings:
    .holder-row — one row per holder with track bar + exact value (default for
    the account detail); .stack-bar — proportional single bar + legend (compact;
-   segment colors step through the accent shades #E77E23/#EEB64B/#C45C00). */
+   segment colors step through the accent shades #FB8A28/#EEB64B/#C45C00). */
 .holder-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--color-surface-input); }
 .holder-row:last-child { border-bottom: none; }
 .holder-row .holder-name { font-weight: var(--fw-bold); color: var(--color-white); font-size: 0.8rem; min-width: 80px; }
@@ -1039,7 +1046,7 @@ tr.is-inert td { opacity: .5; }
    (bank wipe reset): inside .krt-modal--danger, the confirm button stays
    disabled until the user types the confirm word. Everything else keeps the
    standard click-confirm modal. */
-.krt-modal .confirm-input { width: 100%; box-sizing: border-box; background: var(--color-surface-input); color: var(--color-gray-1); border: var(--border-hairline); padding: 7px 9px; font-size: 0.8rem; margin-top: 8px; font-family: var(--font-body); }
+.krt-modal .confirm-input { width: 100%; box-sizing: border-box; background: var(--control-bg); color: var(--color-gray-1); border: var(--border-hairline); padding: 7px 9px; font-size: 0.8rem; margin-top: 8px; font-family: var(--font-body); }
 .krt-modal .confirm-input:focus { border-color: var(--color-primary); outline: none; box-shadow: var(--glow-primary); }
 
 /* ====================================================================== */
@@ -1096,7 +1103,7 @@ tr.is-inert td { opacity: .5; }
 .ablauf .step:last-child { padding-bottom: 0; }
 /* connecting rail between tokens */
 .ablauf .step:not(:last-child)::before { content: ''; position: absolute; left: 14px; top: 30px; bottom: 0; width: 2px; background: var(--color-gray-3); }
-.ablauf .step-num { flex: 0 0 auto; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--color-gray-2); background: var(--color-bg-black); color: var(--color-gray-1); font-family: var(--font-headline); font-weight: var(--fw-bold); font-size: 0.9rem; font-variant-numeric: tabular-nums; position: relative; z-index: 1; }
+.ablauf .step-num { flex: 0 0 auto; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--color-gray-2); background: var(--surface-canvas); color: var(--color-gray-1); font-family: var(--font-headline); font-weight: var(--fw-bold); font-size: 0.9rem; font-variant-numeric: tabular-nums; position: relative; z-index: 1; }
 .ablauf .step-num::before { content: counter(ablauf); }
 .ablauf .step-body { display: flex; flex-direction: column; gap: 0.15rem; padding-top: 0.25rem; min-width: 0; }
 .ablauf .step-title { color: var(--color-white); font-weight: var(--fw-bold); }
@@ -1112,12 +1119,9 @@ tr.is-inert td { opacity: .5; }
 .ablauf .step--now .step-title { color: var(--color-primary); }
 
 /* ====================================================================== */
-/* SYNC 2026-07 — shared components ported from the live product           */
-/* (krt-profit/basetool · static/css/styles.css). Reusable patterns that   */
-/* had grown up in the app and were missing from the design system: async  */
-/* feedback, collaborative presence, multi-select + searchable filters,    */
-/* the SCU hint tooltip, and rendered-Markdown prose. Class names match     */
-/* the product 1:1 so markup stays portable in both directions.            */
+/* SHARED APP COMPONENTS — async feedback, collaborative presence,        */
+/* multi-select + searchable filters, the SCU hint tooltip and rendered    */
+/* Markdown prose. Class names match the product 1:1.                      */
 /* ====================================================================== */
 
 /* ------------------------------------------------- LOADING INDICATOR ----- */
@@ -1149,11 +1153,11 @@ tr.is-inert td { opacity: .5; }
 
 /* ------------------------------------------- MULTI-SELECT DROPDOWN ------- */
 /* Custom multi-select filter (inventory, materials-overview): a HUD field
-   that opens a checkbox option list. Square, #1C1C1C fill, orange ▼ chevron.
+   that opens a checkbox option list. Control fill, orange ▼ chevron.
    The options popover sits above the fixed footer (z-index 1100). JS toggles
    .open on .multi-select-options. */
 .multi-select-container { position: relative; min-width: 200px; font-family: var(--font-body); }
-.multi-select-header { padding: var(--space-2); background-color: var(--color-surface-input); border: var(--border-hairline); color: var(--color-gray-1); cursor: pointer; display: flex; justify-content: space-between; align-items: center; min-height: var(--touch-target); user-select: none; transition: border-color 0.2s; box-sizing: border-box; }
+.multi-select-header { padding: var(--space-2); background-color: var(--control-bg); border: var(--border-hairline); color: var(--color-gray-1); cursor: pointer; display: flex; justify-content: space-between; align-items: center; min-height: var(--touch-target); user-select: none; transition: border-color 0.2s; box-sizing: border-box; }
 .multi-select-header:hover { border-color: var(--color-primary); }
 .multi-select-header::after { content: '\25BC'; font-size: 0.7em; margin-left: var(--space-2); color: var(--color-primary); }
 .multi-select-header .selected-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
@@ -1174,7 +1178,7 @@ tr.is-inert td { opacity: .5; }
 .autocomplete-items div:hover { background-color: var(--color-gray-3); color: var(--color-primary); }
 .autocomplete-active { background-color: var(--color-primary) !important; color: var(--color-bg-black) !important; }
 .krt-combobox { position: relative; width: 100%; }
-.krt-combobox .krt-combobox__input { width: 100%; padding: 0.75rem var(--space-8) 0.75rem 0.75rem; cursor: text; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23E77E23' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.65rem center; background-size: 12px 8px; }
+.krt-combobox .krt-combobox__input { width: 100%; padding: 0.75rem var(--space-8) 0.75rem 0.75rem; cursor: text; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23FB8A28' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.65rem center; background-size: 12px 8px; }
 .krt-combobox__listbox { position: absolute; top: 100%; left: 0; right: 0; z-index: 99; max-height: 18rem; margin: 0; padding: 0; overflow-y: auto; list-style: none; background-color: var(--color-bg-dark-gray); border: var(--border-accent); border-top: none; box-shadow: var(--shadow-dropdown); }
 .krt-combobox__listbox[hidden] { display: none; }
 .krt-combobox__listbox--above { border-top: var(--border-accent); border-bottom: none; }
@@ -1237,7 +1241,7 @@ tr.is-inert td { opacity: .5; }
 /* Schwester von .krt-modal (das für Form-/Detail-Modals bleibt).          */
 /* ====================================================================== */
 .krt-confirm-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: flex; align-items: center; justify-content: center; z-index: 10000; padding: var(--space-4); }
-.krt-confirm-dialog { background: var(--color-bg-dark-gray); border: var(--border-accent); max-width: 480px; width: 100%; padding: var(--space-6); color: var(--color-gray-1); font-family: var(--font-body); box-shadow: 0 0 24px rgba(231,126,35,0.35); }
+.krt-confirm-dialog { background: var(--color-bg-dark-gray); border: var(--border-accent); max-width: 480px; width: 100%; padding: var(--space-6); color: var(--color-gray-1); font-family: var(--font-body); box-shadow: 0 0 24px rgba(251, 138, 40,0.35); }
 .krt-confirm-title { font-family: var(--font-headline); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary); margin: 0 0 var(--space-3); font-size: 1.05rem; }
 .krt-confirm-message { margin: 0 0 1.25rem; line-height: 1.4; font-weight: var(--fw-thin); }
 .krt-confirm-actions { display: flex; gap: var(--space-3); justify-content: flex-end; }
@@ -1288,15 +1292,14 @@ body:not(.admin-mode) .admin-mode-chip { display: none; }
 /* Fixer Seiten-Footer (von sidebar.html-JS injiziert). z-index unter Header
    (1000), Drawer (2000), Modals (3000), Toasts (9999). <main> reserviert Platz
    via padding-bottom: calc(var(--krt-footer-height, 5rem) + 5rem). */
-.krt-footer { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; padding: var(--space-4) var(--space-8); background-color: var(--color-bg-dark-gray); border-top: var(--border-hairline); color: var(--color-gray-2-text); font-size: var(--fs-xs); display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; }
+.krt-footer { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; padding: var(--space-4) var(--space-8); background-color: var(--surface-bar); border-top: var(--border-hairline); color: var(--color-gray-2-text); font-size: var(--fs-xs); display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; justify-content: space-between; }
 .krt-footer-links { display: flex; gap: var(--space-4); flex-wrap: wrap; }
 .krt-footer-links a, .krt-footer-meta a { color: var(--color-gray-1); text-decoration: none; }
 .krt-footer-links a:hover, .krt-footer-meta a:hover { color: var(--color-primary); }
 .krt-footer-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
 .krt-footer-github { display: inline-flex; align-items: center; padding: var(--space-1); }
 .krt-footer-github .krt-icon { width: 1.25em; height: 1.25em; }
-/* Version in gray-1, NICHT gray-2: #646464 auf #141414 ist ~3.1:1 und reißt AA
-   bei dieser Größe (#441); sekundär wirkt sie über die kleine Mono-Größe. */
+/* Version in gray-1: it reads as secondary through its small size. */
 .krt-footer-version { color: var(--color-gray-1); font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 0.75rem; }
 @media (width <= 768px) { .krt-footer { flex-direction: column; align-items: flex-start; } }
 /* Star-Citizen-Fan-Kit-Band — am Ende des Home-<main> (REQ-UI-018), NICHT im
@@ -1308,17 +1311,12 @@ body:not(.admin-mode) .admin-mode-chip { display: none; }
 
 
 /* ====================================================================== */
-/* LIST PAGE — Lesbarkeit & Gruppierung (2026-10)                          */
-/* Problem: Segment-Umschalter (Kommend/Vergangen/Alle), Filter-Button und */
-/* Titel-Zähler standen als schwarze Kästen mit #282828-Haarlinie direkt   */
-/* auf dem schwarzen Canvas — kaum als Bedienelement erkennbar. Lösung:    */
-/* 1) jedes Bedienelement hat Füllung + Grau-2-Rand (--control-*),         */
-/* 2) Toolbar + Tabelle + Fußzeile liegen gemeinsam auf EINER              */
-/*    Arbeitsfläche (.list-panel, #141414) und lesen sich als Einheit,     */
-/* 3) Auswahlzustände sind eindeutig (Tönung + Rand + Unterstrich),        */
-/*    nie als gefüllter Orange-Block (der ist für die CTA reserviert).     */
+/* LIST PAGE                                                              */
+/* 1) every control has a fill + Grau-2 border (--control-*),             */
+/* 2) toolbar + table + footer sit together on ONE panel (.list-panel),   */
+/* 3) selection = tint + border + underline, never a filled orange block  */
+/*    (that is reserved for the CTA).                                     */
 /* Specimen: components/ListPanel/preview.html                            */
-/* Mock:     proposals/list-page-readability.html                          */
 /* ====================================================================== */
 
 /* ---------------------------------------------------------- PAGE HEAD --- */
@@ -1330,13 +1328,12 @@ body:not(.admin-mode) .admin-mode-chip { display: none; }
 .page-head__actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
 
 /* -------------------------------------------------------- COUNT BADGE --- */
-/* Gesamtzahl neben einem Titel ("Einsatzverwaltung 3"). Gefülltes neutrales
-   Quadrat, weiße fette Ziffern (14.7:1 auf #282828). Kein Rahmen-auf-Schwarz.
-   Die Zahl ist Information, keine Aktion → nicht orange. */
+/* Total next to a title ("Einsatzverwaltung 3"). Filled #374256, white bold
+   digits (10:1). The number is information, not an action → not orange. */
 .count-badge {
     display: inline-flex; align-items: center; justify-content: center;
     min-width: 2em; height: 1.6em; padding: 0 0.5em;
-    background-color: var(--surface-raised);
+    background-color: var(--color-count-badge);
     color: var(--color-white);
     font-family: var(--font-body); font-weight: var(--fw-bold);
     font-size: 0.5em;            /* relativ zum Titel: h1 2rem → 1rem */
@@ -1348,12 +1345,12 @@ body:not(.admin-mode) .admin-mode-chip { display: none; }
 .count-badge--sm { font-size: var(--fs-xs); }
 
 /* ------------------------------------------------------- LIST PANEL ----- */
-/* Die Arbeitsfläche einer Listen-Seite: Toolbar, Tabelle und Fußzeile auf
-   EINER #141414-Fläche mit Haarlinien-Rahmen. Ersetzt "Toolbar schwebt auf
-   Schwarz + separate Tabelle". Die Tabelle sitzt bündig (kein eigener Rand). */
+/* The working surface of a list page: toolbar, table and footer on ONE panel
+   with a hairline frame. The table sits flush (no own border). */
 .list-panel {
     background-color: var(--surface-panel);
     border: var(--border-hairline);
+    border-radius: var(--radius-sm);   /* kein overflow:hidden — Filter-Popover/Autocomplete dürfen herausragen */
 }
 .list-panel__toolbar {
     display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap;
@@ -1446,13 +1443,13 @@ body:not(.admin-mode) .admin-mode-chip { display: none; }
 .filter-chip {
     display: inline-flex; align-items: center; gap: 0.45rem;
     min-height: 28px; padding: 0 0.3rem 0 0.6rem;
-    background-color: rgba(231,126,35,0.10);
+    background-color: rgba(251, 138, 40,0.10);
     border: 1px solid var(--color-primary); color: var(--color-primary);
     font-family: var(--font-body); font-weight: var(--fw-bold); font-size: var(--fs-2xs);
     text-transform: uppercase; letter-spacing: 0.06em;
 }
 .filter-chip__remove { all: unset; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; color: var(--color-gray-1); }
-.filter-chip__remove:hover { color: var(--color-white); background-color: rgba(231,126,35,0.25); }
+.filter-chip__remove:hover { color: var(--color-white); background-color: rgba(251, 138, 40,0.25); }
 .filter-chip__remove:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 0; }
 
 /* ------------------------------------------------------------- SWITCH --- */
@@ -1474,3 +1471,20 @@ body:not(.admin-mode) .admin-mode-chip { display: none; }
 .krt-switch input[type="checkbox"]:checked { background-color: var(--color-primary); border-color: var(--color-primary); }
 .krt-switch input[type="checkbox"]:checked::after { content: ''; left: calc(100% - (1.5rem - 8px) - 3px); top: 3px; background-color: var(--color-bg-black); transform: none; }
 .krt-switch input[type="checkbox"]:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+/* ===================================================================== */
+/* RADIUS — controls and surfaces use 4 px (--radius-sm). Pills, circles,  */
+/* table cells, accent bars and gauges keep their own shape. HUD brackets */
+/* sit on the corners.                                                    */
+/* ===================================================================== */
+.card, .hud-box, .krt-modal, .krt-confirm-dialog, .alert, .chip, .assoc-chip,
+.dept-tag, .status-badge, .admin-mode-chip, .count-badge, .filter-count, .filter-chip,
+.chip-select, .krt-segmented, .pagination .page-btn, .panel-header, .data-value,
+.multi-select-header, .multi-select-options, .autocomplete-items, .krt-combobox__listbox,
+.empty-state, .kpi-card, .kpi-total, .master-list, .detail-pane, .tree-table,
+.person-row, .drop-zone, .drop-hint, .annotation, .tree-note-box, .facts-bar,
+.markdown-content pre, .krt-switch input[type="checkbox"], .matrix-flag {
+    border-radius: var(--radius-sm);
+}
+input[type="checkbox"] { border-radius: 2px; }
+.krt-switch input[type="checkbox"]::after { border-radius: 2px; }
