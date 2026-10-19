@@ -658,12 +658,12 @@ input[type="radio"]:checked::after {
    Text colour per hue for ≥ 5.2:1. Plain .dept-tag (outline, currentColor)
    is only for light department hues on the canvas. */
 .dept-tag[class*="dept-tag--"] { border-color: transparent; }
-.dept-tag--raumueberlegenheit, .dept-tag--combat   { background-color: var(--color-dept-raumueberlegenheit); color: #141414; }
+.dept-tag--raumueberlegenheit, .dept-tag--combat   { background-color: var(--color-dept-raumueberlegenheit); color: var(--color-bg-black); }
 .dept-tag--forschung, .dept-tag--research          { background-color: var(--color-dept-forschung);          color: var(--color-white); }
 .dept-tag--sub-radar                               { background-color: var(--color-dept-sub-radar);          color: var(--color-white); }
 .dept-tag--marinekorps, .dept-tag--marine          { background-color: var(--color-dept-marinekorps);        color: var(--color-white); }
-.dept-tag--profit                                  { background-color: var(--color-dept-profit);             color: #141414; }
-.dept-tag--search-rescue                           { background-color: var(--color-dept-search-rescue);      color: #141414; }
+.dept-tag--profit                                  { background-color: var(--color-dept-profit);             color: var(--color-bg-black); }
+.dept-tag--search-rescue                           { background-color: var(--color-dept-search-rescue);      color: var(--color-bg-black); }
 
 /* ----------------------------------------------------- STATUS PILL (rows) -- */
 .status-pill {
