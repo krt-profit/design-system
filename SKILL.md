@@ -7,7 +7,7 @@ user-invocable: true
 Read the `README.md` file within this skill, and explore the other available files.
 
 This is a dark, sci-fi "technical HUD" brand for a Star Citizen org: house orange
-`#FB8A28` on a dark gray canvas (`#202020`, panels `#35393D`, bars `#2A2D31` — the
+`#E77E23` on a dark gray canvas (`#0F0F0F`, panels `#282C30`, bars `#1A1D21` — the
 surfaces of das-kartell.org), a single typeface **Lato** (headlines = bold + UPPERCASE,
 body Light 300 / Bold 700), controls and panels with a **4 px radius**, diagonal corner
 brackets on the `.hud-box`, and a fixed department color system.
@@ -36,13 +36,13 @@ or design, ask some clarifying questions, and act as an expert designer who outp
 artifacts _or_ production code, depending on the need.
 
 Key brand rules (see `README.md` for the full content + visual foundations):
-- Surfaces: canvas `#202020` → panel `#35393D` (lists, cards, modals) → inset `#202020`;
-  bars (header, footer, tab bar, table head) `#2A2D31`. `#000` is never a page background.
+- Surfaces: canvas `#0F0F0F` → panel `#282C30` (lists, cards, modals) → inset `#0F0F0F`;
+  bars (header, footer, tab bar, table head) `#1A1D21`. `#000` is never a page background.
 - Color is functional and sparing — one hero orange; department/semantic hues only as
   tags, row tints and status. Text on orange is always dark (`#141414`/`#000`), never white.
 - Colour used AS TEXT takes the text tints: `--color-danger-text` `#FF7A70`,
   `--color-info-text` `#8FB2F5`, `--color-success-text` `#4CCB5C`, muted
-  `--color-gray-2-text` `#B0B3B7`; the canonical hues stay for fills/borders.
+  `--color-gray-2-text` `#A2A5A9`; the canonical hues stay for fills/borders.
 - Department colors (`#37BBC0`, `#355DDC`, `#A3000A`, `#7A5E96`, `#239E33`, `#FFD23F`)
   are prescribed and never altered; department tags are filled chips
   (`.dept-tag--<slug>`) with dark or white text.
@@ -51,8 +51,8 @@ Key brand rules (see `README.md` for the full content + visual foundations):
   `.btn-quiet-danger`. Orange is for action + identity, never for plain data values or
   form labels (labels are neutral gray; data uses `.data-value`).
 - Every non-CTA control (ghost/quiet buttons, inputs, segmented control, pagination,
-  switch) has a fill `--control-bg` `#3F474C` and a border `--control-border` `#8F9399`.
-  The `#404145` hairline is decoration only. Selected = orange tint + underline, never a
+  switch) has a fill `--control-bg` `#373E43` and a border `--control-border` `#8F9399`.
+  The `#36373B` hairline is decoration only. Selected = orange tint + underline, never a
   solid orange block.
 - Radius: 4 px (`--radius-sm`) on controls and surfaces; pills only for squadron badges;
   circles for radio and dots.

@@ -22,7 +22,7 @@ Semantik/Action-Hierarchie) plus ein paar UX-Feinheiten — keine groben Fehler.
 
 | Bereich | Status | Beleg |
 | :-- | :-- | :-- |
-| Hausfarben | ✅ exakt | `:root` in beiden Dateien: `#FB8A28`, Grau 1–4, Akzente |
+| Hausfarben | ✅ exakt | `:root` in beiden Dateien: `#E77E23`, Grau 1–4, Akzente |
 | Eckig | ✅ | `border-radius: 0 !important` auf Inputs/Buttons/Checkboxen/Cards |
 | HUD-Eckklammern | ✅ | `.login-container::before/::after` (+ PF-Card-Fallback `:not(:has(.login-container))`) |
 | Dunkler Grund | ✅ | Hard-Reset entfernt PF-Grid/-Weiß/-Bild (v5/v6/legacy) |

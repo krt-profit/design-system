@@ -8,7 +8,7 @@ and a fixed department color system.
 
 > **In one line:** a dark space-organization HUD — geometric, built from *rings
 > (planets)* and *triangles (ships/stars)*, lit by a single signature orange
-> `#FB8A28`, on the same gray surfaces as das-kartell.org.
+> `#E77E23`, on the same dark gray surfaces as das-kartell.org.
 
 ---
 
@@ -23,8 +23,10 @@ and a fixed department color system.
 - **GitHub — `krt-profit/basetool-sc-extractor`** · <https://github.com/krt-profit/basetool-sc-extractor>
   Desktop extractor (Compose Desktop), KRT theme in `src/main/kotlin/.../ui/Theme.kt`.
 - **GitHub — `krt-profit/design-system`** · this project.
-- **das-kartell.org** — the org website. The house orange, the surface grays and the
-  4 px radius are taken from its member area.
+- **das-kartell.org** — the org website. The surface grays, the text colours and the 4 px
+  radius are taken from it, measured as computed CSS values in the browser (DevTools / the
+  colour picker). Never measure colours from screenshots: with Windows HDR on, the Snipping
+  Tool lifts dark grays and the orange, and the values come out wrong.
 - **Corporate Design Manual V2** (`uploads/KRT_Styleguide_V2.pdf`, *Restricted —
   internal use only*). Authoritative for the logo, the typeface and the
   **Bereichsfarben** (department colors).
@@ -59,39 +61,39 @@ All values live in [`tokens.json`](tokens.json) → [`tokens.css`](tokens.css).
 
 | Role | Token | Hex | Use |
 | :-- | :-- | :-- | :-- |
-| Hausfarbe (house orange) | `--color-primary` | `#FB8A28` | CTA fill, headings, links, focus, HUD brackets, 2 px header/table rule |
-| Zierfarbe hell | `--color-accent-light` | `#EEB64B` | hover of every orange element |
+| Hausfarbe (house orange) | `--color-primary` | `#E77E23` | CTA fill, headings, links, focus, HUD brackets, 2 px header/table rule; the same orange the website uses |
+| Zierfarbe hell | `--color-accent-light` | `#EEB64B` | hover of every orange element; orange-family text on control fills |
 | Zierfarbe dunkel | `--color-accent-dark` | `#C45C00` | admin-mode chrome, deep accents (not as text) |
-| Schwarz | `--color-bg-black` | `#000000` | text on orange (8.8 : 1) and on the light department fills, shadows — **not** a page background |
+| Schwarz | `--color-bg-black` | `#000000` | text on orange (7.4 : 1) and on the light department fills, shadows — **not** a page background |
 | Weiß | `--color-white` | `#FFFFFF` | data values, selected-control text, text on dark fills |
 
-**Text on orange is always dark.** White on `#FB8A28` reaches only 2.4 : 1 and is not allowed.
+**Text on orange is always dark.** White on `#E77E23` reaches only 2.8 : 1 and is not allowed.
 
 ### Surfaces & neutrals
 
 | Role | Token | Hex | Use |
 | :-- | :-- | :-- | :-- |
-| Canvas | `--color-canvas` → `--surface-canvas` | `#202020` | page background, page head, inset boxes inside a panel (`--surface-inset`) |
-| Leiste (bar) | `--color-surface-input` → `--surface-bar` | `#2A2D31` | header, footer, tab bar, table head, inset fields (code, meters, facts bar) |
-| Panel (Grau 4) | `--color-gray-4` / `--color-bg-dark-gray` → `--surface-panel` | `#35393D` | cards, tables, `.list-panel`, modals, sidebar, toasts |
-| Control | `--color-control` → `--control-bg` | `#3F474C` | resting fill of every non-CTA control; table-row hover |
-| Control hover | `--color-control-hover` → `--control-bg-hover` | `#4A535A` | hover fill of controls and segments |
-| Trennlinie (Grau 3) | `--color-gray-3` → `--surface-raised` | `#404145` | decorative hairlines and panel frames only; `.btn-secondary` fill |
-| Control-Rand (Grau 2) | `--color-gray-2` → `--control-border` | `#8F9399` | border of every control (3.8 : 1 on panel), scrollbar thumb, status dots |
-| Zähler-Badge | `--color-count-badge` | `#374256` | title counter `.count-badge`, white digits 10 : 1 |
-| Text (Grau 1) | `--color-gray-1` | `#DADBDE` | body text, labels, table text |
-| Gedämpfter Text | `--color-gray-2-text` | `#B0B3B7` | hints, placeholders, field caps, units, inactive tabs |
+| Canvas | `--color-canvas` → `--surface-canvas` | `#0F0F0F` | page background, page head, inset boxes inside a panel (`--surface-inset`) |
+| Leiste (bar) | `--color-surface-input` → `--surface-bar` | `#1A1D21` | header, footer, tab bar, table head, inset fields (code, meters, facts bar) |
+| Panel (Grau 4) | `--color-gray-4` / `--color-bg-dark-gray` → `--surface-panel` | `#282C30` | cards, tables, `.list-panel`, modals, sidebar, toasts |
+| Control | `--color-control` → `--control-bg` | `#373E43` | resting fill of every non-CTA control; table-row hover |
+| Control hover | `--color-control-hover` → `--control-bg-hover` | `#434B51` | hover fill of controls and segments |
+| Trennlinie (Grau 3) | `--color-gray-3` → `--surface-raised` | `#36373B` | decorative hairlines and panel frames only; `.btn-secondary` fill |
+| Control-Rand (Grau 2) | `--color-gray-2` → `--control-border` | `#8F9399` | border of every control (4.6 : 1 on panel, 3.5 : 1 on a control fill), scrollbar thumb, status dots |
+| Zähler-Badge | `--color-count-badge` | `#2F394C` | title counter `.count-badge`, white digits 11.6 : 1 |
+| Text (Grau 1) | `--color-gray-1` | `#D1D2D3` | body text, labels, table text |
+| Gedämpfter Text | `--color-gray-2-text` | `#A2A5A9` | hints, placeholders, field caps, units, inactive tabs |
 
 Contrast of the text tokens:
 
-| Text | Canvas `#202020` | Bar `#2A2D31` | Panel `#35393D` | Control `#3F474C` |
+| Text | Canvas `#0F0F0F` | Bar `#1A1D21` | Panel `#282C30` | Control `#373E43` |
 | :-- | --: | --: | --: | --: |
-| `#DADBDE` text | 11.8 | 10.0 | 8.4 | 6.8 |
-| `#B0B3B7` muted | 7.7 | 6.6 | 5.5 | 4.5 |
-| `#FFFFFF` data | 16.3 | 13.8 | 11.6 | 9.5 |
-| `#FB8A28` orange | 6.8 | 5.8 | 4.9 | 4.0 (bold/large only) |
+| `#D1D2D3` text | 12.7 | 11.2 | 9.3 | 7.2 |
+| `#A2A5A9` muted | 7.7 | 6.8 | 5.7 | 4.4 (bold/large only) |
+| `#FFFFFF` data | 19.2 | 16.9 | 14.1 | 10.9 |
+| `#E77E23` orange | 6.8 | 6.0 | 5.0 | 3.8 (bold/large only; small text takes `--color-accent-light`, 5.9) |
 
-Muted text is not used on the control-hover fill (3.7 : 1) — hovered controls switch
+Muted text is not used on the control-hover fill (3.6 : 1) — hovered controls switch
 their text to Grau 1 or white.
 
 ### Bereichsfarben (departments)
@@ -110,7 +112,7 @@ altered**, and never used for the logo.
 
 On the gray surfaces several department hues are too dark to be read as text or as a
 thin border, so a department tag is a **filled** chip in the department color with the
-text color from the table (all ≥ 5.2 : 1): `.dept-tag.dept-tag--<slug>`. Aliases
+text color from the table (all ≥ 5.4 : 1): `.dept-tag.dept-tag--<slug>`. Aliases
 `--color-dept-combat` / `-research` / `-marine` (and the matching tag modifiers) resolve
 to Raumüberlegenheit / Forschung / Marinekorps.
 
@@ -119,7 +121,7 @@ to Raumüberlegenheit / Forschung / Marinekorps.
 Fills and borders reuse the department values: danger `#A3000A`, success `#239E33`,
 warning `#FFD23F`, info `#355DDC`. **As text** use the text tints:
 `--color-danger-text` `#FF7A70`, `--color-success-text` `#4CCB5C`,
-`--color-info-text` `#8FB2F5` (all ≥ 4.6 : 1 on the panel).
+`--color-info-text` `#8FB2F5` (all ≥ 5.5 : 1 on the panel).
 
 ### Planet-system tints
 
@@ -159,8 +161,8 @@ only** — never status, department or action.
 **Item-class tints** — the categorical palette of a ship component's class, the in-game
 „Military / Civilian / Industrial / Stealth / Competition" label shown beside size and grade. The
 `--krt-item-class-<c>` hue is the chip border and, mixed to 15 %, its fill; the
-`--krt-item-class-<c>-text` tint is the label (≥ 4.6:1 on its fill over a panel and over the
-row hover `--control-bg`, ≥ 7.5:1 over the canvas). The hues are muted on purpose, so they never read as a status, a department or an
+`--krt-item-class-<c>-text` tint is the label (≥ 6.5:1 on its fill over a panel, ≥ 5.1:1 over the
+row hover `--control-bg`, ≥ 8.9:1 over the canvas). The hues are muted on purpose, so they never read as a status, a department or an
 action — and they carry **item-class identity only**. A class chip always shows its translated
 label: the colour is a second cue, never the only one.
 
@@ -184,17 +186,17 @@ class gets no class chip. Specimen: `components/ItemClassChip/preview.html`.
 
 | Token | Value | Role |
 | :-- | :-- | :-- |
-| `--surface-canvas` | `#202020` | page background; page head (eyebrow, title, CTA) |
-| `--surface-bar` | `#2A2D31` | header, footer, tab bar, table head |
-| `--surface-panel` | `#35393D` | working surface: `.list-panel` holds toolbar + table + footer together; cards, modals |
-| `--surface-inset` | `#202020` | a box set *into* a panel (HUD box, module tile) |
-| `--surface-raised` | `#404145` | `.btn-secondary` fill |
+| `--surface-canvas` | `#0F0F0F` | page background; page head (eyebrow, title, CTA) |
+| `--surface-bar` | `#1A1D21` | header, footer, tab bar, table head |
+| `--surface-panel` | `#282C30` | working surface: `.list-panel` holds toolbar + table + footer together; cards, modals |
+| `--surface-inset` | `#0F0F0F` | a box set *into* a panel (HUD box, module tile) |
+| `--surface-raised` | `#36373B` | `.btn-secondary` fill |
 
-**Rule 2 — every control has a fill and a visible border.** `--control-bg` `#3F474C`,
-`--control-border` `#8F9399` (3.8 : 1 on the panel, 5.3 : 1 on the canvas), text
+**Rule 2 — every control has a fill and a visible border.** `--control-bg` `#373E43`,
+`--control-border` `#8F9399` (4.6 : 1 on the panel, 6.2 : 1 on the canvas), text
 `--control-fg` = Grau 1. Applies to `.btn-ghost`, `.btn-quiet-danger`, inputs/selects,
 checkbox/radio, pagination, `.chip-select`, `.krt-segmented`, `.krt-switch`. The
-hairline `#404145` is decoration only (table rows, panel frames), never a control border.
+hairline `#36373B` is decoration only (table rows, panel frames), never a control border.
 
 **Rule 3 — selection is not a CTA.** A selected segment/view is never filled orange.
 Selected = `--control-selected-bg` (orange tint) + orange border + 3 px orange underline
@@ -212,7 +214,7 @@ List-page building blocks (`krt-components.css`, block „LIST PAGE"):
 | Class | Purpose |
 | :-- | :-- |
 | `.page-head` (`__eyebrow`, `__title`, `__actions`) | page head: area, title, one CTA |
-| `.count-badge` | total next to the title — filled `#374256`, white digits |
+| `.count-badge` | total next to the title — filled `#2F394C`, white digits |
 | `.list-panel` (`__toolbar`, `__search`, `__chips`, `__footer`) | working surface grouping toolbar, table, footer |
 | `.krt-segmented` (`__item`, `__count`) | period/status/view switch; active via `aria-current` / `aria-pressed` / `aria-checked` |
 | `.btn.is-filtered` + `.filter-count` | filter button with active filters; square count badge |
@@ -272,6 +274,10 @@ instead of nested tables:
 - **Leaf controls** sit in `.tree-leaf-main`, spanning the name/context/quality columns.
 - **Actions** use `.btn-xs`; `.tree-cell--actions` has a left gutter. One emphasized action per row.
 - **Notes render only when a note exists** — an indented `.tree-note` block (~80ch).
+- **One width for header and rows:** the table is never narrower than its columns
+  (`min-width: min-content`), and the header row carries the bar fill and the orange rule, so
+  header and rows always end at the same edge. In a narrow container wrap it in
+  `.hud-scroll.scroll-x`.
 
 Specimen: `components/TreeTable/preview.html`.
 
@@ -353,6 +359,9 @@ Specimens: `components/KpiCard/preview.html`, `components/BankPatterns/preview.h
   and **searchable combobox** `.krt-combobox*` (type-to-filter with `<mark>` matches,
   flip-up `--above`, notice rows, `__option--clear`, `__label`).
   Specimen: `components/FilterSearch/preview.html`.
+- **Number inputs** keep their up/down buttons as a separate block: `--space-2` (8 px) gap
+  between the value and the buttons, a Grau-2 divider, buttons 1.5rem wide, orange on hover.
+  The value never touches the buttons. Firefox shows no spinner (arrow keys still work).
 - **SCU hint** `.scu-hint` + `.scu-hint__bubble` — the inline-help idiom („?" disc → HUD tooltip).
 
 ### Feedback & presence
@@ -419,27 +428,27 @@ action → icon dictionary in [`proposals/button-icons-guidelines.md`](proposals
 
 ## Visual foundations
 
-- **Palette.** `#202020` canvas, `#35393D` panels, `#2A2D31` bars, text `#DADBDE`. One
-  accent — house orange `#FB8A28` — for headings, links, focus and the primary action.
+- **Palette.** `#0F0F0F` canvas, `#282C30` panels, `#1A1D21` bars, text `#D1D2D3`. One
+  accent — house orange `#E77E23` — for headings, links, focus and the primary action.
   Department/semantic hues appear only as tags, row tints and status.
 - **Type.** One typeface: **Lato**. Headlines uppercase, bold 700/900, tracking `0.05em`,
   orange. Body Lato Light 300, Bold 700 for emphasis/labels, Grau 1.
 - **Backgrounds.** Flat canvas; no photographic heroes in-app. Optional technical markers:
   a faint orange 24 px HUD grid, a soft radial orange bloom (login). The `.greeting`
   banner fades panel → transparent; gradients are otherwise avoided.
-- **Containers.** `.list-panel` / `.card` on the panel surface with a `#404145` hairline
+- **Containers.** `.list-panel` / `.card` on the panel surface with a `#36373B` hairline
   and 4 px radius. The signature **`.hud-box`** adds two diagonal orange corner brackets
   (top-left, bottom-right) via `::before` / `::after`.
 - **Radius.** 4 px (`--radius-sm`) on controls and surfaces; pills only for squadron
   badges; circles for radio and dots; square table cells and accent bars.
-- **Borders.** Decorative hairlines `1px #404145`; control borders `1px #8F9399`; accent
-  borders `1px #FB8A28`; headings and table heads on a **2 px orange** rule; alerts with a
+- **Borders.** Decorative hairlines `1px #36373B`; control borders `1px #8F9399`; accent
+  borders `1px #E77E23`; headings and table heads on a **2 px orange** rule; alerts with a
   4 px left border in the status color over a 20 % tint.
 - **Elevation.** No soft drop shadows for depth. The only glow is the orange bloom —
   `--glow-primary` (focus, CTA) and `--glow-primary-lg` (toasts, modals). Drawers and
   dropdowns use plain dark shadows for separation.
-- **Hover.** Orange elements lighten to `#EEB64B`; controls fill to `#4A535A`; table rows
-  fill to `#3F474C`; sidebar links shift right and turn orange.
+- **Hover.** Orange elements lighten to `#EEB64B`; controls fill to `#434B51`; table rows
+  fill to `#373E43`; sidebar links shift right and turn orange.
 - **Focus.** `:focus-visible` → 2 px orange outline, 2 px offset (white on the orange CTA).
 - **Motion.** `0.2s` color/background transitions; sidebar drawer `0.4s
   cubic-bezier(0.4,0,0.2,1)`; toast translate + fade `0.5s`. No bounces or parallax;
@@ -447,9 +456,9 @@ action → icon dictionary in [`proposals/button-icons-guidelines.md`](proposals
 - **Scrim & blur.** Overlays `rgba(0,0,0,0.75–0.8)` + `backdrop-filter: blur(4px)`; the
   squadron context chip uses `blur(2px)`.
 - **Tables.** Panel body, uppercase Grau-1 headers on the bar surface with a 2 px orange
-  under-rule, subtle zebra `rgba(255,255,255,0.02)`, row hover `#3F474C`.
+  under-rule, subtle zebra `rgba(255,255,255,0.02)`, row hover `#373E43`.
 - **Scrollbars.** 12 px (`.scroll-thin` 8 px), track on the panel with a leading
-  hairline, thumb `#8F9399` → `#EEB64B` on hover → `#FB8A28` while dragging; buttons
+  hairline, thumb `#8F9399` → `#EEB64B` on hover → `#E77E23` while dragging; buttons
   suppressed. Wrap regions in `.hud-scroll` + `.scroll-y/-x/-both`; `.scroll-accent` for
   log/console panes. Firefox via `scrollbar-color`.
 - **Layout.** Sticky header; off-canvas sidebar drawer (380 px) as primary nav; fixed
@@ -458,7 +467,7 @@ action → icon dictionary in [`proposals/button-icons-guidelines.md`](proposals
 - **Logos.** The brand mark is the **wedge-through-ring** (planet ring + four-point star +
   star-destroyer triangle): `assets/krt.webp`, `assets/krt-favicon.webp`,
   `assets/Kartelllogo.jpg` (full lockup on `#282828`). App marks: `assets/basetool-*.svg/png`.
-  Logos appear only in orange `#FB8A28`, white or black.
+  Logos appear only in orange `#E77E23`, white or black.
 
 ---
 

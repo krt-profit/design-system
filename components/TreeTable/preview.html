@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" height=260 width=700 -->
+<!-- @dsCard group="Components" height=330 width=700 -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -12,7 +12,8 @@
 </head>
 <body>
   <p class="pv-label">Tree table — nested data, one sticky header, indentation, gauge, conditional note</p>
-  <div class="tree-table">
+  <div class="hud-scroll scroll-x">
+  <div class="tree-table" style="--tree-cols: minmax(100px,1fr) minmax(190px,1.6fr) 84px 108px 160px;">
     <div class="tree-row tree-head">
       <div class="tree-cell">Bestand</div>
       <div class="tree-cell">Kontext / Zuordnung</div>
@@ -23,7 +24,7 @@
 
     <div class="tree-row tree-row--group">
       <div class="tree-cell tree-name"><span class="tree-chevron is-open">▶</span><span class="tree-label">Agricium</span></div>
-      <div class="tree-cell" style="color:var(--color-gray-2)">3 Nutzer · 5 Stacks</div>
+      <div class="tree-cell" style="color:var(--color-gray-2-text)">3 Nutzer · 5 Stacks</div>
       <div class="tree-cell tree-cell--num"><span class="tree-gauge"><span class="tree-gauge-val">639 <span class="tree-gauge-max">/ 796</span></span><span class="tree-gauge-track"><span style="width:64%"></span></span></span></div>
       <div class="tree-cell tree-cell--num tree-amount">10.049 <span class="tree-unit">SCU</span></div>
       <div class="tree-cell"></div>
@@ -34,7 +35,7 @@
       <div class="tree-cell" style="display:flex;gap:.5rem;align-items:center;min-width:0"><span class="squadron-badge">IRI</span><span class="tree-label">Levski</span></div>
       <div class="tree-cell tree-cell--num"><span class="tree-gauge"><span class="tree-gauge-val">796</span><span class="tree-gauge-track"><span style="width:80%"></span></span></span></div>
       <div class="tree-cell tree-cell--num tree-amount">1,786 <span class="tree-unit">SCU</span></div>
-      <div class="tree-cell tree-cell--num" style="color:var(--color-gray-2);font-size:.78rem">1 Eintrag</div>
+      <div class="tree-cell tree-cell--num" style="color:var(--color-gray-2-text);font-size:.78rem">1 Eintrag</div>
     </div>
 
     <div class="tree-row tree-row--leaf">
@@ -52,6 +53,7 @@
       <div class="tree-note-box"><span class="tree-note-label">Notiz</span><span class="tree-note-text">Event vom 05.05. Gehört weedyhimself. Zurückgelegt.</span></div>
     </div>
   </div>
-  <p class="pv-mono" style="margin-top:12px;">.tree-table · .tree-row--group/--mid/--leaf · sticky .tree-head · .tree-gauge · .tree-note (only when present) · .btn-xs</p>
+  </div>
+  <p class="pv-mono" style="margin-top:12px;">.tree-table · .tree-row--group/--mid/--leaf · sticky .tree-head · .tree-gauge · .tree-note (only when present) · .btn-xs · narrow screens: wrap in .hud-scroll.scroll-x</p>
 </body>
 </html>

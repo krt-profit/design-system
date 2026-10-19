@@ -10,7 +10,7 @@
 <style>
   body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px;
     background:
-      radial-gradient(circle at 50% -10%, rgba(251, 138, 40,0.10), transparent 55%),
+      radial-gradient(circle at 50% -10%, rgba(231, 126, 35,0.10), transparent 55%),
       var(--surface-canvas);
     background-repeat: no-repeat, no-repeat; }
 
@@ -21,7 +21,7 @@
   .locale .ic { color: var(--color-primary); }
 
   .kc-card { width: 100%; max-width: 450px; background: var(--color-bg-dark-gray); border: 1px solid var(--color-gray-3);
-    border-top: 3px solid var(--color-primary); padding: 40px; position: relative; box-shadow: 0 0 20px rgba(251, 138, 40,0.10); }
+    border-top: 3px solid var(--color-primary); padding: 40px; position: relative; box-shadow: 0 0 20px rgba(231, 126, 35,0.10); }
   /* HUD corners (top-left + bottom-right) */
   .kc-card::before, .kc-card::after { content: ''; position: absolute; width: 15px; height: 15px; border: 2px solid var(--color-primary); }
   .kc-card::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
@@ -38,7 +38,7 @@
     border: 1px solid var(--color-gray-2); border-bottom: 2px solid var(--color-primary); font-family: var(--font-body); font-size: 1rem;
     box-sizing: border-box; border-radius: 0; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
   .kc-input::placeholder { color: var(--color-gray-2); font-style: italic; }
-  .kc-input.focused { border-color: var(--color-primary); box-shadow: 0 0 8px rgba(251, 138, 40,0.25); }
+  .kc-input.focused { border-color: var(--color-primary); box-shadow: 0 0 8px rgba(231, 126, 35,0.25); }
 
   /* error field (semantic danger, NOT orange) */
   .kc-field.err .kc-input { border-color: var(--color-danger); box-shadow: 0 0 8px rgba(163,0,10,0.3); }

@@ -37,21 +37,21 @@
 
 :root {
     /* House colors */
-    --color-primary: #FB8A28;
+    --color-primary: #E77E23;
     --color-bg-black: #000000;       /* text on orange */
-    --color-canvas: #202020;         /* page background */
-    --color-bg-dark-gray: #35393D;
+    --color-canvas: #0F0F0F;         /* page background */
+    --color-bg-dark-gray: #282C30;
     --color-accent-light: #EEB64B;   /* primary hover (lighten — system standard) */
     --color-accent-dark: #C45C00;    /* deep accent only; NOT the primary hover */
 
     /* Grayscale */
-    --color-gray-1: #DADBDE;
-    --color-gray-2: #8F9399;         /* Control-Rand, 3.8:1 auf Panel */
-    --color-gray-3: #404145;         /* Trennlinie, nur Deko */
-    --color-gray-4: #35393D;         /* Panel */
-    --color-surface-input: #2A2D31;  /* Leiste */
-    --color-control: #3F474C;        /* Control-Fläche */
-    --color-gray-2-text: #B0B3B7;    /* gedämpfter Text */
+    --color-gray-1: #D1D2D3;
+    --color-gray-2: #8F9399;         /* Control-Rand, 4.6:1 auf Panel */
+    --color-gray-3: #36373B;         /* Trennlinie, nur Deko */
+    --color-gray-4: #282C30;         /* Panel */
+    --color-surface-input: #1A1D21;  /* Leiste */
+    --color-control: #373E43;        /* Control-Fläche */
+    --color-gray-2-text: #A2A5A9;    /* gedämpfter Text */
     --radius-sm: 4px;
 
     /* Semantic — REQUIRED so validation errors render red, not orange */
@@ -65,7 +65,7 @@
     --font-body: 'Lato', sans-serif;
 
     /* Glows */
-    --glow-primary: 0 0 8px rgba(251, 138, 40, 0.25);
+    --glow-primary: 0 0 8px rgba(231, 126, 35, 0.25);
     --glow-danger:  0 0 8px rgba(163, 0, 10, 0.30);
 }
 
@@ -78,7 +78,7 @@ body {
     font-weight: 300;
     background-color: var(--color-canvas);
     background-image:
-        radial-gradient(circle at 50% -10%, rgba(251, 138, 40,0.10), transparent 55%);
+        radial-gradient(circle at 50% -10%, rgba(231, 126, 35,0.10), transparent 55%);
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
