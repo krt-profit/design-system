@@ -357,6 +357,11 @@ label {
 /* a chip that carries "key: value" data (e.g. a claim "IRI: 1,200 SCU") */
 .chip--data { text-transform: none; letter-spacing: 0; font-weight: var(--fw-regular); }
 .chip--data strong { font-weight: var(--fw-bold); color: var(--color-white); }
+.chip--item-class-military    { color: var(--krt-item-class-military-text);    border-color: var(--krt-item-class-military);    background-color: color-mix(in srgb, var(--krt-item-class-military) 15%, transparent); }
+.chip--item-class-civilian    { color: var(--krt-item-class-civilian-text);    border-color: var(--krt-item-class-civilian);    background-color: color-mix(in srgb, var(--krt-item-class-civilian) 15%, transparent); }
+.chip--item-class-industrial  { color: var(--krt-item-class-industrial-text);  border-color: var(--krt-item-class-industrial);  background-color: color-mix(in srgb, var(--krt-item-class-industrial) 15%, transparent); }
+.chip--item-class-stealth     { color: var(--krt-item-class-stealth-text);     border-color: var(--krt-item-class-stealth);     background-color: color-mix(in srgb, var(--krt-item-class-stealth) 15%, transparent); }
+.chip--item-class-competition { color: var(--krt-item-class-competition-text); border-color: var(--krt-item-class-competition); background-color: color-mix(in srgb, var(--krt-item-class-competition) 15%, transparent); }
 
 /* ---------------------------------------------------------------- TABLES -- */
 table, .krt-table {
