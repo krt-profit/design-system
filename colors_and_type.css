@@ -3,11 +3,9 @@
    Foundational stylesheet: imports the tokens, adds what tokens.json cannot
    hold, and the semantic element defaults.
 
-   ONE SOURCE (2026-10): every colour, size, weight, spacing, radius, shadow,
-   font family and the Lato @font-face now live in tokens.json and are compiled
-   to tokens.css (written by the Design System page on save). Change a token
-   THERE, not here. The previous full version of this file is kept at
-   archived/colors_and_type.css.
+   ONE SOURCE: every colour, size, weight, spacing, radius, shadow, font
+   family and the Lato @font-face live in tokens.json and are compiled to
+   tokens.css. Change a token THERE, not here.
 
    Consumers (e.g. the basetool repo / Keycloak mirror) must copy tokens.css
    together with this file — it is imported first.
@@ -30,7 +28,7 @@
    A minimal reset so raw HTML already looks on-brand. Component CSS extends it.
    ============================================================================ */
 body {
-    background-color: var(--color-bg-black);
+    background-color: var(--surface-canvas);
     color: var(--color-gray-1);
     font-family: var(--font-body);
     font-weight: var(--fw-thin);
@@ -64,8 +62,7 @@ strong, b { font-weight: var(--fw-bold); }
 code, kbd, samp { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
 
 /* Form labels are neutral, not orange. The accent is reserved for ACTIONS and
-   identity — labels that shout in orange add noise and bury the input values.
-   (Changed 2026-06 alongside the action-hierarchy work.) */
+   identity — labels that shout in orange add noise and bury the input values. */
 label {
     display: block;
     color: var(--color-gray-1);

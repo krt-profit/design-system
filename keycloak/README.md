@@ -17,8 +17,8 @@ In-repo theme: `keycloak-theme/krt-theme/` (`login/` + `account/`), parent
 
 ## Principles
 
-1. **One identity across the redirect.** Same orange `#E77E23`, black canvas,
-   Lato throughout (headlines = bold + UPPERCASE), square corners, HUD corner brackets. A user
+1. **One identity across the redirect.** Same orange `#FB8A28`, `#202020` canvas,
+   Lato throughout (headlines = bold + UPPERCASE), 4 px corners, HUD corner brackets. A user
    bounced to Keycloak for SSO should not notice a visual seam.
 2. **Override PatternFly, don't fight it twice.** Neutralise PF with its own CSS
    variables (`--pf-*--BackgroundColor`, `--pf-global--primary-color--100`, …) AND
@@ -32,7 +32,7 @@ In-repo theme: `keycloak-theme/krt-theme/` (`login/` + `account/`), parent
    Links = orange text. Don't fill two buttons.
 5. **Semantics, not brand color, for state.** Validation errors are
    `--color-danger` (red), success `--color-success`. **Never** show errors in the
-   brand orange (today's theme does — see audit).
+   brand orange.
 6. **Accessibility.** Keep a visible keyboard focus state (orange border/glow);
    never strip focus to nothing. Maintain 44px targets. Labels stay readable
    light-gray, uppercase.
@@ -42,29 +42,29 @@ In-repo theme: `keycloak-theme/krt-theme/` (`login/` + `account/`), parent
 ## Component specs
 
 **Card / form container**
-- `background: #141414`; `border: 1px solid #282828`; `border-top: 3px solid #E77E23`.
+- `background: #35393D`; `border: 1px solid #404145`; `border-top: 3px solid #FB8A28`.
 - HUD corner brackets top-left + bottom-right (2px orange, 15px), via
-  `::before`/`::after`. `box-shadow: 0 0 20px rgba(231,126,35,0.10)`.
-- `max-width: 450px`, `padding: 40px`, centered; square (no radius).
+  `::before`/`::after`. `box-shadow: 0 0 20px rgba(251, 138, 40,0.10)`.
+- `max-width: 450px`, `padding: 40px`, centered; `border-radius: 4px`.
 
 **Headline** — `#kc-page-title` / `h1`: Lato bold, uppercase, `+0.05em`, orange,
 centered. Optional brand mark (`krt.webp`, ~84px) above it.
 
-**Inputs** — black fill, `1px #646464` border, `2px #E77E23` bottom border, square,
-Lato, `#D2D2D2` text. Focus: border → orange + `0 0 8px rgba(231,126,35,0.25)`.
-Placeholder: italic `#646464`.
+**Inputs** — `#3F474C` fill, `1px #8F9399` border, `2px #FB8A28` bottom border, 4 px radius,
+Lato, `#DADBDE` text. Focus: border → orange + `0 0 8px rgba(251, 138, 40,0.25)`.
+Placeholder: italic `#B0B3B7`.
 
 **Buttons**
 - Primary (`.pf-m-primary`, `#kc-login`, submit): filled orange, **black** text,
-  Lato bold uppercase, square, `min-height: 44px`, `box-shadow: var(--glow-primary)`.
+  Lato bold uppercase, 4 px radius, `min-height: 44px`, `box-shadow: var(--glow-primary)`.
   Hover → `--color-accent-light` (lighten). *(Not accent-dark.)*
 - Secondary / Cancel (`.pf-m-secondary`, `#kc-cancel`, `.krt-button-secondary`):
   transparent, orange text, `1px` orange border. Hover → orange fill, black text.
 
-**Checkbox / radio** — square (radio round), black fill, orange border, orange tick
+**Checkbox / radio** — 2 px radius (radio round), `#3F474C` fill, orange border, orange tick
 on check (black checkmark). 18px.
 
-**Labels** — `#D2D2D2`, uppercase, `0.85em`, `+1px` tracking. Not orange.
+**Labels** — `#DADBDE`, uppercase, `0.85em`, `+1px` tracking. Not orange.
 
 **Errors** — field: red bottom border + `var(--glow-danger)`. Message
 (`#input-error`, `.kc-feedback-text`, alert-error): `--color-danger`, with a `⚠`
@@ -75,7 +75,7 @@ glyph. Success/info alerts use `--color-success` / `--color-info` left-border ti
 **Locale selector** — top-right; surface fill + hairline + orange bottom-border;
 dropdown is a dark hairline menu, items hover to orange fill / black text.
 
-**Page background** — flat black + soft top bloom. Still hard-reset the PF
+**Page background** — flat `#202020` + soft top bloom. Still hard-reset the PF
 background grid/image everywhere else.
 
 ---

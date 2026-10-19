@@ -11,7 +11,7 @@ function LoginScreen({ onLogin }) {
         <div className="login-logo">
           <img src="../../assets/krt.webp" alt="DAS KARTELL" />
           <div className="name">Profit Basetool</div>
-          <div className="sub">IRIDIUM · Squadron Access</div>
+          <div className="sub">Squadron Access</div>
         </div>
         <form onSubmit={(e) => { e.preventDefault(); onLogin(); }}>
           <div className="field">
@@ -104,7 +104,7 @@ function MissionsScreen({ push, onOpen }) {
           {rows.map((m) => (
             <tr key={m.id} style={{ cursor: onOpen ? "pointer" : "default" }} onClick={() => onOpen && onOpen(m.id)}>
               <td>{m.name}</td>
-              <td><span className="dept-tag" style={{ color: "var(--color-dept-" + m.dept + ")" }}>{m.deptLabel}</span></td>
+              <td><span className={"dept-tag dept-tag--" + m.dept}>{m.deptLabel}</span></td>
               <td><StatusPill status={m.status} /></td>
               <td>{m.start}</td>
               <td>{m.owner}</td>

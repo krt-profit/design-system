@@ -47,4 +47,4 @@ GET /api/v1/personal-blueprints/craftability?includeRefinery={false|true}
 
 ---
 
-<sub>Design erstellt im DAS-KARTELL-Designsystem (Lato, House-Orange `#E77E23`, HUD-Patterns: `.master-detail`, `.quality-block`, `.facts-bar`, `.chip`). Die Demo-Werte im Prototyp bilden die Issue-Logik 1:1 nach.</sub>
+<sub>Design erstellt im DAS-KARTELL-Designsystem (Lato, House-Orange `#FB8A28`, HUD-Patterns: `.master-detail`, `.quality-block`, `.facts-bar`, `.chip`). Die Demo-Werte im Prototyp bilden die Issue-Logik 1:1 nach.</sub>

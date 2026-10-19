@@ -15,9 +15,7 @@
 
 /* ----- FONTS (WOFF2 first, font-display: swap) -------------------------- */
 /* One typeface: Lato. Ship Lato-{Light,Regular,Bold}.woff2 in resources/fonts/.
-   Headlines = Lato bold + UPPERCASE (no separate display face).
-   History: Ethnocentric → Audiowide → consolidated to Lato-only (2026-06) —
-   remove any Audiowide/Ethnocentric @font-face + files from the themes. */
+   Headlines = Lato bold + UPPERCASE (no separate display face). */
 @font-face {
     font-family: 'Lato';
     src: url('../fonts/Lato-Light.woff2') format('woff2'),
@@ -39,18 +37,22 @@
 
 :root {
     /* House colors */
-    --color-primary: #E77E23;
-    --color-bg-black: #000000;
-    --color-bg-dark-gray: #141414;
+    --color-primary: #FB8A28;
+    --color-bg-black: #000000;       /* text on orange */
+    --color-canvas: #202020;         /* page background */
+    --color-bg-dark-gray: #35393D;
     --color-accent-light: #EEB64B;   /* primary hover (lighten — system standard) */
     --color-accent-dark: #C45C00;    /* deep accent only; NOT the primary hover */
 
     /* Grayscale */
-    --color-gray-1: #D2D2D2;
-    --color-gray-2: #646464;
-    --color-gray-3: #282828;
-    --color-gray-4: #141414;
-    --color-surface-input: #1C1C1C;
+    --color-gray-1: #DADBDE;
+    --color-gray-2: #8F9399;         /* Control-Rand, 3.8:1 auf Panel */
+    --color-gray-3: #404145;         /* Trennlinie, nur Deko */
+    --color-gray-4: #35393D;         /* Panel */
+    --color-surface-input: #2A2D31;  /* Leiste */
+    --color-control: #3F474C;        /* Control-Fläche */
+    --color-gray-2-text: #B0B3B7;    /* gedämpfter Text */
+    --radius-sm: 4px;
 
     /* Semantic — REQUIRED so validation errors render red, not orange */
     --color-danger: #A3000A;
@@ -63,7 +65,7 @@
     --font-body: 'Lato', sans-serif;
 
     /* Glows */
-    --glow-primary: 0 0 8px rgba(231, 126, 35, 0.25);
+    --glow-primary: 0 0 8px rgba(251, 138, 40, 0.25);
     --glow-danger:  0 0 8px rgba(163, 0, 10, 0.30);
 }
 
@@ -74,9 +76,9 @@ body {
     color: var(--color-gray-1);
     font-family: var(--font-body);
     font-weight: 300;
-    background-color: var(--color-bg-black);
+    background-color: var(--color-canvas);
     background-image:
-        radial-gradient(circle at 50% -10%, rgba(231,126,35,0.10), transparent 55%);
+        radial-gradient(circle at 50% -10%, rgba(251, 138, 40,0.10), transparent 55%);
     background-repeat: no-repeat;
     background-attachment: fixed;
 }

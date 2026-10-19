@@ -4,29 +4,27 @@ Working notes for Claude Code (and human contributors) in this repo.
 
 ## What this is
 
-The **DAS KARTELL / IRIDIUM design system** — the visual source of truth for the *Profit Basetool*,
+The **DAS KARTELL design system** — the visual source of truth for the *Profit Basetool*,
 the squadron-management app of the „DAS KARTELL" Star Citizen organisation. A dark, sci-fi
-„technical HUD" brand: house orange `#E77E23` on black, **Lato** as the single typeface (headlines
-bold + UPPERCASE), square-cornered containers framed with diagonal corner brackets, and a fixed
-department colour system.
+„technical HUD" brand: house orange `#FB8A28` on the dark gray surfaces of das-kartell.org
+(canvas `#202020`, panel `#35393D`, bars `#2A2D31`), **Lato** as the single typeface (headlines
+bold + UPPERCASE), controls and panels with a 4 px radius, corner-bracket HUD frames, and a fixed
+department colour system whose values are prescribed and never altered.
 
 `README.md` is the source of truth for colours, typography and components; `SKILL.md` is the skill
 entry point. This repository is consumed by the `basetool` repo as a **git submodule** at
-`.claude/skills/das-kartell-design/`, and both the web frontend and the Android app are built
-against it.
+`.claude/skills/das-kartell-design/`, and the web frontend is built against it.
 
 > [!IMPORTANT]
-> **A change here changes two products.** The web frontend and the Android app both build against
-> this system, and the Android artboards are derived from it. A colour, a spacing token or a
-> component contract that moves here moves in both — and the app is verified screen-by-screen
-> against its artboards, so a silent change surfaces as a parity failure somewhere else entirely.
+> **A change here changes the product.** The web frontend builds against this system: a colour, a
+> spacing token or a component contract that moves here moves in the app as well.
 
 ## The knowledge base (HARD RULE — read before every task)
 
 The **Basetool Knowledge Base** is the single source of truth about the Profit Basetool as a whole:
 an Obsidian vault and git repository (`basetool-knowledge`), sitting beside this repository in the
-workspace. It covers every part of the system — backend, frontend, ingest, keycloak-spi, the Android
-app, the SC extractor, the P4K reader, **and this design system** — plus the roles, permissions,
+workspace. It covers every part of the system — backend, frontend, ingest, keycloak-spi, the SC
+extractor, the P4K reader, **and this design system** — plus the roles, permissions,
 decisions, incidents and runbooks around them.
 
 **This rule is binding on every AI agent working on the Basetool or any of its parts and
@@ -34,9 +32,8 @@ repositories, without exception.**
 
 - **Read it before you start any task**, not after. Enter through its root map
   (`00 Maps/Basetool.md`); its own `CLAUDE.md` explains how it is written. For this repo start with
-  `Design System`, `Frontend`, `Android App` and `Web Parity Programme` — they record which parts of
-  this system are *binding* rather than illustrative, how an artboard is rendered and compared
-  against a running screen, and which specificity traps have already cost time.
+  `Design System` and `Frontend` — they record which parts of this system are *binding* rather
+  than illustrative and which specificity traps are known.
 - **Every change here updates the knowledge base in the same unit of work**: a new or changed
   component, a colour or token, a contract the consumers rely on, a rule learned from a rendering
   failure. It is not written afterwards and never „caught up later".
