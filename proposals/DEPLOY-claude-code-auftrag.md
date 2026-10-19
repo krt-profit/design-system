@@ -5,26 +5,30 @@ Design-System-Repo committen, das Submodule im `basetool` aktualisieren und die
 Design-System-Änderungen + Audit-Vorschläge im `basetool` umsetzen.
 
 Voraussetzung: Der Nutzer übergibt dir das **ZIP des Design-Systems** (Inhalt des
-`das-kartell-design`-Skills: `colors_and_type.css`, `krt-components.css`,
-`styles.css`, `fonts/`, `assets/`, `preview/`, `keycloak/`, `proposals/`,
-`ui_kits/`, `slides/`, `README.md`, `SKILL.md`).
+`das-kartell-design`-Skills: `tokens.json`, `tokens.css`, `colors_and_type.css`,
+`krt-components.css`, `components/bundle.css`, `components/<Name>/preview.html`,
+`preview/_card.css`, `fonts/`, `assets/`, `keycloak/`, `proposals/`, `ui_kits/`,
+`slides/`, `README.md`, `SKILL.md`, `CLAUDE.md`).
 
 Repos:
-- **Design-System:** `git@github.com:krt-iri/design-system.git` (bzw. HTTPS).
-- **Basetool:** `git@github.com:krt-iri/basetool.git`; das Design-System ist dort als
+- **Design-System:** `https://github.com/krt-profit/design-system`.
+- **Basetool:** `https://github.com/krt-profit/basetool`; das Design-System ist dort als
   **Submodule** unter `.claude/skills/das-kartell-design` eingebunden.
 
 ---
 
 ## TEIL 1 — Neues Design-System ins Design-System-Repo committen
 
-1. `krt-iri/design-system` klonen (oder vorhandenen Klon `git pull`en).
+1. `krt-profit/design-system` klonen (oder vorhandenen Klon `git pull`en).
 2. Den **gesamten Inhalt** des übergebenen ZIP in den Repo-Wurzelordner entpacken,
    sodass vorhandene Dateien überschrieben werden. Wichtig:
    - Gelöschte/ersetzte Dateien berücksichtigen: **keine** `Audiowide-*`- oder
      `Ethnocentric*`-Schriftdateien dürfen übrig bleiben (`git rm` entfernte Fonts).
-   - `_ds_manifest.json`, `_ds_bundle.js`, `_adherence.oxlintrc.json` mit übernehmen,
-     falls im ZIP enthalten (Compiler-Artefakte).
+   - Es gibt kein `styles.css`, `_ds_manifest.json`, `_ds_bundle.js` und
+     `_adherence.oxlintrc.json` mehr, und unter `preview/` liegt nur `_card.css`;
+     die Specimens stehen unter `components/<Name>/preview.html`.
+   - Ist das ZIP von einem älteren Commit geschnitten als `main`, auf einem Branch
+     ab diesem Commit einspielen und `main` darübermergen.
 3. Diff sichten (`git status` / `git diff`), dann committen:
    ```
    git add -A
@@ -104,10 +108,11 @@ im Master-Auftrag und den themenspezifischen Aufträgen — abarbeiten in dieser
 ## Arbeitsweise & Definition of Done
 - Kleine, thematische Commits; nach jedem Block `./gradlew check` (Tests +
   Checkstyle/SpotBugs). i18n (de/en), CSP-Nonce, Lazy-Load/Expand-State erhalten.
-- Keine neuen Farben; nur System-Tokens/-Klassen. Eckig bleiben; eine gefüllte
-  CTA pro Kontext; Fehler rot, nie orange; Labels/Datenwerte neutral.
-- Optik nach jedem Block gegen `ui_kits/basetool/` und die Mocks unter `proposals/`
-  abgleichen.
+- Keine neuen Farben; nur System-Tokens/-Klassen. 4 px Radius (`--radius-sm`); eine
+  gefüllte CTA pro Kontext; Fehler rot, nie orange; Labels/Datenwerte neutral.
+- Optik nach jedem Block gegen `components/BasetoolUiKit/preview.html` und die
+  Specimens unter `components/` abgleichen; die Mocks unter `proposals/` gelten nur
+  für Struktur und Verhalten.
 - **Fertig**, wenn: Design-System-Repo enthält den neuen Stand; basetool-Submodule
   zeigt darauf; App + Keycloak nutzen nur Lato; alle Phasen-Akzeptanzkriterien aus
   `MASTER-claude-code-auftrag.md` erfüllt; `./gradlew check` grün.
