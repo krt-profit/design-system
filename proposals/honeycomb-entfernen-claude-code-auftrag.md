@@ -25,7 +25,7 @@ entschieden wird.**
   `background-size` und `background-attachment` für das Muster entfernen.
 - `.login-stage`: aus der Mehrschicht-`background` **nur** die Waben-Ebene
   (`url(honeycomb-bg.svg)`) streichen. Der radiale Top-Bloom
-  (`radial-gradient(circle at 50% 0%, rgba(251, 138, 40,0.10), transparent 55%)`)
+  (`radial-gradient(circle at 50% 0%, rgba(231, 126, 35,0.10), transparent 55%)`)
   **bleibt** über `var(--color-bg-black)`. `background-repeat`/`-size` passend
   auf zwei Ebenen reduzieren.
 

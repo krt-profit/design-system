@@ -20,7 +20,7 @@ Die folgenden Punkte sind **Feinschliff/UX**, keine Compliance-Fehler.
 
 | Bereich | Status | Beleg im Code |
 | :-- | :-- | :-- |
-| **Farben** | ✅ exakt | `Theme.kt > Krt`: `Orange #FB8A28`, Grau 1–4, `SurfaceInput #1C1C1C`, Semantik korrekt |
+| **Farben** | ✅ exakt | `Theme.kt > Krt`: `Orange #E77E23`, Grau 1–4, `SurfaceInput #1C1C1C`, Semantik korrekt |
 | **Typo** | ✅* | `Lato` (Light/Regular/Bold); Headlines UPPERCASE durch Aufrufer. *Display-Face ggf. auf Lato-only angleichen (System-Update 2026-06). |
 | **Eckig** | ✅ | `Shapes(... = Square 0.dp)` global; `RectangleShape` auf Textfeldern |
 | **HUD-Box** | ✅ | `Modifier.hudBox()` mit zwei diagonalen Orange-Eckklammern + Hairline |
