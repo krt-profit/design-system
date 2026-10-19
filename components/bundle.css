@@ -349,10 +349,10 @@ label {
 .chip .krt-icon { width: 0.9em; height: 0.9em; }
 /* tone variants — border + text take the hue, fill stays a faint tint */
 .chip--primary { color: var(--color-primary);     border-color: var(--color-primary);     background-color: rgba(251, 138, 40,0.10); }
-.chip--success { color: var(--color-success);     border-color: var(--color-success);     background-color: rgba(35,158,51,0.12); }
+.chip--success { color: var(--color-success-text);     border-color: var(--color-success);     background-color: rgba(35,158,51,0.12); }
 .chip--danger  { color: var(--color-danger-text); border-color: var(--color-danger);      background-color: rgba(163,0,10,0.15); }
 .chip--warning { color: var(--color-warning);     border-color: var(--color-warning);     background-color: rgba(255,210,63,0.12); }
-.chip--info    { color: var(--color-info);        border-color: var(--color-info);        background-color: rgba(53,93,220,0.15); }
+.chip--info    { color: var(--color-info-text);   border-color: var(--color-info);        background-color: rgba(53,93,220,0.15); }
 .chip--muted   { color: var(--color-gray-2-text);      border-color: var(--color-gray-3);       background-color: transparent; }
 /* a chip that carries "key: value" data (e.g. a claim "IRI: 1,200 SCU") */
 .chip--data { text-transform: none; letter-spacing: 0; font-weight: var(--fw-regular); }
@@ -1046,7 +1046,7 @@ tr.is-inert td { opacity: .5; }
    (bank wipe reset): inside .krt-modal--danger, the confirm button stays
    disabled until the user types the confirm word. Everything else keeps the
    standard click-confirm modal. */
-.krt-modal .confirm-input { width: 100%; box-sizing: border-box; background: var(--control-bg); color: var(--color-gray-1); border: var(--border-hairline); padding: 7px 9px; font-size: 0.8rem; margin-top: 8px; font-family: var(--font-body); }
+.krt-modal .confirm-input { width: 100%; box-sizing: border-box; background: var(--control-bg); color: var(--color-gray-1); border: 1px solid var(--control-border); padding: 7px 9px; font-size: 0.8rem; margin-top: 8px; font-family: var(--font-body); }
 .krt-modal .confirm-input:focus { border-color: var(--color-primary); outline: none; box-shadow: var(--glow-primary); }
 
 /* ====================================================================== */
@@ -1130,7 +1130,7 @@ tr.is-inert td { opacity: .5; }
    browser spinner. Toggle visibility with the [hidden] attribute. */
 .krt-loading-indicator { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-3); padding: var(--space-2) var(--space-3); border: var(--border-accent); background: var(--color-bg-dark-gray); color: var(--color-primary); font-family: var(--font-headline); text-transform: uppercase; letter-spacing: 0.05em; min-height: var(--touch-target); }
 .krt-loading-indicator[hidden] { display: none !important; }
-.krt-spinner { width: 20px; height: 20px; border: 2px solid rgb(231 126 35 / 25%); border-top-color: var(--color-primary); border-radius: 50%; animation: krt-spinner-rotate 0.9s linear infinite; flex: 0 0 auto; }
+.krt-spinner { width: 20px; height: 20px; border: 2px solid rgb(251 138 40 / 25%); border-top-color: var(--color-primary); border-radius: 50%; animation: krt-spinner-rotate 0.9s linear infinite; flex: 0 0 auto; }
 .krt-loading-label { font-size: 0.85rem; }
 @keyframes krt-spinner-rotate { to { transform: rotate(360deg); } }
 
@@ -1141,15 +1141,15 @@ tr.is-inert td { opacity: .5; }
    was held back while you were mid-edit. Awareness only — never blocks input.
    Pair a busy region with [aria-busy="true"] for the dimmed refresh state. */
 @keyframes krt-presence-pulse {
-    0%   { box-shadow: 0 0 0 0 rgb(231 126 35 / 55%); }
-    70%  { box-shadow: 0 0 0 6px rgb(231 126 35 / 0%); }
-    100% { box-shadow: 0 0 0 0 rgb(231 126 35 / 0%); }
+    0%   { box-shadow: 0 0 0 0 rgb(251 138 40 / 55%); }
+    70%  { box-shadow: 0 0 0 6px rgb(251 138 40 / 0%); }
+    100% { box-shadow: 0 0 0 0 rgb(251 138 40 / 0%); }
 }
-.krt-presence-indicator { display: inline-flex; align-items: center; gap: 0.35rem; margin-left: 0.6rem; padding: 0.15rem var(--space-2) 0.15rem 0.4rem; border: var(--border-accent); border-radius: var(--radius-pill); background: rgb(231 126 35 / 8%); color: var(--color-primary); font-family: var(--font-body); font-size: var(--fs-2xs); line-height: 1; cursor: default; vertical-align: middle; }
+.krt-presence-indicator { display: inline-flex; align-items: center; gap: 0.35rem; margin-left: 0.6rem; padding: 0.15rem var(--space-2) 0.15rem 0.4rem; border: var(--border-accent); border-radius: var(--radius-pill); background: rgb(251 138 40 / 8%); color: var(--color-primary); font-family: var(--font-body); font-size: var(--fs-2xs); line-height: 1; cursor: default; vertical-align: middle; }
 .krt-presence-dot { display: inline-block; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--color-primary); animation: krt-presence-pulse 2s infinite; }
 .krt-presence-count { font-weight: var(--fw-bold); letter-spacing: 0.02em; }
 .mission-livesync-pill { position: fixed; right: var(--space-4); bottom: var(--space-4); z-index: 9000; display: inline-flex; align-items: center; gap: 0.4rem; padding: var(--space-2) var(--space-4); border: var(--border-accent); border-radius: var(--radius-pill); background: var(--color-bg-dark-gray); color: var(--color-primary); font-family: var(--font-body); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: 0.02em; text-transform: uppercase; cursor: pointer; box-shadow: 0 2px 12px rgb(0 0 0 / 45%); animation: krt-presence-pulse 2s infinite; }
-.mission-livesync-pill:hover, .mission-livesync-pill:focus-visible { background: rgb(231 126 35 / 12%); }
+.mission-livesync-pill:hover, .mission-livesync-pill:focus-visible { background: rgb(251 138 40 / 12%); }
 
 /* ------------------------------------------- MULTI-SELECT DROPDOWN ------- */
 /* Custom multi-select filter (inventory, materials-overview): a HUD field
@@ -1205,7 +1205,7 @@ tr.is-inert td { opacity: .5; }
 .scu-hint { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 1.05rem; height: 1.05rem; margin-left: 0.35rem; border: 1px solid var(--color-gray-2); border-radius: 50%; color: var(--color-gray-1); font-family: var(--font-body); font-size: 0.72rem; font-weight: var(--fw-bold); line-height: 1; text-transform: none; vertical-align: middle; cursor: help; transition: color 0.2s ease, border-color 0.2s ease; }
 .scu-hint:hover { color: var(--color-primary); border-color: var(--color-primary); }
 .scu-hint:focus-visible { color: var(--color-primary); border-color: var(--color-primary); outline: 2px solid var(--color-primary); outline-offset: 2px; }
-.scu-hint__bubble { position: absolute; bottom: calc(100% + 0.5rem); left: 50%; z-index: 4000; width: max-content; max-width: min(17rem, 78vw); padding: var(--space-2) 0.6rem; transform: translateX(calc(-50% + var(--hint-shift, 0px))); background: rgb(0 0 0 / 95%); border: 1px solid var(--color-primary); box-shadow: 0 0 10px rgb(231 126 35 / 30%); color: var(--color-gray-1); font-family: var(--font-body); font-size: 0.78rem; font-weight: var(--fw-regular); line-height: 1.4; letter-spacing: normal; text-align: left; text-transform: none; white-space: normal; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
+.scu-hint__bubble { position: absolute; bottom: calc(100% + 0.5rem); left: 50%; z-index: 4000; width: max-content; max-width: min(17rem, 78vw); padding: var(--space-2) 0.6rem; transform: translateX(calc(-50% + var(--hint-shift, 0px))); background: rgb(0 0 0 / 95%); border: 1px solid var(--color-primary); box-shadow: 0 0 10px rgb(251 138 40 / 30%); color: var(--color-gray-1); font-family: var(--font-body); font-size: 0.78rem; font-weight: var(--fw-regular); line-height: 1.4; letter-spacing: normal; text-align: left; text-transform: none; white-space: normal; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
 .scu-hint:hover .scu-hint__bubble, .scu-hint:focus .scu-hint__bubble, .scu-hint:focus-within .scu-hint__bubble { opacity: 1; visibility: visible; }
 .scu-hint__bubble::after { content: ''; position: absolute; top: 100%; left: calc(50% - var(--hint-shift, 0px)); border: 0.3rem solid transparent; border-top-color: var(--color-primary); transform: translateX(-50%); }
 

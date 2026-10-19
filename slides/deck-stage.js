@@ -276,7 +276,7 @@
       top: 0;
       bottom: 0;
       width: var(--deck-rail-w, 188px);
-      background: #141414;
+      background: #2A2D31;
       border-right: 1px solid rgba(255,255,255,0.08);
       overflow-y: auto;
       overflow-x: hidden;
