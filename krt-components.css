@@ -70,7 +70,7 @@
 }
 .btn-ghost:hover {
     background-color: rgba(251, 138, 40, 0.07);
-    color: var(--color-primary);
+    color: var(--color-accent-light);
     border-color: var(--color-primary);
 }
 
@@ -239,7 +239,7 @@
 }
 .chip .krt-icon { width: 0.9em; height: 0.9em; }
 /* tone variants — border + text take the hue, fill stays a faint tint */
-.chip--primary { color: var(--color-primary);     border-color: var(--color-primary);     background-color: rgba(251, 138, 40,0.10); }
+.chip--primary { color: var(--color-accent-light); border-color: var(--color-primary);     background-color: rgba(251, 138, 40,0.10); }
 .chip--success { color: var(--color-success-text);     border-color: var(--color-success);     background-color: rgba(35,158,51,0.12); }
 .chip--danger  { color: var(--color-danger-text); border-color: var(--color-danger);      background-color: rgba(163,0,10,0.15); }
 .chip--warning { color: var(--color-warning);     border-color: var(--color-warning);     background-color: rgba(255,210,63,0.12); }
@@ -1311,7 +1311,7 @@ body:not(.admin-mode) .admin-mode-chip { display: none; }
 }
 /* Zähler im Segment ("Abgeschlossen 115"): ruhig, tabellarisch. */
 .krt-segmented__count { font-weight: var(--fw-bold); color: var(--color-gray-2-text); font-variant-numeric: tabular-nums; letter-spacing: 0; }
-.krt-segmented__item:is([aria-current="page"],[aria-pressed="true"],[aria-checked="true"],.is-active) .krt-segmented__count { color: var(--color-accent-light); }
+.krt-segmented__item:is([aria-current="page"],[aria-pressed="true"],[aria-checked="true"],.is-active) .krt-segmented__count { color: var(--control-selected-fg); }
 .krt-segmented__count--success { color: var(--color-success-text); }
 .krt-segmented__count--warning { color: var(--color-warning); }
 /* Kompakt (in dichten Detail-Köpfen, Desktop only) */
@@ -1322,7 +1322,7 @@ body:not(.admin-mode) .admin-mode-chip { display: none; }
 /* Filter-Button = .btn.btn-ghost. Sind Filter aktiv: .is-filtered (oranger
    Rand + Text) und die Anzahl als ECKIGES Badge (keine Kreis-Pille — rund
    sind nur Squadron-Pills). */
-.btn.is-filtered { border-color: var(--color-primary); color: var(--color-primary); }
+.btn.is-filtered { border-color: var(--color-primary); color: var(--color-accent-light); }
 .filter-count {
     display: inline-flex; align-items: center; justify-content: center;
     min-width: 1.35rem; height: 1.35rem; padding: 0 0.3rem;
