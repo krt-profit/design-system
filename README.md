@@ -62,7 +62,7 @@ All values live in [`tokens.json`](tokens.json) → [`tokens.css`](tokens.css).
 | Hausfarbe (house orange) | `--color-primary` | `#FB8A28` | CTA fill, headings, links, focus, HUD brackets, 2 px header/table rule |
 | Zierfarbe hell | `--color-accent-light` | `#EEB64B` | hover of every orange element |
 | Zierfarbe dunkel | `--color-accent-dark` | `#C45C00` | admin-mode chrome, deep accents (not as text) |
-| Schwarz | `--color-bg-black` | `#000000` | text on orange (8.8 : 1), shadows — **not** a page background |
+| Schwarz | `--color-bg-black` | `#000000` | text on orange (8.8 : 1) and on the light department fills, shadows — **not** a page background |
 | Weiß | `--color-white` | `#FFFFFF` | data values, selected-control text, text on dark fills |
 
 **Text on orange is always dark.** White on `#FB8A28` reaches only 2.4 : 1 and is not allowed.
@@ -101,12 +101,12 @@ altered**, and never used for the logo.
 
 | Department | Token | Hex | Tag text |
 | :-- | :-- | :-- | :-- |
-| Raumüberlegenheit | `--color-dept-raumueberlegenheit` | `#37BBC0` | `#141414` |
+| Raumüberlegenheit | `--color-dept-raumueberlegenheit` | `#37BBC0` | black `--color-bg-black` |
 | Forschung | `--color-dept-forschung` | `#355DDC` | white |
 | Sub-Radar | `--color-dept-sub-radar` | `#A3000A` | white |
 | Marinekorps | `--color-dept-marinekorps` | `#7A5E96` | white |
-| Profit | `--color-dept-profit` | `#239E33` | `#141414` |
-| Search and Rescue | `--color-dept-search-rescue` | `#FFD23F` | `#141414` |
+| Profit | `--color-dept-profit` | `#239E33` | black `--color-bg-black` |
+| Search and Rescue | `--color-dept-search-rescue` | `#FFD23F` | black `--color-bg-black` |
 
 On the gray surfaces several department hues are too dark to be read as text or as a
 thin border, so a department tag is a **filled** chip in the department color with the
@@ -159,18 +159,18 @@ only** — never status, department or action.
 **Item-class tints** — the categorical palette of a ship component's class, the in-game
 „Military / Civilian / Industrial / Stealth / Competition" label shown beside size and grade. The
 `--krt-item-class-<c>` hue is the chip border and, mixed to 15 %, its fill; the
-`--krt-item-class-<c>-text` tint is the label (≥ 4.6:1 on its fill over a panel, ≥ 5.8:1 over
-the canvas). The hues are muted on purpose, so they never read as a status, a department or an
+`--krt-item-class-<c>-text` tint is the label (≥ 4.6:1 on its fill over a panel and over the
+row hover `--control-bg`, ≥ 7.5:1 over the canvas). The hues are muted on purpose, so they never read as a status, a department or an
 action — and they carry **item-class identity only**. A class chip always shows its translated
 label: the colour is a second cue, never the only one.
 
 | Class | Hue (border, fill) | Hex | Text tint | Hex |
 | :-- | :-- | :-- | :-- | :-- |
-| `military` | `--krt-item-class-military` | `#8A9455` | `--krt-item-class-military-text` | `#BCC48A` |
-| `civilian` | `--krt-item-class-civilian` | `#5C84A8` | `--krt-item-class-civilian-text` | `#97B6D3` |
-| `industrial` | `--krt-item-class-industrial` | `#A8643F` | `--krt-item-class-industrial-text` | `#DAA283` |
-| `stealth` | `--krt-item-class-stealth` | `#9C6688` | `--krt-item-class-stealth-text` | `#CFA3BF` |
-| `competition` | `--krt-item-class-competition` | `#449C80` | `--krt-item-class-competition-text` | `#80CBB2` |
+| `military` | `--krt-item-class-military` | `#8A9455` | `--krt-item-class-military-text` | `#C3CA96` |
+| `civilian` | `--krt-item-class-civilian` | `#5C84A8` | `--krt-item-class-civilian-text` | `#ACC5DC` |
+| `industrial` | `--krt-item-class-industrial` | `#A8643F` | `--krt-item-class-industrial-text` | `#E2B59C` |
+| `stealth` | `--krt-item-class-stealth` | `#9C6688` | `--krt-item-class-stealth-text` | `#D9B5CB` |
+| `competition` | `--krt-item-class-competition` | `#449C80` | `--krt-item-class-competition-text` | `#91D2BC` |
 
 Component: `.chip.chip--item-class-<c>` (e.g. `<span class="chip chip--item-class-military">Militär</span>`),
 next to a neutral `.chip.chip--data` carrying size and grade (`S1 · A`). An item without a known
