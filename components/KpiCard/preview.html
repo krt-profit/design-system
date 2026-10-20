@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" height=240 width=700 subtitle="Dashboard-Kachel: Saldo, ±Delta, Inline-SVG-Sparkline" -->
+<!-- @dsCard group="Components" height=340 width=700 subtitle="Dashboard-Kachel: Saldo, ±Delta, Inline-SVG-Sparkline" -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -34,6 +34,12 @@
       <div><span class="kpi-delta" style="color:var(--color-gray-2);">—</span></div>
     </div>
   </div>
-  <p class="pv-mono" style="margin-top:12px;">.kpi-total (Akzentbalken) · .kpi-card (+ --closed, hover → Orange-Rahmen, ganze Karte klickbar) · .kpi-delta--pos/--neg · Werte tabular-nums.</p>
+  <p class="pv-label" style="margin-top:14px;">Im Panel — .kpi-total--inset hebt sich von der Panel-Fläche ab</p>
+  <div class="row" style="background:var(--surface-panel); border:var(--border-hairline); border-radius:var(--radius-sm); padding:10px;">
+    <div class="kpi-total kpi-total--inset"><div class="kpi-label">Angebote</div><div class="kpi-value">12</div></div>
+    <div class="kpi-total kpi-total--inset"><div class="kpi-label">Menge gesamt</div><div class="kpi-value">4.800 SCU</div></div>
+    <div class="kpi-total kpi-total--inset"><div class="kpi-label">Gesuche</div><div class="kpi-value">3</div></div>
+  </div>
+  <p class="pv-mono" style="margin-top:12px;">.kpi-total (Akzentbalken, + --inset im Panel) · .kpi-card (+ --closed, hover → Orange-Rahmen, ganze Karte klickbar) · .kpi-delta--pos/--neg · Werte tabular-nums.</p>
 </body>
 </html>
