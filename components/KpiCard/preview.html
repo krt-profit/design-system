@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" height=340 width=700 subtitle="Dashboard-Kachel: Saldo, ±Delta, Inline-SVG-Sparkline" -->
+<!-- @dsCard group="Components" height=380 width=700 subtitle="Dashboard-Kachel: Saldo, ±Delta, Inline-SVG-Sparkline" -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -34,12 +34,26 @@
       <div><span class="kpi-delta" style="color:var(--color-gray-2);">—</span></div>
     </div>
   </div>
-  <p class="pv-label" style="margin-top:14px;">Im Panel — .kpi-total--inset hebt sich von der Panel-Fläche ab</p>
+  <p class="pv-label" style="margin-top:14px;">Im Panel — .kpi-total--inset und .kpi-card--inset heben sich von der Panel-Fläche ab</p>
   <div class="row" style="background:var(--surface-panel); border:var(--border-hairline); border-radius:var(--radius-sm); padding:10px;">
     <div class="kpi-total kpi-total--inset"><div class="kpi-label">Angebote</div><div class="kpi-value">12</div></div>
-    <div class="kpi-total kpi-total--inset"><div class="kpi-label">Menge gesamt</div><div class="kpi-value">4.800 SCU</div></div>
-    <div class="kpi-total kpi-total--inset"><div class="kpi-label">Gesuche</div><div class="kpi-value">3</div></div>
+    <div class="kpi-card kpi-card--inset" tabindex="0">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+        <div><div class="kpi-title">Staffel HEL</div><div class="kpi-sub">KB-0016</div></div>
+        <span class="chip" style="font-size:8.5px;">Staffel</span>
+      </div>
+      <div class="kpi-value">20.441.868</div>
+      <div><span class="kpi-delta" style="color:var(--color-gray-2);">± 0 / 30 T</span></div>
+    </div>
+    <div class="kpi-card kpi-card--inset kpi-card--closed" tabindex="0">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+        <div><div class="kpi-title">Staffel CERBERUS</div><div class="kpi-sub">KB-0015</div></div>
+        <span class="chip chip--muted" style="font-size:8.5px;">geschlossen</span>
+      </div>
+      <div class="kpi-value">0</div>
+      <div><span class="kpi-delta" style="color:var(--color-gray-2);">—</span></div>
+    </div>
   </div>
-  <p class="pv-mono" style="margin-top:12px;">.kpi-total (Akzentbalken, + --inset im Panel) · .kpi-card (+ --closed, hover → Orange-Rahmen, ganze Karte klickbar) · .kpi-delta--pos/--neg · Werte tabular-nums.</p>
+  <p class="pv-mono" style="margin-top:12px;">.kpi-total (Akzentbalken, + --inset im Panel) · .kpi-card (+ --closed, + --inset im Panel, hover → Orange-Rahmen, ganze Karte klickbar) · .kpi-delta--pos/--neg · Werte tabular-nums.</p>
 </body>
 </html>

@@ -1036,6 +1036,7 @@ input[type="range"] { accent-color: var(--color-primary); }
 .kpi-delta--pos { color: var(--color-success); }
 .kpi-delta--neg { color: var(--color-danger-text, #ff6b6b); }
 .kpi-card--closed { opacity: .55; }
+.kpi-card--inset { background-color: var(--color-surface-input); }
 
 /* ----------------------------------------------------- HOLDER DISTRIBUTION -- */
 /* Custody partition (bank REQ-BANK-003): per-(account, holder) sub-balances
