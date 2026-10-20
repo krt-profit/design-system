@@ -192,6 +192,12 @@ class gets no class chip. Specimen: `components/ItemClassChip/preview.html`.
 | `--surface-inset` | `#0F0F0F` | a box set *into* a panel (HUD box, module tile) |
 | `--surface-raised` | `#36373B` | `.btn-secondary` fill |
 
+A tile never takes the fill of the surface it sits on. A `.card` or `.kpi-total` placed
+inside a panel (`.list-panel`, a card, a `.detail-pane`, a modal) takes its `--inset`
+variant — `.card--inset`, `.kpi-total--inset` — with the bar fill `#1A1D21`. A lighter
+tile is not an option: `#36373B` and `#373E43` belong to hairlines, `.btn-secondary` and
+controls.
+
 **Rule 2 — every control has a fill and a visible border.** `--control-bg` `#373E43`,
 `--control-border` `#8F9399` (4.6 : 1 on the panel, 6.2 : 1 on the canvas), text
 `--control-fg` = Grau 1. Applies to `.btn-ghost`, `.btn-quiet-danger`, inputs/selects,
@@ -342,7 +348,7 @@ Specimen: `components/EinsatzOverview/preview.html`.
 
 ### Bank
 
-`.kpi-total` / `.kpi-card` (+ `--closed`, `.kpi-value`, `.kpi-delta--pos/--neg`; sparkline
+`.kpi-total` (+ `--inset` inside a panel) / `.kpi-card` (+ `--closed`, `.kpi-value`, `.kpi-delta--pos/--neg`; sparkline
 = server-rendered inline SVG), `.holder-row` / `.holder-bar` / `.holder-sum` and
 `.stack-bar` + `.stack-legend` (custody per holder, sums to the balance),
 `.matrix-flag(.on)` + `tr.is-inert` (permission matrix — the row's existence is the view

@@ -1023,6 +1023,7 @@ input[type="range"] { accent-color: var(--color-primary); }
    delta and a server-rendered inline-SVG sparkline (no chart library — spec
    REQ-BANK-016). The whole card is the click target. */
 .kpi-total { background: var(--color-bg-dark-gray); border: var(--border-hairline); border-left: 4px solid var(--color-primary); padding: 10px 14px; }
+.kpi-total--inset { background-color: var(--color-surface-input); }
 .kpi-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: .1em; color: var(--color-gray-2-text); font-weight: var(--fw-bold); }
 .kpi-value { font-family: var(--font-headline); font-weight: var(--fw-bold); font-size: 1.2rem; color: var(--color-white); margin-top: 2px; font-variant-numeric: tabular-nums; }
 .kpi-card { background: var(--color-bg-dark-gray); border: var(--border-hairline); padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; cursor: pointer; transition: border-color .15s; }
