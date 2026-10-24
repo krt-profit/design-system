@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — Lesbarkeit: Bedienelemente, Arbeitsfläche, gedämpfter Text
 
-Repo: `krt-iri/basetool`. Anlass (Stand v1.15.0, Screenshots 2026-10-12): Segment-
+Repo: `krt-profit/basetool`. Anlass (Stand v1.15.0, Screenshots 2026-10-12): Segment-
 Umschalter („Kommend / Vergangen / Alle“, „Läuft / Abholbereit / …“, „Alle / Meine“),
 der Filter-Button, der Titel-Zähler („Einsatzverwaltung 3“) und Zeilen-Icon-Buttons
 stehen als **schwarze Kästen mit #282828-Haarlinie auf schwarzem Grund**. Kontrast

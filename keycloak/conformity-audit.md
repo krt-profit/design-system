@@ -1,6 +1,6 @@
 # Konformitätsaudit — Keycloak `krt-theme` gegen das KRT-Design-System
 
-Geprüft im Repo `krt-iri/basetool`: `keycloak-theme/krt-theme/` — Login- und
+Geprüft im Repo `krt-profit/basetool`: `keycloak-theme/krt-theme/` — Login- und
 Account-Theme (`login/resources/css/krt-login-v3.css` 28 KB,
 `account/resources/css/krt-account-v3.css` 10 KB, beide `theme.properties`,
 mitgelieferte Fonts + `login/.../img/krt.webp`).

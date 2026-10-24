@@ -75,7 +75,7 @@
           <table class="mock">
             <thead><tr><th>Nr.</th><th>Name</th><th>Typ</th><th class="r">Saldo</th><th>Status</th><th style="text-align:right">Aktionen</th></tr></thead>
             <tbody>
-              <tr><td class="num">KB-0001</td><td class="who">Staffel IRIDIUM</td><td><span class="chip" style="font-size:8.5px;">Staffel</span></td><td class="r num">1.850.000</td><td><span class="status-pill status-active" style="font-size:9px;">AKTIV</span></td><td><div class="act"><button class="btn btn-ghost btn-ic" title="Umbenennen"><svg class="krt-icon"><use href="#i-edit"/></svg></button><button class="btn btn-quiet-danger btn-xs2" disabled title="Schließen erfordert Saldo 0 — erst Restsaldo transferieren">Schließen</button></div></td></tr>
+              <tr><td class="num">KB-0001</td><td class="who">Staffel ALPHA</td><td><span class="chip" style="font-size:8.5px;">Staffel</span></td><td class="r num">1.850.000</td><td><span class="status-pill status-active" style="font-size:9px;">AKTIV</span></td><td><div class="act"><button class="btn btn-ghost btn-ic" title="Umbenennen"><svg class="krt-icon"><use href="#i-edit"/></svg></button><button class="btn btn-quiet-danger btn-xs2" disabled title="Schließen erfordert Saldo 0 — erst Restsaldo transferieren">Schließen</button></div></td></tr>
               <tr><td class="num">KB-0006</td><td class="who">Event Stanton Cup</td><td><span class="chip" style="font-size:8.5px;">Spezial</span></td><td class="r num">0</td><td><span class="status-pill status-completed" style="font-size:9px;">GESCHLOSSEN</span></td><td><div class="act"><button class="btn btn-outline btn-xs2">Wiederöffnen</button></div></td></tr>
               <tr><td class="num">KB-0007</td><td class="who">Bereich Forschung</td><td><span class="chip" style="font-size:8.5px;">Bereich</span></td><td class="r num">0</td><td><span class="status-pill status-active" style="font-size:9px;">AKTIV</span></td><td><div class="act"><button class="btn btn-ghost btn-ic" title="Umbenennen"><svg class="krt-icon"><use href="#i-edit"/></svg></button><button class="btn btn-quiet-danger btn-xs2">Schließen</button></div></td></tr>
             </tbody>
@@ -109,14 +109,14 @@
         <div id="grants-view-konto">
           <div class="selrow" style="margin-bottom:10px;">
             <span class="lbl">Konto</span>
-            <select><option>KB-0001 · Staffel IRIDIUM</option><option>Alle Konten</option></select>
+            <select><option>KB-0001 · Staffel ALPHA</option><option>Alle Konten</option></select>
           </div>
           <table class="mock">
             <thead><tr><th>Mitarbeiter</th><th>Eignung</th><th class="c">Ansehen</th><th class="c">Einzahlen</th><th class="c">Auszahlen</th><th class="c">Transfer</th><th style="text-align:right">Aktion</th></tr></thead>
             <tbody>
               <tr><td class="who">banker_jo</td><td><span class="chip chip--success" style="font-size:8.5px;">geeignet</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag"></span></td><td class="c"><span class="flag on">✓</span></td><td><div class="act"><button class="btn btn-quiet-danger btn-xs2">Entziehen</button></div></td></tr>
               <tr><td class="who">teller_ana</td><td><span class="chip chip--success" style="font-size:8.5px;">geeignet</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag"></span></td><td class="c"><span class="flag"></span></td><td class="c"><span class="flag"></span></td><td><div class="act"><button class="btn btn-quiet-danger btn-xs2">Entziehen</button></div></td></tr>
-              <tr class="inert"><td class="who">moon_k <span class="chip chip--warning" style="font-size:8px;">ausgesetzt</span></td><td><span class="chip chip--warning" style="font-size:8.5px;">Mitglied IRI</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag"></span></td><td><div class="act"><button class="btn btn-quiet-danger btn-xs2">Entziehen</button></div></td></tr>
+              <tr class="inert"><td class="who">moon_k <span class="chip chip--warning" style="font-size:8px;">ausgesetzt</span></td><td><span class="chip chip--warning" style="font-size:8.5px;">Mitglied ALP</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag"></span></td><td><div class="act"><button class="btn btn-quiet-danger btn-xs2">Entziehen</button></div></td></tr>
             </tbody>
           </table>
           <div class="err-banner" style="margin-top:10px;"><span style="color:var(--color-danger-text,#ff6b6b); font-weight:700;">⚠</span><span><b>Vergabe abgelehnt:</b> „pilot_rex" ist Mitglied der Org-Einheit „SK Vipers" — Bankdienst erfordert Mitgliedschafts-Freiheit (409 BANK_INELIGIBLE_GRANTEE). <span style="color:var(--color-gray-2);">(Beispiel der Inline-Fehlermeldung im Vergabe-Modal.)</span></span></div>
@@ -131,7 +131,7 @@
           <table class="mock">
             <thead><tr><th>Konto</th><th class="c">Ansehen</th><th class="c">Einzahlen</th><th class="c">Auszahlen</th><th class="c">Transfer</th><th style="text-align:right">Aktion</th></tr></thead>
             <tbody>
-              <tr><td class="who">KB-0001 · Staffel IRIDIUM</td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag"></span></td><td class="c"><span class="flag on">✓</span></td><td><div class="act"><button class="btn btn-quiet-danger btn-xs2">Entziehen</button></div></td></tr>
+              <tr><td class="who">KB-0001 · Staffel ALPHA</td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag"></span></td><td class="c"><span class="flag on">✓</span></td><td><div class="act"><button class="btn btn-quiet-danger btn-xs2">Entziehen</button></div></td></tr>
               <tr><td class="who">KB-0003 · Bereich Profit</td><td class="c"><span class="flag on">✓</span></td><td class="c"><span class="flag"></span></td><td class="c"><span class="flag"></span></td><td class="c"><span class="flag"></span></td><td><div class="act"><button class="btn btn-quiet-danger btn-xs2">Entziehen</button></div></td></tr>
             </tbody>
           </table>

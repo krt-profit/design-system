@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — /profile auf das KRT Design System bringen (Variante A)
 
-Repo: `krt-iri/basetool` · Datei `frontend/src/main/resources/templates/profile.html`.
+Repo: `krt-profit/basetool` · Datei `frontend/src/main/resources/templates/profile.html`.
 Ziel: die heutige **eine `kv-list` mit drei eingebetteten Formularen** (Lesedaten +
 Eigene Daten + Auszahlung + Blueprint-Freigabe untereinander, drei „Speichern"-Buttons)
 ersetzen durch **Variante A**: ein read-only **Identitäts-Block** oben, darunter je eine

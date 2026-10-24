@@ -1,6 +1,6 @@
 # Audit — `basetool-bp-extractor` gegen das KRT-Design-System
 
-Geprüft: <https://github.com/krt-iri/basetool-bp-extractor> (`main`) — eine
+Geprüft: <https://github.com/krt-profit/basetool-sc-extractor> (`main`) — eine
 Kotlin/Compose-Desktop-App (Star-Citizen-Blueprint-Extractor, Game.log → JSON).
 Gelesen: `ui/Theme.kt`, `ui/KrtComponents.kt`, `ui/WindowChrome.kt`, `Main.kt`.
 Referenz: das `das-kartell-design`-Skill (`colors_and_type.css`, `krt-components.css`,

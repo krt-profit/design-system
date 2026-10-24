@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — Design-System aktualisieren + Inventar-Tabellen als Tree-Table umbauen
 
-Repo: `krt-iri/basetool`. Zwei Teile:
+Repo: `krt-profit/basetool`. Zwei Teile:
 - **A) Design-System im Repo auf den aktuellen Stand bringen** (Tokens, Komponenten,
   inkl. der neuen **Tree-Table**-Komponente und der `th`-Farbe).
 - **B) `/inventory/all` und `/inventory/my` exakt auf das Tree-Table-Muster umbauen**

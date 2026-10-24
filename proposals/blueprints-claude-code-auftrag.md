@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — „Meine Blueprints" auf Master-Detail (V3) umbauen
 
-Repo: `krt-iri/basetool` · Seite `/personal-inventory/blueprints`
+Repo: `krt-profit/basetool` · Seite `/personal-inventory/blueprints`
 (`frontend/.../templates/personal-inventory-blueprints.html`). Ziel: **exakte**
 Umsetzung des abgenommenen V3-Entwurfs — ohne Verlust von Funktionen,
 Sichtbarkeiten oder Berechtigungen, ohne Regressionen.

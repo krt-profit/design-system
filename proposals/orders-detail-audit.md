@@ -1,6 +1,6 @@
 # Audit — `/orders/{id}` Auftrags-Details (JobOrder) gegen das KRT-Design-System
 
-Geprüft im Repo `krt-iri/basetool`: `frontend/.../templates/orders-detail.html`
+Geprüft im Repo `krt-profit/basetool`: `frontend/.../templates/orders-detail.html`
 (123 KB) gegen das `das-kartell-design`-Skill. Vorher/Nachher: `orders-detail-readability.html`.
 
 ## Gesamturteil

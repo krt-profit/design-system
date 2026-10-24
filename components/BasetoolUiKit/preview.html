@@ -58,7 +58,7 @@ function App() {
   return (
     <React.Fragment>
       {KRT_SPRITE}
-      <Header onHamburger={() => setSidebar(true)} admin={isAdmin} activeSquadron="IRI" />
+      <Header onHamburger={() => setSidebar(true)} admin={isAdmin} activeSquadron="ALP" />
       <Sidebar open={sidebar} onClose={() => setSidebar(false)} current={route}
         onNavigate={setRoute} onLogout={() => { setAuthed(false); setSidebar(false); }} />
       <main className="app-main">{screen}</main>

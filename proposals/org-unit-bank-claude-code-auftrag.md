@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — /org-unit-bank auf das KRT Design System bringen (Variante B)
 
-Repo: `krt-iri/basetool` · Dateien
+Repo: `krt-profit/basetool` · Dateien
 `frontend/src/main/resources/templates/org-unit-bank.html` (Übersicht) und
 `frontend/src/main/resources/templates/org-unit-bank-account-detail.html` (Konto-Detail).
 Ziel: die mitglieder-seitige Bank-Ansicht entschlacken — **Tabs**, **eine** seitenweite
