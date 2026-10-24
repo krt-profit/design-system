@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — Keycloak `krt-theme` an das KRT-Design-System angleichen
 
-Repo: `krt-iri/basetool`. Ziel: Das vorhandene Keycloak-Theme
+Repo: `krt-profit/basetool`. Ziel: Das vorhandene Keycloak-Theme
 `keycloak-theme/krt-theme/` (Login + Account) auf den **aktuellen** Stand des
 KRT-Design-Systems bringen — Lato-only (Audiowide + Ethnocentric raus), semantische Fehlerfarbe
 (rot statt orange), einheitlicher Primär-Hover, CTA-Bloom,

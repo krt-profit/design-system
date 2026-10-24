@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — Organigramm (`/org-chart`) verbessern
 
-Repo: `krt-iri/basetool`. Ziel: die im Audit gefundenen **A11y- und UX-Feinschliff**-
+Repo: `krt-profit/basetool`. Ziel: die im Audit gefundenen **A11y- und UX-Feinschliff**-
 Punkte am Organigramm umsetzen. Die Optik ist bereits vorbildlich systemkonform —
 **nichts am Look/an Farben ändern**, nur Verhalten, Semantik und zwei kleine
 Stil-Details.

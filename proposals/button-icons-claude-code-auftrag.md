@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — Einheitliche Button-Icons im Profit Basetool
 
-Repo: `krt-iri/basetool`. Ziel: das vorhandene Icon-Sprite um ein **vereinheitlichtes
+Repo: `krt-profit/basetool`. Ziel: das vorhandene Icon-Sprite um ein **vereinheitlichtes
 Set** erweitern und Buttons konsistent mit Icons versehen — wiederholte
 Zeilenaktionen als **Icon-only** (Platzersparnis in dichten Tabellen), primäre/seltene
 Aktionen als **Icon + Text**. Verständlichkeit + A11y haben Vorrang vor Sparsamkeit.

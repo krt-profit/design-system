@@ -1,6 +1,6 @@
 # Template-Audit — Action-Hierarchie & Lesbarkeit (über `/missions/{id}` hinaus)
 
-Geprüft im Repo `krt-iri/basetool` (Stand: dieser Branch): `index.html` (Dashboard),
+Geprüft im Repo `krt-profit/basetool` (Stand: dieser Branch): `index.html` (Dashboard),
 `material-collection.html` (Inline-Edit-Grid), `admin/locations.html` (Admin-CRUD),
 `error/403.html` (Fehlerseite) — als Stellvertreter für die übrigen Seiten.
 Bewertet mit derselben Brille wie die mission-detail-Überarbeitung.

@@ -13,40 +13,40 @@
   // mine: eigenes Angebot (dann names = sichtbare Interessenten) ·
   // sonst: interess = Zahl (Namen bleiben verborgen)
   var OFFERS = [
-    { id:"o1", mat:"Quantanium", kat:"High Value", owner:"Skorpi", sq:"IRI", foreign:false,
+    { id:"o1", mat:"Quantanium", kat:"High Value", owner:"Skorpi", sq:"ALP", foreign:false,
       qual:920, menge:512, hours:2, interess:4,
       remark:"Frisch raffiniert, **Qualität 920**. Tausche gegen **Bexalite** oder **aUEC** zum UEX-Kurs. Menge teilbar ab *128 SCU*." },
-    { id:"o2", mat:"Bexalite", kat:"High Value", owner:"Kessler", sq:"IRI", foreign:false,
+    { id:"o2", mat:"Bexalite", kat:"High Value", owner:"Kessler", sq:"ALP", foreign:false,
       qual:780, menge:96, hours:26, interess:1,
       remark:"Nur **Komplettabnahme** (96 SCU). Suche im Gegenzug refined **Laranite** ab Qualität 600." },
     { id:"o3", mat:"Laranite", kat:"Metalle", owner:"EndRageMusic", sq:"AGN", foreign:true,
       qual:645, menge:1240, hours:70, interess:0,
       remark:"Großposten. Biete gegen **Titanium** (≥ 700) oder **Agricium**. Kein aUEC." },
-    { id:"o4", mat:"Agricium", kat:"Metalle", owner:"Lenoro", sq:"IRI", foreign:false,
+    { id:"o4", mat:"Agricium", kat:"Metalle", owner:"Lenoro", sq:"ALP", foreign:false,
       qual:796, menge:340, hours:5, mine:true, names:["Mara","Hex","P6"],
       remark:"## Tauschangebot Agricium (Qualität 796)\n\nIch gebe **340 SCU Agricium** ab und suche vorrangig:\n\n- **Titanium** (Qualität ≥ 650)\n- **Laranite** oder **Hephaestanite**\n- Alternativ **aUEC** zum aktuellen UEX-Kurs\n\nTeilmengen ab *64 SCU* möglich. Übergabe im System **Stanton** oder **Pyro** — Ort besprechen wir direkt.\n\n> Kein Verkauf an Nicht-Kartell-Mitglieder ohne Rücksprache." },
-    { id:"o5", mat:"Titanium", kat:"Metalle", owner:"P6", sq:"IRI", foreign:false,
+    { id:"o5", mat:"Titanium", kat:"Metalle", owner:"P6", sq:"ALP", foreign:false,
       qual:540, menge:880, hours:150, interess:2,
       remark:"Solides Mittelfeld-Titanium. Tausche gegen **Aluminum** oder **Gas** (Hydrogen/Chlorine)." },
-    { id:"o6", mat:"Aluminum", kat:"Metalle", owner:"Nova_7", sq:"IRI", foreign:false,
+    { id:"o6", mat:"Aluminum", kat:"Metalle", owner:"Nova_7", sq:"ALP", foreign:false,
       qual:910, menge:2100, hours:12, interess:0,
       remark:"Großposten, **teilbar**. Suche **Quantanium** oder High-Value-Material — größere Mengen bevorzugt." },
     { id:"o7", mat:"Aphorite", kat:"Edelgestein", owner:"GremlinTausch", sq:"SK-VÖL", foreign:true,
       qual:615, menge:60, hours:92, interess:1,
       remark:"Aphorite aus letztem Salvage. Tausch gegen **Beryl** oder **Dolivine** willkommen." },
-    { id:"o8", mat:"Hephaestanite", kat:"Metalle", owner:"Ferro", sq:"IRI", foreign:false,
+    { id:"o8", mat:"Hephaestanite", kat:"Metalle", owner:"Ferro", sq:"ALP", foreign:false,
       qual:700, menge:430, hours:30, interess:0,
       remark:"Genau **700er** Qualität. Suche **Agricium** oder **Titanium** im 1:1-Tausch nach Menge." },
-    { id:"o9", mat:"Quantanium", kat:"High Value", owner:"Lenoro", sq:"IRI", foreign:false,
+    { id:"o9", mat:"Quantanium", kat:"High Value", owner:"Lenoro", sq:"ALP", foreign:false,
       qual:610, menge:128, hours:22, mine:true, names:["Yuki"],
       remark:"Rest aus dem letzten Run (Qualität 610). Tausche gegen **refined Metalle** — Laranite/Agricium bevorzugt." },
-    { id:"o10", mat:"Beryl", kat:"Edelgestein", owner:"DocRebound", sq:"IRI", foreign:false,
+    { id:"o10", mat:"Beryl", kat:"Edelgestein", owner:"DocRebound", sq:"ALP", foreign:false,
       qual:835, menge:210, hours:8, interess:5,
       remark:"Hochwertiges **Beryl (835)**. Suche High-Value oder **Bexalite**. Schnelle Übergabe möglich." },
-    { id:"o11", mat:"Tungsten", kat:"Metalle", owner:"Yuki", sq:"IRI", foreign:false,
+    { id:"o11", mat:"Tungsten", kat:"Metalle", owner:"Yuki", sq:"ALP", foreign:false,
       qual:480, menge:1560, hours:168, interess:0,
       remark:"Günstig abzugeben, große Menge. Tausche gegen so ziemlich alles **Refined** — macht Angebote." },
-    { id:"o12", mat:"Corundum", kat:"Metalle", owner:"Mara", sq:"IRI", foreign:false,
+    { id:"o12", mat:"Corundum", kat:"Metalle", owner:"Mara", sq:"ALP", foreign:false,
       qual:720, menge:640, hours:48, interess:2,
       remark:"Tausche gegen **Aluminum** oder **Laranite**. Auch Teilmengen ab *128 SCU*." }
   ];
@@ -379,7 +379,7 @@
     var id = modalCtx.linkedId || ("n" + Date.now());
     withdrawn.delete(id);
     if (!offer(id)) {
-      OFFERS.unshift({ id:id, mat:mat, kat:catOf(mat), owner:ME, sq:"IRI", foreign:false,
+      OFFERS.unshift({ id:id, mat:mat, kat:catOf(mat), owner:ME, sq:"ALP", foreign:false,
         qual:qual, menge:menge, hours:0, mine:true, names:[], remark:remark || "_Keine Bemerkung._" });
     } else { var ox = offer(id); ox.remark = remark || ox.remark; withdrawn.delete(id); }
     // Lager-Checkbox mit dem (evtl. neuen) Angebot verknüpfen, damit späteres Abwählen es wieder entfernt

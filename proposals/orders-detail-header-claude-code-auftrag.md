@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — Auftragsdetails-Kopf entschlacken (Variante A)
 
-Repo: `krt-iri/basetool` · Datei `frontend/src/main/resources/templates/orders-detail.html`
+Repo: `krt-profit/basetool` · Datei `frontend/src/main/resources/templates/orders-detail.html`
 (der `th:fragment="orderHeader"` in `#order-header-results`). Ziel: den hohen,
 einspaltigen kv-list-Kopf durch **Variante A** ersetzen — Titelzeile + Facts-Bar +
 gruppierte Meta-Karte — **ohne** Funktions-, Sichtbarkeits- oder Berechtigungsverlust.

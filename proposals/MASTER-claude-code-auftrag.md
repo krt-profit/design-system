@@ -1,6 +1,6 @@
 # Master-Auftrag — Profit Basetool app-weit + Keycloak-Theme am KRT-Design-System vereinheitlichen
 
-Repo: `krt-iri/basetool`. Dieser Auftrag bündelt **beide** Baustellen zu einer
+Repo: `krt-profit/basetool`. Dieser Auftrag bündelt **beide** Baustellen zu einer
 durchgehenden Reihenfolge:
 - **A) Frontend/App** (Thymeleaf-Templates + `static/css/styles.css`)
 - **B) Keycloak-Theme** (`keycloak-theme/krt-theme/` Login + Account)

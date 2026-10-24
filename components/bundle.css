@@ -354,7 +354,7 @@ label {
 .chip--warning { color: var(--color-warning);     border-color: var(--color-warning);     background-color: rgba(255,210,63,0.12); }
 .chip--info    { color: var(--color-info-text);   border-color: var(--color-info);        background-color: rgba(53,93,220,0.15); }
 .chip--muted   { color: var(--color-gray-2-text);      border-color: var(--color-gray-3);       background-color: transparent; }
-/* a chip that carries "key: value" data (e.g. a claim "IRI: 1,200 SCU") */
+/* a chip that carries "key: value" data (e.g. a claim "ALP: 1,200 SCU") */
 .chip--data { text-transform: none; letter-spacing: 0; font-weight: var(--fw-regular); }
 .chip--data strong { font-weight: var(--fw-bold); color: var(--color-white); }
 .chip--item-class-military    { color: var(--krt-item-class-military-text);    border-color: var(--krt-item-class-military);    background-color: color-mix(in srgb, var(--krt-item-class-military) 15%, transparent); }

@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — `basetool-bp-extractor` UX-Feinschliff (KRT-konform)
 
-Repo: <https://github.com/krt-iri/basetool-bp-extractor> · Kotlin / Compose for
+Repo: <https://github.com/krt-profit/basetool-sc-extractor> · Kotlin / Compose for
 Desktop. Ziel: gezielte **Nutzerfreundlichkeits- und A11y-Verbesserungen** umsetzen,
 ohne das Design zu verändern — die App ist bereits eine vorbildliche KRT-Umsetzung.
 

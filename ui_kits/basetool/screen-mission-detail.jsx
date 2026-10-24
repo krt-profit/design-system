@@ -17,8 +17,8 @@ function Panel({ id, title, count, defaultOpen, children }) {
 
 function MissionDetailScreen({ push, onBack }) {
   const [parts, setParts] = useMD([
-    { id: 1, user: "cmdr.valk", org: "IRI", job: "Pilot", state: "in" },
-    { id: 2, user: "mara.k", org: "IRI", job: "Gunner", state: "out" },
+    { id: 1, user: "cmdr.valk", org: "ALP", job: "Pilot", state: "in" },
+    { id: 2, user: "mara.k", org: "ALP", job: "Gunner", state: "out" },
     { id: 3, user: "hex_07", org: null, job: "Medic", state: "pre" },
   ]);
   const checkIn = (id) => { setParts((p) => p.map((x) => x.id === id ? { ...x, state: "in" } : x)); push("Check-In", "Participant checked in."); };
@@ -29,7 +29,7 @@ function MissionDetailScreen({ push, onBack }) {
       <div className="greeting hud-box" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
           <h1 style={{ margin: 0, fontSize: "1.6rem" }}>Einsatz: Operation Tiefschlag</h1>
-          <span className="squadron-badge">IRI</span>
+          <span className="squadron-badge">ALP</span>
           <span className="status-pill status-planned" style={{ marginLeft: "0.25rem" }}>PLANNED</span>
         </div>
         <button className="btn btn-ghost" onClick={onBack}>Zurück</button>

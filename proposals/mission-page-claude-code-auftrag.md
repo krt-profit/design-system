@@ -1,6 +1,6 @@
 # Claude-Code-Auftrag — Einsatz-Seite (/missions/{id}) auf Tab-Layout umbauen
 
-Repo: `krt-iri/basetool`. Ziel: Die Einsatz-Detailseite **strikt nach den
+Repo: `krt-profit/basetool`. Ziel: Die Einsatz-Detailseite **strikt nach den
 abgenommenen Mockups** auf das Tab-Layout (Variante B) umbauen — **ohne Verlust
 von Funktionen, Sichtbarkeiten oder Berechtigungen und ohne Regressionen.**
 

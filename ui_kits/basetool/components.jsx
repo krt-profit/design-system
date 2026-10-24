@@ -44,7 +44,7 @@ function Header({ onHamburger, admin, activeSquadron }) {
       </header>
       <div className="ctx-chip">
         <span className="lbl">Staffel</span>
-        <span className="val">{activeSquadron || "IRI"}</span>
+        <span className="val">{activeSquadron || "ALP"}</span>
       </div>
     </React.Fragment>
   );

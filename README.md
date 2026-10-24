@@ -266,7 +266,7 @@ Specimen: `components/ActionHierarchy/preview.html`.
   `.kv-list`, `.section-title`.
 - **`.chip`** — inline data label (order kind, quality, claim, count), 4 px radius. Tone
   variants `--primary/--success/--danger/--warning/--info/--muted` (border + text take
-  the hue, faint tint fill), plus `--data` for "key: value" chips (`IRI: 1,200 SCU`).
+  the hue, faint tint fill), plus `--data` for "key: value" chips (`ALP: 1,200 SCU`).
 
 Specimen: `components/CardChip/preview.html`.
 
