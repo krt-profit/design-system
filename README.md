@@ -78,6 +78,7 @@ All values live in [`tokens.json`](tokens.json) → [`tokens.css`](tokens.css).
 | Panel (Grau 4) | `--color-gray-4` / `--color-bg-dark-gray` → `--surface-panel` | `#282C30` | cards, tables, `.list-panel`, modals, sidebar, toasts |
 | Control | `--color-control` → `--control-bg` | `#373E43` | resting fill of every non-CTA control; table-row hover |
 | Control hover | `--color-control-hover` → `--control-bg-hover` | `#434B51` | hover fill of controls and segments |
+| Tabellen-Zebra | `--table-stripe-bg` (`--color-control` at 50 %) | `#30353A` on the panel | every second visible table row; halfway between panel and row hover |
 | Trennlinie (Grau 3) | `--color-gray-3` → `--surface-raised` | `#36373B` | decorative hairlines and panel frames only; `.btn-secondary` fill |
 | Control-Rand (Grau 2) | `--color-gray-2` → `--control-border` | `#8F9399` | border of every control (4.6 : 1 on panel, 3.5 : 1 on a control fill), scrollbar thumb, status dots |
 | Zähler-Badge | `--color-count-badge` | `#2F394C` | title counter `.count-badge`, white digits 11.6 : 1 |
@@ -463,7 +464,8 @@ action → icon dictionary in [`proposals/button-icons-guidelines.md`](proposals
 - **Scrim & blur.** Overlays `rgba(0,0,0,0.75–0.8)` + `backdrop-filter: blur(4px)`; the
   squadron context chip uses `blur(2px)`.
 - **Tables.** Panel body, uppercase Grau-1 headers on the bar surface with a 2 px orange
-  under-rule, subtle zebra `rgba(255,255,255,0.02)`, row hover `#373E43`.
+  under-rule, zebra `--table-stripe-bg` (control at 50 %, `#30353A` on the panel), row hover
+  `#373E43`.
 - **Scrollbars.** 12 px (`.scroll-thin` 8 px), track on the panel with a leading
   hairline, thumb `#8F9399` → `#EEB64B` on hover → `#E77E23` while dragging; buttons
   suppressed. Wrap regions in `.hud-scroll` + `.scroll-y/-x/-both`; `.scroll-accent` for

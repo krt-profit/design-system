@@ -274,7 +274,7 @@ th {
 }
 td { color: var(--color-gray-1); }
 tbody tr { transition: background-color 0.2s ease; }
-tbody tr:nth-child(even) { background-color: rgba(255, 255, 255, 0.02); }
+tbody tr:nth-child(even) { background-color: var(--table-stripe-bg); }
 /* hover must out-rank the stripe on even rows too (specificity 0,2,2). */
 tbody tr:hover, tbody tr:nth-child(even):hover { background-color: var(--control-bg); }
 
