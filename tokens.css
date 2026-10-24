@@ -102,6 +102,7 @@
   --surface-raised: var(--color-gray-3);
   --control-bg: var(--color-control);
   --control-bg-hover: var(--color-control-hover);
+  --table-stripe-bg: rgba(55, 62, 67, 0.5);
   --control-border: var(--color-gray-2);
   --control-fg: var(--color-gray-1);
   --control-selected-bg: rgba(231, 126, 35, 0.26);
