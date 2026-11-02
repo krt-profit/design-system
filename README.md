@@ -405,6 +405,7 @@ no icon library (the CSP forbids CDNs). 24×24, stroke-only, `stroke-width: 2`, 
 caps, `fill: none`, `currentColor`; used as `<svg class="krt-icon"><use href="#krt-icon-NAME"/></svg>`
 (1em; `.krt-icon-lg` 1.5em, `.krt-icon-xl` 2em).
 
+- **Navigation icons** (`database`, `wedge`, `crate`, `bank`, `eye-off`, `shield`) mark navigation entries; `star` (outline) and `star-filled` (same geometry, `fill: currentColor`) are the two states of a favourite toggle.
 - **Icon + text** for primary, rare or ambiguous actions.
 - **Icon-only** (`.btn-icon`, 32×32) for repeated row actions with a universal meaning
   (edit, trash, check-in, check-out, bookout, close) — always with `aria-label` + `title`.
