@@ -21,19 +21,21 @@
 
     --color-primary: #E77E23;
     --color-bg-black: #000000;
-    --color-canvas: #0F0F0F;
-    --color-bg-dark-gray: #282C30;
+    --color-canvas: #0D0F12;
+    --color-bg-dark-gray: #1A1E24;
     --color-accent-light: #EEB64B;
     --color-accent-dark: #C45C00;
 
-    --color-gray-1: #D1D2D3;
+    --color-gray-1: #D7DADE;
     --color-gray-2: #8F9399;
-    --color-gray-3: #36373B;
-    --color-gray-4: #282C30;
-    --color-surface-input: #1A1D21;
-    --color-control: #373E43;
-    --color-gray-2-text: #A2A5A9;
+    --color-gray-3: #2A3038;
+    --color-gray-4: #1A1E24;
+    --color-surface-input: #14171C;
+    --color-control: #2F3640;
+    --color-gray-2-text: #9AA1AB;
     --radius-sm: 4px;
+    --radius-control: 6px;
+    --radius-box: 10px;
 
     --color-danger: #A3000A;
     --color-success: #239E33;

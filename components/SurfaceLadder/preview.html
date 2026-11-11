@@ -1,0 +1,80 @@
+<!-- @dsCard group="Spacing" height=700 width=1000 subtitle="Flächenleiter Design 3.0: Box → Kachel → abgesenkte Ebene; Tabellen auf Box und auf Kachel" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style>
+  body { display: flex; flex-direction: column; gap: 14px; }
+  .ladder { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+  .sw { height: 46px; border: 1px solid var(--color-gray-3); border-radius: var(--radius-tile); }
+  .lbl { font-size: 0.72rem; color: var(--color-gray-1); margin-top: 4px; }
+  .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .sunk { background: var(--surface-inset); border: 1px solid var(--color-gray-3); border-radius: var(--radius-sm); padding: 8px 10px; font-size: 0.8rem; display: flex; justify-content: space-between; }
+  .tile-hover { background: var(--surface-card-hover); }
+  .tiles .card + .card, .cols .card + .card { margin-top: 0; }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+  table { margin-top: 0; }
+  th, td { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+  tr.is-sel td { background: color-mix(in srgb, var(--color-primary) 12%, transparent); }
+  tr.is-sel td:first-child { box-shadow: inset 3px 0 0 var(--color-primary); }
+</style>
+</head>
+<body>
+  <p class="pv-label">Jede Ebene wechselt die Fläche und trägt den #2A3038-Rahmen</p>
+  <div class="ladder">
+    <div><div class="sw" style="background:var(--surface-canvas)"></div><div class="lbl">0 · Canvas #0D0F12</div></div>
+    <div><div class="sw" style="background:var(--surface-bar)"></div><div class="lbl">Bar / Ebene 3 #14171C</div></div>
+    <div><div class="sw" style="background:var(--surface-panel)"></div><div class="lbl">1 · Box #1A1E24</div></div>
+    <div><div class="sw" style="background:var(--table-stripe-bg)"></div><div class="lbl">Zebra auf Box #1E2329</div></div>
+    <div><div class="sw" style="background:var(--surface-card)"></div><div class="lbl">2 · Kachel #20252C</div></div>
+    <div><div class="sw" style="background:var(--surface-card-hover)"></div><div class="lbl">Hover #272D35</div></div>
+  </div>
+
+  <section class="card">
+    <div class="card-head"><h2 class="card-title">Ebene 1 · Box</h2><span class="pv-mono">--surface-panel</span></div>
+    <div class="tiles">
+      <div class="card card--inset">
+        <div class="card-head"><h3 class="card-title">Ebene 2 · Kachel</h3></div>
+        <div class="sunk"><span>Ebene 3 · abgesenkt</span><span class="pv-mono">--surface-inset</span></div>
+      </div>
+      <div class="card card--inset tile-hover">
+        <div class="card-head"><h3 class="card-title">Kachel · Hover</h3></div>
+        <div class="sunk"><span>bleibt #14171C</span></div>
+      </div>
+      <div class="card card--inset">
+        <div class="card-head"><h3 class="card-title">Control auf Kachel</h3></div>
+        <button type="button" class="btn btn-ghost">Bearbeiten</button>
+      </div>
+    </div>
+
+    <div class="cols" style="margin-top:12px;">
+      <div>
+        <p class="pv-label">Tabelle auf der Box</p>
+        <table>
+          <thead><tr><th>Material</th><th class="num">Menge</th></tr></thead>
+          <tbody>
+            <tr><td>Laranite</td><td class="num">240 SCU</td></tr>
+            <tr><td>Agricium</td><td class="num">186 SCU</td></tr>
+            <tr class="is-sel"><td>Quantanium · ausgewählt</td><td class="num">64 SCU</td></tr>
+            <tr><td>Bexalite</td><td class="num">12 SCU</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card card--inset">
+        <p class="pv-label">Tabelle auf einer Kachel</p>
+        <table style="background:var(--surface-card);">
+          <thead><tr><th>Auftrag</th><th class="num">Menge</th></tr></thead>
+          <tbody>
+            <tr><td>A-118 · SK Argon</td><td class="num">200 SCU</td></tr>
+            <tr><td>A-121 · BRV</td><td class="num">96 SCU</td></tr>
+            <tr><td>A-124 · Hangar</td><td class="num">48 SCU</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <p class="pv-mono">Nie die Fläche der Elternebene. Box → Kachel hellt auf, die dritte Ebene senkt sich ab. Zebra/Hover: auf Box #1E2329/#272D35, auf Kachel #242930/#2C323A. Auswahl = Orange-Tönung + 3-px-Balken. Höchstens drei Ebenen in einer Box.</p>
+</body>
+</html>
