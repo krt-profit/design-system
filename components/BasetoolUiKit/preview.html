@@ -1,11 +1,11 @@
-<!-- @dsCard group="UI Kit — Basetool" height=720 width=1280 subtitle="Interactive app recreation — login, dashboard, hangar, price matrix" -->
+<!-- @dsCard group="UI Kit — Basetool" height=760 width=1280 subtitle="Interaktiver Nachbau in Design 3.0: Anmeldung, Dashboard, Missionen, Hangar, Lager, Material, Mission, Admin" -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profit Basetool — UI Kit</title>
-<link rel="icon" type="image/webp" href="../../assets/krt-favicon.webp">
+<link rel="icon" type="image/svg+xml" href="../../assets/basetool-favicon.svg">
 <link rel="stylesheet" href="../../colors_and_type.css">
 <link rel="stylesheet" href="../../krt-components.css">
 <link rel="stylesheet" href="../../ui_kits/basetool/app.css">
@@ -14,6 +14,7 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
+<header id="kit-header" hidden></header>
 <div id="root"></div>
 
 <script type="text/babel" src="../../ui_kits/basetool/icons.jsx"></script>
@@ -22,45 +23,63 @@
 <script type="text/babel" src="../../ui_kits/basetool/screens.jsx"></script>
 <script type="text/babel" src="../../ui_kits/basetool/screen-mission-detail.jsx"></script>
 <script type="text/babel">
-const { useState } = React;
+const { useState, useEffect } = React;
+
+const ADMIN_ROUTES = ["members", "uex", "settings"];
+const STUBS = {
+  refinery: ["Logistik", "Raffinerie", "Raffinerieaufträge sind in diesem Kit nicht nachgebaut."],
+  orders: ["Logistik", "Aufträge", "Aufträge sind in diesem Kit nicht nachgebaut."],
+  market: ["Handel", "Materialbörse", "Die Materialbörse ist in diesem Kit nicht nachgebaut."],
+  supply: ["Handel", "Beschaffung", "Bedarf, Spenden und Ankauf sind in diesem Kit nicht nachgebaut."],
+  unit: ["Staffel", "Meine Einheit", "Bank und Leitung der Einheit sind in diesem Kit nicht nachgebaut."],
+  uex: ["Stammdaten", "Datenimporte", "UEX- und P4K-Importe sind Admin-Daten und hier nur ein Platzhalter."],
+  settings: ["Betrieb", "Systemeinstellungen", "Systemeinstellungen sind Admin-Daten und hier nur ein Platzhalter."],
+};
 
 function App() {
   const [authed, setAuthed] = useState(false);
   const [route, setRoute] = useState("home");
   const [sidebar, setSidebar] = useState(false);
+  const [adminNav, setAdminNav] = useState(false);
   const { toasts, push } = useToasts();
+  const isAdmin = ADMIN_ROUTES.includes(route);
 
-  const isAdmin = route === "members" || route === "uex" || route === "settings";
+  useEffect(() => {
+    document.body.classList.toggle("admin-mode", authed && isAdmin);
+    document.getElementById("kit-header").hidden = !authed;
+  }, [authed, isAdmin]);
 
   if (!authed) {
     return (
       <React.Fragment>
-        {KRT_SPRITE}
-        <LoginScreen onLogin={() => { setAuthed(true); setRoute("home"); push("Authentication Confirmed", "You are successfully authenticated."); }} />
+        <LoginScreen onLogin={() => { setAuthed(true); setRoute("home"); push("Angemeldet", "Willkommen zurück, Commander."); }} />
         <ToastViewport toasts={toasts} />
       </React.Fragment>
     );
   }
 
   let screen;
-  switch (route) {
-    case "home": screen = <Dashboard onOpenMission={() => setRoute("mission-detail")} />; break;
-    case "missions": screen = <MissionsScreen push={push} onOpen={() => setRoute("mission-detail")} />; break;
-    case "mission-detail": screen = <MissionDetailScreen push={push} onBack={() => setRoute("missions")} />; break;
-    case "hangar": screen = <HangarScreen push={push} />; break;
-    case "materials": screen = <MaterialsScreen />; break;
-    case "members": screen = <MembersScreen />; break;
-    case "uex": screen = <PlaceholderScreen title="UEX Data" note="Trade terminal & commodity data synced from the UEX feed. Last sync: 3h ago. (Admin-only data view — recreated as a stub in this kit.)" />; break;
-    case "settings": screen = <PlaceholderScreen title="System Settings" note="Refinery rounding, order-age color thresholds, transfer-fee rate and per-squadron promotion toggles live here. (Admin-only — stub.)" />; break;
-    default: screen = <Dashboard onOpenMission={() => setRoute("missions")} />;
+  if (STUBS[route]) {
+    const [eyebrow, title, note] = STUBS[route];
+    screen = <PlaceholderScreen eyebrow={eyebrow} title={title} note={note} />;
+  } else {
+    switch (route) {
+      case "missions": screen = <MissionsScreen push={push} onOpen={() => setRoute("mission-detail")} />; break;
+      case "mission-detail": screen = <MissionDetailScreen push={push} onBack={() => setRoute("missions")} />; break;
+      case "hangar": screen = <HangarScreen push={push} />; break;
+      case "lager": screen = <LagerScreen push={push} />; break;
+      case "materials": screen = <MaterialsScreen />; break;
+      case "members": screen = <MembersScreen />; break;
+      default: screen = <Dashboard onOpenMission={() => setRoute("mission-detail")} />;
+    }
   }
 
   return (
     <React.Fragment>
-      {KRT_SPRITE}
-      <Header onHamburger={() => setSidebar(true)} admin={isAdmin} activeSquadron="ALP" />
-      <Sidebar open={sidebar} onClose={() => setSidebar(false)} current={route}
-        onNavigate={setRoute} onLogout={() => { setAuthed(false); setSidebar(false); }} />
+      <Header onHamburger={() => setSidebar(true)} onHome={() => setRoute("home")} unread={3} />
+      <Sidebar open={sidebar} onClose={() => setSidebar(false)} current={route} admin={adminNav}
+        onNavigate={setRoute} onToggleAdmin={() => setAdminNav((a) => !a)}
+        onLogout={() => { setAuthed(false); setSidebar(false); setAdminNav(false); }} />
       <main className="app-main">{screen}</main>
       <Footer />
       <ToastViewport toasts={toasts} />

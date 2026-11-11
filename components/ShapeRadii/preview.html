@@ -1,23 +1,27 @@
-<!-- @dsCard group="Spacing" height=220 width=700 subtitle="4 px (Website) als Standard; Pillen und Kreise bleiben" -->
+<!-- @dsCard group="Spacing" height=240 width=760 subtitle="Design 3.0: Boxen 10 px · Kacheln 8 px · Controls 6 px · Innenelemente 4 px" -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../../preview/_card.css">
 <style>
-  .demo { display:flex; gap:26px; align-items:center; flex-wrap:wrap; }
-  .box { border-radius:var(--radius-sm); width:90px; height:64px; background:var(--color-gray-3); border:1px solid var(--color-primary); display:flex; align-items:center; justify-content:center; color:var(--color-gray-1); font-size:.7rem; }
-  .pill { width:auto; padding:0 18px; border-radius:999px; height:30px; }
+  .demo { display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:14px; align-items:start; }
+  .demo > div { display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .box { width:96px; height:64px; background:var(--surface-card); border:1px solid var(--color-primary); display:flex; align-items:center; justify-content:center; color:var(--color-gray-1); font-size:.7rem; }
+  .pill { width:auto; padding:0 18px; height:30px; margin:17px 0; }
+  .demo .pv-mono { margin:7px 0 0; }
 </style>
 </head>
 <body>
-  <p class="pv-label">Shape — radius-sm 4px wie das-kartell.org; Pillen &amp; Kreise sind die Ausnahme</p>
+  <p class="pv-label">Shape — Rundung nach Rolle (das-kartell.org Design 3.0)</p>
   <div class="demo">
-    <div style="text-align:center;"><div class="box">4px</div><p class="pv-mono" style="margin-top:7px;">cards · inputs<br>buttons · modals · chips</p></div>
-    <div style="text-align:center;"><div class="box" style="border-radius:0;">0</div><p class="pv-mono" style="margin-top:7px;">Tabellenzellen<br>Akzent-Leisten · Balken</p></div>
-    <div style="text-align:center;"><div class="box pill">PILL</div><p class="pv-mono" style="margin-top:7px;">badges &amp; chips<br>radius 999px</p></div>
-    <div style="text-align:center;"><div class="box" style="border-radius:50%; width:64px;">○</div><p class="pv-mono" style="margin-top:7px;">radio only</p></div>
+    <div><div class="box" style="border-radius:var(--radius-box);">10px</div><p class="pv-mono">--radius-box<br>cards · panels<br>modals · toasts</p></div>
+    <div><div class="box" style="border-radius:var(--radius-tile);">8px</div><p class="pv-mono">--radius-tile<br>tiles · alerts<br>flyouts</p></div>
+    <div><div class="box" style="border-radius:var(--radius-control);">6px</div><p class="pv-mono">--radius-control<br>buttons · inputs<br>segments</p></div>
+    <div><div class="box" style="border-radius:var(--radius-sm);">4px</div><p class="pv-mono">--radius-sm<br>chips · labels<br>badges</p></div>
+    <div><div class="box" style="border-radius:0;">0</div><p class="pv-mono">table cells<br>accent bars</p></div>
+    <div><div class="box pill" style="border-radius:var(--radius-pill);">PILL</div><p class="pv-mono">squadron badges<br>bell · grip</p></div>
   </div>
-  <p class="pv-mono" style="margin-top:16px;">Keine größeren Rundungen als 4 px (außer Pillen/Kreise). Geometry is built from rings (planets) &amp; triangles (ships).</p>
+  <p class="pv-mono" style="margin-top:14px;">Die HUD-Ecken der .hud-box folgen der gerundeten Ecke. Die Geometrie baut auf Ringen (Planeten) und Dreiecken (Schiffen) auf.</p>
 </body>
 </html>
