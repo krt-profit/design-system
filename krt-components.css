@@ -169,19 +169,19 @@
 .card--inset { background-color: var(--surface-card); }
 .card--accent { border-top: 3px solid var(--color-primary); }
 .card--flush { padding: 0; }
-.card--flush > :is(table, .data-table):first-child thead tr:first-child > th:first-child {
+.card--flush > table:nth-child(1 of :not([hidden])) > thead > tr:first-child > th:first-child {
     border-top-left-radius: calc(var(--radius-box) - 1px);
 }
-.card--flush > :is(table, .data-table):first-child thead tr:first-child > th:last-child {
+.card--flush > table:nth-child(1 of :not([hidden])) > thead > tr:first-child > th:last-child {
     border-top-right-radius: calc(var(--radius-box) - 1px);
 }
-.card--flush > :is(table, .data-table):last-child tbody tr:nth-last-child(1 of :not([hidden])) > td {
+.card--flush > table:nth-last-child(1 of :not([hidden])) > tbody > tr:nth-last-child(1 of :not([hidden])) > td {
     border-bottom: 0;
 }
-.card--flush > :is(table, .data-table):last-child tbody tr:nth-last-child(1 of :not([hidden])) > td:first-child {
+.card--flush > table:nth-last-child(1 of :not([hidden])) > tbody > tr:nth-last-child(1 of :not([hidden])) > td:first-child {
     border-bottom-left-radius: calc(var(--radius-box) - 1px);
 }
-.card--flush > :is(table, .data-table):last-child tbody tr:nth-last-child(1 of :not([hidden])) > td:last-child {
+.card--flush > table:nth-last-child(1 of :not([hidden])) > tbody > tr:nth-last-child(1 of :not([hidden])) > td:last-child {
     border-bottom-right-radius: calc(var(--radius-box) - 1px);
 }
 .card-head {
@@ -4027,12 +4027,12 @@ th[aria-sort='descending'] .sort-header__mark::before {
         width: auto;
         justify-content: flex-start;
     }
-    .card--flush > .data-table--stack:first-child thead:has(.sort-header) tr,
-    .card--flush > .data-table--stack:first-child thead:not(:has(.sort-header)) + tbody tr:nth-child(1 of :not([hidden])) {
+    .card--flush > .data-table--stack:nth-child(1 of :not([hidden])) > thead:has(.sort-header) > tr,
+    .card--flush > .data-table--stack:nth-child(1 of :not([hidden])) > thead:not(:has(.sort-header)) + tbody > tr:nth-child(1 of :not([hidden])) {
         border-top-left-radius: calc(var(--radius-box) - 1px);
         border-top-right-radius: calc(var(--radius-box) - 1px);
     }
-    .card--flush > .data-table--stack:last-child tbody tr:nth-last-child(1 of :not([hidden])) {
+    .card--flush > .data-table--stack:nth-last-child(1 of :not([hidden])) > tbody > tr:nth-last-child(1 of :not([hidden])) {
         border-bottom: 0;
         border-bottom-left-radius: calc(var(--radius-box) - 1px);
         border-bottom-right-radius: calc(var(--radius-box) - 1px);
