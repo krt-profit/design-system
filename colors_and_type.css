@@ -1,32 +1,15 @@
-/* ============================================================================
-   DAS KARTELL — Profit Basetool
-   Foundational stylesheet: imports the tokens, adds what tokens.json cannot
-   hold, and the semantic element defaults.
-
-   ONE SOURCE: every colour, size, weight, spacing, radius, shadow, font
-   family and the Lato @font-face live in tokens.json and are compiled to
-   tokens.css. Change a token THERE, not here.
-
-   Consumers (e.g. the basetool repo / Keycloak mirror) must copy tokens.css
-   together with this file — it is imported first.
-   ============================================================================ */
 @import url('tokens.css');
 
 :root {
     color-scheme: dark;
 
-    /* Composite borders (shorthands reference colour tokens — not token values). */
     --border-hairline: 1px solid var(--color-gray-3);
     --border-accent: 1px solid var(--color-primary);
     --border-heading: 2px solid var(--color-primary);
 
-    --measure: 80ch;     /* paragraph max line length (ch is not a token unit) */
+    --measure: 80ch;
 }
 
-/* ============================================================================
-   SEMANTIC ELEMENT DEFAULTS
-   A minimal reset so raw HTML already looks on-brand. Component CSS extends it.
-   ============================================================================ */
 body {
     background-color: var(--surface-canvas);
     color: var(--color-gray-1);
@@ -42,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-primary);
     text-transform: uppercase;
     letter-spacing: var(--tracking-display);
-    font-weight: var(--fw-bold);   /* Lato headlines need weight to read as headings */
+    font-weight: var(--fw-bold);
     margin: 0 0 0.5em;
 }
 h1 { font-size: var(--fs-h1); }
@@ -61,8 +44,6 @@ a:hover { color: var(--color-accent-light); }
 strong, b { font-weight: var(--fw-bold); }
 code, kbd, samp { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
 
-/* Form labels are neutral, not orange. The accent is reserved for ACTIONS and
-   identity — labels that shout in orange add noise and bury the input values. */
 label {
     display: block;
     color: var(--color-gray-1);
@@ -76,27 +57,16 @@ label {
 
 *, *::before, *::after { box-sizing: border-box; }
 
-/* ----------------------------------------------------------------------------
-   ACCESSIBILITY DEFAULTS
-   A visible keyboard-focus ring for EVERY interactive element (the app only
-   styled input focus before, leaving buttons/links/badges with no visible
-   focus for keyboard users). :focus-visible only shows for keyboard/AT, not
-   mouse clicks, so it doesn't add noise for pointer users. Components may
-   override with their own focus treatment.
-   ---------------------------------------------------------------------------- */
 :where(a, button, [role="button"], [tabindex], summary,
        input, select, textarea, .btn, .btn-icon):focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
 }
-/* On a filled orange CTA the orange-on-orange ring would vanish — switch to a
-   white ring there for contrast. */
+
 .btn--cta:focus-visible, .btn:not([class*="btn-"]):focus-visible {
     outline-color: var(--color-white);
 }
 
-/* Respect reduced-motion: neutralise transitions/animations for users who ask
-   for it (vestibular safety). The app uses slide-in drawers + toast motion. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.001ms !important;

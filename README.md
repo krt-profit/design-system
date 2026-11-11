@@ -20,8 +20,6 @@ and a fixed department color system.
   this system; templates under `frontend/.../templates/`, copy in
   `messages_de.properties` / `messages_en.properties`, Keycloak theme in
   `keycloak-theme/krt-theme/`.
-- **GitHub — `krt-profit/basetool-sc-extractor`** · <https://github.com/krt-profit/basetool-sc-extractor>
-  Desktop extractor (Compose Desktop), KRT theme in `src/main/kotlin/.../ui/Theme.kt`.
 - **GitHub — `krt-profit/design-system`** · this project.
 - **das-kartell.org** — the org website. The surface grays, the text colours and the 4 px
   radius are taken from it, measured as computed CSS values in the browser (DevTools / the
@@ -307,7 +305,7 @@ for a clicked chip — and a trailing **`.chip`** rest indicator.
 - **Data:** two join tables per entry — `{ jobOrderId, amount }`, `{ missionId, amount }`;
   changes carry `version` (optimistic lock).
 
-Specimens: `components/EntryAssign/preview.html`, `components/EntryQuantitySplitVariants/preview.html`.
+Specimen: `components/EntryAssign/preview.html`.
 
 ### Herkunft-Picker (Ausbuchen/Umbuchen)
 
@@ -410,8 +408,37 @@ caps, `fill: none`, `currentColor`; used as `<svg class="krt-icon"><use href="#k
 - **Icon-only** (`.btn-icon`, 32×32) for repeated row actions with a universal meaning
   (edit, trash, check-in, check-out, bookout, close) — always with `aria-label` + `title`.
 
-Specimens: `components/IconSet/preview.html`, `components/Iconography/preview.html`;
-action → icon dictionary in [`proposals/button-icons-guidelines.md`](proposals/button-icons-guidelines.md).
+Rules of thumb: repeated + universal + labelled → icon-only; primary, rare or ambiguous →
+icon + text; when in doubt, keep the text. One icon per button, always left of the label; the
+same action uses the same icon everywhere; „Abbrechen“ carries no icon (a ghost text button,
+so it is never mistaken for close). Destructive icon-only actions use `.btn-quiet-danger` and a
+confirm dialog. A new icon is a new `<symbol>` in the sprite, never an icon library.
+
+| Action (i18n example) | Icon | Mode |
+| :-- | :-- | :-- |
+| Speichern (`general.save`) | `save` | icon + text |
+| Löschen (`info.delete`) | `trash` | icon-only in a row, icon + text in a footer |
+| Bearbeiten (`members.edit`) | `edit` | icon-only in a row |
+| Anmelden (`mission.participant.add`) | `user-plus` | icon + text |
+| Check-In / Check-Out (`mission.participant.checkin` / `.checkout`) | `login` / `logout` | icon-only in a row |
+| Ausbuchen (`inventory.bookout`) | `bookout` | icon-only in a row |
+| Hinzufügen, Neuer Eintrag, Schiff hinzufügen | `plus` | icon + text |
+| Zurück (`general.back`) | `arrow-left` | icon + text |
+| Details (`general.details`) | `eye` | icon + text, or icon-only in a row |
+| Öffnen (external) | `external-link` | icon + text |
+| Jetzt (`general.now`) | `clock` | icon + text |
+| Bestätigen (`*.confirm`) | `check` | icon + text |
+| Abbrechen (`general.cancel`) | — | text only (ghost) |
+| Filtern / Filter zurücksetzen | `filter` / `filter-off` | icon + text |
+| Suche (`general.search`) | `search` | icon + text |
+| Home-Location setzen | `map-pin` | icon + text |
+| Übergabe protokollieren | `clipboard-check` | icon + text |
+| Herunterladen / Import | `download` / `upload` | icon + text |
+| Sammelübersicht | `list` | icon + text |
+| Entfernen (clear a field) | `minus` | icon + text |
+| Schließen (dialog ✕) | `close` | icon-only |
+
+Specimens: `components/IconSet/preview.html`, `components/Iconography/preview.html`.
 
 ---
 
@@ -502,18 +529,11 @@ action → icon dictionary in [`proposals/button-icons-guidelines.md`](proposals
 
 ---
 
-## Platform implementations
+## Scope
 
-This repository is the specification; the platforms mirror it.
-
-| Platform | Repo · path | Notes |
-| :-- | :-- | :-- |
-| **Web** (Thymeleaf/CSS) | `krt-profit/basetool` · `frontend/.../static/css/` | reference implementation; class names 1 : 1 with this system |
-| **Desktop** (Compose Desktop) | `krt-profit/basetool-sc-extractor` · `src/main/kotlin/.../ui/Theme.kt` | palette subset (`Krt.*`); must use the text tints for muted/danger text — see `proposals/bp-extractor-audit.md` |
-| **Keycloak** | `keycloak/krt-keycloak-tokens.css` | token mirror for the login theme |
-
-Platform deviations are allowed only where the platform forces them (e.g. ripple
-instead of hover) — never for color, shape or type.
+This system serves one product: the **Profit Basetool web app** (`krt-profit/basetool`,
+`frontend/.../static/css/`, class names 1 : 1 with this system) and its **Keycloak login
+theme**, which mirrors the tokens in `keycloak/krt-keycloak-tokens.css`.
 
 ---
 
@@ -539,8 +559,7 @@ instead of hover) — never for color, shape or type.
 | `krt-components.css` | component CSS |
 | `components/<Name>/preview.html` | specimen cards; helper styles in `preview/_card.css` |
 | `fonts/` | Lato Thin → Black, each + italic (WOFF2 + TTF) |
-| `assets/` | brand mark, lockup, favicon, Basetool logo family (SVG + PNG 16/32/64/512), icon sprite, Fan-Kit logo |
+| `assets/` | brand mark, lockup, favicon, Basetool logo (SVG + PNG 16/32/64/512), icon sprite, Fan-Kit logo |
 | `keycloak/` | Keycloak theme token mirror and notes |
 | `ui_kits/basetool/` | interactive recreation of the app (see its README) |
-| `slides/` | 1280×720 HUD slide template (`deck-stage.js`) |
-| `proposals/` | design explorations and implementation orders for the app repo |
+| `uploads/KRT_Styleguide_V2.pdf` | Corporate Design Manual (logo, typeface, department colours) |
