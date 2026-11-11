@@ -1,5 +1,3 @@
-/* Profit Basetool — sample data for the kit (fictional, on-theme). */
-
 const NEXT_MISSION = {
   id: 1, name: "Operation Tiefschlag", status: "PLANNED",
   description: "Coordinated quantanium run through Pyro — combat escort + refinery handover.",
