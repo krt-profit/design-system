@@ -1,4 +1,3 @@
-/* Profit Basetool — shared chrome components. Depends on Icon (icons.jsx). */
 const { useState, useEffect, useCallback } = React;
 
 const LOGO_MARK = "../../assets/krt.webp";
@@ -105,7 +104,6 @@ function Footer() {
   );
 }
 
-/* Toast system ------------------------------------------------------------- */
 function Toast({ t }) {
   return (
     <div className={"notification-toast toast-enter" + (t.error ? " error-toast" : "")}>

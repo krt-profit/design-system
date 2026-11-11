@@ -1,4 +1,3 @@
-/* KRT icon sprite + <Icon> — in-house 24px line set, currentColor. */
 const KRT_SPRITE = (
   <svg className="krt-icon-sprite" aria-hidden="true" style={{position:'absolute',width:0,height:0}}>
     <symbol id="krt-icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none"/></symbol>

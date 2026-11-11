@@ -11,8 +11,9 @@ real layout, styling and click-through flow; fake data and no backend.
 ## Run it
 
 Open `../../components/BasetoolUiKit/preview.html`. It loads `../../colors_and_type.css`, `../../krt-components.css`
-and `app.css`, then the JSX modules. Fonts and logos resolve from the project root
-(`fonts/`, `assets/`).
+and `app.css`, then the JSX files in the order of the table under *Files*. They are plain scripts
+sharing one global scope: a file uses only what the files above it define, and top-level names
+stay unique across them. Fonts and logos resolve from the project root (`fonts/`, `assets/`).
 
 ## Flow
 

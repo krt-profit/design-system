@@ -1,5 +1,3 @@
-/* Profit Basetool — Mission detail screen. Demonstrates the action hierarchy.
-   Depends on components.jsx, data.jsx, icons.jsx. */
 const { useState: useMD } = React;
 
 function Panel({ id, title, count, defaultOpen, children }) {
@@ -36,7 +34,6 @@ function MissionDetailScreen({ push, onBack }) {
       </div>
 
       <div className="mission-cols">
-        {/* DETAILS — form: neutral labels, single CTA */}
         <Panel title="Details">
           <div className="hud-box">
             <div className="form-group">
@@ -65,7 +62,6 @@ function MissionDetailScreen({ push, onBack }) {
           </div>
         </Panel>
 
-        {/* ORGANISATION — data values neutral-bright, Edit ghost */}
         <Panel title="Organisation">
           <div className="hud-box">
             <div className="kv-row"><span className="kv-key">Einsatzleiter</span><span className="data-value">cmdr.valk</span></div>
@@ -74,7 +70,6 @@ function MissionDetailScreen({ push, onBack }) {
           </div>
         </Panel>
 
-        {/* PARTICIPANTS — one CTA (Anmelden), green status, ghost/quiet rows */}
         <Panel title="Teilnehmer" count={parts.filter((p) => p.state === "in").length + "/" + parts.length}>
           <div className="hud-box">
             <div className="panel-toolbar">
@@ -101,7 +96,6 @@ function MissionDetailScreen({ push, onBack }) {
           </div>
         </Panel>
 
-        {/* UNITS — CTA add, per-unit emphasis (outline) + ghost + quiet */}
         <Panel title="Einheiten">
           <div className="hud-box">
             <div className="panel-toolbar">

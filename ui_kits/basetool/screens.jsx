@@ -1,9 +1,7 @@
-/* Profit Basetool — screens. Depends on components.jsx, data.jsx, icons.jsx. */
 const { useState: useS } = React;
 
 const fmt = (n) => n == null ? null : n.toLocaleString("de-DE");
 
-/* ---------------------------------------------------------------- LOGIN --- */
 function LoginScreen({ onLogin }) {
   return (
     <div className="login-stage">
@@ -32,7 +30,6 @@ function LoginScreen({ onLogin }) {
   );
 }
 
-/* ------------------------------------------------------------ DASHBOARD --- */
 function Dashboard({ onOpenMission }) {
   const m = NEXT_MISSION;
   return (
@@ -77,7 +74,6 @@ function Dashboard({ onOpenMission }) {
   );
 }
 
-/* ------------------------------------------------------------- MISSIONS --- */
 function MissionsScreen({ push, onOpen }) {
   const [q, setQ] = useS("");
   const [showPast, setShowPast] = useS(true);
@@ -118,7 +114,6 @@ function MissionsScreen({ push, onOpen }) {
   );
 }
 
-/* --------------------------------------------------------------- HANGAR --- */
 function HangarScreen({ push }) {
   const [ships, setShips] = useS(SHIPS);
   const toggle = (id) => setShips((p) => p.map((s) => s.id === id ? { ...s, fitted: !s.fitted } : s));
@@ -157,7 +152,6 @@ function HangarScreen({ push }) {
   );
 }
 
-/* ------------------------------------------------------------ MATERIALS --- */
 function MaterialsScreen() {
   const [collapsed, setCollapsed] = useS({});
   const toggle = (k) => setCollapsed((p) => ({ ...p, [k]: !p[k] }));
@@ -199,7 +193,6 @@ function MaterialsScreen() {
   );
 }
 
-/* --------------------------------------------------- ADMIN (light) -------- */
 function MembersScreen() {
   const members = [
     { name: "Valk", roles: "Admin · Officer", sk: "—", status: "In Keycloak" },
