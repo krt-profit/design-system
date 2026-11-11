@@ -1,4 +1,4 @@
-<!-- @dsCard group="Spacing" height=220 width=700 subtitle="#0F0F0F canvas · HUD grid, radial bloom, bracket frame" -->
+<!-- @dsCard group="Spacing" height=240 width=700subtitle="#0D0F12 canvas · HUD grid, radial bloom, bracket frame" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,19 +9,19 @@
   .bg { width:200px; height:96px; border:1px solid var(--color-gray-3); position:relative; overflow:hidden; }
   .b-grid { background-color:var(--surface-canvas); background-image:linear-gradient(rgba(231, 126, 35,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(231, 126, 35,.05) 1px,transparent 1px); background-size:24px 24px; }
   .b-bloom { background:radial-gradient(circle at 50% 0%,rgba(231, 126, 35,.14),transparent 60%),var(--surface-canvas); }
-  .b-hud { background:var(--surface-panel); border-radius:var(--radius-sm); }
+  .b-hud { background:var(--surface-panel); border-radius:var(--radius-box); }
   .b-hud::before,.b-hud::after{content:'';position:absolute;width:14px;height:14px;}
-  .b-hud::before{top:5px;left:5px;border-top:2px solid var(--color-primary);border-left:2px solid var(--color-primary);}
-  .b-hud::after{bottom:5px;right:5px;border-bottom:2px solid var(--color-primary);border-right:2px solid var(--color-primary);}
+  .b-hud::before{top:5px;left:5px;border-top:2px solid var(--color-primary);border-left:2px solid var(--color-primary);border-top-left-radius:var(--radius-tile);}
+  .b-hud::after{bottom:5px;right:5px;border-bottom:2px solid var(--color-primary);border-right:2px solid var(--color-primary);border-bottom-right-radius:var(--radius-tile);}
   .cap { font-family:var(--font-mono); font-size:.58rem; color:var(--color-gray-2); margin-top:6px; }
 </style>
 </head>
 <body>
-  <p class="pv-label">Backgrounds & texture — flat #0F0F0F canvas + technical markers</p>
+  <p class="pv-label">Backgrounds & texture — flat #0D0F12 canvas + technical markers</p>
   <div class="bgs">
     <div><div class="bg b-grid"></div><div class="cap">faint orange HUD grid (24px)</div></div>
     <div><div class="bg b-bloom"></div><div class="cap">radial orange bloom (login)</div></div>
-    <div><div class="bg b-hud"></div><div class="cap">bracket frame on Panel #282C30</div></div>
+    <div><div class="bg b-hud"></div><div class="cap">bracket frame on a box #1A1E24</div></div>
   </div>
   <p class="pv-mono" style="margin-top:14px;">No photographic heroes. Depth comes from a faint HUD grid, a soft radial bloom and corner brackets — not gradients.</p>
 </body>

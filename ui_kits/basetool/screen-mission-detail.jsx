@@ -1,6 +1,6 @@
 const { useState: useMD } = React;
 
-function Panel({ id, title, count, defaultOpen, children }) {
+function Panel({ title, count, defaultOpen, children }) {
   const [open, setOpen] = useMD(defaultOpen !== false);
   return (
     <div className={"mcol" + (open ? "" : " collapsed")}>
@@ -15,80 +15,77 @@ function Panel({ id, title, count, defaultOpen, children }) {
 
 function MissionDetailScreen({ push, onBack }) {
   const [parts, setParts] = useMD([
-    { id: 1, user: "cmdr.valk", org: "ALP", job: "Pilot", state: "in" },
-    { id: 2, user: "mara.k", org: "ALP", job: "Gunner", state: "out" },
-    { id: 3, user: "hex_07", org: null, job: "Medic", state: "pre" },
+    { id: 1, user: "valk", org: "ALP", job: "Pilot", state: "in" },
+    { id: 2, user: "mara.k", org: "ALP", job: "Bordschütze", state: "out" },
+    { id: 3, user: "hex_07", org: null, job: "Sanitäter", state: "pre" },
   ]);
-  const checkIn = (id) => { setParts((p) => p.map((x) => x.id === id ? { ...x, state: "in" } : x)); push("Check-In", "Participant checked in."); };
-  const del = (id) => { setParts((p) => p.filter((x) => x.id !== id)); push("Action successful", "Participant removed."); };
+  const checkIn = (id) => { setParts((p) => p.map((x) => x.id === id ? { ...x, state: "in" } : x)); push("Check-In", "Teilnehmer eingecheckt."); };
+  const del = (id) => { setParts((p) => p.filter((x) => x.id !== id)); push("Entfernt", "Teilnehmer entfernt."); };
 
   return (
     <React.Fragment>
-      <div className="greeting hud-box" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
-          <h1 style={{ margin: 0, fontSize: "1.6rem" }}>Einsatz: Operation Tiefschlag</h1>
-          <span className="squadron-badge">ALP</span>
-          <span className="status-pill status-planned" style={{ marginLeft: "0.25rem" }}>PLANNED</span>
-        </div>
-        <button className="btn btn-ghost" onClick={onBack}>Zurück</button>
+      <PageHead back={{ label: "Missionen", onClick: onBack }} title="Operation Tiefschlag"
+                actions={<Btn variant="btn--cta" icon="user-plus" onClick={() => push("Anmeldung", "Du bist angemeldet.")}>Anmelden</Btn>} />
+      <div className="facts-bar">
+        <span><span className="fact-k">Status</span><StatusPill status="PLANNED" /></span>
+        <span><span className="fact-k">Serverjoin</span><span className="fact-v">29.05. · 19:00</span></span>
+        <span><span className="fact-k">Angemeldet</span><span className="fact-v">{parts.length}</span></span>
+        <span><span className="fact-k">Eingecheckt</span><span className="fact-v">{parts.filter((p) => p.state === "in").length}</span></span>
       </div>
 
       <div className="mission-cols">
         <Panel title="Details">
-          <div className="hud-box">
+          <Card>
             <div className="form-group">
-              <label className="form-label-sm">Name</label>
-              <input type="text" defaultValue="Operation Tiefschlag" />
+              <label htmlFor="md-name">Name</label>
+              <input id="md-name" type="text" defaultValue="Operation Tiefschlag" />
             </div>
             <div className="form-group">
-              <label className="form-label-sm">Beschreibung</label>
-              <textarea rows="2" defaultValue="Quantanium-Run durch Pyro — Kampfeskorte + Raffinerie-Übergabe."></textarea>
+              <label htmlFor="md-desc">Beschreibung</label>
+              <textarea id="md-desc" rows="2" defaultValue="Quantanium-Lauf durch Pyro – Geleitschutz und Übergabe an die Raffinerie."></textarea>
             </div>
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-              <div className="form-group" style={{ flex: 1, minWidth: 140 }}>
-                <label className="form-label-sm">Status</label>
-                <select defaultValue="PLANNED"><option>PLANNED</option><option>ACTIVE</option><option>COMPLETED</option></select>
+            <div className="kit-row">
+              <div className="form-group kit-grow">
+                <label htmlFor="md-status">Status</label>
+                <select id="md-status" defaultValue="PLANNED"><option value="PLANNED">Geplant</option><option value="ACTIVE">Aktiv</option><option value="COMPLETED">Abgeschlossen</option></select>
               </div>
-              <div className="form-group" style={{ flex: 1, minWidth: 140 }}>
-                <label className="form-label-sm">Geplanter Start</label>
-                <input type="text" defaultValue="29.05.2026  19:00" />
+              <div className="form-group kit-grow">
+                <label htmlFor="md-start">Geplanter Start</label>
+                <input id="md-start" type="text" defaultValue="29.05.2026  19:00" />
               </div>
             </div>
-          </div>
-          <div className="hud-box detail-actions" style={{ justifyContent: "flex-end" }}>
-            <button className="btn btn-quiet-danger" style={{ marginRight: "auto" }} onClick={() => push("Bestätigung", "Wirklich löschen?", true)}>Delete</button>
-            <button className="btn btn-ghost" onClick={onBack}>Zurück</button>
-            <button className="btn btn--cta" onClick={() => push("Gespeichert", "Einsatz erfolgreich gespeichert.")}>Speichern</button>
-          </div>
+            <div className="detail-actions">
+              <Btn variant="btn-quiet-danger" icon="trash" onClick={() => push("Bestätigung", "Wirklich löschen?", true)}>Löschen</Btn>
+              <span className="kit-grow"></span>
+              <Btn variant="btn-ghost" onClick={onBack}>Abbrechen</Btn>
+              <Btn variant="btn--cta" icon="save" onClick={() => push("Gespeichert", "Mission gespeichert.")}>Speichern</Btn>
+            </div>
+          </Card>
         </Panel>
 
         <Panel title="Organisation">
-          <div className="hud-box">
-            <div className="kv-row"><span className="kv-key">Einsatzleiter</span><span className="data-value">cmdr.valk</span></div>
-            <div className="kv-row"><span className="kv-key">Flottenfunk</span><span className="kv-right"><span className="data-value data-value--mono">123.450</span><button className="btn btn-ghost btn-sm2" onClick={() => push("Frequenz", "Bearbeiten…")}>Edit</button></span></div>
-            <div className="kv-row"><span className="kv-key">Bodenfunk</span><span className="kv-right"><span className="data-value data-value--mono">88.200</span><button className="btn btn-ghost btn-sm2" onClick={() => push("Frequenz", "Bearbeiten…")}>Edit</button></span></div>
-          </div>
+          <Card>
+            <div className="kv-row"><span className="kv-key">Einsatzleiter</span><span className="data-value">valk</span></div>
+            <div className="kv-row"><span className="kv-key">Flottenfunk</span><span className="kv-right"><span className="data-value data-value--mono">123.450</span><Btn variant="btn-ghost" xs icon="edit" label="Flottenfunk bearbeiten" onClick={() => push("Frequenz", "Bearbeiten …")} /></span></div>
+            <div className="kv-row"><span className="kv-key">Bodenfunk</span><span className="kv-right"><span className="data-value data-value--mono">88.200</span><Btn variant="btn-ghost" xs icon="edit" label="Bodenfunk bearbeiten" onClick={() => push("Frequenz", "Bearbeiten …")} /></span></div>
+          </Card>
         </Panel>
 
-        <Panel title="Teilnehmer" count={parts.filter((p) => p.state === "in").length + "/" + parts.length}>
-          <div className="hud-box">
-            <div className="panel-toolbar">
-              <button className="btn btn--cta" onClick={() => push("Anmeldung", "Teilnehmer-Formular geöffnet.")}>＋ Anmelden</button>
-            </div>
-            <table className="mission-table" style={{ marginTop: 0 }}>
-              <thead><tr><th>Benutzer</th><th>Org</th><th>Aufgabe</th><th style={{ textAlign: "right" }}>Aktion</th></tr></thead>
+        <Panel title="Teilnehmer" count={parts.length}>
+          <div className="card card--flush">
+            <table className="data-table data-table--compact data-table--stack">
+              <thead><tr><th>Teilnehmer</th><th>Aufgabe</th><th className="cell-status">Status</th><th className="cell-actions"><span className="visually-hidden">Aktionen</span></th></tr></thead>
               <tbody>
                 {parts.map((p) => (
                   <tr key={p.id}>
-                    <td style={{ fontWeight: 700 }}>{p.user}</td>
-                    <td>{p.org ? <Badge>{p.org}</Badge> : <Badge variant="muted">—</Badge>}</td>
-                    <td>{p.job}</td>
-                    <td><div className="act">
-                      {p.state === "pre" ? <button className="btn btn-success btn-sm2" onClick={() => checkIn(p.id)}>Check-In</button> : null}
-                      {p.state === "in" ? <button className="btn btn-ghost btn-sm2" onClick={() => push("Check-Out", "Ausgecheckt.")}>Check-Out</button> : null}
-                      <button className="btn btn-ghost btn-sm2" onClick={() => push("Bearbeiten", "Teilnehmer bearbeiten…")}>Edit</button>
-                      <button className="btn btn-quiet-danger btn-sm2" onClick={() => del(p.id)}>Delete</button>
-                    </div></td>
+                    <td><span className="cell-title">{p.user}</span>{p.org ? <span className="cell-sub">{p.org}</span> : null}</td>
+                    <td data-label="Aufgabe">{p.job}</td>
+                    <td className="cell-status"><span className={"status-pill " + (p.state === "in" ? "status-active" : p.state === "pre" ? "status-planned" : "status-completed")}>{p.state === "in" ? "EINGECHECKT" : p.state === "pre" ? "ANGEMELDET" : "AUSGECHECKT"}</span></td>
+                    <td className="cell-actions"><span className="row-action">
+                      {p.state === "pre" ? <Btn variant="btn-success" xs icon="login" label={"Check-In: " + p.user} onClick={() => checkIn(p.id)} /> : null}
+                      {p.state === "in" ? <Btn variant="btn-ghost" xs icon="logout" label={"Check-Out: " + p.user} onClick={() => push("Check-Out", "Ausgecheckt.")} /> : null}
+                      <Btn variant="btn-quiet-danger" xs icon="trash" label={"Entfernen: " + p.user} onClick={() => del(p.id)} />
+                    </span></td>
                   </tr>
                 ))}
               </tbody>
@@ -97,25 +94,25 @@ function MissionDetailScreen({ push, onBack }) {
         </Panel>
 
         <Panel title="Einheiten">
-          <div className="hud-box">
+          <Card>
             <div className="panel-toolbar">
-              <button className="btn btn--cta" onClick={() => push("Einheit", "Einheit hinzufügen…")}>＋ Hinzufügen</button>
+              <Btn variant="btn-outline" icon="plus" onClick={() => push("Einheit", "Einheit hinzufügen …")}>Einheit hinzufügen</Btn>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <div className="unit-list">
               {[{ n: "Schwarze Witwe", t: "Constellation Andromeda" }, { n: "Eisenfaust", t: "Hammerhead" }].map((u) => (
-                <div className="unit-box" key={u.n}>
+                <div className="card card--inset unit-box" key={u.n}>
                   <div className="unit-head">
-                    <span><span className="unit-name">{u.n}</span><span style={{ color: "var(--color-gray-1)" }}> — {u.t}</span></span>
+                    <span><span className="unit-name">{u.n}</span><span className="text-muted"> — {u.t}</span></span>
                     <div className="detail-actions">
-                      <button className="btn btn-outline btn-sm2" onClick={() => push("Crew", "Crew zuweisen…")}>Crew zuweisen</button>
-                      <button className="btn btn-ghost btn-sm2" onClick={() => push("Bearbeiten", "Einheit bearbeiten…")}>Edit</button>
-                      <button className="btn btn-quiet-danger btn-sm2" onClick={() => push("Einheit", "Einheit gelöscht.")}>Delete</button>
+                      <Btn variant="btn-outline" xs onClick={() => push("Crew", "Crew zuweisen …")}>Crew zuweisen</Btn>
+                      <Btn variant="btn-ghost" xs icon="edit" label={"Bearbeiten: " + u.n} onClick={() => push("Bearbeiten", u.n)} />
+                      <Btn variant="btn-quiet-danger" xs icon="trash" label={"Löschen: " + u.n} onClick={() => push("Einheit", "Einheit gelöscht.")} />
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </Card>
         </Panel>
       </div>
     </React.Fragment>

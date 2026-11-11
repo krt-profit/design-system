@@ -17,9 +17,9 @@ In-repo theme: `keycloak-theme/krt-theme/` (`login/` + `account/`), parent
 
 ## Principles
 
-1. **One identity across the redirect.** Same orange `#E77E23`, `#0F0F0F` canvas,
-   Lato throughout (headlines = bold + UPPERCASE), 4 px corners, HUD corner brackets. A user
-   bounced to Keycloak for SSO should not notice a visual seam.
+1. **One identity across the redirect.** Same orange `#E77E23`, `#0D0F12` canvas (Design 3.0),
+   Lato throughout (headlines = bold + UPPERCASE), 10 px card / 6 px control corners, HUD
+   corner brackets. A user bounced to Keycloak for SSO should not notice a visual seam.
 2. **Override PatternFly, don't fight it twice.** Neutralise PF with its own CSS
    variables (`--pf-*--BackgroundColor`, `--pf-global--primary-color--100`, …) AND
    a selector fallback. Always cover v5 **and** v6 prefixes (`pf-v5-`, `pf-v6-`,
@@ -42,29 +42,30 @@ In-repo theme: `keycloak-theme/krt-theme/` (`login/` + `account/`), parent
 ## Component specs
 
 **Card / form container**
-- `background: #282C30`; `border: 1px solid #36373B`; `border-top: 3px solid #E77E23`.
+- `background: #1A1E24`; `border: 1px solid #2A3038`; `border-top: 3px solid #E77E23`.
 - HUD corner brackets top-left + bottom-right (2px orange, 15px), via
   `::before`/`::after`. `box-shadow: 0 0 20px rgba(231, 126, 35,0.10)`.
-- `max-width: 450px`, `padding: 40px`, centered; `border-radius: 4px`.
+- `max-width: 450px`, `padding: 40px`, centered; `border-radius: 10px` (`--radius-box`); the
+  brackets follow the rounded corners.
 
 **Headline** — `#kc-page-title` / `h1`: Lato bold, uppercase, `+0.05em`, orange,
 centered. Optional brand mark (`krt.webp`, ~84px) above it.
 
-**Inputs** — `#373E43` fill, `1px #8F9399` border, `2px #E77E23` bottom border, 4 px radius,
-Lato, `#D1D2D3` text. Focus: border → orange + `0 0 8px rgba(231, 126, 35,0.25)`.
-Placeholder: italic `#A2A5A9`.
+**Inputs** — `#2F3640` fill, `1px #8F9399` border, `2px #E77E23` bottom border, 6 px radius,
+Lato, `#D7DADE` text. Focus: border → orange + `0 0 8px rgba(231, 126, 35,0.25)`.
+Placeholder: italic `#9AA1AB`.
 
 **Buttons**
 - Primary (`.pf-m-primary`, `#kc-login`, submit): filled orange, **black** text,
-  Lato bold uppercase, 4 px radius, `min-height: 44px`, `box-shadow: var(--glow-primary)`.
+  Lato bold uppercase, 6 px radius, `min-height: 44px`, `box-shadow: var(--glow-primary)`.
   Hover → `--color-accent-light` (lighten). *(Not accent-dark.)*
 - Secondary / Cancel (`.pf-m-secondary`, `#kc-cancel`, `.krt-button-secondary`):
   transparent, orange text, `1px` orange border. Hover → orange fill, black text.
 
-**Checkbox / radio** — 2 px radius (radio round), `#373E43` fill, orange border, orange tick
+**Checkbox / radio** — 2 px radius (radio round), `#2F3640` fill, orange border, orange tick
 on check (black checkmark). 18px.
 
-**Labels** — `#D1D2D3`, uppercase, `0.85em`, `+1px` tracking. Not orange.
+**Labels** — `#D7DADE`, uppercase, `0.85em`, `+1px` tracking. Not orange.
 
 **Errors** — field: red bottom border + `var(--glow-danger)`. Message
 (`#input-error`, `.kc-feedback-text`, alert-error): `--color-danger`, with a `⚠`
@@ -75,7 +76,7 @@ glyph. Success/info alerts use `--color-success` / `--color-info` left-border ti
 **Locale selector** — top-right; surface fill + hairline + orange bottom-border;
 dropdown is a dark hairline menu, items hover to orange fill / black text.
 
-**Page background** — flat `#0F0F0F` + soft top bloom. Still hard-reset the PF
+**Page background** — flat `#0D0F12` + soft top bloom. Still hard-reset the PF
 background grid/image everywhere else.
 
 ---
@@ -93,5 +94,5 @@ cards, page header). Every one inherits the rules above.
 - ✅ Mirror tokens from `krt-keycloak-tokens.css`; cover `pf-v5-`+`pf-v6-`.
 - ✅ One primary button per screen; outline for secondary.
 - ✅ Errors in red, focus always visible.
-- ❌ No Audiowide/Ethnocentric (Lato only), no rounded corners, no PF blue, no
+- ❌ No Audiowide/Ethnocentric (Lato only), no corners rounder than 10 px, no PF blue, no
   white cards, no orange error text, no background grid.
