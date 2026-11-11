@@ -169,16 +169,19 @@
 .card--inset { background-color: var(--surface-card); }
 .card--accent { border-top: 3px solid var(--color-primary); }
 .card--flush { padding: 0; }
-.card--flush > :is(table, .data-table):first-child thead tr:first-child > th:first-child {
+.card--flush > table:nth-child(1 of :not([hidden])) > thead > tr:first-child > th:first-child {
     border-top-left-radius: calc(var(--radius-box) - 1px);
 }
-.card--flush > :is(table, .data-table):first-child thead tr:first-child > th:last-child {
+.card--flush > table:nth-child(1 of :not([hidden])) > thead > tr:first-child > th:last-child {
     border-top-right-radius: calc(var(--radius-box) - 1px);
 }
-.card--flush > :is(table, .data-table):last-child tbody tr:last-child > td:first-child {
+.card--flush > table:nth-last-child(1 of :not([hidden])) > tbody > tr:nth-last-child(1 of :not([hidden])) > td {
+    border-bottom: 0;
+}
+.card--flush > table:nth-last-child(1 of :not([hidden])) > tbody > tr:nth-last-child(1 of :not([hidden])) > td:first-child {
     border-bottom-left-radius: calc(var(--radius-box) - 1px);
 }
-.card--flush > :is(table, .data-table):last-child tbody tr:last-child > td:last-child {
+.card--flush > table:nth-last-child(1 of :not([hidden])) > tbody > tr:nth-last-child(1 of :not([hidden])) > td:last-child {
     border-bottom-right-radius: calc(var(--radius-box) - 1px);
 }
 .card-head {
@@ -265,13 +268,23 @@ tbody tr:hover, tbody tr:nth-child(even of :not([hidden], .detail-row)):hover { 
 .card--inset tbody tr:hover, .card--inset tbody tr:nth-child(even of :not([hidden], .detail-row)):hover { background-color: var(--table-row-hover-tile); }
 
 .tree-table { min-width: min-content; border: var(--border-hairline); background-color: var(--color-bg-dark-gray); }
+.hud-scroll > .tree-table { border: 0; }
 .tree-row {
     display: grid;
     grid-template-columns: var(--tree-cols, minmax(210px,1.5fr) minmax(220px,1.7fr) 132px 124px 172px);
     align-items: center;
     border-bottom: var(--border-hairline);
 }
-.tree-row:last-child { border-bottom: none; }
+.tree-row[hidden] { display: none; }
+.tree-table > .tree-head:first-child {
+    border-top-left-radius: calc(var(--radius-box) - 1px);
+    border-top-right-radius: calc(var(--radius-box) - 1px);
+}
+.tree-table > :nth-last-child(1 of :not([hidden])) {
+    border-bottom: none;
+    border-bottom-left-radius: calc(var(--radius-box) - 1px);
+    border-bottom-right-radius: calc(var(--radius-box) - 1px);
+}
 .tree-cell { padding: 0.5rem 0.8rem; font-size: 0.86rem; min-width: 0; }
 .tree-cell--num { text-align: right; font-variant-numeric: tabular-nums; }
 .tree-cell--actions { display: flex; gap: 0.4rem; justify-content: flex-end; padding-left: 1.5rem; }
@@ -745,6 +758,16 @@ input[type="radio"]:checked::after {
 .master-row:hover { background: rgba(255,255,255,0.03); }
 .master-row.is-active { border-left-color: var(--color-primary); background: var(--color-surface-input); color: var(--color-white); font-weight: var(--fw-bold); }
 .master-row:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }
+.master-row[hidden] { display: none; }
+.master-list > .master-row:nth-child(1 of :not([hidden])) {
+    border-top-left-radius: calc(var(--radius-box) - 1px);
+    border-top-right-radius: calc(var(--radius-box) - 1px);
+}
+.master-list > .master-row:nth-last-child(1 of :not([hidden])) {
+    border-bottom: none;
+    border-bottom-left-radius: calc(var(--radius-box) - 1px);
+    border-bottom-right-radius: calc(var(--radius-box) - 1px);
+}
 .detail-pane { background: var(--color-bg-dark-gray); border: var(--border-hairline); padding: 14px 16px; }
 
 input[type="range"] { accent-color: var(--color-primary); }
@@ -1253,7 +1276,7 @@ a.page-eyebrow:hover {
 .krt-switch input[type="checkbox"]:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 
 .card, .hud-box, .krt-modal, .krt-confirm-dialog, .notification-toast,
-.notification-dropdown, .detail-pane, .master-list, .tree-table, .empty-state, .kpi-card {
+.notification-dropdown, .detail-pane, .master-list, .tree-table, .empty-state, .kpi-card, .hud-scroll {
     border-radius: var(--radius-box);
 }
 .card--inset, .kpi-total, .kpi-card--inset, .alert, .person-row, .drop-zone, .drop-hint,
@@ -3839,6 +3862,7 @@ textarea:focus-visible,
 .card--flush .data-table {
     margin-top: 0;
     border: 0;
+    background-color: transparent;
 }
 .card:not(.card--flush) .data-table {
     background-color: var(--surface-inset);
@@ -4002,5 +4026,15 @@ th[aria-sort='descending'] .sort-header__mark::before {
     .data-table--stack thead .sort-header {
         width: auto;
         justify-content: flex-start;
+    }
+    .card--flush > .data-table--stack:nth-child(1 of :not([hidden])) > thead:has(.sort-header) > tr,
+    .card--flush > .data-table--stack:nth-child(1 of :not([hidden])) > thead:not(:has(.sort-header)) + tbody > tr:nth-child(1 of :not([hidden])) {
+        border-top-left-radius: calc(var(--radius-box) - 1px);
+        border-top-right-radius: calc(var(--radius-box) - 1px);
+    }
+    .card--flush > .data-table--stack:nth-last-child(1 of :not([hidden])) > tbody > tr:nth-last-child(1 of :not([hidden])) {
+        border-bottom: 0;
+        border-bottom-left-radius: calc(var(--radius-box) - 1px);
+        border-bottom-right-radius: calc(var(--radius-box) - 1px);
     }
 }

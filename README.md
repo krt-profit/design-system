@@ -233,14 +233,21 @@ Selected = `--control-selected-bg` (orange tint) + orange border + 3 px orange u
 **Rule 4 — muted text is `--color-gray-2-text`.** Grau 2 is a border color, never text.
 
 **Rule 5 — radius by role (Design 3.0).** `--radius-box` 10 px on boxes (cards,
-`.list-panel`, modals, toasts, detail panes, tree tables, empty states, KPI cards);
+`.list-panel`, modals, toasts, detail panes, tree tables, empty states, KPI cards, scroll
+boxes `.hud-scroll`);
 `--radius-tile` 8 px on tiles (`.card--inset`, KPI tiles, alerts, flyouts, dropdown lists);
 `--radius-control` 6 px on controls (buttons, inputs, selects, segmented controls,
 pagination, menu filter, quick-access trigger); `--radius-sm` 4 px on inner elements
 (chips, labels, badges). `--radius-pill` only for squadron badges, the bell and the drag
 handle; circles for radio and status dots; `--radius-none` for table cells, accent bars and
-gauges. In a `.card--flush` the table head and the last row take the box corners. The HUD
-brackets follow the rounded corner. This replaces the former 4 px rule; the Basetool's
+gauges. **A child never paints over its box's rounded frame:** the child that fills a corner
+takes the inner radius `calc(var(--radius-box) - 1px)` — in a `.card--flush` the table head
+and the last visible row (stacked: the sort bar or the first row, and the last row), in a
+`.tree-table` the head and the last visible row or note, in a `.master-list` the first and last
+visible row — and that last row drops its own bottom rule. Visible means `:not([hidden])`, so
+collapsed or filtered rows carry `hidden`. A table in a `.card--flush` has no fill of its own; a
+`.hud-scroll` clips its content to its own rounded edge. The HUD brackets follow the rounded
+corner. This replaces the former 4 px rule; the Basetool's
 REQ-UI-007 („4 px radius") has to be amended with the adoption.
 
 List-page building blocks (`krt-components.css`, block „LIST PAGE"):
@@ -374,7 +381,8 @@ rule 6). Specimens: `components/DataTable`, `components/DataTableStack`.
 - Zebra on every second **visible** row (`:nth-child(even of :not([hidden], .detail-row))`,
   `--table-stripe-bg`), hover `--control-bg` — also on plain tables.
 - A table inside a padded `.card` sits on `--surface-inset`, never on the card's gray; inside
-  `.card--flush` it has no margin and no frame of its own.
+  `.card--flush` it has no margin, frame or fill of its own, and its head and last visible row
+  take the card's corners (Rule 5).
 - **≤ 768 px** the row stacks: title + status on line 1, the other cells as one muted meta line
   separated by `·`, `data-label` prefixes its value, a lone chevron centred right; the head is
   visually hidden unless it holds `.sort-header`s, which stay as a sort bar. Nothing scrolls
@@ -392,10 +400,12 @@ instead of nested tables:
 - **Leaf controls** sit in `.tree-leaf-main`, spanning the name/context/quality columns.
 - **Actions** use `.btn-xs`; `.tree-cell--actions` has a left gutter. One emphasized action per row.
 - **Notes render only when a note exists** — an indented `.tree-note` block (~80ch).
+- **Collapsed rows carry `hidden`.** The head and the last visible row or note take the frame's
+  rounded corners, and that last row drops its bottom rule (Rule 5).
 - **One width for header and rows:** the table is never narrower than its columns
   (`min-width: min-content`), and the header row carries the bar fill and the orange rule, so
   header and rows always end at the same edge. In a narrow container wrap it in
-  `.hud-scroll.scroll-x`.
+  `.hud-scroll.scroll-x`; the scroll box is then the frame and the table drops its own.
 
 Specimen: `components/TreeTable/preview.html`.
 
