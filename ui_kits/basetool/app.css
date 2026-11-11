@@ -1,8 +1,3 @@
-/* ============================================================================
-   Profit Basetool — UI kit shell layout
-   Layered on ../../colors_and_type.css + ../../krt-components.css
-   ============================================================================ */
-
 html, body { height: 100%; }
 body {
     margin: 0;
@@ -10,7 +5,6 @@ body {
 }
 #root { min-height: 100vh; }
 
-/* ----------------------------------------------------------------- HEADER -- */
 .app-header {
     background-color: var(--surface-bar);
     border-bottom: 2px solid var(--color-primary);
@@ -45,7 +39,6 @@ body {
     font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em;
 }
 
-/* Persistent squadron-context chip (top-right) */
 .ctx-chip {
     position: fixed; top: 0.85rem; right: 1rem; z-index: 1200;
     display: flex; align-items: center; gap: 0.5rem;
@@ -58,7 +51,6 @@ body {
 .ctx-chip .lbl { color: var(--color-gray-2-text); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.65rem; }
 .ctx-chip .val { color: var(--color-primary); font-weight: 700; }
 
-/* ---------------------------------------------------------------- SIDEBAR -- */
 .sidebar {
     position: fixed; top: 0; left: -420px; width: 380px; max-width: 85vw; height: 100vh;
     z-index: 2000; transition: left 0.4s cubic-bezier(0.4,0,0.2,1);
@@ -92,7 +84,6 @@ body {
 }
 .sidebar-overlay.visible { opacity: 1; visibility: visible; }
 
-/* ------------------------------------------------------------------ MAIN -- */
 .app-main {
     padding: 2rem; width: 100%; max-width: 1200px; margin: 0 auto;
     box-sizing: border-box; padding-bottom: 6rem;
@@ -104,7 +95,6 @@ body {
     padding-bottom: 0.5rem; border-bottom: 1px solid var(--color-gray-3);
 }
 
-/* ---------------------------------------------------------------- FOOTER -- */
 .app-footer {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
     padding: 0.85rem 2rem;
@@ -118,7 +108,6 @@ body {
 .app-footer .links a:hover { color: var(--color-primary); }
 .app-footer .ver { font-family: var(--font-mono); font-size: 0.72rem; }
 
-/* ----------------------------------------------------------------- LOGIN -- */
 .login-stage {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     padding: 2rem;
@@ -139,7 +128,6 @@ body {
 .login-foot { text-align: center; color: var(--color-gray-2-text); font-size: 0.75rem; margin-top: 1.5rem; }
 .login-foot a { color: var(--color-primary); }
 
-/* -------------------------------------------------------------- DASHBOARD -- */
 .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 2rem; }
 .info-grid { display: grid; grid-template-columns: max-content 1fr; column-gap: 1rem; row-gap: 0.6rem; align-items: baseline; }
 .info-grid strong { color: var(--color-primary); font-weight: 700; }
@@ -149,7 +137,6 @@ body {
 .stat .n { font-family: var(--font-headline); color: var(--color-primary); font-size: 1.8rem; line-height: 1; }
 .stat .k { color: var(--color-gray-2-text); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem; }
 
-/* ---------------------------------------------------------- TABLE EXTRAS -- */
 .toolbar { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
 .toolbar .search { flex: 1; min-width: 180px; position: relative; }
 .toolbar .search input { width: 100%; padding-left: 2.4rem; }
@@ -168,12 +155,10 @@ body {
 .icon-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
 .icon-btn.danger:hover { border-color: var(--color-danger); color: var(--color-danger-text); }
 
-/* fitted dot */
 .dot { width: 9px; height: 9px; display: inline-block; }
 .dot.on { background: var(--color-success); }
 .dot.off { background: var(--color-gray-2); }
 
-/* toast viewport */
 .toast-vp { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 0.75rem; }
 .toast-enter { animation: toastIn 0.4s ease both; }
 @keyframes toastIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
@@ -183,7 +168,6 @@ body {
     .ctx-chip .lbl { display: none; }
 }
 
-/* -------------------------------------------------- MISSION DETAIL ------- */
 .mission-cols { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
 @media (min-width: 1100px) { .mission-cols { grid-template-columns: 1fr 1fr; align-items: start; } }
 .mcol { display: flex; flex-direction: column; }

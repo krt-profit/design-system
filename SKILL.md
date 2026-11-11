@@ -25,9 +25,9 @@ Quick start:
   of the app (header, sidebar drawer, dashboard, missions, hangar, price matrix, login).
   Copy patterns from `components.jsx` / `screens.jsx` / `app.css`.
 - **Assets:** `fonts/` (Lato, self-hosted) and `assets/` (logo mark, full lockup,
-  favicon, Basetool logo family). Logos appear ONLY in orange, white or black.
+  favicon, Basetool logo). Logos appear ONLY in orange, white or black.
 
-If creating visual artifacts (slides, mocks, throwaway prototypes), copy assets out and
+If creating visual artifacts (mocks, throwaway prototypes), copy assets out and
 create static HTML files for the user to view. If working on production code, copy assets
 and read the rules here to become an expert in designing with this brand.
 
