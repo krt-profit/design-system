@@ -1,19 +1,50 @@
-<!-- @dsCard group="Components" height=250 width=700 subtitle="Uppercase head, zebra rows" -->
+<!-- @dsCard group="Components" height=560 width=860subtitle="Listentabelle: .card.card--flush › table.data-table.data-table--stack · Zeile = Link · sortierbare Köpfe · Zebra" -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style> body { padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; } </style>
 </head>
 <body>
-  <p class="pv-label">Data table — uppercase light-gray head, zebra rows, orange under-rule</p>
-  <table style="margin-top:0;">
-    <thead><tr><th>Material</th><th>Buy (min)</th><th>Sell (max)</th><th>Profit / SCU</th></tr></thead>
-    <tbody>
-      <tr><td>Quantanium</td><td class="text-danger">−27,200</td><td class="text-success">+29,400</td><td>+2,200</td></tr>
-      <tr><td>Laranite</td><td class="text-danger">−2,760</td><td class="text-success">+3,090</td><td>+330</td></tr>
-      <tr><td>Agricium</td><td class="text-danger">−2,560</td><td class="text-success">+2,810</td><td>+250</td></tr>
-    </tbody>
-  </table>
+  <p class="pv-label">Listentabelle (Seitenmuster, REQ-UI-027 Regel 6)</p>
+  <div class="card card--flush">
+    <table class="data-table data-table--stack">
+      <thead><tr>
+        <th aria-sort="none"><button type="button" class="sort-header">Mission <span class="sort-header__mark" aria-hidden="true"></span></button></th>
+        <th class="cell-status">Status</th>
+        <th aria-sort="ascending"><button type="button" class="sort-header">Geplanter Start <span class="sort-header__mark" aria-hidden="true"></span></button></th>
+        <th class="num" aria-sort="none"><button type="button" class="sort-header">Teilnehmer <span class="sort-header__mark" aria-hidden="true"></span></button></th>
+        <th class="cell-actions"><span class="visually-hidden">Aktionen</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><a class="row-link" href="#"><span class="cell-title">Profit Bereichsabend 6</span></a><span class="cell-sub">Treffpunkt: Seraphim Station</span></td>
+          <td class="cell-status"><span class="status-pill status-active">AKTIV</span></td>
+          <td data-label="Start">Fr., 09.10., 20:00<span class="cell-sub">vor 3 Tagen</span></td>
+          <td class="num" data-label="Teilnehmer">12</td>
+          <td class="cell-actions"><svg class="krt-icon row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+        </tr>
+        <tr>
+          <td><a class="row-link" href="#"><span class="cell-title">RiF – Signatur 3200 – Transport &amp; Verkauf</span></a><span class="cell-sub">Treffpunkt: Levski</span></td>
+          <td class="cell-status"><span class="status-pill status-planned">GEPLANT</span></td>
+          <td data-label="Start">Mo., 19.10., 20:00<span class="cell-sub">in 7 Tagen</span></td>
+          <td class="num" data-label="Teilnehmer">4</td>
+          <td class="cell-actions"><svg class="krt-icon row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+        </tr>
+        <tr>
+          <td><a class="row-link" href="#"><span class="cell-title">Daymar-Bergung</span></a><span class="cell-sub">Treffpunkt: Port Tressler</span></td>
+          <td class="cell-status"><span class="status-pill status-planned">GEPLANT</span></td>
+          <td data-label="Start">Di., 27.10., 19:30<span class="cell-sub">in 15 Tagen</span></td>
+          <td class="num" data-label="Teilnehmer">7</td>
+          <td class="cell-actions"><svg class="krt-icon row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pv-mono">Zeilen ≥ 56 px (.data-table--compact 44 px). Erste Spalte a.row-link mit .cell-title/.cell-sub – die ganze Zeile ist klickbar, Fokusring auf der Zeile. Zahlen .num (rechts, tabular-nums), Status .cell-status, Aktionen .cell-actions (.btn-xs, nie .btn--cta), .row-chevron am Ende. Keine Spalte nur mit „Öffnen“.</p>
+  <p class="pv-mono">Kopf: --surface-bar, 0,7 rem GROSS, 2-px-Orange-Linie. .sort-header: ↕ neutral, ▲/▼ orange bei aria-sort. Zebra jede zweite sichtbare Zeile (--table-stripe-bg, ausgeblendete und .detail-row zählen nicht), Hover --control-bg.</p>
+  <p class="pv-mono">In einer Karte mit Innenabstand (.card:not(.card--flush)) liegt die Tabelle auf --surface-inset, nie auf dem Grau der Karte. Leere Liste = .empty-state, nie eine colspan-Zeile.</p>
 </body>
 </html>

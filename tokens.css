@@ -125,6 +125,10 @@
   --space-8: 2rem;
   --touch-target: 44px;
   --content-max: 1200px;
+  --touch-target-dense: 32px;
+  --content-max-data: 1600px;
+  --content-max-form: 760px;
+  --page-gutter: 2rem;
   --radius-none: 0;
   --radius-sm: 4px;
   --radius-pill: 999px;
@@ -145,6 +149,32 @@
   --font-headline: "Lato", sans-serif;
   --font-body: "Lato", sans-serif;
   --font-mono: "Lato", sans-serif;
+  --bp-phone-max: 768px;
+  --bp-tablet-max: 1024px;
+  --bp-pinned-min: 1280px;
+  --bp-wide-min: 1440px;
+  --nav-drawer-width: 320px;
+  --nav-rail-width: 64px;
+  --nav-pinned-width: 300px;
+  --tabbar-height: 64px;
+  --header-height-phone: 56px;
+  --z-popover: 50;
+  --z-popover-raised: 60;
+  --z-dropdown: 99;
+  --z-sticky-head: 900;
+  --z-footer: 999;
+  --z-header: 1000;
+  --z-header-control: 1001;
+  --z-floating: 1100;
+  --z-floating-raised: 1200;
+  --z-drawer-scrim: 1999;
+  --z-drawer: 2000;
+  --z-tabbar: 2100;
+  --z-modal: 3000;
+  --z-hint: 4000;
+  --z-status-pill: 9000;
+  --z-toast: 9999;
+  --z-confirm: 10000;
 }
 .headline-h1 { font-family: var(--font-headline); font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; }
 .headline-h2 { font-family: var(--font-headline); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.05em; }

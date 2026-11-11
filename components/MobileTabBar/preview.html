@@ -1,0 +1,38 @@
+<!-- @dsCard group="Navigation" height=640 width=390 subtitle="Handy (≤ 768 px): 56-px-Kopf mit Suche · Tab-Leiste mit 3 wählbaren Plätzen + Meldungen + Menü" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style>
+  body { padding: 0; min-height: 640px; }
+  .pv-page { padding: 16px; padding-bottom: calc(var(--krt-tabbar-height) + 16px); display: flex; flex-direction: column; gap: 10px; }
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <button class="hamburger-btn" type="button" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="#" class="brand"><img src="../../assets/basetool-logo.svg" alt="" height="50"><span class="logo-text">Profit Basetool</span></a>
+    <span class="header-spacer"></span>
+    <button type="button" class="header-search-btn" aria-label="Suchen" title="Suchen" aria-haspopup="dialog"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-search"></use></svg></button>
+  </nav>
+</header>
+<div class="pv-page">
+  <p class="pv-label">Lager · Logistik</p>
+  <p class="pv-mono">Plätze 1–3 frei wählbar (Standard Missionen · Lager · Aufträge; bis zur ersten Änderung füllen Favoriten sie). Platz 4 „Meldungen“ mit Zähler, Platz 5 „Menü“ öffnet die Schublade als Blatt über der Leiste.</p>
+  <p class="pv-mono">Jeder Platz ≥ 44 × 44 px; aktueller Bereich .is-active (Orange + 2-px-Linie oben); Ersatzplatz .is-standin (75 %). Langer Druck öffnet die Platzauswahl. Fußzeile ist ausgeblendet; main reserviert --krt-tabbar-height (64 px + Safe Area).</p>
+  <p class="pv-mono">.mobile-tabbar · .mobile-tab-slots · .mobile-tab(.is-active/.is-standin) · .mobile-tab-icon + .mobile-tab-badge · .mobile-tab-menu + .mobile-tab-bars</p>
+</div>
+<nav class="mobile-tabbar" aria-label="Hauptnavigation">
+  <div class="mobile-tab-slots">
+    <a href="#" class="mobile-tab"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-wedge"></use></svg><span>Missionen</span></a>
+    <a href="#" class="mobile-tab is-active" aria-current="page"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-crate"></use></svg><span>Lager</span></a>
+    <a href="#" class="mobile-tab"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-crate"></use></svg><span>Aufträge</span></a>
+  </div>
+  <a href="#" class="mobile-tab"><span class="mobile-tab-icon"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-bell"></use></svg><span class="mobile-tab-badge">3</span></span><span>Meldungen</span></a>
+  <button type="button" class="mobile-tab mobile-tab-menu" aria-controls="sidebar" aria-expanded="false"><span class="mobile-tab-bars" aria-hidden="true"><span></span><span></span><span></span></span><span>Menü</span></button>
+</nav>
+</body>
+</html>

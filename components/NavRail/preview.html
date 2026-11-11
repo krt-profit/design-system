@@ -1,0 +1,65 @@
+<!-- @dsCard group="Navigation" height=600 width=900 subtitle="Desktop-Modi: Icon-Leiste (ab 1025 px) mit Flyouts · angeheftete Seitenleiste (ab 1280 px) · Umschalter „Darstellung“" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style>
+  body { padding: 18px 20px; display: flex; gap: 28px; align-items: flex-start; }
+  .pv-stage { position: relative; flex: none; width: 380px; height: 540px; border: var(--border-hairline); background: var(--surface-canvas); }
+  .pv-stage .nav-rail { display: flex; position: absolute; top: 0; bottom: 0; left: 0; z-index: 1; }
+  .pv-stage .nav-rail-flyout { position: fixed; top: 128px; left: 85px; max-height: none; }
+  .pv-notes { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .pv-notes table { margin-top: 0; }
+  .pv-notes th, .pv-notes td { padding: 0.5rem 0.75rem; font-size: 0.8rem; }
+  .pv-notes td:nth-child(2) { white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="pv-stage">
+  <nav class="nav-rail" aria-label="Navigation (Leiste)">
+    <div class="nav-rail-mode">
+      <div class="nav-rail-item"><button type="button" class="nav-rail-btn" aria-label="Favoriten" aria-expanded="false"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-star"></use></svg></button></div>
+      <div class="nav-rail-item"><button type="button" class="nav-rail-btn" aria-label="Einsatz &amp; Flotte" aria-expanded="false"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-wedge"></use></svg></button></div>
+      <div class="nav-rail-item">
+        <button type="button" class="nav-rail-btn is-current" aria-label="Logistik" aria-expanded="true" aria-controls="pv-fly"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-crate"></use></svg></button>
+        <div class="nav-rail-flyout" id="pv-fly">
+          <div class="nav-rail-flyout-head">Logistik</div>
+          <div class="nav-rail-flyout-links">
+            <a class="nav-link is-active" href="#" aria-current="page">Lager</a>
+            <a class="nav-link" href="#">Raffinerie</a>
+            <a class="nav-link" href="#">Aufträge</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-rail-item"><button type="button" class="nav-rail-btn" aria-label="Handel" aria-expanded="false"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-swap"></use></svg></button></div>
+      <div class="nav-rail-item"><button type="button" class="nav-rail-btn" aria-label="Staffel" aria-expanded="false"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-users"></use></svg></button></div>
+      <div class="nav-rail-item"><button type="button" class="nav-rail-btn" aria-label="Mehr" aria-expanded="false"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-more"></use></svg></button></div>
+    </div>
+    <span class="nav-rail-grow"></span>
+    <button type="button" class="nav-rail-btn" aria-pressed="false" aria-label="Admin-Modus aktivieren"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-shield"></use></svg></button>
+    <div class="nav-rail-item nav-rail-item--avatar"><button type="button" class="nav-rail-btn" aria-label="Benutzermenü: greluc" aria-expanded="false"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-user"></use></svg></button></div>
+  </nav>
+</div>
+<div class="pv-notes">
+  <p class="pv-label">Darstellung der Navigation</p>
+  <div class="krt-segmented krt-segmented--sm" role="radiogroup" aria-label="Darstellung der Navigation">
+    <label class="krt-segmented__item"><input type="radio" name="pv-mode" value="drawer"><span>Schublade</span></label>
+    <label class="krt-segmented__item"><input type="radio" name="pv-mode" value="rail" checked><span>Leiste</span></label>
+    <label class="krt-segmented__item"><input type="radio" name="pv-mode" value="pinned"><span>Angeheftet</span></label>
+  </div>
+  <table>
+    <thead><tr><th>Modus</th><th>Breite</th><th>Verhalten</th></tr></thead>
+    <tbody>
+      <tr><td>Schublade (Standard)</td><td>≥ 769 px</td><td>320-px-Overlay über Hamburger</td></tr>
+      <tr><td>Leiste</td><td>≥ 1025 px</td><td>64 px, ein Icon je Gruppe, Flyout 280 px</td></tr>
+      <tr><td>Angeheftet</td><td>≥ 1280 px</td><td>Beschriftete Seitenleiste 300 px neben main; 1025–1279 px = Leiste</td></tr>
+    </tbody>
+  </table>
+  <p class="pv-mono">Flyouts sind Disclosures (button aria-expanded/aria-controls): Hover nach ~200 ms oder Klick/Enter/Space; schließen ~300 ms nach Verlassen oder per Esc, Fokus zurück aufs Icon. Kopf des Flyouts = Gruppenname (Orange, 3-px-Oberkante). Gruppe der aktuellen Seite: .is-current (Orange + 3-px-Balken innen).</p>
+  <p class="pv-mono">Fuß: Schild (Admin-Modus, nur Admins) und Avatar – dessen Flyout hält Nutzer, Einheiten-Wechsel, Persönliches, Tastenkürzel, „Anpassen“, Darstellung, Sprache, Abmelden. „Mehr“ nur, solange Seiten ausgeblendet sind. Kein Menüfilter – Strg K.</p>
+  <p class="pv-mono">body[data-nav-mode="rail|pinned"] setzt --krt-nav-width (64 / 300 px), padding-inline-start und scroll-padding-inline-start; der Kopf bleibt volle Breite.</p>
+</div>
+</body>
+</html>

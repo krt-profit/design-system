@@ -1,0 +1,41 @@
+<!-- @dsCard group="Navigation" height=330 width=860 subtitle="Seitenkopf: Bereich · Titel mit Favoriten-Stern, „Als Startseite festlegen“ und Zähler · eine Hauptaktion · Seiten-Tabs" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style> body { padding: 18px 20px; } </style>
+</head>
+<body>
+<div class="page-head">
+  <div class="page-head__main">
+    <span class="page-eyebrow">Logistik</span>
+    <div class="page-title">
+      <h1>Lager</h1>
+      <button type="button" class="btn btn-ghost btn-icon nav-star" aria-pressed="true" aria-label="„Lager“ aus den Favoriten entfernen" title="„Lager“ aus den Favoriten entfernen">
+        <svg class="krt-icon nav-star-off" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-star"></use></svg>
+        <svg class="krt-icon nav-star-on" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-star-filled"></use></svg>
+      </button>
+      <button type="button" class="btn btn-ghost nav-start-page" aria-pressed="false">Als Startseite festlegen</button>
+      <span class="count-badge count-badge--sm">38</span>
+    </div>
+  </div>
+  <div class="page-actions">
+    <button class="btn btn--cta"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-plus"></use></svg> Einbuchen</button>
+  </div>
+</div>
+<nav class="tab-nav" aria-label="Seiten-Tabs">
+  <a href="#" class="tab active" aria-current="page">Lager</a>
+  <a href="#" class="tab">Mindestbestände</a>
+</nav>
+<div style="margin-top:14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+  <nav class="krt-segmented" aria-label="Lager">
+    <a class="krt-segmented__item" href="#" aria-current="page">Mein Lager</a>
+    <a class="krt-segmented__item" href="#">Globales Lager</a>
+  </nav>
+  <span class="pv-mono">Option im Lager-Tab (?storage=my|all), kein eigener Tab</span>
+</div>
+<p class="pv-mono" style="margin-top:14px;">.page-head › .page-head__main › .page-eyebrow (oder Zurück-Link „← Aufträge“ mit arrow-left) + .page-title › h1 · .nav-star[aria-pressed] · .nav-start-page[aria-pressed] · .count-badge--sm · .page-actions (eine .btn--cta) · danach .tab-nav (pageHead tabsKey; erst ab zwei erlaubten Tabs; .is-clipped-start/-end blendet die Ränder aus)</p>
+</body>
+</html>

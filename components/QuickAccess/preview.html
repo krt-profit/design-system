@@ -1,0 +1,66 @@
+<!-- @dsCard group="Navigation" height=560 width=820 subtitle="Schnellzugriff (Strg K / ⌘ K): Seiten, Tabs, Aktionen und Objekte; Dialog der einen Dialogform" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style>
+  body { padding: 0; min-height: 560px; }
+  .krt-modal-overlay { position: absolute; }
+</style>
+</head>
+<body>
+<div class="krt-modal-overlay is-open" aria-label="Schnellzugriff">
+  <div class="krt-modal palette-modal">
+    <div class="krt-modal-head">
+      <h2>Schnellzugriff</h2>
+      <button type="button" class="krt-modal-close" aria-label="Dialog schließen">&#10005;</button>
+    </div>
+    <div class="palette">
+      <div class="palette-input-row">
+        <svg class="krt-icon palette-input-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-search"></use></svg>
+        <input type="text" class="palette-input" value="lag" role="combobox" aria-expanded="true" aria-controls="pv-results" aria-activedescendant="pv-opt-0" aria-label="Seite oder Aktion suchen">
+        <button type="button" class="palette-cancel">Abbrechen</button>
+      </div>
+      <div id="pv-results" class="palette-results" role="listbox" aria-label="Schnellzugriff">
+        <div role="group" aria-label="Seiten">
+          <span class="palette-group-label" aria-hidden="true">Seiten</span>
+          <div class="palette-row is-selected" id="pv-opt-0" role="option" aria-selected="true">
+            <svg class="krt-icon palette-row-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-crate"></use></svg>
+            <span class="palette-row-text"><span class="palette-row-label"><mark>Lag</mark>er</span><span class="palette-row-crumb">Logistik</span></span>
+            <svg class="krt-icon palette-row-fav" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-star-filled"></use></svg>
+            <span class="palette-row-enter" aria-hidden="true">↵</span>
+            <svg class="krt-icon palette-row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg>
+          </div>
+          <div class="palette-row" role="option" aria-selected="false">
+            <svg class="krt-icon palette-row-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-crate"></use></svg>
+            <span class="palette-row-text"><span class="palette-row-label">Mein <mark>Lag</mark>er</span><span class="palette-row-crumb">Logistik · Lager</span></span>
+            <span class="palette-row-enter" aria-hidden="true">↵</span>
+            <svg class="krt-icon palette-row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg>
+          </div>
+        </div>
+        <div role="group" aria-label="Aktionen">
+          <span class="palette-group-label" aria-hidden="true">Aktionen</span>
+          <div class="palette-row" role="option" aria-selected="false">
+            <svg class="krt-icon palette-row-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-plus"></use></svg>
+            <span class="palette-row-text"><span class="palette-row-label">In mein <mark>Lag</mark>er einbuchen</span><span class="palette-row-crumb">Aktionen</span></span>
+            <span class="palette-row-enter" aria-hidden="true">↵</span>
+            <svg class="krt-icon palette-row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg>
+          </div>
+        </div>
+      </div>
+      <p class="palette-empty" hidden>Keine Treffer. Signal verloren.</p>
+      <div class="palette-foot" aria-hidden="true">
+        <span class="palette-hint"><span class="nav-kbd">&uarr; &darr;</span><span>Navigieren</span></span>
+        <span class="palette-hint"><span class="nav-kbd">&crarr;</span><span>Öffnen</span></span>
+        <span class="palette-hint"><span class="nav-kbd">Strg &crarr;</span><span>Neuer Tab</span></span>
+        <span class="palette-hint"><span class="nav-kbd">Strg D</span><span>Favorit</span></span>
+        <span class="palette-hint"><span class="nav-kbd">ESC</span><span>Schließen</span></span>
+        <span class="palette-hint"><span class="nav-kbd">?</span><span>Präfixe</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

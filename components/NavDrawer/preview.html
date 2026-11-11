@@ -1,0 +1,103 @@
+<!-- @dsCard group="Navigation" height=800 width=1100 subtitle="Schublade (Standard, ≥ 769 px): Kopf · Kontext (Einheit, Menüfilter, Anpassen) · Liste (Favoriten, Aufgabengruppen) · Fuß (Administration, Nutzerzeile)" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style>
+  body { padding: 18px 20px; display: flex; gap: 24px; align-items: flex-start; }
+  .sidebar { position: relative; transform: none; transition: none; height: 760px; z-index: auto; flex: none; }
+  .pv-notes { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+</style>
+</head>
+<body>
+<div id="sidebar" class="sidebar open" role="navigation" aria-label="Navigation">
+  <div class="nav-grip" aria-hidden="true"></div>
+  <div class="nav-head">
+    <img src="../../assets/basetool-logo.svg" alt="" width="30" height="30">
+    <span class="nav-head-title">Profit Basetool</span>
+    <button class="close-sidebar-btn" type="button" aria-label="Schließen" title="Schließen"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-close"></use></svg></button>
+  </div>
+  <div class="nav-mode-bar">
+    <div class="krt-segmented krt-segmented--sm" role="radiogroup" aria-label="Darstellung der Navigation">
+      <label class="krt-segmented__item"><input type="radio" name="pv-mode" value="drawer" checked><span>Schublade</span></label>
+      <label class="krt-segmented__item"><input type="radio" name="pv-mode" value="rail"><span>Leiste</span></label>
+      <label class="krt-segmented__item"><input type="radio" name="pv-mode" value="pinned"><span>Angeheftet</span></label>
+    </div>
+  </div>
+  <div class="nav-context">
+    <form class="squadron-switcher">
+      <label for="pv-ou" class="squadron-switcher-label">Aktive Org-Einheit</label>
+      <select id="pv-ou" class="squadron-switcher-select"><option>Alle meine Einheiten</option><option selected>ALP — ALPHA</option></select>
+    </form>
+    <div class="nav-filter">
+      <svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-filter"></use></svg>
+      <input type="search" class="nav-filter-input" placeholder="Menü filtern …" aria-label="Menü filtern">
+    </div>
+    <div class="nav-edit-bar">
+      <button type="button" class="btn btn-ghost nav-edit-toggle"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-edit"></use></svg><span>Anpassen</span></button>
+    </div>
+  </div>
+  <div class="nav-list" id="nav-list">
+    <div class="nav-favourites">
+      <section class="nav-favourites-group">
+        <div class="nav-favourites-head"><svg class="krt-icon nav-group-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-star"></use></svg><span class="nav-group-label">Favoriten</span></div>
+        <div class="nav-group-links">
+          <div class="nav-row"><a class="nav-link" href="#">Profitberechnung</a></div>
+          <div class="nav-row"><span class="nav-link is-unavailable" aria-disabled="true"><span class="nav-link-label">Leitung</span><span class="nav-unavailable-hint">In ALPHA nicht verfügbar</span></span></div>
+        </div>
+      </section>
+    </div>
+    <section class="nav-group">
+      <button type="button" class="nav-group-head" aria-expanded="true"><svg class="krt-icon nav-group-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-wedge"></use></svg><span class="nav-group-label">Einsatz &amp; Flotte</span><span class="nav-group-count"></span><svg class="krt-icon nav-group-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></button>
+      <div class="nav-group-links">
+        <div class="nav-row"><a class="nav-link" href="#">Missionen</a></div>
+        <div class="nav-row"><a class="nav-link" href="#">Hangar</a></div>
+      </div>
+    </section>
+    <section class="nav-group is-active">
+      <button type="button" class="nav-group-head" aria-expanded="true"><svg class="krt-icon nav-group-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-crate"></use></svg><span class="nav-group-label">Logistik</span><span class="nav-group-count"></span><svg class="krt-icon nav-group-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></button>
+      <div class="nav-group-links">
+        <div class="nav-row"><a class="nav-link is-active" href="#" aria-current="page">Lager</a></div>
+        <div class="nav-row"><a class="nav-link" href="#">Raffinerie</a></div>
+        <div class="nav-row"><a class="nav-link" href="#">Aufträge</a></div>
+      </div>
+    </section>
+    <section class="nav-group">
+      <button type="button" class="nav-group-head" aria-expanded="true"><svg class="krt-icon nav-group-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-swap"></use></svg><span class="nav-group-label">Handel</span><span class="nav-group-count"></span><svg class="krt-icon nav-group-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></button>
+      <div class="nav-group-links">
+        <div class="nav-row"><a class="nav-link" href="#">Material</a></div>
+        <div class="nav-row"><a class="nav-link" href="#">Materialbörse</a></div>
+        <div class="nav-row"><a class="nav-link" href="#">Beschaffung</a></div>
+      </div>
+    </section>
+    <section class="nav-group">
+      <button type="button" class="nav-group-head" aria-expanded="false"><svg class="krt-icon nav-group-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-users"></use></svg><span class="nav-group-label">Staffel</span><span class="nav-group-count">1</span><svg class="krt-icon nav-group-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></button>
+      <div class="nav-group-links" hidden><div class="nav-row"><a class="nav-link" href="#">Meine Einheit</a></div></div>
+    </section>
+  </div>
+  <div class="nav-foot">
+    <button type="button" class="nav-admin-entry"><svg class="krt-icon nav-admin-entry-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-gear"></use></svg><span class="nav-admin-entry-label">Administration</span><svg class="krt-icon nav-admin-entry-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></button>
+    <div class="nav-user-row">
+      <button type="button" class="nav-user-toggle" aria-expanded="false" aria-controls="nav-personal">
+        <span class="nav-user-avatar" aria-hidden="true"><svg class="krt-icon"><use href="../../assets/krt-icons.svg#krt-icon-user"></use></svg></span>
+        <span class="nav-user-text"><span class="nav-user-name">greluc</span><span class="nav-user-meta">ALPHA · Logistiker</span></span>
+        <svg class="krt-icon nav-user-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-up"></use></svg>
+      </button>
+      <div class="nav-lang"><button type="button" class="nav-lang-btn" aria-haspopup="true" aria-expanded="false" aria-label="Sprache"><span>DE</span></button></div>
+      <form class="nav-logout-form"><button type="button" class="nav-logout-btn" aria-label="Abmelden" title="Abmelden"><svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-logout"></use></svg></button></form>
+    </div>
+  </div>
+</div>
+<div class="pv-notes">
+  <p class="pv-label">Regeln</p>
+  <p class="pv-mono">Desktop-Ansicht (&gt; 1024 px, mit Umschalter „Darstellung“ im Kopf). Bis 1024 px gelten 44-px-Zeilen, am Handy wird die Schublade zum Blatt mit Griff über der Tab-Leiste.</p>
+  <p class="pv-mono">320 px Overlay auf --surface-bar, Scrim 80 % + Blur 4 px; nur die Liste scrollt. Geschlossen = inert.</p>
+  <p class="pv-mono">Gruppenköpfe GROSS (0,7 rem, 0,12 em) mit 16-px-Icon, Links in normaler Schreibung (Lato 400, 0,9 rem). Aktuelle Seite: aria-current="page" + Primär-Balken innen; ihre Gruppe ist immer offen. Im Handy-Blatt (Akkordeon) zeigt ein Gruppenkopf die Linkzahl (.nav-group-count).</p>
+  <p class="pv-mono">Favoriten (Stern im Seitenkopf, max. 12) stehen oben; in der aktiven Einheit nicht verfügbare sind ausgegraut mit Hinweis.</p>
+  <p class="pv-mono">„Anpassen": Stern + Auge pro Link, Pfeile zum Sortieren, Ausgeblendetes unter „Mehr". „Administration" schaltet die Liste in den Admin-Modus (Hauptmenü-Zurück + ADMIN-Chip).</p>
+  <p class="pv-mono">.sidebar(.open/.is-admin-mode/.is-editing/.is-filtering) · .nav-head · .nav-context · .nav-filter · .nav-list · .nav-favourites-group · .nav-group(-head/-icon/-label/-count/-chevron/-links) · .nav-row · .nav-link(.is-active/.is-unavailable) · .nav-foot · .nav-admin-entry · .nav-user-row/-toggle · .nav-lang · .nav-logout-btn</p>
+</div>
+</body>
+</html>

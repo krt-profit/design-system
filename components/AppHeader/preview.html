@@ -1,0 +1,43 @@
+<!-- @dsCard group="Navigation" height=250 width=900subtitle="Kopfzeile: Hamburger · Logo · Schnellzugriff (Strg K) · Glocke; sticky auf jeder Seite" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style>
+  body { padding: 0; }
+  .pv-pad { padding: 14px 20px; }
+  .pv-page { padding: 18px 20px; color: var(--color-gray-2-text); font-size: var(--fs-sm); }
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <button class="hamburger-btn" type="button" aria-label="Menü" aria-controls="sidebar" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a href="#" class="brand"><img src="../../assets/basetool-logo.svg" alt="" height="50"><span class="logo-text">Profit Basetool</span></a>
+    <span class="header-spacer"></span>
+    <span class="admin-mode-chip">ADMIN</span>
+    <button type="button" class="palette-trigger" aria-haspopup="dialog" aria-controls="nav-palette">
+      <svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-search"></use></svg>
+      <span class="palette-trigger-text">Seite oder Aktion suchen …</span>
+      <span class="nav-kbd" aria-hidden="true">STRG K</span>
+    </button>
+    <button type="button" class="header-search-btn" aria-label="Suchen" aria-haspopup="dialog" aria-controls="nav-palette">
+      <svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-search"></use></svg>
+    </button>
+    <div class="notification-bell">
+      <button type="button" class="notification-bell-btn" aria-label="Benachrichtigungen, 3 ungelesen" aria-haspopup="true" aria-expanded="false">
+        <svg class="krt-icon" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-bell"></use></svg>
+        <span class="notification-badge" aria-hidden="true">3</span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="pv-page">
+  <p class="pv-label">Seiteninhalt scrollt unter der Kopfzeile</p>
+  <p class="pv-mono">body &gt; header (sticky, top 0, --z-header) · .hamburger-btn · .brand + .logo-text · .header-spacer · .admin-mode-chip (nur body.admin-mode) · .palette-trigger + .nav-kbd · .header-search-btn (nur Handy) · .notification-bell(-btn) + .notification-badge</p>
+  <p class="pv-mono">Handy (≤ 768 px): 56 px hoch – Logo, Titel, Suche; Hamburger und Glocke wandern in die Tab-Leiste. Rail/angeheftet (&gt; 1024 px): kein Hamburger.</p>
+</div>
+</body>
+</html>
