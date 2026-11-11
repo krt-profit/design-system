@@ -1,0 +1,41 @@
+<!-- @dsCard group="Components" height=520 width=390 subtitle="Listentabelle am Handy (≤ 768 px): Titel + Status in Zeile 1, übrige Zellen als Meta-Zeile, Chevron rechts" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style> body { padding: 16px; display: flex; flex-direction: column; gap: 12px; } </style>
+</head>
+<body>
+  <p class="pv-label">.data-table--stack bei 375 px</p>
+  <div class="card card--flush">
+    <table class="data-table data-table--stack">
+      <thead><tr>
+        <th aria-sort="ascending"><button type="button" class="sort-header">Mission <span class="sort-header__mark" aria-hidden="true"></span></button></th>
+        <th class="cell-status">Status</th>
+        <th>Start</th>
+        <th class="num">Teilnehmer</th>
+        <th class="cell-actions"><span class="visually-hidden">Aktionen</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><a class="row-link" href="#"><span class="cell-title">Profit Bereichsabend 6</span></a></td>
+          <td class="cell-status"><span class="status-pill status-active">AKTIV</span></td>
+          <td data-label="Start">09.10., 20:00</td>
+          <td class="num" data-label="Teilnehmer">12</td>
+          <td class="cell-actions"><svg class="krt-icon row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+        </tr>
+        <tr>
+          <td><a class="row-link" href="#"><span class="cell-title">RiF – Signatur 3200 – Transport &amp; Verkauf</span></a></td>
+          <td class="cell-status"><span class="status-pill status-planned">GEPLANT</span></td>
+          <td data-label="Start">19.10., 20:00</td>
+          <td class="num" data-label="Teilnehmer">4</td>
+          <td class="cell-actions"><svg class="krt-icon row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pv-mono">Der Kopf ist nur für Screenreader da – außer er enthält .sort-header: dann bleibt eine Sortierleiste mit den sortierbaren Köpfen. data-label setzt „Start: …“ vor die Zelle, „·“ trennt die Meta-Werte (nicht vor .cell-block, .stack-line-end oder Blockinhalt). Ein einzelnes Chevron sitzt mittig rechts. Nichts scrollt seitwärts.</p>
+</body>
+</html>

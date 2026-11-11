@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" height=520 width=760 subtitle="Page-Head + Zähler · Segment-Umschalter · Filter · Schalter · .list-panel" -->
+<!-- @dsCard group="Components" height=560 width=760subtitle="Page-Head + Zähler · Segment-Umschalter · Filter · Schalter · .list-panel" -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -8,7 +8,7 @@
 <style>
   body { padding: 18px 20px; }
   .page-head { margin-bottom: 14px; }
-  .page-head__title { font-size: 1.5rem; }
+  .page-title h1 { font-size: 1.5rem; }
   th, td { padding: 0.65rem 0.9rem; font-size: 0.85rem; }
   td .sub { display: block; color: var(--color-gray-2-text); font-size: 0.75rem; }
   .act { display: flex; gap: 6px; justify-content: flex-end; }
@@ -16,11 +16,11 @@
 </head>
 <body>
   <div class="page-head">
-    <div>
-      <span class="page-head__eyebrow">Einsatzplanung</span>
-      <h1 class="page-head__title">Einsatzverwaltung <span class="count-badge" aria-label="3 Einsätze">3</span></h1>
+    <div class="page-head__main">
+      <span class="page-eyebrow">Einsatz &amp; Flotte</span>
+      <div class="page-title"><h1>Missionen</h1><span class="count-badge count-badge--sm" aria-label="3 Einsätze">3</span></div>
     </div>
-    <div class="page-head__actions">
+    <div class="page-actions">
       <button class="btn btn--cta"><svg class="krt-icon" aria-hidden="true"><use href="#i-plus"/></svg> Neuer Einsatz</button>
     </div>
   </div>
@@ -52,7 +52,7 @@
     </table>
     <div class="list-panel__footer"><span>1–2 von 2</span></div>
   </section>
-  <p class="pv-mono" style="margin-top:12px;">.page-head · .count-badge · .list-panel(__toolbar/__chips/__footer) · .krt-segmented(__item[aria-current]/__count) · .btn-ghost.is-filtered + .filter-count · .filter-chip · .krt-switch</p>
+  <p class="pv-mono" style="margin-top:12px;">.page-head(__main) · .page-eyebrow · .page-title · .page-actions · .count-badge · .list-panel(__toolbar/__chips/__footer) · .krt-segmented(__item[aria-current]/__count) · .btn-ghost.is-filtered + .filter-count · .filter-chip · .krt-switch</p>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></symbol>

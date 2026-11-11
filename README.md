@@ -15,11 +15,13 @@ and a fixed department color system.
 ## Sources
 
 - **GitHub — `krt-profit/basetool`** · <https://github.com/krt-profit/basetool>
-  The Spring Boot + Thymeleaf app. Its stylesheets
-  (`frontend/src/main/resources/static/css/styles.css` plus the per-feature CSS) implement
-  this system; templates under `frontend/.../templates/`, copy in
-  `messages_de.properties` / `messages_en.properties`, Keycloak theme in
-  `keycloak-theme/krt-theme/`.
+  The Spring Boot + Thymeleaf app. Its kernel stylesheet
+  (`frontend/src/main/resources/static/css/kernel/styles.css`, cascade layers
+  `base, components, page, utilities`) plus the page CSS under `static/css/pages/<domain>/`
+  implement this system; the app shell (header, drawer, rail, tab bar, quick access, page head)
+  lives in `templates/kernel/fragments/`, copy in `messages_de.properties` /
+  `messages_en.properties`, Keycloak theme in `keycloak-theme/krt-theme/`. Navigation rules:
+  `docs/specs/ui-design-system.md` REQ-UI-026 / REQ-UI-032, page patterns REQ-UI-027.
 - **GitHub — `krt-profit/design-system`** · this project.
 - **das-kartell.org** — the org website. The surface grays, the text colours and the 4 px
   radius are taken from it, measured as computed CSS values in the browser (DevTools / the
@@ -219,9 +221,10 @@ List-page building blocks (`krt-components.css`, block „LIST PAGE"):
 
 | Class | Purpose |
 | :-- | :-- |
-| `.page-head` (`__eyebrow`, `__title`, `__actions`) | page head: area, title, one CTA |
+| `.page-head` (`__main`) + `.page-eyebrow` · `.page-title` · `.page-actions` | page head: area (or back link), title with favourite star / start-page toggle / count, one CTA; `.tab-nav` follows (see Navigation) |
 | `.count-badge` | total next to the title — filled `#2F394C`, white digits |
 | `.list-panel` (`__toolbar`, `__search`, `__chips`, `__footer`) | working surface grouping toolbar, table, footer |
+| `.card.card--flush > table.data-table.data-table--stack` | the list table of every list page (see List table) |
 | `.krt-segmented` (`__item`, `__count`) | period/status/view switch; active via `aria-current` / `aria-pressed` / `aria-checked` |
 | `.btn.is-filtered` + `.filter-count` | filter button with active filters; square count badge |
 | `.filter-chip` (`__remove`) | removable active filter |
@@ -267,6 +270,81 @@ Specimen: `components/ActionHierarchy/preview.html`.
   the hue, faint tint fill), plus `--data` for "key: value" chips (`ALP: 1,200 SCU`).
 
 Specimen: `components/CardChip/preview.html`.
+
+### Navigation (app shell)
+
+One model on every device (REQ-UI-026, REQ-UI-032), rendered from one entry registry; rights stay
+on the server. Specimens: `components/AppHeader`, `components/NavDrawer`, `components/NavRail`,
+`components/MobileTabBar`, `components/QuickAccess`, `components/PageHead`.
+
+- **Header** (`body > header`, sticky on every page, `--z-header`): hamburger, Basetool mark +
+  `appTitle` (leads to the start page), `.palette-trigger` „Seite oder Aktion suchen …" with
+  `STRG K` (`.nav-kbd`), the bell `.notification-bell-btn` with the orange `.notification-badge`
+  in the flex row, `.admin-mode-chip` only in `body.admin-mode`. No stylesheet makes `html` or
+  `body` a scroll container; sticky content below stops at `--krt-header-height`.
+- **Drawer** (default, ≥ 769 px): `.sidebar` 320 px on `--surface-bar` over a 80 % + blur scrim,
+  0.4 s slide, `inert` when closed. Zones: head (mark, title, close) · context (org-unit switcher
+  only with > 1 unit, menu filter, „Anpassen") · list (only zone that scrolls) · foot
+  („Administration", personal panel, user row with name, `<unit> · <role>`, language, logout).
+- **Groups by task**, at most four for members: Einsatz & Flotte (`wedge`), Logistik (`crate`),
+  Handel (`swap`), Staffel (`users`), + Kartellbank (`bank`) for bank staff; ~9 links, sibling
+  pages are tabs of one page. Group heads upper-case 0.7 rem / 0.12 em with a 16 px icon, links in
+  normal case (Lato 400, 0.9 rem) — an approved exception to „navigation is upper-case". Current
+  page: `.nav-link.is-active` + `aria-current="page"` (bar fill, white bold, 3 px inset orange
+  bar); its group is always open (`.nav-group.is-active`, orange head).
+- **Favourites** (star `.nav-star` in the page head, max 12) form the top group; one the active
+  unit does not offer is `.is-unavailable` with „In … nicht verfügbar". **„Anpassen"**
+  (`.sidebar.is-editing`): star + eye per link, arrow reorder (`.krt-reorder`, Alt + ↑/↓), hidden
+  pages under „Mehr" (`more`), resets per section. **Administration is a mode**
+  (`.sidebar.is-admin-mode`, „Hauptmenü" back + ADMIN chip, three admin groups collapsed).
+- **Three desktop modes** (`body[data-nav-mode]`, switch „Darstellung" = `.krt-segmented--sm`
+  Schublade · Leiste · Angeheftet, stored per user): drawer ≥ 769 px · **icon rail** ≥ 1025 px
+  (`.nav-rail` 64 px on `--surface-panel`, 48 px `.nav-rail-btn`s, one per group, `.is-current`
+  orange + inset bar; `.nav-rail-flyout` 280 px, 3 px orange top, disclosure: hover ~200 ms /
+  click, closes ~300 ms after leave or on Esc; foot: shield = admin mode, avatar flyout = user,
+  unit, personal, shortcuts, „Anpassen", mode switch, language, logout) · **pinned sidebar**
+  ≥ 1280 px (the drawer docked at 300 px, no head/close/scrim; 1025–1279 px renders the rail).
+  Both set `--krt-nav-width`, `padding-inline-start` and `scroll-padding-inline-start`.
+- **Phone** (≤ 768 px): 56 px header (mark, title, `.header-search-btn`); fixed
+  `.mobile-tabbar` (64 px + safe area, `--z-tabbar`) with five `.mobile-tab`s — three chosen slots
+  (default Missionen · Lager · Aufträge; `.is-standin` at 75 %), „Meldungen" with
+  `.mobile-tab-badge`, „Menü" opening the drawer as a sheet (accordion groups, 44–48 px rows,
+  `.nav-group-count`). The footer hides; `main` reserves `--krt-tabbar-height`.
+- **Quick access** (`Strg`/`⌘ K`, the header trigger, the phone search): `.krt-modal.palette-modal`
+  of the one dialog shape — `.palette-input-row` (combobox) over `.palette-results` (listbox,
+  `aria-activedescendant`), `.palette-group-label`, `.palette-row(.is-selected)` with icon,
+  label with `<mark>` hit, `.palette-row-crumb`, favourite star, `↵`; empty state „Keine Treffer.
+  Signal verloren."; `.palette-foot` key hints. Full screen with „Abbrechen" on phones. Folded
+  matching (case, diacritics, ß/ss, ä/ae) in the menu filter and here.
+- **Page tabs** (`.tab-nav` below `.page-head`, only with ≥ 2 permitted tabs; `.is-clipped-start`
+  / `-end` fade a scrolled edge). Options inside a tab are a `.krt-segmented` switch, not tabs
+  (e.g. Lager: Mein Lager | Globales Lager).
+- **Accessibility & motion:** focus returns to the opener; Escape closes drawer, flyouts and the
+  quick access; group heads are `<button aria-expanded>`; only colour transitions and the drawer
+  slide move, `prefers-reduced-motion` removes both. Touch floor 44 px up to 1024 px or with a
+  coarse pointer, 32 px (`--touch-target-dense`) for dense controls on the mouse classes.
+
+### List table
+
+Every list page renders `.card.card--flush > table.data-table.data-table--stack` (REQ-UI-027
+rule 6). Specimens: `components/DataTable`, `components/DataTableStack`.
+
+- Rows ≥ 56 px (`.data-table--compact` 44 px). The first column is an `a.row-link` with
+  `.cell-title` (white bold) and `.cell-sub` (muted, `--fs-xs`) — the whole row is the link and
+  shows the focus ring; numbers `.num`, status `.cell-status`, actions `.cell-actions`
+  (`.btn-xs` ghost / success / quiet-danger, never `.btn--cta`), a `.row-chevron` at the end; no
+  column holding only „Öffnen".
+- Head: `--surface-bar`, `--fs-2xs` upper-case, 0.06 em, 2 px orange rule. Sortable columns carry
+  a `.sort-header` button in the `th` with `aria-sort`; `.sort-header__mark` shows ↕ muted, ▲ / ▼
+  orange.
+- Zebra on every second **visible** row (`:nth-child(even of :not([hidden], .detail-row))`,
+  `--table-stripe-bg`), hover `--control-bg` — also on plain tables.
+- A table inside a padded `.card` sits on `--surface-inset`, never on the card's gray; inside
+  `.card--flush` it has no margin and no frame of its own.
+- **≤ 768 px** the row stacks: title + status on line 1, the other cells as one muted meta line
+  separated by `·`, `data-label` prefixes its value, a lone chevron centred right; the head is
+  visually hidden unless it holds `.sort-header`s, which stay as a sort bar. Nothing scrolls
+  sideways. An empty list is an `.empty-state`, never a `colspan` row.
 
 ### Tree table (nested data)
 
@@ -385,11 +463,12 @@ Specimens: `components/KpiCard/preview.html`, `components/BankPatterns/preview.h
 
 ### App chrome
 
-- **Header** — sticky, bar surface, 2 px orange bottom rule; in admin mode
-  (`body.admin-mode`) the rule is Zierfarbe dunkel and `.admin-mode-chip` names the context.
-- **Footer** `.krt-footer` (+ `-links/-meta/-github/-version`) — fixed, bar surface;
-  legal links, Handbuch, GitHub mark, build version. `<main>` reserves
-  `--krt-footer-height`.
+- **Header** — sticky on every page, bar surface, 2 px orange bottom rule; quick-access trigger
+  and bell inside it (see Navigation); in admin mode (`body.admin-mode`) the rule is Zierfarbe
+  dunkel and `.admin-mode-chip` names the context.
+- **Footer** `.krt-footer` (+ `-links/-meta/-github/-version`) — fixed, bar surface, one row;
+  legal links, Handbuch, Star-Citizen-Links, GitHub mark, build version. `<main>` reserves
+  `--krt-footer-height`. Hidden on phones while the tab bar shows.
 - **Fan-Kit band** `.krt-fankit-band/-logo/-trademark` — Star Citizen Fan Kit compliance at
   the end of the home `<main>`; logo unchanged, trademark notice ≥ 10 pt.
   Asset: `assets/made-by-the-community.png`.
@@ -403,7 +482,7 @@ no icon library (the CSP forbids CDNs). 24×24, stroke-only, `stroke-width: 2`, 
 caps, `fill: none`, `currentColor`; used as `<svg class="krt-icon"><use href="#krt-icon-NAME"/></svg>`
 (1em; `.krt-icon-lg` 1.5em, `.krt-icon-xl` 2em).
 
-- **Navigation icons** (`database`, `wedge`, `crate`, `bank`, `eye-off`, `shield`) mark navigation entries; `star` (outline) and `star-filled` (same geometry, `fill: currentColor`) are the two states of a favourite toggle.
+- **Navigation icons** (`wedge`, `crate`, `swap`, `users`, `bank`, `database`, `gear`, `shield`, `more`, `user`, `bell`, `eye-off`) mark navigation groups, rail entries and tab-bar slots; `star` (outline) and `star-filled` (same geometry, `fill: currentColor`) are the two states of a favourite toggle.
 - **Icon + text** for primary, rare or ambiguous actions.
 - **Icon-only** (`.btn-icon`, 32×32) for repeated row actions with a universal meaning
   (edit, trash, check-in, check-out, bookout, close) — always with `aria-label` + `title`.
@@ -489,18 +568,23 @@ Specimens: `components/IconSet/preview.html`, `components/Iconography/preview.ht
 - **Motion.** `0.2s` color/background transitions; sidebar drawer `0.4s
   cubic-bezier(0.4,0,0.2,1)`; toast translate + fade `0.5s`. No bounces or parallax;
   `prefers-reduced-motion` neutralizes all motion.
-- **Scrim & blur.** Overlays `rgba(0,0,0,0.75–0.8)` + `backdrop-filter: blur(4px)`; the
-  squadron context chip uses `blur(2px)`.
+- **Scrim & blur.** The drawer scrim is black at 80 % + `backdrop-filter: blur(4px)`; the
+  dialog overlay (`.krt-modal-overlay`, also the quick access) uses `blur(2px)`. There is no
+  floating context chip any more: the org unit is switched in the drawer or the rail's avatar
+  flyout.
 - **Tables.** Panel body, uppercase Grau-1 headers on the bar surface with a 2 px orange
-  under-rule, zebra `--table-stripe-bg` (control at 50 %, `#30353A` on the panel), row hover
-  `#373E43`.
+  under-rule, zebra `--table-stripe-bg` (control at 50 %, `#30353A` on the panel) on every second
+  visible row, row hover `#373E43`; inside a padded card the table takes `--surface-inset`. List
+  pages use `.data-table` (see List table).
 - **Scrollbars.** 12 px (`.scroll-thin` 8 px), track on the panel with a leading
   hairline, thumb `#8F9399` → `#EEB64B` on hover → `#E77E23` while dragging; buttons
   suppressed. Wrap regions in `.hud-scroll` + `.scroll-y/-x/-both`; `.scroll-accent` for
   log/console panes. Firefox via `scrollbar-color`.
-- **Layout.** Sticky header; off-canvas sidebar drawer (380 px) as primary nav; fixed
-  footer; squadron context chip top-right. Content ≤ 1200 px, paragraphs ≤ 80ch, touch
-  targets ≥ 44 px.
+- **Layout.** Sticky header; navigation as drawer (320 px), icon rail (64 px) or pinned
+  sidebar (300 px) on desktop and a tab bar on phones (see Navigation); fixed footer; the active
+  org unit is chosen in the drawer's context zone. Content ≤ 1200 px (`--content-max`), list
+  pages up to 1600 px (`--content-max-data`), forms ≤ 760 px (`--content-max-form`), side gutter
+  `--page-gutter`, paragraphs ≤ 80ch, touch targets ≥ 44 px.
 - **Logos.** The brand mark is the **wedge-through-ring** (planet ring + four-point star +
   star-destroyer triangle): `assets/krt.webp`, `assets/krt-favicon.webp`,
   `assets/Kartelllogo.jpg` (full lockup on `#282828`). App marks: `assets/basetool-*.svg/png`.
@@ -517,9 +601,9 @@ Specimens: `components/IconSet/preview.html`, `components/Iconography/preview.ht
 
   | Class | Width | Rules |
   | :-- | :-- | :-- |
-  | Smartphone | ≤ 768 px | touch-first; 44 px targets; single column; wide tables scroll horizontally; context chip collapses to shorthand |
-  | Tablet | 768–1024 px | touch-first; 44 px targets; collapse multi-column grids |
-  | Desktop | 1024–1600 px | auto-fit card grids; off-canvas drawer nav |
+  | Smartphone | ≤ 768 px | touch-first; 44 px targets; single column; 56 px header + tab bar; list tables stack (`.data-table--stack`), other wide tables scroll inside their box |
+  | Tablet | 768–1024 px | touch-first; 44 px targets; collapse multi-column grids; drawer only |
+  | Desktop | 1024–1600 px | auto-fit card grids; drawer, icon rail (≥ 1025 px) or pinned sidebar (≥ 1280 px) |
   | Ultra-wide | 1600 px+ | text capped at 80ch; content column ≤ 1200 px |
 
 - **i18n.** Every user-visible string comes from `messages*.properties` (German default,
@@ -540,8 +624,11 @@ theme**, which mirrors the tokens in `keycloak/krt-keycloak-tokens.css`.
 ## Tokens & files
 
 - **One source for every value:** colors, type sizes/weights, tracking, line height,
-  spacing, radii, glows and the Lato `@font-face` live in [`tokens.json`](tokens.json) and
-  compile to [`tokens.css`](tokens.css). Token name = CSS variable without `--`.
+  spacing, layout widths and breakpoints, the stacking layers (`zIndex`), radii, glows and the
+  Lato `@font-face` live in [`tokens.json`](tokens.json) and compile to [`tokens.css`](tokens.css).
+  Token name = CSS variable without `--`. Every `z-index` goes through a `--z-*` token. The
+  breakpoint and nav-width tokens document values that media queries and the shell use literally
+  (`--krt-nav-width`, `--krt-tabbar-height` are runtime variables in `krt-components.css`).
 - [`colors_and_type.css`](colors_and_type.css) imports `tokens.css` first and adds what
   cannot be a token: composite borders (`--border-hairline`, `--border-accent`,
   `--border-heading`), `--measure: 80ch` and the element defaults.
@@ -561,5 +648,5 @@ theme**, which mirrors the tokens in `keycloak/krt-keycloak-tokens.css`.
 | `fonts/` | Lato Thin → Black, each + italic (WOFF2 + TTF) |
 | `assets/` | brand mark, lockup, favicon, Basetool logo (SVG + PNG 16/32/64/512), icon sprite, Fan-Kit logo |
 | `keycloak/` | Keycloak theme token mirror and notes |
-| `ui_kits/basetool/` | interactive recreation of the app (see its README) |
+| `ui_kits/basetool/` | interactive recreation of the app (see its README; it still shows the earlier drawer-only shell — the Navigation specimens are authoritative) |
 | `uploads/KRT_Styleguide_V2.pdf` | Corporate Design Manual (logo, typeface, department colours) |
