@@ -246,8 +246,12 @@ and the last visible row (stacked: the sort bar or the first row, and the last r
 `.tree-table` the head and the last visible row or note, in a `.master-list` the first and last
 visible row — and that last row drops its own bottom rule. Visible means `:not([hidden])`, so
 collapsed or filtered rows carry `hidden`. A table in a `.card--flush` has no fill of its own; a
-`.hud-scroll` clips its content to its own rounded edge. The HUD brackets follow the rounded
-corner. This replaces the former 4 px rule; the Basetool's
+`.hud-scroll` clips its content to its own rounded edge. **Panes are not boxes:** a
+`.master-list` and a `.detail-pane` that share one framed box as frameless panes, split by a
+straight divider, take no radius and no fill, and the box paints. The list pane is then the scroll
+list: it fills the box's height, takes the inner radius in the box corners it fills (the left ones
+beside the detail pane, all four when it stands alone) and clips its rows, which take none. The
+HUD brackets follow the rounded corner. This replaces the former 4 px rule; the Basetool's
 REQ-UI-007 („4 px radius") has to be amended with the adoption.
 
 List-page building blocks (`krt-components.css`, block „LIST PAGE"):
@@ -452,7 +456,7 @@ Specimen: `components/HerkunftPicker/preview.html`.
   HVU marking = `.chip.chip--warning`. Specimen: `components/AssignBoard/preview.html`.
 - **Master-detail & ingredient quality** — `.master-detail` / `.master-list` /
   `.master-row(.is-active)` / `.detail-pane` (list → detail, ↑/↓ + deeplink; collapses on
-  mobile) and `.quality-block` / `.quality-row` / `.quality-affects` (quality 0–1000 scales
+  mobile; two boxes side by side, or frameless panes inside one box, rule 5) and `.quality-block` / `.quality-row` / `.quality-affects` (quality 0–1000 scales
   only its mapped stats, live ×-factor on the stat chips). Specimen: `components/MasterDetail/preview.html`.
 
 ### Einsatz overview
