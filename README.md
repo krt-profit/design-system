@@ -365,7 +365,7 @@ on the server. Specimens: `components/AppHeader`, `components/NavDrawer`, `compo
   matching (case, diacritics, ß/ss, ä/ae) in the menu filter and here.
 - **Page tabs** (`.tab-nav` below `.page-head`, only with ≥ 2 permitted tabs; `.is-clipped-start`
   / `-end` fade a scrolled edge). Options inside a tab are a `.krt-segmented` switch, not tabs
-  (e.g. Lager: Mein Lager | Globales Lager).
+  (e.g. Lager: Mein Lager | Einheitslager).
 - **Accessibility & motion:** focus returns to the opener; Escape closes drawer, flyouts and the
   quick access; group heads are `<button aria-expanded>`; only colour transitions and the drawer
   slide move, `prefers-reduced-motion` removes both. Touch floor 44 px up to 1024 px or with a

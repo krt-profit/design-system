@@ -29,7 +29,7 @@ Login → dashboard → navigate through the hamburger drawer (the default navig
    with search and a `.krt-segmented` period switch, `.data-table--stack` rows (row link,
    department tag, tinted status label, chevron), `.empty-state` when nothing matches.
 4. **Hangar** — list table in a flush card, LTI chip, readiness label, icon-only row actions.
-5. **Lager** — tabs Lager · Mindestbestände, the Mein Lager | Globales Lager switch and the
+5. **Lager** — tabs Lager · Mindestbestände, the Mein Lager | Einheitslager switch and the
    tree table with quality gauges and order / mission chips.
 6. **Material** — tabs and the price matrix in a box with a collapsible category row.
 7. **Mission** (Missionen → a row) — back link, facts bar, collapsible panels with the action
