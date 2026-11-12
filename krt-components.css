@@ -769,6 +769,13 @@ input[type="radio"]:checked::after {
     border-bottom-right-radius: calc(var(--radius-box) - 1px);
 }
 .detail-pane { background: var(--color-bg-dark-gray); border: var(--border-hairline); padding: 14px 16px; }
+.master-detail--panes { gap: 0; }
+.master-detail--panes > .master-list { min-height: 100%; overflow-y: auto; background: transparent; border: none; border-right: var(--border-hairline); border-radius: calc(var(--radius-box) - 1px) 0 0 calc(var(--radius-box) - 1px); }
+.master-detail--panes > .master-list .master-row:nth-child(1 of :not([hidden])),
+.master-detail--panes > .master-list .master-row:nth-last-child(1 of :not([hidden])) { border-radius: 0; }
+.master-detail--panes > .master-list .master-row:nth-last-child(1 of :not([hidden])) { border-bottom: none; }
+.master-detail--panes > .detail-pane { background: transparent; border: none; border-radius: 0; }
+@media (max-width: 900px) { .master-detail--panes > .master-list { border-right: none; border-radius: calc(var(--radius-box) - 1px); } }
 
 input[type="range"] { accent-color: var(--color-primary); }
 .quality-block { display: flex; flex-direction: column; gap: 4px; min-width: 250px; }

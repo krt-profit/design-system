@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" height=290 width=700 subtitle="Sammlungs-Browser + Stat-Beitrag nach Zutat-Qualität" -->
+<!-- @dsCard group="Components" height=560 width=1000 subtitle="Sammlungs-Browser + Stat-Beitrag nach Zutat-Qualität · Panes in einer Box" -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -35,6 +35,26 @@
     </div>
   </div>
   <p class="pv-mono" style="margin-top:12px;">.master-detail/.master-list/.master-row(.is-active)/.detail-pane · .quality-block/-row/-affects · range = accent-orange. Faktor f = 1 + (max−1)·q/1000, nur auf zugeordnete Stats.</p>
+
+  <p class="pv-label" style="margin-top:22px;">Panes in einer Box (.master-detail--panes)</p>
+  <div class="card card--flush">
+    <div class="master-detail master-detail--panes">
+      <div class="master-list" style="max-height:132px;">
+        <div class="master-row is-active" tabindex="0"><span>Quantainium</span><span>Q 812</span></div>
+        <div class="master-row" tabindex="0"><span>Laranite</span><span>Q 640</span></div>
+        <div class="master-row" tabindex="0" hidden><span>Taranite</span><span>Q 590</span></div>
+        <div class="master-row" tabindex="0"><span>Agricium</span><span>Q 455</span></div>
+        <div class="master-row" tabindex="0"><span>Bexalite</span><span>Q 300</span></div>
+      </div>
+      <div class="detail-pane">
+        <div class="quality-block">
+          <span class="quality-source">Angebot</span>
+          <div class="quality-name"><strong>Quantainium</strong> <small>· 12 SCU · Qualität 812</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="pv-mono" style="margin-top:12px;">.master-detail--panes in einer Box: Panes ohne Radius und Füllung · Liste = Scroll-Liste, füllt die Höhe, innerer Radius nur in den Box-Ecken, die sie füllt · Zeilen ohne Radius, die letzte sichtbare ohne Linie.</p>
   <script>
     document.querySelectorAll('[data-ing]').forEach(sl => {
       const id = sl.dataset.ing, maxf = parseFloat(sl.dataset.maxf);
