@@ -171,7 +171,7 @@ function LagerScreen({ push }) {
       <div className="kit-gap kit-row">
         <nav className="krt-segmented" aria-label="Lager">
           <a className="krt-segmented__item" href="#" aria-current={storage === "my" ? "page" : undefined} onClick={(e) => { e.preventDefault(); setStorage("my"); }}>Mein Lager</a>
-          <a className="krt-segmented__item" href="#" aria-current={storage === "all" ? "page" : undefined} onClick={(e) => { e.preventDefault(); setStorage("all"); }}>Globales Lager</a>
+          <a className="krt-segmented__item" href="#" aria-current={storage === "all" ? "page" : undefined} onClick={(e) => { e.preventDefault(); setStorage("all"); }}>Einheitslager</a>
         </nav>
       </div>
       <div className="hud-scroll scroll-x kit-gap">
