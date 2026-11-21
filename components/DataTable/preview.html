@@ -1,4 +1,4 @@
-<!-- @dsCard group="Components" height=560 width=860subtitle="Listentabelle: .card.card--flush › table.data-table.data-table--stack · Zeile = Link · sortierbare Köpfe · Zebra" -->
+<!-- @dsCard group="Components" height=680 width=860 subtitle="Listentabelle: .card.card--flush › table.data-table.data-table--stack · Zeile = Link · sortierbare Köpfe · Zebra" -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -38,12 +38,13 @@
           <td class="cell-status"><span class="status-pill status-planned">GEPLANT</span></td>
           <td data-label="Start">Di., 27.10., 19:30<span class="cell-sub">in 15 Tagen</span></td>
           <td class="num" data-label="Teilnehmer">7</td>
-          <td class="cell-actions"><svg class="krt-icon row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
+          <td class="cell-actions"><button type="button" class="btn btn-ghost btn-xs">Anmelden</button> <svg class="krt-icon row-chevron" aria-hidden="true"><use href="../../assets/krt-icons.svg#krt-icon-chevron-right"></use></svg></td>
         </tr>
       </tbody>
     </table>
   </div>
   <p class="pv-mono">Zeilen ≥ 56 px (.data-table--compact 44 px). Erste Spalte a.row-link mit .cell-title/.cell-sub – die ganze Zeile ist klickbar, Fokusring auf der Zeile. Zahlen .num (rechts, tabular-nums), Status .cell-status, Aktionen .cell-actions (.btn-xs, nie .btn--cta), .row-chevron am Ende. Keine Spalte nur mit „Öffnen“.</p>
+  <p class="pv-mono">Klickfläche: jeder Punkt der Zeile öffnet den Link – auch Meta-Zellen, Status und Chevron. Nur die Bedienelemente in .cell-actions („Anmelden“) liegen darüber. Hover außerhalb eines Bedienelements und Tastaturfokus: Chevron Grau 1 → Hausorange, Titel orange unterstrichen.</p>
   <p class="pv-mono">Kopf: --surface-bar, 0,7 rem GROSS, 2-px-Orange-Linie. .sort-header: ↕ neutral, ▲/▼ orange bei aria-sort. Zebra jede zweite sichtbare Zeile (--table-stripe-bg, ausgeblendete und .detail-row zählen nicht), Hover --table-row-hover.</p>
   <p class="pv-mono">In einer Karte mit Innenabstand (.card:not(.card--flush)) liegt die Tabelle auf --surface-inset, nie auf dem Grau der Karte. Leere Liste = .empty-state, nie eine colspan-Zeile.</p>
 </body>
