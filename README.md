@@ -381,6 +381,17 @@ rule 6). Specimens: `components/DataTable`, `components/DataTableStack`.
   shows the focus ring; numbers `.num`, status `.cell-status`, actions `.cell-actions`
   (`.btn-xs` ghost / success / quiet-danger, never `.btn--cta`), a `.row-chevron` at the end; no
   column holding only „Öffnen".
+- **Hit area:** the link's `::after` covers the row at `z-index: 1`, so a click anywhere in the
+  row opens it — meta cells, status, the decorative chevron, on every width. Only the controls in
+  `.cell-actions` (every child but the chevron) sit above it with `position: relative;
+  z-index: 1`; a control a page places in another cell needs the same lift, or it is covered. Keep
+  the chevron a direct child of `.cell-actions`, never inside a wrapper, and give the link's cell
+  no `opacity`, `filter` or `transform` (dim its content instead), or the later cells cover the
+  link. A child whose popup is open (`:has([aria-expanded='true'])`) rises to
+  `--z-popover-raised`, above the following rows' links.
+- **Cue:** the chevron is Grau 1 at rest. On row hover outside a control and on
+  `a.row-link:focus-visible` it turns house orange and the `.cell-title` gets a house-orange
+  underline (0.2 em offset); both fade in 0.2 s.
 - Head: `--surface-bar`, `--fs-2xs` upper-case, 0.06 em, 2 px orange rule. Sortable columns carry
   a `.sort-header` button in the `th` with `aria-sort`; `.sort-header__mark` shows ↕ muted, ▲ / ▼
   orange.
