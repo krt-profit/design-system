@@ -283,16 +283,28 @@ Specimen: [`components/ListPanel/preview.html`](components/ListPanel/preview.htm
 | `.btn.btn--cta` | filled orange, dark text, restrained bloom | the single primary action per panel — Anmelden, Speichern |
 | `.btn-success` | filled green | status change — Check-In |
 | `.btn-outline` | orange outline | emphasized secondary — Crew zuweisen |
+| `.btn-outline.btn-add-line` | orange outline, dashed → solid on hover, faint orange tint, full width | adds a row below a list built row by row — Material hinzufügen |
 | `.btn-ghost` | control fill + control border → orange on hover | routine repeated actions — Edit, Check-Out, Filter |
 | `.btn-quiet-danger` | control fill + border, muted text → red on hover | destructive — Delete |
 
+- **A list the user builds row by row** (the materials and items of an order, the goods of a
+  refinery order) offers its add action at both ends. Below the last row sits a full-width
+  `.btn.btn-outline.btn-add-line`: the orange outline of `.btn-outline`, `border-style: dashed` at
+  rest and `solid` on hover, on `color-mix(in srgb, var(--color-primary) 6%, transparent)` (hover
+  takes the outline's 12 % tint), the `plus` icon left of the label („Material hinzufügen"). Its
+  compact twin closes the section head: `.btn.btn-outline.btn-xs` with `plus` and a short label
+  („Material"), whose accessible name and `title` are the full label. Neither takes the filled
+  CTA orange, which stays the form's one primary action, nor the gray look of the fields or the
+  dashed gray frame of a computed field; neither label carries a „+" character. After either
+  button the new row scrolls to the middle of its scroll area (no animation under
+  `prefers-reduced-motion`) and its first editable control takes the focus.
 - **Form labels are neutral** (`--color-gray-1`); the input values are the brightest thing in a form.
 - **Panel headers** use `.panel-header`: bar fill, one orange left bar, light heading;
   orange only for the chevron and the active state.
 - **Data values** (names, frequencies, IDs) use `.data-value` — white on a bar chip.
 - Named tokens: `--action-primary`, `--action-emphasis`, `--action-neutral`, `--data-fg`.
 
-Specimen: `components/ActionHierarchy/preview.html`.
+Specimens: `components/ActionHierarchy/preview.html`, `components/AddLine/preview.html`.
 
 ---
 
@@ -546,6 +558,8 @@ caps, `fill: none`, `currentColor`; used as `<svg class="krt-icon"><use href="#k
 
 - **Navigation icons** (`wedge`, `crate`, `swap`, `users`, `bank`, `database`, `gear`, `shield`, `more`, `user`, `bell`, `eye-off`) mark navigation groups, rail entries and tab-bar slots; `star` (outline) and `star-filled` (same geometry, `fill: currentColor`) are the two states of a favourite toggle.
 - **Icon + text** for primary, rare or ambiguous actions.
+- **Add-line buttons** (`.btn-add-line` below a list, its `.btn-xs` twin in the section head) take
+  `plus` + text; the twin's short label keeps the full label as `aria-label` + `title`.
 - **Icon-only** (`.btn-icon`, 32×32) for repeated row actions with a universal meaning
   (edit, trash, check-in, check-out, bookout, close) — always with `aria-label` + `title`.
 
@@ -564,6 +578,7 @@ confirm dialog. A new icon is a new `<symbol>` in the sprite, never an icon libr
 | Check-In / Check-Out (`mission.participant.checkin` / `.checkout`) | `login` / `logout` | icon-only in a row |
 | Ausbuchen (`inventory.bookout`) | `bookout` | icon-only in a row |
 | Hinzufügen, Neuer Eintrag, Schiff hinzufügen | `plus` | icon + text |
+| Material hinzufügen / Item hinzufügen (`orders.create.addMaterial`, `orders.create.item.add`) | `plus` | icon + text: `.btn-add-line` below the list, `.btn-xs` „Material" / „Item" in the section head |
 | Zurück (`general.back`) | `arrow-left` | icon + text |
 | Details (`general.details`) | `eye` | icon + text, or icon-only in a row |
 | Öffnen (external) | `external-link` | icon + text |
