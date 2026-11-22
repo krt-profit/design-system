@@ -1,0 +1,70 @@
+<!-- @dsCard group="Components" height=540 width=700 subtitle="Add a row: dashed outline below the list, compact twin in the section head" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<style>
+  body { padding: 18px 20px; }
+  .krt-icon { width: 1em; height: 1em; fill: none; }
+  .lines { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-4); }
+  .line { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3); }
+  .line label, .line .form-label-sm { font-size: var(--fs-xs); }
+  .line select, .line input { width: 100%; }
+  .computed {
+    min-height: var(--touch-target);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-3);
+    border: 1px dashed var(--color-gray-3);
+    border-radius: var(--radius-control);
+    color: var(--color-white);
+    font-weight: var(--fw-bold);
+    font-variant-numeric: tabular-nums;
+  }
+  .states { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); margin-top: 14px; }
+  .btn-add-line.pv-hover {
+    background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    color: var(--color-accent-light);
+    border-color: var(--color-accent-light);
+    border-style: solid;
+  }
+</style>
+</head>
+<body>
+  <p class="pv-label">Add line — orange dashed outline below the list, compact twin in the section head</p>
+  <div class="card">
+    <div class="card-head">
+      <h3 class="card-title">3 · Materialien</h3>
+      <button type="button" class="btn btn-outline btn-xs" aria-label="Material hinzufügen" title="Material hinzufügen"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-plus"/></svg> <span>Material</span></button>
+    </div>
+    <div class="lines">
+      <div class="line">
+        <div><label for="m1">Material</label><select id="m1"><option>Quantanium</option></select></div>
+        <div><label for="q1">Menge (SCU)</label><input type="text" id="q1" value="32"></div>
+        <div><span class="form-label-sm">Wert (aUEC)</span><div class="computed">1.848.000</div></div>
+      </div>
+      <div class="line">
+        <div><label for="m2">Material</label><select id="m2"><option>Laranite</option></select></div>
+        <div><label for="q2">Menge (SCU)</label><input type="text" id="q2" value="12"></div>
+        <div><span class="form-label-sm">Wert (aUEC)</span><div class="computed">372.000</div></div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-outline btn-add-line"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-plus"/></svg> <span>Material hinzufügen</span></button>
+  </div>
+  <div class="states">
+    <div class="pv-col">
+      <span class="pv-label">Rest · dashed · 6 % tint</span>
+      <button type="button" class="btn btn-outline btn-add-line"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-plus"/></svg> <span>Item hinzufügen</span></button>
+    </div>
+    <div class="pv-col">
+      <span class="pv-label">Hover · solid · 12 % tint</span>
+      <button type="button" class="btn btn-outline btn-add-line pv-hover"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-plus"/></svg> <span>Item hinzufügen</span></button>
+    </div>
+  </div>
+  <p class="pv-mono" style="margin-top:12px;">.btn.btn-outline.btn-add-line below the last row · .btn.btn-outline.btn-xs „Material“ closes the section head, aria-label + title = full label · plus icon, no „+“ in the label · the computed field keeps its gray dashed frame · after either button the new row scrolls to the middle and its first editable control takes the focus.</p>
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="krt-icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  </svg>
+</body>
+</html>
