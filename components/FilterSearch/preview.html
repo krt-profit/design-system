@@ -15,8 +15,8 @@
   .krt-combobox__listbox { position: static; box-shadow: none; }
   .autocomplete-items { position: static; }
   /* Specimen: force the hover-only SCU tooltip visible, with room above it. */
-  .scu-demo { margin-top: 46px; }
-  .scu-demo .scu-hint__bubble { opacity: 1; visibility: visible; }
+  .scu-demo { margin-top: 46px; margin-bottom: 58px; }
+  .scu-demo .scu-hint__bubble { --hint-shift: 80px; opacity: 1; visibility: visible; }
 </style>
 </head>
 <body>
@@ -45,9 +45,10 @@
       </div>
     </div>
     <div class="scu-demo">
-      <span class="fld-cap">SCU-Hint Tooltip</span>
+      <span class="fld-cap">SCU-Hint Tooltip · oben / --below</span>
       <label class="form-label-sm" style="display:inline-flex;align-items:center;">Menge<span class="scu-hint" tabindex="0">?<span class="scu-hint__bubble">Dezimale SCU erlaubt: cSCU = 0,01&nbsp;SCU, µSCU = 0,001&nbsp;SCU.</span></span></label>
       <input type="number" value="128" style="width:120px;margin-top:6px;">
+      <label class="form-label-sm" style="display:flex;align-items:center;margin-top:10px;">Wert<span class="scu-hint" tabindex="0">?<span class="scu-hint__bubble scu-hint__bubble--below">Oben kein Platz: die Blase öffnet sich unter dem Fragezeichen.</span></span></label>
     </div>
     <div>
       <span class="fld-cap">Autocomplete</span>
@@ -58,6 +59,6 @@
       </div>
     </div>
   </div>
-  <p class="pv-mono" style="margin-top:16px;">.multi-select-* · .krt-combobox* (--active, [aria-selected], &lt;mark&gt;, __notice) · .scu-hint + __bubble · .autocomplete-items / .autocomplete-active</p>
+  <p class="pv-mono" style="margin-top:16px;">.multi-select-* · .krt-combobox* (--active, [aria-selected], &lt;mark&gt;, __notice) · .scu-hint + __bubble (--below) · .autocomplete-items / .autocomplete-active</p>
 </body>
 </html>
