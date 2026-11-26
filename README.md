@@ -531,8 +531,9 @@ Specimens: `components/KpiCard/preview.html`, `components/BankPatterns/preview.h
 - **Toast** `.notification-toast` (+ `.error-toast`) — panel surface, corner brackets + bloom.
   Specimen: `components/Toast/preview.html`.
 - **Loading** `.krt-loading-indicator` + `.krt-spinner`; **presence** `.krt-presence-indicator`
-  (pulsing dot + count) and the fixed `.mission-livesync-pill` — awareness only, never
-  blocks input. Specimen: `components/Presence/preview.html`.
+  (pulsing dot + count) and the fixed `.krt-livesync-pill` (bottom right, above the footer and
+  the tab bar, raised by `--krt-livesync-pill-lift` over a sticky form action bar) — awareness only,
+  never blocks input. Specimen: `components/Presence/preview.html`.
 - **Rendered Markdown** `.markdown-content` for server-rendered user prose.
   Specimen: `components/MarkdownContent/preview.html`.
 - **Status banner** `.krt-maintenance-banner` (`__text`, `__reload`) — one fixed notice centred
