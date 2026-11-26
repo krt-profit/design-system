@@ -436,8 +436,11 @@ instead of nested tables:
   optionally with the `?` hint), short notes on what the sum leaves out, one per line
   (`.tree-total-notes` / `.tree-total-note`), under the context columns, and the total under the
   amount column (`.tree-total-amount` / `.tree-total-value` + `.tree-unit`). It totals the rows
-  shown, so it follows the filter. **≤ 768 px** the total and then the notes move under the label,
-  so the row reads without scrolling sideways.
+  shown, so it follows the filter, and its label says when a filter narrows them („(gefiltert)").
+  While rows are marked for a bulk action it totals only the marked rows, says so in its label
+  („(Auswahl)") and shows even at zero; it never shows the shown rows' total beside it, and it
+  returns to that total once nothing is marked. **≤ 768 px** the total and then the notes move
+  under the label, so the row reads without scrolling sideways.
 - **Leaf controls** sit in `.tree-leaf-main`, spanning the name/context/quality columns.
 - **Actions** use `.btn-xs`; `.tree-cell--actions` has a left gutter. One emphasized action per row.
 - **Notes render only when a note exists** — an indented `.tree-note` block (~80ch).
