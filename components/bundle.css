@@ -396,6 +396,7 @@ tbody tr:hover, tbody tr:nth-child(even of :not([hidden], .detail-row)):hover { 
     .tree-name:has(> .tree-chevron) { display: grid; grid-template-columns: auto minmax(0, 1fr); row-gap: var(--space-1); }
     .tree-name:has(> .tree-chevron) > :not(.tree-chevron) { grid-column: 2; }
     .tree-name:has(> .tree-chevron) > :not(.tree-chevron, .tree-label) { justify-self: start; }
+    .tree-name:has(> .tree-chevron) > .chip { white-space: normal; }
 }
 
 .tree-leaf-main { grid-column: 1 / 4; display: flex; align-items: center; gap: 0.85rem; padding: 0.4rem 0.8rem 0.4rem 3rem; min-width: 0; }
