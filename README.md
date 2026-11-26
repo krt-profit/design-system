@@ -438,6 +438,13 @@ instead of nested tables:
   amount column (`.tree-total-amount` / `.tree-total-value` + `.tree-unit`). It totals the rows
   shown, so it follows the filter. **≤ 768 px** the total and then the notes move under the label,
   so the row reads without scrolling sideways.
+- **A status chip beside a name** („Gestohlen", „Niedrig", „Umzug ausstehend") follows the
+  `.tree-label` in `.tree-name`. On the mouse classes it sits beside the name, which truncates.
+  **Up to 1024 px or on a coarse pointer** the name wraps instead, and the name cell becomes a
+  two-column grid: the chevron, then the name at the column's full width, with every chip on its
+  own line under the name, so no word of the name breaks. A context cell that holds a badge, a
+  name and a chip wraps (`flex-wrap: wrap`), so the chip moves under the name instead of over the
+  next column.
 - **Leaf controls** sit in `.tree-leaf-main`, spanning the name/context/quality columns.
 - **Actions** use `.btn-xs`; `.tree-cell--actions` has a left gutter. One emphasized action per row.
 - **Notes render only when a note exists** — an indented `.tree-note` block (~80ch).
