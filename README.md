@@ -322,8 +322,9 @@ Specimens: `components/ActionHierarchy/preview.html`, `components/AddLine/previe
 - **Status labels (Design 3.0).** `.status-pill` and `.status-badge` show their colour as
   text, a 38 % frame and a 14 % fill (`color-mix` with `currentColor`); the text uses the
   Basetool text tints (`#8FB2F5`, `#4CCB5C`, `#FF7A70`; on the tinted fill ≥ 5.2 : 1 on a box,
-  ≥ 4.8 : 1 on a tile). Alerts carry a 1 px tinted frame on an 8 px tile instead of the 4 px
-  left bar.
+  ≥ 4.8 : 1 on a tile). Alerts (`.alert` + `-success`, `-warning`, `-danger` or `-info`) carry a
+  1 px tinted frame on an 8 px tile instead of the 4 px left bar; a page shows them below its page
+  head and the tabs after it.
 - **`.chip`** — inline data label (order kind, quality, claim, count), 4 px radius. Tone
   variants `--primary/--success/--danger/--warning/--info/--muted` (border + text take
   the hue, faint tint fill), plus `--data` for "key: value" chips (`ALP: 1,200 SCU`).
@@ -534,6 +535,20 @@ Specimens: `components/KpiCard/preview.html`, `components/BankPatterns/preview.h
   blocks input. Specimen: `components/Presence/preview.html`.
 - **Rendered Markdown** `.markdown-content` for server-rendered user prose.
   Specimen: `components/MarkdownContent/preview.html`.
+- **Status banner** `.krt-maintenance-banner` (`__text`, `__reload`) — one fixed notice centred
+  under the header on the topmost layer, so it stays above an open dialog; `role="status"`. It is an
+  alert in shape (1 px tinted frame, 15 % tint on the box surface, 8 px tile radius) with a plain dark
+  separation shadow like the live-sync pill, sentence-case text and a ghost icon-only close. Its
+  `data-state` picks the tint: `down` warning with the `warning` icon (the tool is unreachable,
+  input stays), `back` success without an icon (it answers again, hides itself), `updated` info with
+  the `info` icon in `--color-info-text` (a release replaced the page's version). `updated` carries
+  the notice's one suggested action, *Neu laden*, an outline button with the `reset` icon; the
+  filled CTA stays the page's own. Awareness only, never blocks input.
+- **Restore offer** `.alert.alert-info.krt-draft-offer` (`__text`, `__actions`) — offers unsaved
+  input back: the text, then *Verwerfen* (ghost, text only) and *Wiederherstellen* (outline with the
+  `reset` icon), so a form's filled CTA stays its one primary action. A form shows it above its
+  fields; for a dialog the page shows it below its page head and tabs and names the dialog.
+  Specimen: `components/StatusBanner/preview.html`.
 
 ### App chrome
 
@@ -585,6 +600,8 @@ confirm dialog. A new icon is a new `<symbol>` in the sprite, never an icon libr
 | Jetzt (`general.now`) | `clock` | icon + text |
 | Bestätigen (`*.confirm`) | `check` | icon + text |
 | Abbrechen (`general.cancel`) | — | text only (ghost) |
+| Wiederherstellen (`draft.offer.restore`) | `reset` | icon + text (outline) |
+| Neu laden (`frontend.maintenance.reload`) | `reset` | icon + text (outline) |
 | Filtern / Filter zurücksetzen | `filter` / `filter-off` | icon + text |
 | Suche (`general.search`) | `search` | icon + text |
 | Home-Location setzen | `map-pin` | icon + text |

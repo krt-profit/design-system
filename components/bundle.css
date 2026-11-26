@@ -558,6 +558,20 @@ input[type="radio"]:checked::after {
 .alert-danger  { background-color: rgba(163, 0, 10, 0.2);  border-color: color-mix(in srgb, var(--color-danger) 70%, transparent);  color: var(--color-gray-1); }
 .alert-success { background-color: rgba(35, 158, 51, 0.2); border-color: color-mix(in srgb, var(--color-success) 60%, transparent); color: var(--color-gray-1); }
 .alert-warning { background-color: rgba(255, 210, 63, 0.15); border-color: color-mix(in srgb, var(--color-warning) 45%, transparent); color: var(--color-gray-1); }
+.alert-info    { background-color: color-mix(in srgb, var(--color-info) 15%, transparent); border-color: color-mix(in srgb, var(--color-info) 60%, transparent); color: var(--color-gray-1); }
+
+.krt-draft-offer { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.krt-draft-offer[hidden] { display: none; }
+.krt-draft-offer__text { flex: 1 1 auto; min-width: 0; margin: 0; }
+.krt-draft-offer__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.krt-maintenance-banner { --krt-maintenance-tint: var(--color-warning); position: fixed; top: calc(var(--krt-header-height, 0px) + var(--space-3)); left: 50%; z-index: var(--z-status-pill); display: flex; align-items: center; gap: var(--space-3); width: min(var(--measure), calc(100vw - 2 * var(--space-4))); margin: 0; transform: translateX(-50%); border-color: color-mix(in srgb, var(--krt-maintenance-tint) 45%, transparent); border-radius: var(--radius-tile); background: linear-gradient(color-mix(in srgb, var(--krt-maintenance-tint) 15%, transparent), color-mix(in srgb, var(--krt-maintenance-tint) 15%, transparent)), var(--surface-panel); color: var(--color-gray-1); box-shadow: 0 2px 12px color-mix(in srgb, var(--color-bg-black) 45%, transparent); }
+.krt-maintenance-banner[data-state='back'] { --krt-maintenance-tint: var(--color-success); }
+.krt-maintenance-banner[data-state='updated'] { --krt-maintenance-tint: var(--color-info); }
+.krt-maintenance-banner > .krt-icon { flex: none; color: var(--krt-maintenance-tint); }
+.krt-maintenance-banner[data-state='updated'] > .krt-icon { color: var(--color-info-text); }
+.krt-maintenance-banner__text { flex: 1; }
+.krt-maintenance-banner__reload { flex: none; }
 
 .squadron-badge {
 
