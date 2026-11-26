@@ -1,0 +1,38 @@
+<!-- @dsCard group="Components" height=420 width=700 subtitle="Statusbanner (Update, wieder erreichbar, neue Version) und Wiederherstellen-Angebot" -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../preview/_card.css">
+<link rel="stylesheet" href="../../krt-components.css">
+<style>
+  body { padding: 18px 20px; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+  .krt-maintenance-banner { position: static; transform: none; width: 100%; box-sizing: border-box; }
+  .alert { margin-bottom: 0; }
+</style>
+</head>
+<body>
+  <p class="pv-label">Statusbanner — fest unter der Kopfzeile, ein Zustand zur Zeit</p>
+  <div class="stack">
+    <div class="alert krt-maintenance-banner" data-state="down" role="status"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-warning"/></svg><span class="krt-maintenance-banner__text">Das Basetool ist gerade nicht erreichbar – meist läuft ein Update. Deine Eingaben bleiben auf dieser Seite erhalten.</span><button type="button" class="btn btn-ghost btn-icon krt-maintenance-banner__close" aria-label="Hinweis schließen" title="Hinweis schließen"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-close"/></svg></button></div>
+    <div class="alert krt-maintenance-banner" data-state="back" role="status"><span class="krt-maintenance-banner__text">Das Basetool ist wieder erreichbar. Du kannst jetzt speichern.</span><button type="button" class="btn btn-ghost btn-icon krt-maintenance-banner__close" aria-label="Hinweis schließen" title="Hinweis schließen"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-close"/></svg></button></div>
+    <div class="alert krt-maintenance-banner" data-state="updated" role="status"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-info"/></svg><span class="krt-maintenance-banner__text">Das Basetool wurde aktualisiert. Du kannst wie gewohnt speichern; lade die Seite neu, wenn du fertig bist.</span><button type="button" class="btn btn-outline krt-maintenance-banner__reload"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-reset"/></svg> <span>Neu laden</span></button><button type="button" class="btn btn-ghost btn-icon krt-maintenance-banner__close" aria-label="Hinweis schließen" title="Hinweis schließen"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-close"/></svg></button></div>
+  </div>
+  <p class="pv-label" style="margin-top:18px;">Wiederherstellen-Angebot — im Formular über den Feldern, zu einem Dialog unter dem Seitenkopf</p>
+  <div class="alert alert-info krt-draft-offer" role="status">
+    <p class="krt-draft-offer__text">In diesem Tab liegen ungespeicherte Eingaben zu diesem Dialog: <strong>Kontobewegung</strong></p>
+    <div class="krt-draft-offer__actions">
+      <button type="button" class="btn btn-ghost">Verwerfen</button>
+      <button type="button" class="btn btn-outline"><svg class="krt-icon" aria-hidden="true"><use href="#krt-icon-reset"/></svg> <span>Wiederherstellen</span></button>
+    </div>
+  </div>
+  <p class="pv-mono" style="margin-top:16px;">.krt-maintenance-banner[data-state=down|back|updated] (__text, __reload) · .alert.alert-info.krt-draft-offer (__text, __actions). Reine Hinweise — blockieren keine Eingabe.</p>
+<svg style="display:none" aria-hidden="true">
+<symbol id="krt-icon-warning" viewBox="0 0 24 24"><path d="M12 3l10 18H2L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"></path><path d="M12 10v5M12 18v0.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></symbol>
+<symbol id="krt-icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"></circle><path d="M12 11v6M12 7v0.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></symbol>
+<symbol id="krt-icon-reset" viewBox="0 0 24 24"> <path d="M3 12a9 9 0 1 0 3-6.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/> <path d="M3 4v5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/> </symbol>
+<symbol id="krt-icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"></path></symbol>
+</svg>
+</body>
+</html>
