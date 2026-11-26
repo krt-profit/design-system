@@ -427,6 +427,17 @@ instead of nested tables:
   (`.tree-row--group/--mid/--leaf`), never by repeated column headers.
 - All rows share one grid template (`--tree-cols`); numeric columns right-aligned + `tabular-nums`.
 - **Quality** = 0–1000 gauge (`.tree-gauge`); **amounts** = bright value + dimmed unit (`.tree-amount` / `.tree-unit`).
+- **A secondary figure** of a group, such as an estimated aUEC value, is a dimmed line under its
+  amount (`.tree-value`, the number in `.tree-value-num`), right-aligned and tabular like the
+  amount. It sits on group rows only, never on stacks or entries, and is left out where the figure
+  does not exist rather than shown as a placeholder.
+- **A sum row** closes the tree when the groups add up to something worth reading
+  (`.tree-row--total`, after the last group): the label in the head's style (`.tree-total-label`,
+  optionally with the `?` hint), short notes on what the sum leaves out (`.tree-total-notes` /
+  `.tree-total-note`, divided by a rule) under the context columns, and the total under the amount
+  column (`.tree-total-amount` / `.tree-total-value` + `.tree-unit`). It totals the rows shown, so
+  it follows the filter. **≤ 768 px** the total and then the notes, stacked, move under the label,
+  so the row reads without scrolling sideways.
 - **Leaf controls** sit in `.tree-leaf-main`, spanning the name/context/quality columns.
 - **Actions** use `.btn-xs`; `.tree-cell--actions` has a left gutter. One emphasized action per row.
 - **Notes render only when a note exists** — an indented `.tree-note` block (~80ch).
