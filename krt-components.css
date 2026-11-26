@@ -951,6 +951,8 @@ tr.is-inert td { opacity: .5; }
 .scu-hint__bubble { position: absolute; bottom: calc(100% + 0.5rem); left: 50%; z-index: 4000; width: max-content; max-width: min(17rem, 78vw); padding: var(--space-2) 0.6rem; transform: translateX(calc(-50% + var(--hint-shift, 0px))); background: var(--color-control); border: 1px solid var(--color-primary); box-shadow: 0 0 10px rgb(231 126 35 / 30%); color: var(--color-gray-1); font-family: var(--font-body); font-size: 0.78rem; font-weight: var(--fw-regular); line-height: 1.4; letter-spacing: normal; text-align: left; text-transform: none; white-space: normal; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
 .scu-hint:hover .scu-hint__bubble, .scu-hint:focus .scu-hint__bubble, .scu-hint:focus-within .scu-hint__bubble { opacity: 1; visibility: visible; }
 .scu-hint__bubble::after { content: ''; position: absolute; top: 100%; left: calc(50% - var(--hint-shift, 0px)); border: 0.3rem solid transparent; border-top-color: var(--color-primary); transform: translateX(-50%); }
+.scu-hint__bubble--below { top: calc(100% + 0.5rem); bottom: auto; }
+.scu-hint__bubble--below::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: var(--color-primary); }
 
 .markdown-content { font-size: 0.85rem; font-weight: 300; color: var(--color-gray-1); line-height: 1.55; max-width: 80ch; }
 .markdown-content > :first-child { margin-top: 0; }
