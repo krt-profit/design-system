@@ -536,6 +536,10 @@ Specimens: `components/KpiCard/preview.html`, `components/BankPatterns/preview.h
   between the value and the buttons, a Grau-2 divider, buttons 1.5rem wide, orange on hover.
   The value never touches the buttons. Firefox shows no spinner (arrow keys still work).
 - **SCU hint** `.scu-hint` + `.scu-hint__bubble` — the inline-help idiom („?" disc → HUD tooltip).
+  The bubble opens above the disc with its arrow pointing down; `.scu-hint__bubble--below` opens it
+  under the disc, arrow on top, where there is no room above. The bubble overlays the page: no
+  table, scroll container or dialog edge cuts it off (the Basetool anchors it to the viewport).
+  Specimen: `components/FilterSearch/preview.html`.
 
 ### Feedback & presence
 
