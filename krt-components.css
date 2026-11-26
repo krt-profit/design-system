@@ -315,6 +315,13 @@ tbody tr:hover, tbody tr:nth-child(even of :not([hidden], .detail-row)):hover { 
 .tree-row--mid:hover { background-color: rgba(255,255,255,0.025); }
 .tree-row--leaf { background-color: rgba(0,0,0,0.35); border-left: 4px solid transparent; }
 .tree-row--leaf .tree-name { padding-left: 3rem; }
+@media (width <= 1024px), (pointer: coarse) {
+    .tree-name .tree-label { white-space: normal; overflow-wrap: break-word; }
+    .tree-name:has(> .tree-chevron) { display: grid; grid-template-columns: auto minmax(0, 1fr); row-gap: var(--space-1); }
+    .tree-name:has(> .tree-chevron) > :not(.tree-chevron) { grid-column: 2; }
+    .tree-name:has(> .tree-chevron) > :not(.tree-chevron, .tree-label) { justify-self: start; }
+    .tree-name:has(> .tree-chevron) > .chip { white-space: normal; }
+}
 
 .tree-leaf-main { grid-column: 1 / 4; display: flex; align-items: center; gap: 0.85rem; padding: 0.4rem 0.8rem 0.4rem 3rem; min-width: 0; }
 .tree-leaf-main .tree-leaf-tag { color: var(--color-gray-2-text); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; flex: none; }
